@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obosi.ng", "Obosi.ng\Obosi.ng.csproj", "{4AEF2524-90D2-4ECE-91EA-54205CCBC933}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Obosi.ng.Presentation", "Obosi.ng\Obosi.ng.Presentation.csproj", "{4AEF2524-90D2-4ECE-91EA-54205CCBC933}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obosi.ng.Domain", "Obosi.ng.domain\Obosi.ng.Domain.csproj", "{3574C71F-FF73-4E0E-9100-4A5D09DBE7C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obosi.ng.Infrastructure", "Obosi.ng.Infrastructure\Obosi.ng.Infrastructure.csproj", "{900B2A47-4708-4242-B00F-4332E582497C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obosi.ng.Application", "Obosi.ng.Application\Obosi.ng.Application.csproj", "{FF98277B-E334-434D-90CF-E934D4A3CB82}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{5FE0F327-383A-4233-A699-91800C20DCE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +23,27 @@ Global
 		{4AEF2524-90D2-4ECE-91EA-54205CCBC933}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AEF2524-90D2-4ECE-91EA-54205CCBC933}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AEF2524-90D2-4ECE-91EA-54205CCBC933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3574C71F-FF73-4E0E-9100-4A5D09DBE7C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3574C71F-FF73-4E0E-9100-4A5D09DBE7C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3574C71F-FF73-4E0E-9100-4A5D09DBE7C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3574C71F-FF73-4E0E-9100-4A5D09DBE7C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{900B2A47-4708-4242-B00F-4332E582497C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{900B2A47-4708-4242-B00F-4332E582497C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{900B2A47-4708-4242-B00F-4332E582497C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{900B2A47-4708-4242-B00F-4332E582497C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF98277B-E334-434D-90CF-E934D4A3CB82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF98277B-E334-434D-90CF-E934D4A3CB82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF98277B-E334-434D-90CF-E934D4A3CB82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF98277B-E334-434D-90CF-E934D4A3CB82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4AEF2524-90D2-4ECE-91EA-54205CCBC933} = {5FE0F327-383A-4233-A699-91800C20DCE6}
+		{3574C71F-FF73-4E0E-9100-4A5D09DBE7C9} = {5FE0F327-383A-4233-A699-91800C20DCE6}
+		{900B2A47-4708-4242-B00F-4332E582497C} = {5FE0F327-383A-4233-A699-91800C20DCE6}
+		{FF98277B-E334-434D-90CF-E934D4A3CB82} = {5FE0F327-383A-4233-A699-91800C20DCE6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8D01F231-D5C2-4C3B-ABF8-14CD4666046E}
