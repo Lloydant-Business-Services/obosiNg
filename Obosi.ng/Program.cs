@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using Obosi.ng.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

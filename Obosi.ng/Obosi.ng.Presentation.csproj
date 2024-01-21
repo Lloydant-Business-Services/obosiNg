@@ -24,4 +24,8 @@
     <Folder Include="Images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Obosi.ng.Infrastructure\Obosi.ng.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
