@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Obosi.ng.Models.EntityModel;
+using Microsoft.Extensions.Configuration;
+using Obosi.ng.Domain.Entity;
 
 namespace Obosi.ng.Data
 {
@@ -15,36 +16,45 @@ namespace Obosi.ng.Data
             }
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Role>().HasData(
-                new Role() { Active = true, Id = 1, Name = "Administrator" },
-                new Role() { Active = true, Id = 2, Name = "User" });
-            modelBuilder.Entity<UnitType>().HasData(
-                new UnitType() { Id = 1, Name = "Village" },
-                new UnitType() { Id = 2, Name = "Suburb" },
-                new UnitType() { Id = 3, Name = "Palace" },
-                new UnitType() { Id = 4, Name = "Obosi development union (ODU)" },
-                new UnitType() { Id = 5, Name = "ODU chapter" },
-                new UnitType() { Id = 6, Name = "ODU committee" },
-                new UnitType() { Id = 7, Name = "Umunna" },
-                new UnitType() { Id = 8, Name = "Age Grade" },
-                new UnitType() { Id = 9, Name = "Masquerade" },
-                new UnitType() { Id = 10, Name = "Monument" },
-                new UnitType() { Id = 11, Name = "Dance Group" },
-                new UnitType() { Id = 12, Name = "Resource" });
+                new Role() { IsActive = true, Id = 1, Name = "Administrator" },
+                new Role() { IsActive = true, Id = 2, Name = "User" });
+            modelBuilder.Entity<Gender>().HasData(
+               new Role() { IsActive = true, Id = 1, Name = "Male" },
+               new Role() { IsActive = true, Id = 2, Name = "Female" });
+            modelBuilder.Entity<Unit_Type>().HasData(
+                new Unit_Type() { Id = 1, Name = "Village" },
+                new Unit_Type() { Id = 2, Name = "Suburb" },
+                new Unit_Type() { Id = 3, Name = "Palace" },
+                new Unit_Type() { Id = 4, Name = "Obosi development union (ODU)" },
+                new Unit_Type() { Id = 5, Name = "ODU chapter" },
+                new Unit_Type() { Id = 6, Name = "ODU committee" },
+                new Unit_Type() { Id = 7, Name = "Umunna" },
+                new Unit_Type() { Id = 8, Name = "Age Grade" },
+                new Unit_Type() { Id = 9, Name = "Masquerade" },
+                new Unit_Type() { Id = 10, Name = "Monument" },
+                new Unit_Type() { Id = 11, Name = "Dance Group" },
+                new Unit_Type() { Id = 12, Name = "Resource" });
         }
-        public DbSet<Blog> Blog { get; set; }
-        public DbSet<BlogComment> BlogComment { get; set; }
-        public DbSet<Event> Event { get; set; }
-        public DbSet<Executive> Executive { get; set; }
-        public DbSet<NewsArticle> NewsArticle { get; set; }    
-        public DbSet<NewsCategory> NewsCategory { get; set; }   
-        public DbSet<NewsComment> NewsComment { get; set; } 
-        public DbSet<Photo> Photo { get; set; }
-        public DbSet<Post> Post { get; set; }
-        public DbSet<PostWallComment> PostWallComment { get; set; }
-        public DbSet<Role> Role { get; set; }   
-        public DbSet<Unit> Unit { get; set; }
-        public DbSet<UnitType> UnitType { get; set; }
-        public DbSet<User> User { get; set; }
-        public DbSet<Video> Video { get; set; } 
+
+
+        public DbSet<Blogs> Blogs { get; set; }
+        public DbSet<Blogs_Comment> Blogs_Comment { get; set;}
+        public DbSet<Blogs_Update> Blogs_Update { get; set;}
+        public DbSet<Calender_Assets> Calender_Assets { get; set;}
+        public DbSet<Category> Category { get; set;}
+        public DbSet<Executive> Executive { get; set;}
+        public DbSet<Gender> Gender { get; set;}
+        public DbSet<ImeNne> ImeNne { get; set;}
+        public DbSet<Member_Unit> Member_Unit { get; set;}
+        public DbSet<News> News { get; set;}
+        public DbSet<News_Comment> News_Comment { get; set;}    
+        public DbSet<News_Update> News_Update { get; set;}
+        public DbSet<Picture_Assets> Picture_Assets { get; set;}
+        public DbSet<Reasons_For_Suspension> Reasons_For_Suspension { get; set; }
+        public DbSet<Role> Role { get; set;}
+        public DbSet<Unit> Unit { get; set;}
+        public DbSet<Unit_Type> Unit_Type { get; set;}
+        public DbSet<Users> Users { get; set; }
+        public DbSet<Video_Assets> Video_Assets { get; set;}    
     }
 }
