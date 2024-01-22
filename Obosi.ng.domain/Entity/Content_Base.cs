@@ -14,8 +14,9 @@ namespace Obosi.ng.Domain.Entity
         public string Summary { get; set; }
         public long UserId { get; set; }
         public virtual Users User { get; set; }
+        public DateTime? DateCreated { get; set; }
         public bool IsPublished { get; set; }   
-        public DateTime DatePublished { get; set; }
+        public DateTime? DatePublished { get; set; }
         public bool IsApproved { get; set; }
         public DateTime? DateApproved { get; set; }
         public bool IsActive { get; set; }

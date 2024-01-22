@@ -1,4 +1,6 @@
-﻿using Obosi.ng.Application.Interfaces;
+﻿using AutoMapper;
+using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,13 @@ namespace Obosi.ng.Application.Services
 {
     public class ExecutiveService : IExecutive
     {
+        private readonly DataContext _dataContext;
+        private readonly IMapper _mapper;
+        public ExecutiveService(DataContext dataContext, IMapper mapper)
+        {
+            _dataContext = dataContext;
+            _mapper = mapper;
+        }
         public Task<Executive> CreateExecutive(Executive executive)
         {
             throw new NotImplementedException();

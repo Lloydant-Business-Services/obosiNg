@@ -1,5 +1,8 @@
-﻿using Obosi.ng.Application.DTO;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Obosi.ng.Application.DTO;
 using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
 using System;
 using System.Collections.Generic;
@@ -11,44 +14,81 @@ namespace Obosi.ng.Application.Services
 {
     public class BlogService : IBlog
     {
-        public Task<Blogs> ApproveBlog(int blogId)
+        private readonly DataContext _dataContext;
+        private readonly IMapper _mapper;
+        public BlogService(DataContext dataContext, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _dataContext = dataContext;
+            _mapper = mapper;   
+        }
+        public async Task<Blogs> ApproveBlog(int blogId)
+        {
+            var blog = await _dataContext.Blogs.Where(x => x.Id == blogId).FirstOrDefaultAsync();
+            if(blog != null) 
+            {
+                blog.IsApproved = true;
+                _dataContext.Blogs.Update(blog);
+                await _dataContext.SaveChangesAsync();
+            }
+            return blog;
         }
 
-        public Task<Blogs> CreateBlog(BlogDTO blog)
+        public async Task<Blogs> CreateBlog(BlogDTO blog)
         {
-            throw new NotImplementedException();
+            var blogDetails = _mapper.Map<Blogs>(blog);
+            blogDetails.IsActive = true;
+            blogDetails.DateCreated = DateTime.Now;
+            await _dataContext.Blogs.AddAsync(blogDetails);
+            await _dataContext.SaveChangesAsync();
+            return blogDetails;
         }
 
-        public Task<Blogs_Comment> CreateReaction(Blogs_Comment comment, int CommentType)
+        public async Task<Blogs_Comment> CreateReaction(Blogs_Comment comment)
         {
-            throw new NotImplementedException();
+            await _dataContext.Blogs_Comment.AddAsync(comment);
+            await _dataContext.SaveChangesAsync();  
+            return comment;
         }
 
-        public Task DeleteBlog(int BlogId)
+        public async Task DeleteBlog(int BlogId)
         {
-            throw new NotImplementedException();
+            var blog = await _dataContext.Blogs.Where(x => x.Id == BlogId).FirstOrDefaultAsync();
+            if (blog != null)
+            {
+                blog.IsActive = false;
+                _dataContext.Blogs.Update(blog);
+                await _dataContext.SaveChangesAsync();
+            }
         }
 
-        public Task<IQueryable<Blogs>> GetBlogs()
+        public async Task<IQueryable<Blogs>> GetBlogs()
         {
-            throw new NotImplementedException();
+           return (IQueryable<Blogs>)await _dataContext.Blogs.ToListAsync();
         }
 
-        public Task<Blogs> GetBlogsById(int BlogId)
+        public async Task<Blogs?> GetBlogsById(int BlogId)
         {
-            throw new NotImplementedException();
+           return  await _dataContext.Blogs.Where(x => x.Id == BlogId).FirstOrDefaultAsync();
         }
 
-        public Task<Blogs> PublishBlog(int blogId)
+        public async Task<Blogs> PublishBlog(int blogId)
         {
-            throw new NotImplementedException();
+            var blog = await _dataContext.Blogs.Where(x => x.Id == blogId).FirstOrDefaultAsync();
+            if (blog != null)
+            {
+                blog.IsPublished = true;
+                blog.DatePublished = DateTime.Now;  
+                _dataContext.Blogs.Update(blog);
+                await _dataContext.SaveChangesAsync();
+            }
+            return blog;
         }
 
-        public Task<Blogs_Update> UpdateBlog(Blogs_Update blog)
+        public async Task<Blogs_Update> UpdateBlog(Blogs_Update blog)
         {
-            throw new NotImplementedException();
+            _dataContext.Blogs_Update.Update(blog);
+            await _dataContext.SaveChangesAsync();
+            return blog;
         }
     }
 }

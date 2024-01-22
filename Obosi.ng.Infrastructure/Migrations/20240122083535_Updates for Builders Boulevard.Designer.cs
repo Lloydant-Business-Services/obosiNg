@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Obosi.ng.Data;
 
@@ -11,9 +12,11 @@ using Obosi.ng.Data;
 namespace Obosi.ng.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240122083535_Updates for Builders Boulevard")]
+    partial class UpdatesforBuildersBoulevard
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,10 +47,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.Property<DateTime?>("DateApproved")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DatePublished")
+                    b.Property<DateTime>("DatePublished")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -386,10 +386,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.Property<DateTime?>("DateApproved")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DatePublished")
+                    b.Property<DateTime>("DatePublished")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
