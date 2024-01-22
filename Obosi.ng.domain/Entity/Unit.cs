@@ -18,6 +18,7 @@ namespace Obosi.ng.Domain.Entity
         public string About { get; set; }
         public string? Description { get; set; }
         public string BackGroundImageUrl { get; set; }
-        public DateTime DateCreated { get; set; }    
+        public DateTime DateCreated { get; set; }   
+        public bool NeedsConfirmation { get; set; } 
     }
 }

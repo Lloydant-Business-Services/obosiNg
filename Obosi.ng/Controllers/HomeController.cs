@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Obosi.ng.Models;
 using System.Diagnostics;
 
 namespace Obosi.ng.Controllers

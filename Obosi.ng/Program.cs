@@ -10,6 +10,7 @@ builder.Services
     .AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString
     ("DataContext")),
     ServiceLifetime.Transient);
+builder.Services.AddAutoMapper(typeof(Program));
 
 
 
