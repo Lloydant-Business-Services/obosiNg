@@ -10,7 +10,8 @@ namespace Obosi.ng.Application.Interfaces
 {
     public interface IBlog
     {
-        Task<IQueryable<Blogs>> GetBlogs(); 
+        Task<List<Blogs>> GetBlogs();
+        Task<List<Blogs>> GetHomePageBlogs();
         Task<Blogs?> GetBlogsById(int BlogId);
         Task<Blogs> CreateBlog(BlogDTO blog);
         Task<Blogs_Update> UpdateBlog(Blogs_Update blog);

@@ -9,7 +9,7 @@ namespace Obosi.ng.Application.Interfaces
 {
     public interface IUser
     {
-        Task<IQueryable<Users>> GetAllUsers();
+        Task<List<Users>> GetAllUsers();
         Task<Users> GetUsersByEmail(string email);
         Task<Users> GetUsersByUsername(string username);
         Task<Users> CreateUser(Users user);

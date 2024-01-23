@@ -27,6 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Obosi.ng.Application\Obosi.ng.Application.csproj" />
+    <ProjectReference Include="..\Obosi.ng.domain\Obosi.ng.Domain.csproj" />
     <ProjectReference Include="..\Obosi.ng.Infrastructure\Obosi.ng.Infrastructure.csproj" />
   </ItemGroup>
 

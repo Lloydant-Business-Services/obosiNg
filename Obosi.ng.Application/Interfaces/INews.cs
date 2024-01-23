@@ -9,7 +9,8 @@ namespace Obosi.ng.Application.Interfaces
 {
     public interface INews
     {
-        Task<IQueryable<News>> GetNews();
+        Task<List<News>> GetNews();
+        Task<List<News>> GetHomePageNews();
         Task<News> GetNewsById(int NewsId);
         Task<News> CreateNews(News news);
         Task<News_Update> UpdateNews(News_Update news);

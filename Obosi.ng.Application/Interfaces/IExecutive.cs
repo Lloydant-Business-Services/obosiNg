@@ -9,8 +9,9 @@ namespace Obosi.ng.Application.Interfaces
 {
     public interface IExecutive
     {
-        Task<IQueryable<Executive>> GetAllExecutives();
-        Task<IQueryable<Executive>> GetExecutivesByUnit(int unitId);
+        Task<List<Executive>> GetAllExecutives();
+        Task<List<Executive>> GetHomePageExecutives();
+        Task<List<Executive>> GetExecutivesByUnit(int unitId);
         Task<Executive> GetExecutivesById(int id);
         Task<Executive> CreateExecutive(Executive executive);
         Task<Executive> UpdateExecutive(Executive executive);

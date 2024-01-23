@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Application.Services;
 using Obosi.ng.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,14 @@ builder.Services
     ("DataContext")),
     ServiceLifetime.Transient);
 builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddTransient<IBlog, BlogService>();
+builder.Services.AddTransient<ICalender, CalenderService>();
+builder.Services.AddTransient<INews, NewsService>();
+builder.Services.AddTransient<IExecutive,ExecutiveService>();
+builder.Services.AddTransient<IMedia,MediaService>();
+builder.Services.AddTransient<IUnit,UnitService>();
+builder.Services.AddTransient<IUser,UserService>();
 
 
 

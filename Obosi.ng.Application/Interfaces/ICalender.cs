@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Obosi.ng.Application.Interfaces
 {
-    public interface IUnit
+    public interface ICalender
     {
-        Task<Unit> JoinUnit(int unitId, long userId);
-        Task<Unit> ConfirmUnit(int unitId, long userId);
-        Task<List<Member_Unit>> GetAllMembersByUnitId(int unitId);
+        Task<List<Calender_Assets>> GetAssets();
+        Task<List<Calender_Assets>> GetHomePageAssets();
+        Task<List<Calender_Assets>> GetAssetsByUnitId(int unitId);
     }
 }

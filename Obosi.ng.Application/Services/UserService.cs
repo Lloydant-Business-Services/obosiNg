@@ -35,7 +35,7 @@ namespace Obosi.ng.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<IQueryable<Users>> GetAllUsers()
+        public Task<List<Users>> GetAllUsers()
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,7 @@
-﻿using Obosi.ng.Application.Interfaces;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
 using System;
 using System.Collections.Generic;
@@ -10,6 +13,13 @@ namespace Obosi.ng.Application.Services
 {
     public class NewsService : INews
     {
+        private readonly DataContext _dataContext;
+        private readonly IMapper _mapper;
+        public NewsService(DataContext dataContext, IMapper mapper)
+        {
+            _dataContext = dataContext;
+            _mapper = mapper;
+        }
         public Task<News> ApproveNews(News news)
         {
             throw new NotImplementedException();
@@ -30,9 +40,14 @@ namespace Obosi.ng.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<IQueryable<News>> GetNews()
+        public async Task<List<News>> GetHomePageNews()
         {
-            throw new NotImplementedException();
+            return await _dataContext.News.OrderBy(x => x.DateApproved).Take(3).ToListAsync();
+        }
+
+        public async Task<List<News>> GetNews()
+        {
+            return await _dataContext.News.OrderBy(x => x.DateApproved).ToListAsync();
         }
 
         public Task<News> GetNewsById(int NewsId)

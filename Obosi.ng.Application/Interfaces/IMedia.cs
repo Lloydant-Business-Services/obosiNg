@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Obosi.ng.Application.Interfaces
 {
-    public interface IUnit
+    public interface IMedia
     {
-        Task<Unit> JoinUnit(int unitId, long userId);
-        Task<Unit> ConfirmUnit(int unitId, long userId);
-        Task<List<Member_Unit>> GetAllMembersByUnitId(int unitId);
+        Task<List<Picture_Assets>> GetPicturesByUnit(int unitId);
+        Task<List<Video_Assets>> GetVideoByUnit(int unitId);    
     }
 }

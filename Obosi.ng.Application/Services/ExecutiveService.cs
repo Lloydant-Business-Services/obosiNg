@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
@@ -29,17 +30,22 @@ namespace Obosi.ng.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<IQueryable<Executive>> GetAllExecutives()
+        public async Task<List<Executive>> GetAllExecutives()
         {
-            throw new NotImplementedException();
+            return await _dataContext.Executive.ToListAsync();
         }
 
-        public Task<Executive> GetExecutivesById(int id)
+        public async Task<Executive> GetExecutivesById(int id)
         {
-            throw new NotImplementedException();
+            return await _dataContext.Executive.Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
-        public Task<IQueryable<Executive>> GetExecutivesByUnit(int unitId)
+        public async Task<List<Executive>> GetExecutivesByUnit(int unitId)
+        {
+            return await _dataContext.Executive.Where(x=>x.UnitId == unitId).ToListAsync();
+        }
+
+        public Task<List<Executive>> GetHomePageExecutives()
         {
             throw new NotImplementedException();
         }
