@@ -11,6 +11,7 @@ namespace Obosi.ng.Presentation.Controllers
         }
         public IActionResult Index(string Unit)
         {
+            ViewBag.Title = "Units";
             return View();
         }
     }
