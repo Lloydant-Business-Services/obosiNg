@@ -11,15 +11,15 @@ namespace Obosi.ng.Application.Interfaces
     {
         Task<List<Users>> GetAllUsers();
         Task<Users> GetUsersByEmail(string email);
-        Task<Users> GetUsersByUsername(string username);
-        Task<Users> CreateUser(Users user);
+     
+        Task<Users> CreateUser(Users user,int unitId);
         Task<Users> UpdateUser(Users user);
         Task DeleteUser(string username);
-        Task<Users> ConfirmUser(string username);
         Task<Users> ActivateUser(string username);
-        Task<Users> SuspendUser(string username);
+        Task<Users> SuspendUser(string username,string reasonforsuspension, long UserId);
         Task<Users> ResumeUser(string username);
         Task<Users> AssignUserToRole(string username, Role role);
-        Task<Users> RemoveUsersRoles(string username);
+       
+        Task<Users> AuthenticateUser(string email,string password);
     }
 }

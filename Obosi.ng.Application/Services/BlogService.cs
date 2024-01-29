@@ -63,17 +63,17 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Blogs>> GetBlogs()
         {
-           return await _dataContext.Blogs.ToListAsync();
+           return await _dataContext.Blogs.Include(x=>x.Category).ToListAsync();
         }
 
         public async Task<Blogs?> GetBlogsById(int BlogId)
         {
-           return  await _dataContext.Blogs.Where(x => x.Id == BlogId).FirstOrDefaultAsync();
+           return  await _dataContext.Blogs.Where(x => x.Id == BlogId).Include(x => x.Category).FirstOrDefaultAsync();
         }
 
         public async Task<List<Blogs>> GetHomePageBlogs()
         {
-            return await _dataContext.Blogs.OrderBy(x=>x.DateApproved).Take(3).ToListAsync();
+            return await _dataContext.Blogs.OrderBy(x => x.DateApproved).Include(x => x.Category).Take(3).ToListAsync();
         }
 
         public async Task<Blogs> PublishBlog(int blogId)

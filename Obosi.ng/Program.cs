@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Obosi.ng.Application.Interfaces;
@@ -19,8 +20,20 @@ builder.Services.AddTransient<ICalender, CalenderService>();
 builder.Services.AddTransient<INews, NewsService>();
 builder.Services.AddTransient<IExecutive,ExecutiveService>();
 builder.Services.AddTransient<IMedia,MediaService>();
-builder.Services.AddTransient<IUnit,UnitService>();
+builder.Services.AddTransient<Icalender,UnitService>();
 builder.Services.AddTransient<IUser,UserService>();
+
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+    options.CheckConsentNeeded = context => false;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+});
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
+    options.AccessDeniedPath = "/Account/Enter"; //Replace with Error page for Access Denied
+    options.LoginPath = "/Account/Enter"; //Replace with Error Page for Not Logged in
+    options.LogoutPath = "/Account/Logout";
+});
 
 
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Obosi.ng.Presentation.utility;
 using System.Globalization;
 
 namespace Obosi.ng.Presentation.Controllers
@@ -9,10 +10,17 @@ namespace Obosi.ng.Presentation.Controllers
         {
                 
         }
-        public IActionResult Index(string Unit)
+        public IActionResult Index()
         {
-            ViewBag.Title = "Units";
+            ViewBag.Title = "Unit Types";
             return View();
         }
+        public IActionResult Units(string unittype)
+        {
+            int unitTypeId = Convert.ToInt16(StringEncryption.Decrypt(unittype));
+            ViewBag.Title = "Unit Types";
+            return View();
+        }
+
     }
 }

@@ -1,7 +1,11 @@
-﻿using Obosi.ng.Application.Interfaces;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,64 +14,149 @@ namespace Obosi.ng.Application.Services
 {
     public class UserService : IUser
     {
-        public Task<Users> ActivateUser(string username)
+        private readonly DataContext _dataContext;
+        public UserService(DataContext dataContext, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _dataContext = dataContext;
+        }
+        public async Task<Users> ActivateUser(string username)
+        {
+            var user = await _dataContext.Users.Where(x => x.Email == username).FirstOrDefaultAsync();
+            if(user != null)
+            {
+                user.IsActive = true;
+                _dataContext.Users.Update(user);
+                await _dataContext.SaveChangesAsync();
+                return user;
+            }
+            return null;
         }
 
-        public Task<Users> AssignUserToRole(string username, Role role)
+        public async Task<Users> AssignUserToRole(string username, Role role)
         {
-            throw new NotImplementedException();
+            var user = await _dataContext.Users.Where(x => x.Email == username).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.RoleId = role.Id;
+                _dataContext.Users.Update(user);
+                await _dataContext.SaveChangesAsync();
+                return user;
+            }
+            return null;
         }
 
-        public Task<Users> ConfirmUser(string username)
+        public async  Task<Users> AuthenticateUser(string email, string password)
         {
-            throw new NotImplementedException();
+            var user = await _dataContext.Users.Where(x => x.Email == email && x.Password == password).Include(x=>x.Role).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                return user;
+            }
+            return null;
         }
 
-        public Task<Users> CreateUser(Users user)
+     
+
+        public async Task<Users> CreateUser(Users user, int unitId)
         {
-            throw new NotImplementedException();
+          if(user != null)
+            {
+                user.DateCreated = DateTime.Now;
+                user.IsActive = false;
+                var userDetails = await _dataContext.Users.Where(x => x.Email == user.Email).FirstOrDefaultAsync();
+                if (userDetails == null)
+                {
+                    var createdUser = await _dataContext.Users.AddAsync(user);
+                    await _dataContext.SaveChangesAsync();
+                    Member_Unit member = new()
+                    {
+                        UsersId = createdUser.Entity.Id,
+                        UnitId = unitId,
+                        IsActive = false,
+                        DateJoined = DateTime.Now
+                    };
+                    await _dataContext.Member_Unit.AddAsync(member);
+                    await _dataContext.SaveChangesAsync();
+                    return createdUser.Entity;
+                }
+                throw new Exception("User Already Exists");
+            }
+            throw new Exception("User Object is Null");
         }
 
-        public Task DeleteUser(string username)
+        public async Task DeleteUser(string username)
         {
-            throw new NotImplementedException();
+            var user = await _dataContext.Users.Where(x => x.Email == username).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.IsActive = false;
+                _dataContext.Users.Update(user);
+                await _dataContext.SaveChangesAsync();
+            }
         }
 
-        public Task<List<Users>> GetAllUsers()
+        public async  Task<List<Users>> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return await _dataContext.Users.Where(x => x.IsActive == true).ToListAsync();
         }
 
-        public Task<Users> GetUsersByEmail(string email)
+        public async Task<Users> GetUsersByEmail(string email)
         {
-            throw new NotImplementedException();
+            return await _dataContext.Users.Where(x => x.Email == email).FirstOrDefaultAsync();
         }
 
-        public Task<Users> GetUsersByUsername(string username)
+     
+
+        public async Task<Users> ResumeUser(string username)
         {
-            throw new NotImplementedException();
+            var user = await _dataContext.Users.Where(x => x.Email == username).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.IsActive = true;
+                _dataContext.Users.Update(user);
+                await _dataContext.SaveChangesAsync();
+                return user;
+            }
+            return null;
         }
 
-        public Task<Users> RemoveUsersRoles(string username)
+        public async Task<Users> SuspendUser(string username, string reasonforsuspension, long UserId)
         {
-            throw new NotImplementedException();
+            var user = await _dataContext.Users.Where(x => x.Email == username).FirstOrDefaultAsync();
+            if (user != null)
+            {
+                user.IsActive = true;
+                _dataContext.Users.Update(user);            
+                Reasons_For_Suspension reason = new()
+                {
+                    DateCreated = DateTime.Now,
+                    Reason = reasonforsuspension,
+                    UsersId = UserId
+                };
+                await _dataContext.Reasons_For_Suspension.AddAsync(reason);
+                await _dataContext.SaveChangesAsync();
+                return user;
+            }
+            return null;
         }
 
-        public Task<Users> ResumeUser(string username)
-        {
-            throw new NotImplementedException();
-        }
+      
 
-        public Task<Users> SuspendUser(string username)
+        public async Task<Users> UpdateUser(Users user)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Users> UpdateUser(Users user)
-        {
-            throw new NotImplementedException();
+            var userDetails = await _dataContext.Users.Where(x => x.Id == user.Id).FirstOrDefaultAsync();
+            if (userDetails != null)
+            {
+                userDetails.OtherName = user.OtherName;
+                userDetails.PhoneNumber = user.PhoneNumber;
+                userDetails.FirstName = user.FirstName;
+                userDetails.LastName = user.LastName;
+                userDetails.Password = user.Password;
+                _dataContext.Users.Update(userDetails);
+                await _dataContext.SaveChangesAsync();
+                return userDetails;
+            }
+            return null;
         }
     }
 }

@@ -42,12 +42,12 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<News>> GetHomePageNews()
         {
-            return await _dataContext.News.OrderBy(x => x.DateApproved).Take(3).ToListAsync();
+            return await _dataContext.News.OrderBy(x => x.DateApproved).Include(x => x.Category).Take(3).ToListAsync();
         }
 
         public async Task<List<News>> GetNews()
         {
-            return await _dataContext.News.OrderBy(x => x.DateApproved).ToListAsync();
+            return await _dataContext.News.OrderBy(x => x.DateApproved).Include(x => x.Category).ToListAsync();
         }
 
         public Task<News> GetNewsById(int NewsId)
