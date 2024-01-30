@@ -35,37 +35,18 @@ namespace Obosi.ng.Presentation.Controllers
              model.Unit = await unit.GetUnit(id);
             return View();
         }
-        [HttpGet]
-        public IActionResult Create()
+         
+        
+        public async Task<IActionResult> JoinUnit(int id)
         {
             ViewBag.Title = "Unit Types";
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Create(UnitViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Index");
-            }
+            UnitViewModel model = new(unit);
+            model.Unit =await  unit.GetUnit(id);
             return View(model);
         }
-        public IActionResult Edit(int id)
-        {
-            ViewBag.Title = "Unit Types";
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Edit(UnitViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Index");
-            }
-            return View(model);
-        }
+       
 
-        public IActionResult Delete(int id) { }
+      
 
     }
 }

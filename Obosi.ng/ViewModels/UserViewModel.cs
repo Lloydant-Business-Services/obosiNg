@@ -20,5 +20,6 @@ namespace Obosi.ng.Presentation.ViewModels
         }
 
         public List<Users> Users { get; set; }
+        public Users User { get; set; }
     }
 }

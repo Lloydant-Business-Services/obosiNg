@@ -44,10 +44,7 @@ namespace Obosi.ng.Presentation.Controllers
             }
             return View(model);
         }
-        public IActionResult Delete(int id) 
-        {
-        
-        }
+       
 
     }
 }

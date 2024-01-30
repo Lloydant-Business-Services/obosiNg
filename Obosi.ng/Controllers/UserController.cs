@@ -1,50 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Presentation.ViewModels;
 
 namespace Obosi.ng.Presentation.Controllers
 {
     public class UserController : Controller
-    {
-        public IActionResult Index()
+    {   private readonly IUser user;
+        public UserController(IUser _user)
+        {
+            user = _user;
+        }   
+        public async Task<IActionResult> Index()
         {
             ViewBag.Title = "Users";
-            return View();
-        }
-        public IActionResult Details(int id)
-        {
-            ViewBag.Title = "Users";
-            return View();
-        }
-        [HttpGet]
-        public IActionResult Create()
-        {
-            ViewBag.Title = "Users";
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Create(UserViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Index");
-            }
+            UserViewModel model = new(user);
+            await model.InitializeNewsAsync();
             return View(model);
         }
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Details(int id)
         {
             ViewBag.Title = "Users";
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Edit(UserViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Index");
-            }
+            UserViewModel model = new(user);
+            model.User = await  user.GetUsersById(id);
             return View(model);
         }
-        public IActionResult Delete(int id) 
-        { }
+        
+        
     }
 }

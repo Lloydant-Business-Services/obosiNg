@@ -11,7 +11,7 @@ namespace Obosi.ng.Application.Interfaces
     {
         Task<List<Users>> GetAllUsers();
         Task<Users> GetUsersByEmail(string email);
-     
+        Task<Users> GetUsersById(int id);
         Task<Users> CreateUser(Users user,int unitId);
         Task<Users> UpdateUser(Users user);
         Task DeleteUser(string username);

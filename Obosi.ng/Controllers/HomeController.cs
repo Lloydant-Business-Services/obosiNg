@@ -86,6 +86,26 @@ namespace Obosi.ng.Controllers
             
             return View(model);
         }
+        public async Task<IActionResult> SignOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> AboutUs()
+        {
+            var model = new HomePageViewModel(_unit);
+            return View(model);
+        }
+        public async Task<IActionResult> Calender()
+        {
+            var model = new HomePageViewModel(_unit);
+            return View(model);
+        }
+        public async Task<IActionResult> Executive()
+        {
+            var model = new HomePageViewModel(_unit);
+            return View(model);
+        }   
     }
    
 }

@@ -105,7 +105,10 @@ namespace Obosi.ng.Application.Services
             return await _dataContext.Users.Where(x => x.Email == email).FirstOrDefaultAsync();
         }
 
-     
+        public async Task<Users> GetUsersById(int id)
+        {
+            return await _dataContext.Users.Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
 
         public async Task<Users> ResumeUser(string username)
         {

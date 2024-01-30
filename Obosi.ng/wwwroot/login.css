@@ -72,8 +72,19 @@ body {
   background-repeat: no-repeat;
 }
 
+.form-label {
+  font-size: 16px;
+}
+
 .loginTab {
   width: 36.81%;
+}
+.title-txt {
+  font-size: 38px;
+}
+
+.sub-txt {
+  font-size: 18px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -97,5 +108,17 @@ body {
     align-items: center;
     gap: 10px;
     display: inline-flex;
+  }
+
+  .form-label {
+    font-size: 10.925px;
+  }
+
+  .title-txt {
+    font-size: 25.947px;
+  }
+
+  .sub-txt {
+    font-size: 12.291px;
   }
 }
