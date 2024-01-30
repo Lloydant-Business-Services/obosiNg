@@ -4,6 +4,10 @@ namespace Obosi.ng.Presentation.ViewModels
 {
     public class UnitPageViewModel
     {
+        public UnitPageViewModel()
+        {
+                
+        }
         public Unit Unit {  get; set; } 
         public List<Executive> Executive { get; set; }
         public List<Member_Unit> Member { get; set; }   

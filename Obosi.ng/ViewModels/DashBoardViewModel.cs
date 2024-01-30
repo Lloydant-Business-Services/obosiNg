@@ -6,11 +6,15 @@ namespace Obosi.ng.Presentation.ViewModels
 {
     public class DashBoardViewModel
     {
-        private readonly Icalender unit;
+        private readonly IUnit unit;
         
-        public DashBoardViewModel(Icalender _unit)
+        public DashBoardViewModel(IUnit _unit)
         {
             unit = _unit;
+        }
+        public DashBoardViewModel()
+        {
+
         }
         public async Task GetDashBoard()
         {

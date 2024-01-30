@@ -5,8 +5,8 @@ namespace Obosi.ng.Presentation.ViewModels
 {
     public class UnitViewModel
     {
-        private readonly Icalender unit;
-        public UnitViewModel(Icalender _unit)
+        private readonly IUnit unit;
+        public UnitViewModel(IUnit _unit)
         {
             unit = _unit;
         }
@@ -21,5 +21,6 @@ namespace Obosi.ng.Presentation.ViewModels
 
         public List<Unit_Type> UnitTypeList { get; set; }
         public List<Unit> Units { get; set; }
+        public Unit Unit { get; set; }
     }
 }

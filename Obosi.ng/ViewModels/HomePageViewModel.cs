@@ -9,14 +9,14 @@ namespace Obosi.ng.Presentation.ViewModels
         private readonly INews news;
         private readonly IBlog blog;
         private readonly ICalender calender;
-        private readonly Icalender unit;
+        private readonly IUnit unit;
         public HomePageViewModel(INews _news, IBlog _blog, ICalender _calender)
         {
             news = _news;
             blog = _blog;  
             calender = _calender;
         }
-        public HomePageViewModel(Icalender _unit)
+        public HomePageViewModel(IUnit _unit)
         {
             unit = _unit;
         }

@@ -14,7 +14,11 @@ namespace Obosi.ng.Presentation.ViewModels
         {
             this.Calender_Assets = await calender.GetAssets();
         }
-
+        public CalenderViewModel()
+        {
+                
+        }
         public List<Calender_Assets> Calender_Assets { get; set; }
+        public Calender_Assets Calender_Asset { get; set; }
     }
 }

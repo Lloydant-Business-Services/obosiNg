@@ -17,5 +17,57 @@ namespace Obosi.ng.Presentation.Controllers
             await model.InitializeNewsAsync();
             return View(model);
         }
+        public async Task<IActionResult> Details(int id)
+        {
+            ViewBag.Title = "Calender";
+            CalenderViewModel model = new(calender);
+            await model.InitializeNewsAsync();
+            model.Calender_Asset = await calender.GetAssets(id);
+            return View(model);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            ViewBag.Title = "Calender";
+            CalenderViewModel model = new(calender);
+            await model.InitializeNewsAsync();
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(CalenderViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                await calender.CreateAsset(model.Calender_Asset);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            ViewBag.Title = "Calender";
+            CalenderViewModel model = new(calender);
+            await model.InitializeNewsAsync();
+            model.Calender_Asset = await calender.GetAssets(id);
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(CalenderViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                await calender.UpdateAsset(model.Calender_Asset);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+        public async Task<IActionResult> Delete(int id)
+        {
+            ViewBag.Title = "Calender";
+            CalenderViewModel model = new(calender);
+            await model.InitializeNewsAsync();
+            return View(model);
+        }
     }
 }

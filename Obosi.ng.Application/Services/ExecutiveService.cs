@@ -20,14 +20,30 @@ namespace Obosi.ng.Application.Services
             _dataContext = dataContext;
             _mapper = mapper;
         }
-        public Task<Executive> CreateExecutive(Executive executive)
+        public async Task<Executive> CreateExecutive(Executive executive)
         {
-            throw new NotImplementedException();
+           if(executive != null)
+            {
+                executive.DateCreated = DateTime.Now;
+                executive.IsActive = true;
+                var executiveEntity = await _dataContext.Executive.AddAsync(executive);
+                await _dataContext.SaveChangesAsync();
+                return executiveEntity.Entity;
+            }
+            return null;
         }
 
-        public Task DeleteExecutive(int id)
+        public async Task DeleteExecutive(int id)
         {
-            throw new NotImplementedException();
+            if(id > 0)
+            {
+                var executive = _dataContext.Executive.Where(x => x.Id == id).FirstOrDefault();
+                if(executive != null)
+                {
+                    _dataContext.Executive.Remove(executive);
+                  await  _dataContext.SaveChangesAsync();
+                }
+            }   
         }
 
         public async Task<List<Executive>> GetAllExecutives()
@@ -50,9 +66,15 @@ namespace Obosi.ng.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<Executive> UpdateExecutive(Executive executive)
+        public async Task<Executive> UpdateExecutive(Executive executive)
         {
-            throw new NotImplementedException();
+            if(executive != null)
+            {
+                _dataContext.Executive.Update(executive);
+                await _dataContext.SaveChangesAsync();
+                return executive;
+            }
+            return null;
         }
     }
 }

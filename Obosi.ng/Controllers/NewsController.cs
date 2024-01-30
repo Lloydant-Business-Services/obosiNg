@@ -1,13 +1,69 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Presentation.ViewModels;
 
 namespace Obosi.ng.Presentation.Controllers
 {
     public class NewsController : Controller
     {
-        public IActionResult Index()
+        private readonly INews news;
+        public NewsController(INews _news)
+        {
+          news = _news;
+        }
+        public async Task<IActionResult> Index()
         {
             ViewBag.Title = "News";
-            return View();
+            NewsViewModel model = new(news);
+            await model.InitializeNewsAsync();
+            return View(model);
         }
+        public async Task<IActionResult> Details(int id)
+        {
+            ViewBag.Title = "News Details";
+            NewsViewModel model = new();
+            model.NewsObject = await news.GetNewsById(id);    
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            ViewBag.Title = "Create News";
+            NewsViewModel model = new();
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(NewsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                await news.CreateNews(model.NewsObject);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+        public async Task<IActionResult> Edit(int id)
+        {
+            ViewBag.Title = "News";
+            NewsViewModel model = new();
+            model.NewsObject =  await news.GetNewsById(id);
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(NewsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                await news.UpdateNews(model.News_Update);    
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+        public async Task<IActionResult> Delete(int id) 
+        {
+            await news.DeleteNews(id);
+            return RedirectToAction("Index");
+        }
+
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Obosi.ng.Application.Interfaces
 {
-    public interface Icalender
+    public interface IUnit
     {
         Task<Unit?> JoinUnit(int unitId, long userId);
         Task<Unit> ConfirmUnit(int unitId, long userId);
@@ -18,5 +18,6 @@ namespace Obosi.ng.Application.Interfaces
         Task<List<Unit>> GetAllUmunna();
         Task<List<ImeNne>> GetAllImeNneByUmunna(int unitId);
         Task<DashBoardDTO> GetDashBoardDTO();
+        Task<Unit> GetUnit(int unitId);
     }
 }

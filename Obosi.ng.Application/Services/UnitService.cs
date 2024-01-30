@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Obosi.ng.Application.Services
 {
-    public class UnitService : Icalender
+    public class UnitService : IUnit
     {
 
         private readonly DataContext _dataContext;
@@ -81,6 +81,11 @@ namespace Obosi.ng.Application.Services
             model.Calender = await _dataContext.Calender_Assets.OrderBy(x => x.StartDate).Include(x=>x.Unit).Take(6).ToListAsync();
 
             return model;
+        }
+
+        public async Task<Unit> GetUnit(int unitId)
+        {
+            return await _dataContext.Unit.Where(x => x.Id == unitId).FirstOrDefaultAsync();
         }
 
         public async Task<Unit?> JoinUnit(int unitId, long UserId)

@@ -14,10 +14,10 @@ namespace Obosi.ng.Controllers
         private readonly INews _news;
         private readonly IBlog _blog;
         private readonly ICalender _calender;
-        private readonly Icalender _unit;
+        private readonly IUnit _unit;
         private readonly IUser _user;
 
-        public HomeController(ILogger<HomeController> logger, INews news, IBlog blog, ICalender calender, Icalender unit, IUser user)
+        public HomeController(ILogger<HomeController> logger, INews news, IBlog blog, ICalender calender, IUnit unit, IUser user)
         {
             _logger = logger;
             _news = news;

@@ -10,11 +10,17 @@ namespace Obosi.ng.Presentation.ViewModels
         {
             user = _user;
         }
+
+        public PermissionViewModel()
+        {
+                
+        }
         public async Task InitializeNewsAsync()
         {
             this.Users = await user.GetAllUsers();
         }
 
         public List<Users> Users { get; set; }
+        public Users User { get; set; }
     }
 }

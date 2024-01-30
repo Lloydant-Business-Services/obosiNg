@@ -20,24 +20,56 @@ namespace Obosi.ng.Application.Services
             _dataContext = dataContext;
             _mapper = mapper;
         }
-        public Task<News> ApproveNews(News news)
+        public async Task<News> ApproveNews(News news)
         {
-            throw new NotImplementedException();
+            if(news != null)
+            {
+                news.IsApproved = true;
+                _dataContext.News.Update(news);
+               await _dataContext.SaveChangesAsync();
+                return news;
+            }
+            return null;
         }
 
-        public Task<News> CreateNews(News news)
+        public async Task<News> CreateNews(News news)
         {
-            throw new NotImplementedException();
+            if(news != null)
+            {
+                news.DateCreated = DateTime.Now;
+                news.IsActive = true;
+                var newsEntity =await  _dataContext.News.AddAsync(news);
+               await _dataContext.SaveChangesAsync();
+                return newsEntity.Entity;
+            }
+            return null;
         }
 
-        public Task<News_Comment> CreateReaction(News_Comment comment, int CommentType)
+        public async Task<News_Comment> CreateReaction(News_Comment comment)
         {
-            throw new NotImplementedException();
+           if(comment != null)
+            {
+                comment.DateAdded = DateTime.Now;
+                comment.IsActive = true;
+                var commentEntity = await _dataContext.News_Comment.AddAsync(comment);
+                await _dataContext.SaveChangesAsync();
+                return commentEntity.Entity;
+            }
+            return null;
         }
 
-        public Task DeleteNews(int NewsId)
+        public async Task DeleteNews(int NewsId)
         {
-            throw new NotImplementedException();
+            if(NewsId > 0)
+            {
+                var news = _dataContext.News.Where(x => x.Id == NewsId).FirstOrDefault();
+                if(news != null)
+                {
+                    news.IsActive = false;
+                    _dataContext.News.Update(news);
+                    await _dataContext.SaveChangesAsync();
+                }
+            }   
         }
 
         public async Task<List<News>> GetHomePageNews()
@@ -50,19 +82,33 @@ namespace Obosi.ng.Application.Services
             return await _dataContext.News.OrderBy(x => x.DateApproved).Include(x => x.Category).ToListAsync();
         }
 
-        public Task<News> GetNewsById(int NewsId)
+        public async Task<News> GetNewsById(int NewsId)
         {
-            throw new NotImplementedException();
+            return await _dataContext.News.Where(x => x.Id == NewsId).Include(x => x.Category).FirstOrDefaultAsync(); 
         }
 
-        public Task<News> PublishNews(News news)
+        public async Task<News> PublishNews(News news)
         {
-            throw new NotImplementedException();
+           if(news != null)
+            {
+                news.IsPublished = true;
+                news.DatePublished = DateTime.Now;
+                _dataContext.News.Update(news);
+               await _dataContext.SaveChangesAsync();
+                return news;
+            }
+            return null;    
         }
 
-        public Task<News_Update> UpdateNews(News_Update news)
+        public async Task<News_Update> UpdateNews(News_Update news)
         {
-            throw new NotImplementedException();
+            if(news != null)
+            {
+               var newsup = await _dataContext.News_Update.AddAsync(news);
+                await _dataContext.SaveChangesAsync();
+                return newsup.Entity;
+            }
+            return null;
         }
     }
 }

@@ -10,11 +10,17 @@ namespace Obosi.ng.Presentation.ViewModels
         {
             news = _news;
         }
+        public NewsViewModel()
+        {
+                
+        }
         public async Task InitializeNewsAsync()
         {
             this.NewsList = await news.GetNews();
         }
 
         public List<News> NewsList { get; set; }
+        public News NewsObject { get; set; }
+        public News_Update News_Update { get; set; }
     }
 }

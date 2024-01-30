@@ -6,8 +6,8 @@ namespace Obosi.ng.Presentation.Controllers
 {
     public class DashBoardController : Controller
     {
-        private readonly Icalender unit;
-        public DashBoardController(Icalender _unit)
+        private readonly IUnit unit;
+        public DashBoardController(IUnit _unit)
         {
             unit = _unit;
         }

@@ -10,6 +10,10 @@ namespace Obosi.ng.Presentation.ViewModels
         {
            user = _user;
         }
+        public UserViewModel()
+        {
+            
+        }
         public async Task InitializeNewsAsync()
         {
             this.Users = await user.GetAllUsers();

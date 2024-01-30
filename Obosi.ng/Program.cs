@@ -20,7 +20,7 @@ builder.Services.AddTransient<ICalender, CalenderService>();
 builder.Services.AddTransient<INews, NewsService>();
 builder.Services.AddTransient<IExecutive,ExecutiveService>();
 builder.Services.AddTransient<IMedia,MediaService>();
-builder.Services.AddTransient<Icalender,UnitService>();
+builder.Services.AddTransient<IUnit, UnitService>();
 builder.Services.AddTransient<IUser,UserService>();
 
 builder.Services.Configure<CookiePolicyOptions>(options =>

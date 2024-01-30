@@ -17,6 +17,6 @@ namespace Obosi.ng.Application.Interfaces
         Task DeleteNews(int NewsId);
         Task<News> PublishNews(News news);
         Task<News> ApproveNews(News news);
-        Task<News_Comment> CreateReaction(News_Comment comment, int CommentType);
+        Task<News_Comment> CreateReaction(News_Comment comment);
     }
 }
