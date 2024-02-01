@@ -25,7 +25,7 @@ namespace Obosi.ng.Presentation.Controllers
             int unitTypeId = Convert.ToInt16(StringEncryption.Decrypt(unittype));
             UnitViewModel model = new(unit);
             await model.GetUnitTypeList(unitTypeId);
-            ViewBag.Title = "Unit Types";
+            ViewBag.Title = "Units";
             return View(model);
         }
         public async Task<IActionResult> Details(int id)

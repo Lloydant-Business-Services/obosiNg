@@ -22,6 +22,7 @@ builder.Services.AddTransient<IExecutive,ExecutiveService>();
 builder.Services.AddTransient<IMedia,MediaService>();
 builder.Services.AddTransient<IUnit, UnitService>();
 builder.Services.AddTransient<IUser,UserService>();
+builder.Services.AddTransient<IBoulevard,BoulevardService>();   
 
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {

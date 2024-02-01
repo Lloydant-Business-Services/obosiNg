@@ -23,7 +23,7 @@
             <button class="btn btn-primary btn-selections-1" style="flex-grow: 1;">PHOTOS</button>
             <button class="btn btn-primary btn-selections-1" style="flex-grow: 1;">CALENDER</button> *@
 
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="flex-direction: row; display: flex; gap: 6px;">
+           @*  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="flex-direction: row; display: flex; gap: 6px;">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active btn btn-primary  btn-selections-1" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about"
                             type="button" role="tab" aria-controls="pills-about" aria-selected="true">
@@ -55,6 +55,40 @@
                     </button>
                 </li>
             </ul>
+      *@
+            <ul class="nav nav-pills nav-fill mb-3 container d-lg-flex  justify-content-lg-between gap-3" id="pills-tab" style="">
+                <li class="nav-item bg-primary text-white rounded  col-lg-2 col-12" role="presentation">
+                    <button class="nav-link  btn btn-primary text-white " id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about"
+                            type="button" role="tab" aria-controls="pills-about" aria-selected="true">
+                        ABOUT US
+                    </button>
+                </li>
+                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
+                    <button class="nav-link  btn btn-primary btn-selections-1 text-white" id="pills-executive-tab" data-bs-toggle="pill" data-bs-target="#pills-executive"
+                            type="button" role="tab" aria-controls="pills-executive" aria-selected="false">
+                        EXECUTIVE
+                    </button>
+                </li>
+                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
+                    <button class="nav-link  btn btn-primary btn-selections-1 text-white" id="pills-members-tab" data-bs-toggle="pill" data-bs-target="#pills-members"
+                            type="button" role="tab" aria-controls="pills-members" aria-selected="false">
+                        MEMBERS
+                    </button>
+                </li>
+                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
+                    <button class="nav-link  btn btn-primary btn-selections-1 text-white" id="pills-photos-tab" data-bs-toggle="pill" data-bs-target="#pills-photos"
+                            type="button" role="tab" aria-controls="pills-photos" aria-selected="false">
+                        PHOTOS
+                    </button>
+                </li>
+                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
+                    <button class="nav-link  btn btn-primary btn-selections-1 text-white" id="pills-calender-tab" data-bs-toggle="pill" data-bs-target="#pills-calender"
+                            type="button" role="tab" aria-controls="pills-calender" aria-selected="false">
+                        CALENDER
+                    </button>
+                </li>
+            </ul>
+        
         </div>
        
        
@@ -178,6 +212,7 @@
               
 
 
+            </div>
             </div>
             <div class="tab-pane fade" id="pills-members" role="tabpanel" aria-labelledby="pills-members-tab">...</div>
             <div class="tab-pane fade" id="pills-photos" role="tabpanel" aria-labelledby="pills-photos-tab">...</div>

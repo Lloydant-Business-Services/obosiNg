@@ -52,12 +52,12 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Unit>> GetAllUmunna()
         {
-            return await _dataContext.Unit.Where(x => x.UnitTypeId == (int)UnitTypes.Umunna).ToListAsync();
+            return await _dataContext.Unit.Where(x => x.UnitTypeId == (int)UnitTypes.Umunna).Include(x => x.UnitType).ToListAsync();
         }
 
         public async Task<List<Unit>> GetAllUnitsByUnitType(int unitTypeId)
         {
-            return await _dataContext.Unit.Where(x => x.UnitTypeId == unitTypeId).ToListAsync();
+            return await _dataContext.Unit.Where(x => x.UnitTypeId == unitTypeId).Include(x=>x.UnitType).ToListAsync();
         }
 
         public async Task<List<Unit_Type>> GetAllUnitTypes()

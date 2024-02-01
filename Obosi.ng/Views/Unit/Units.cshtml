@@ -25,24 +25,26 @@
                                 <tr>
                                     <th>S/n</th>
                                     <th>Name</th>
-                                    <th>Action</th>
-                                   
+                                    <th>Unit Type</th>
+                                    <th>Actions</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (Model.UnitTypeList != null)
+                                @if (Model.Units != null)
                                 {
                                     int k = 1;
-                                    @foreach(var item in Model.UnitTypeList)
+                                    @foreach (var item in Model.Units)
                                     {
                                         <tr>
                                             <td>@k</td>
                                             <td>@item.Name</td>
-                                            <td><a href="~/Unit/Units?unittype=@StringEncryption.Encrypt(item.Id.ToString())">View</a></td>
+                                            <td>@item.UnitType.Name</td>
+                                            <td></td>
                                         </tr>
                                         k++;
                                     }
-                                    
+
                                 }
 
 
