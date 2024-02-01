@@ -24,5 +24,6 @@ namespace Obosi.ng.Presentation.ViewModels
         public Blogs Blog { get; set; }
         public BlogDTO BlogDto { get; set; }
         public Blogs_Update Blogs_Update { get; set; }
+        public IFormFile Image { get; set;}
     }
 }

@@ -20,5 +20,6 @@ namespace Obosi.ng.Presentation.ViewModels
         }
         public List<Calender_Assets> Calender_Assets { get; set; }
         public Calender_Assets Calender_Asset { get; set; }
+        public IFormFile Image { get; set;}
     }
 }

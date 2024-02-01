@@ -1,0 +1,44 @@
+﻿@model Obosi.ng.Presentation.ViewModels.NewsViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create News Post</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input asp-for="NewsObject.Title" class="form-control" />
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Category:</label>
+                <input asp-for="NewsObject.CategoryId" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="BackgroundImageUrl">Image:</label>
+                <input asp-for="Image" class="form-control" type="file" />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Body:</label>
+
+        <textarea name="PassageText" style="width: 300px; height: 100px;" required
+                  id="PassageQuestion" class="ckeditor" asp-for="NewsObject.Body"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace('#PassageQuestion');
+    });
+
+</script>

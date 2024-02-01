@@ -1,0 +1,58 @@
+﻿@model Obosi.ng.Presentation.ViewModels.CalenderViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Edit Calender</h1>
+
+<form asp-action="Edit" method="post">
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Title:</label>
+                <input asp-for="Calender_Asset.Title" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="BackgroundImageUrl">Description:</label>
+                <input asp-for="Calender_Asset.Description" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Unit:</label>
+                <input asp-for="Calender_Asset.UnitId" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="BackgroundImageUrl">Image:</label>
+                <input asp-for="Image" class="form-control" type="file" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Location:</label>
+                <input asp-for="Calender_Asset.Location" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form>
+
+<script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace('#PassageQuestion');
+    });
+
+</script>

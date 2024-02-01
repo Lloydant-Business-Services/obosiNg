@@ -22,5 +22,6 @@ namespace Obosi.ng.Presentation.ViewModels
         public List<News> NewsList { get; set; }
         public News NewsObject { get; set; }
         public News_Update News_Update { get; set; }
+        public IFormFile Image { get; set; }   
     }
 }
