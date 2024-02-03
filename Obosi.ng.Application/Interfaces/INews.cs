@@ -18,5 +18,6 @@ namespace Obosi.ng.Application.Interfaces
         Task<News> PublishNews(News news);
         Task<News> ApproveNews(News news);
         Task<News_Comment> CreateReaction(News_Comment comment);
+        Task<List<Category>> AllCategories();
     }
 }

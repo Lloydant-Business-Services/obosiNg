@@ -38,7 +38,7 @@ namespace Obosi.ng.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(NewsViewModel model)
         {
-            if (ModelState.IsValid)
+            if (model?.NewsObject!= null)
             {
                 model.NewsObject.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
                 await news.CreateNews(model.NewsObject);

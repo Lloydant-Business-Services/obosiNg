@@ -13,12 +13,13 @@ namespace Obosi.ng.Application.Interfaces
         Task<List<Blogs>> GetBlogs();
         Task<List<Blogs>> GetHomePageBlogs();
         Task<Blogs?> GetBlogsById(int BlogId);
-        Task<Blogs> CreateBlog(BlogDTO blog);
+        Task<Blogs> CreateBlog(Blogs blog);
         Task<Blogs_Update> UpdateBlog(Blogs_Update blog);
         Task DeleteBlog(int BlogId);
         Task<Blogs> PublishBlog(int blogId);
         Task<Blogs> ApproveBlog(int blogId);
         Task<Blogs_Comment> CreateReaction(Blogs_Comment comment);
+        Task<List<Category>> AllCategories();
 
     }
 }

@@ -96,16 +96,33 @@ namespace Obosi.ng.Controllers
             var model = new HomePageViewModel(_unit);
             return View(model);
         }
-        public async Task<IActionResult> Calender()
-        {
-            var model = new HomePageViewModel(_unit);
-            return View(model);
-        }
+       
         public async Task<IActionResult> Executive()
         {
             var model = new HomePageViewModel(_unit);
             return View(model);
-        }   
+        }
+        public async Task<IActionResult> Media()
+        {
+            var model = new HomePageViewModel(_unit);
+            return View(model);
+        }
+        public async Task<IActionResult> MediaList()
+        {
+            var model = new HomePageViewModel(_unit);
+            return View(model);
+        }
+       
+        public async Task<IActionResult> Unit()
+        {
+            var model = new HomePageViewModel(_unit);
+            return View(model);
+        }
+        public async Task<IActionResult> UnitList()
+        {
+            var model = new HomePageViewModel(_unit);
+            return View(model);
+        }
     }
    
 }

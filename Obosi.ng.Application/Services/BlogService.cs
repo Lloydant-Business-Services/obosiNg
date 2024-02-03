@@ -21,6 +21,12 @@ namespace Obosi.ng.Application.Services
             _dataContext = dataContext;
             _mapper = mapper;   
         }
+
+        public async Task<List<Category>> AllCategories()
+        {
+            return await _dataContext.Category.ToListAsync(); 
+        }
+
         public async Task<Blogs> ApproveBlog(int blogId)
         {
             var blog = await _dataContext.Blogs.Where(x => x.Id == blogId).FirstOrDefaultAsync();
@@ -33,14 +39,14 @@ namespace Obosi.ng.Application.Services
             return blog;
         }
 
-        public async Task<Blogs> CreateBlog(BlogDTO blog)
+        public async Task<Blogs> CreateBlog(Blogs blog)
         {
-            var blogDetails = _mapper.Map<Blogs>(blog);
-            blogDetails.IsActive = true;
-            blogDetails.DateCreated = DateTime.Now;
-            await _dataContext.Blogs.AddAsync(blogDetails);
+
+            blog.IsActive = true;
+            blog.DateCreated = DateTime.Now;
+            var createdBlog=  await _dataContext.Blogs.AddAsync(blog);
             await _dataContext.SaveChangesAsync();
-            return blogDetails;
+            return createdBlog.Entity;
         }
 
         public async Task<Blogs_Comment> CreateReaction(Blogs_Comment comment)
@@ -73,7 +79,7 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Blogs>> GetHomePageBlogs()
         {
-            return await _dataContext.Blogs.OrderBy(x => x.DateApproved).Include(x => x.Category).Take(3).ToListAsync();
+            return await _dataContext.Blogs.Where(x=>x.IsApproved).OrderBy(x => x.DateApproved).Include(x => x.Category).Take(3).ToListAsync();
         }
 
         public async Task<Blogs> PublishBlog(int blogId)

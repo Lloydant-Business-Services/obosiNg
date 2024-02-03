@@ -64,7 +64,7 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Calender_Assets>> GetHomePageAssets()
         {
-            return await _dataContext.Calender_Assets.OrderBy(x => x.DateAdded).Take(6).ToListAsync();
+            return await _dataContext.Calender_Assets.Where(x=>x.IsActive).OrderBy(x => x.DateAdded).Take(6).ToListAsync();
         }
 
         public async Task<Calender_Assets> UpdateAsset(Calender_Assets asset)

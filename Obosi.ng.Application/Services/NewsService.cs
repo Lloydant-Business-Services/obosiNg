@@ -20,6 +20,10 @@ namespace Obosi.ng.Application.Services
             _dataContext = dataContext;
             _mapper = mapper;
         }
+        public async Task<List<Category>> AllCategories()
+        {
+            return await _dataContext.Category.ToListAsync();
+        }
         public async Task<News> ApproveNews(News news)
         {
             if(news != null)
@@ -74,7 +78,7 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<News>> GetHomePageNews()
         {
-            return await _dataContext.News.OrderBy(x => x.DateApproved).Include(x => x.Category).Take(3).ToListAsync();
+            return await _dataContext.News.Where(x=>x.IsApproved).OrderBy(x => x.DateApproved).Include(x => x.Category).Take(3).ToListAsync();
         }
 
         public async Task<List<News>> GetNews()

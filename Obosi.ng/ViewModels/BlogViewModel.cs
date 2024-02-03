@@ -14,6 +14,7 @@ namespace Obosi.ng.Presentation.ViewModels
         public async Task InitializeNewsAsync()
         {
             this.Blogs = await blog.GetBlogs();
+            this.Categories = await blog.AllCategories();
         }
         public BlogViewModel()
         {
@@ -25,5 +26,6 @@ namespace Obosi.ng.Presentation.ViewModels
         public BlogDTO BlogDto { get; set; }
         public Blogs_Update Blogs_Update { get; set; }
         public IFormFile Image { get; set;}
+        public List<Category> Categories { get; set; }    
     }
 }

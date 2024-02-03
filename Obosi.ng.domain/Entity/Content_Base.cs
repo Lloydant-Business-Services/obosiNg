@@ -11,7 +11,7 @@ namespace Obosi.ng.Domain.Entity
         public virtual Category Category { get; set; }
         public string BackgroundImageUrl { get; set; }
         public string Body { get; set; }
-        public string Summary { get; set; }
+        public string? Summary { get; set; }
         public long UserId { get; set; }
         public virtual Users User { get; set; }
         public DateTime? DateCreated { get; set; }

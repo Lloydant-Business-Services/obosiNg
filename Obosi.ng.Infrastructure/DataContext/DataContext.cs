@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Obosi.ng.Domain.Entity;
 
@@ -69,8 +70,35 @@ namespace Obosi.ng.Data
                new Unit() { Id = 28, Name = "ODU Brazil", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
                new Unit() { Id = 29, Name = "ODU Kuwait", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" }
                 );
-
-          
+           
+     
+      
+      
+     
+     
+    
+    
+      
+     
+     
+     
+     
+        modelBuilder.Entity<Category>().HasData(
+                new Category() { Id=1,Name = "Politics", IsActive = true},
+                   new Category() { Id = 2, Name = "Business & Economy", IsActive = true },
+                    new Category() { Id = 3, Name = "Security & Defense", IsActive = true },
+                     new Category() { Id = 4, Name = "Education", IsActive = true },
+                      new Category() { Id = 5, Name = "Health", IsActive = true },
+                       new Category() { Id = 6, Name = "Infrastructure", IsActive = true },
+                        new Category() { Id = 7, Name = "Environment", IsActive = true },
+                         new Category() { Id = 8, Name = "Science & Technology", IsActive = true },
+                          new Category() { Id = 9, Name = "Sports", IsActive = true },
+                           new Category() { Id = 10, Name = "Entertainment", IsActive = true },
+                            new Category() { Id = 11, Name = "Fashion", IsActive = true },
+                             new Category() { Id = 12, Name = "Food", IsActive = true },
+                              new Category() { Id = 13, Name = "Travel & Tourism", IsActive = true },
+                                new Category() { Id = 14, Name = "Diaspora", IsActive = true }
+                );
 
         }
 

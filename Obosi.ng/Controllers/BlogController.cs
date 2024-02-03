@@ -40,10 +40,10 @@ namespace Obosi.ng.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(BlogViewModel model)
         {
-            if (ModelState.IsValid)
+            if (model?.Blog != null)
             {
                 model.Blog.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
-                await blog.CreateBlog(model.BlogDto);
+                await blog.CreateBlog(model.Blog);
                 return RedirectToAction("Index");
             }
             return View(model);

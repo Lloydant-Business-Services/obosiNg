@@ -426,26 +426,40 @@
         </div>
     </div>
     <div class="p-5" style="background-color: #D4D8E2; ">
-        <h2 class="lato-bold " style="text-align: center; font-size: 80px; color: #D4D8E2; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Obosi's Leadership Structure</h2>
+        <h2 class="lato-bold container" style="text-align: center; font-size: 80px; color: #D4D8E2; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Obosi's Leadership Structure</h2>
         <div class="row">
             <div class="col-md-6">
-              <img src="images/igwe.png" alt="Image 1" class="img-fluid">
-              <div class="p-3" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                <h5>The Obosi traditional institution is made up of the Igwe of Obosi and members of his majesty's cabinet.</h5>
-                <button class="btn btn-danger w-50 p-3" style="justify-content: space-between; display: flex;">Learn More <span><i class="fas fa-arrow-circle-right"></i></span></button>
-              </div>
+                <div style="border: 15px solid #fff;">
+                    <div class="col-12">
+                        <img src="~/images/igwe.png" alt="Image 1" class="img-fluid w-100">
+                    </div>
+                    <div style="background-color: transparent; padding: 3vmin; color: #4E4E4E;" class="shadow-sm">
+                        <p class="text-center " style="font-size: 3vmin; font-size: 31px; font-weight: 600;"> Igwe Chidubem Iweka</p>
+                        <p class="text-center " style="font-size: 3vmin; font-size: 23px; font-weight: 600;"> His Royal Majesty, Eze Iweka III, Igwe Obosi</p>
+                    </div>
+                </div>
+                <div class="p-3" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                    <p style=" text-align: center; font-weight: 400; font-size: 17px; color: #001C40;">The Obosi traditional institution is made up of the Igwe of Obosi and members of his majesty's cabinet.</p>
+                    <button class="btn btn-danger w-50 p-3" style="justify-content: space-between; display: flex;">Learn More <span><i class="fas fa-arrow-circle-right"></i></span></button>
+                </div>
             </div>
             <div class="col-md-6">
-              <img src="images/president.png" alt="Image 1" class="img-fluid mt-2">
-              <div  class="p-3" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                <h5 style="text-align: center;">The Obosi development union is the center of the Obosi adminsitrative structure. It has chapters across the world.</h5>
-             
-              <button class="btn btn-danger w-50 p-3 " style="justify-content: space-between; display: flex;">Learn More <span><i class="fas fa-arrow-circle-right"></i></span></button>
-              </div>
-                
+                <div style="border: 15px solid #fff;">
+                    <img src="~/images/president.png" alt="Image 1" class="img-fluid w-100">
+                    <div style="background-color: transparent; padding: 3vmin; color: #4E4E4E;" class="shadow-sm">
+                        <p class="text-center " style="font-size: 3vmin; font-size: 31px; font-weight: 600;"> Chimezie Obi, Esq.</p>
+                        <p class="text-center " style="font-size: 3vmin; font-size: 23px; font-weight: 600;"> President General, Obosi Development Union</p>
+                    </div>
+                </div>
+                <div class="p-3" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                    <p style="text-align: center; color: #001C40; font-weight: 400; font-size: 17px; ">The Obosi development union is the center of the Obosi adminsitrative structure. It has chapters across the world.</p>
+
+                    <button class="btn btn-danger w-50 p-3 " style="justify-content: space-between; display: flex;">Learn More <span><i class="fas fa-arrow-circle-right"></i></span></button>
+                </div>
+
             </div>
-           
-          </div>
+
+        </div>
     </div>
     <div class="register">
         <h1 class="inter-font" style="font-weight: 500;">ARE YOU AN OBOSI INDIGENE?</h1>
@@ -461,15 +475,17 @@
         <div class="container">
             <div class="d-lg-flex" style="  " >
                 <!-- First Box -->
+                @if(Model.CalenderAssets != null){
+                    foreach(var cal in Model.CalenderAssets){
                 <div class=" col-md-4 col-12 mb-4 " style=" border: 15px solid #AAB2C6; box-shadow: inset 0 2px 25px #A7A7A7; padding: 10px; margin-right: 15px;">
                     <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; box-shadow: inset 0 2px 25px #A7A7A7; padding: 10px;">
                         <div class="col-md-3" style="line-height: normal; color: #CFB174; margin: 0; padding: 10px;">
-                            <h6 style="font-weight: 700; font-size: 40px; margin: 0;">DEC</h6>
-                            <h6 style="font-weight: 700; font-size: 65px; margin: 0;">10</h6>
-                            <h6 style="font-weight: 500; font-size: 28px; margin: 0;">2023</h6>
+                            <h6 style="font-weight: 700; font-size: 40px; margin: 0;">@cal.StartDate.Month</h6>
+                                    <h6 style="font-weight: 700; font-size: 65px; margin: 0;">@cal.StartDate.Day</h6>
+                                    <h6 style="font-weight: 500; font-size: 28px; margin: 0;">@cal.StartDate.Year</h6>
                         </div>
                         <div class="col-md-9 " style="padding: 10px;">
-                            <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;">End of Year Party, ODU Abuja</h6>
+                            <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;">@cal.Title</h6>
                             <div class="py-5"></div>
                             <div class=""  >
                                 <h6 style="color: #0078D4; margin: 0; font-size: 14px;" >LEARN MORE +</h6>
@@ -479,8 +495,9 @@
                         </div>
                     </div>
                 </div>
+                }}
         
-                <!-- Second Box -->
+              @*   <!-- Second Box -->
                 <div class=" col-md-4 col-sm-12 mb-4" style=" border: 15px solid #AAB2C6; box-shadow: inset 0 2px 25px #A7A7A7; padding: 10px; margin-right: 15px;">
                     <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; box-shadow: inset 0 2px 25px #A7A7A7; padding: 10px;">
                         <div class="col-md-3" style="line-height: normal; color: #CFB174; margin: 0; padding: 10px;">
@@ -518,7 +535,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+ *@            </div>
         
           
         </div>
@@ -533,19 +550,26 @@
         <div class="blogDiv ">
             <div style="background-color: #242C3F; " class="newsContainer p-4">
                 <h1 style="color: #fff;">LATEST NEWS</h1>
-                <div class="row" style="flex-direction: column;">
-                    <div class="container" style="background-color: #fff;">
-                       <div class="container" style="display: flex; justify-content: center;">
-                        <img src="images/danceGroup.png" class="img-fluid" style="border-radius: 5px;"/>
-                       </div>
-                        <hr />
-                        <h5 style="color: #001C40; font-size: 13px;">Wednesday, January 17, 2024</h5>
-                        <h1 style="color: #001C40; font-size: 20px;">Anambra community protests insecurity, seeks more police presence </h1>
 
-                    </div>
+                @if (Model.News != null)
+                {
+                    foreach (var news in Model.News)
+                    {
+                        <div class="row" style="flex-direction: column;">
+                            <div class="container" style="background-color: #fff;">
+                                <div class="container" style="display: flex; justify-content: center;">
+                                    <img src="@news.BackgroundImageUrl" class="img-fluid" style="border-radius: 5px;"/>
+                                </div>
+                                <hr />
+                                <h5 style="color: #001C40; font-size: 13px;">@news.DateApproved.Value.ToLongDateString()</h5>
+                                <h1 style="color: #001C40; font-size: 20px;">@news.Title </h1>
 
-                </div>
-                <div class="row" style="flex-direction: column;">
+                            </div>
+
+                        </div>
+                    }
+                }
+                @*   <div class="row" style="flex-direction: column;">
                     <div class="container " style="background-color: #fff;">
                        <div class="container" style="display: flex; justify-content: center;">
                         <img src="images/danceGroup.png" class="img-fluid" style="border-radius: 5px;"/>
@@ -568,11 +592,41 @@
 
                     </div>
 
-                </div>
-                
+                </div> *@
+
             </div>
             <div style="background-color: #fff;" class="newsContainer p-4">
                 <h1>LATEST BLOGS</h1>
+                @if (Model.Blogs != null)
+                { foreach (var blogs in Model.Blogs)
+                    {
+                        <div class="row" style="flex-direction: column;">
+                            <div class="container " style="background-color: #D4D8E2;">
+                                <div class="container" style="display: flex; justify-content: center;">
+                                    <img src="@blogs.BackgroundImageUrl" class="img-fluid" style="border-radius: 5px;"/>
+                                </div>
+                                <hr />
+                                <h5 style="color: #001C40; font-size: 13px;">@blogs.DateApproved.Value.ToLongDateString()</h5>
+                                <h1 style="color: #001C40; font-size: 20px;"> @blogs.Title </h1>
+
+                            </div>
+
+                        </div>
+                    }
+                }
+                @*  <div class="row" style="flex-direction: column;">
+                    <div class="container " style="background-color: #D4D8E2;">
+                       <div class="container" style="display: flex; justify-content: center;">
+                        <img src="images/monuments.png" class="img-fluid" style="border-radius: 5px;"/>
+                       </div>
+                        <hr />
+                        <h5 style="color: #001C40; font-size: 13px;">Wednesday, January 17, 2024</h5>
+                        <h1 style="color: #001C40; font-size: 20px;">Education is the key to solving the unemployment in Obosi: This is how we start  </h1>
+
+                    </div>
+
+                </div>
+
                 <div class="row" style="flex-direction: column;">
                     <div class="container " style="background-color: #D4D8E2;">
                        <div class="container" style="display: flex; justify-content: center;">
@@ -585,32 +639,7 @@
                     </div>
 
                 </div>
-                <div class="row" style="flex-direction: column;">
-                    <div class="container " style="background-color: #D4D8E2;">
-                       <div class="container" style="display: flex; justify-content: center;">
-                        <img src="images/monuments.png" class="img-fluid" style="border-radius: 5px;"/>
-                       </div>
-                        <hr />
-                        <h5 style="color: #001C40; font-size: 13px;">Wednesday, January 17, 2024</h5>
-                        <h1 style="color: #001C40; font-size: 20px;">Education is the key to solving the unemployment in Obosi: This is how we start  </h1>
-
-                    </div>
-
-                </div>
-
-                <div class="row" style="flex-direction: column;">
-                    <div class="container " style="background-color: #D4D8E2;">
-                       <div class="container" style="display: flex; justify-content: center;">
-                        <img src="images/monuments.png" class="img-fluid" style="border-radius: 5px;"/>
-                       </div>
-                        <hr />
-                        <h5 style="color: #001C40; font-size: 13px;">Wednesday, January 17, 2024</h5>
-                        <h1 style="color: #001C40; font-size: 20px;">Education is the key to solving the unemployment in Obosi: This is how we start  </h1>
-
-                    </div>
-
-                </div>
-
+ *@
 
 
             </div>
