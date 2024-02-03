@@ -10,6 +10,10 @@ namespace Obosi.ng.Presentation.ViewModels
         {
                 _boulevard = boulevard;
         }
+        public BoulevardViewModel()
+        {
+            
+        }
         public async Task InitializeAsync()
         {
             builders_Boulevards = await _boulevard.GetBoulevard(1);

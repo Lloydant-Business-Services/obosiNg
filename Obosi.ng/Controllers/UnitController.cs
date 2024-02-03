@@ -9,9 +9,11 @@ namespace Obosi.ng.Presentation.Controllers
     public class UnitController : Controller
     {
         private readonly IUnit unit;
-        public UnitController(IUnit _unit)
+        private  readonly IHostEnvironment _hostingEnvironment;
+        public UnitController(IUnit _unit, IHostEnvironment hostingEnvironment)
         {
            unit = _unit;
+           _hostingEnvironment = hostingEnvironment;
         }
         public async Task<IActionResult> Index()
         {
@@ -25,6 +27,7 @@ namespace Obosi.ng.Presentation.Controllers
             int unitTypeId = Convert.ToInt16(StringEncryption.Decrypt(unittype));
             UnitViewModel model = new(unit);
             await model.GetUnitTypeList(unitTypeId);
+            model.UnitTypeId = unitTypeId;
             ViewBag.Title = "Units";
             return View(model);
         }
@@ -44,9 +47,39 @@ namespace Obosi.ng.Presentation.Controllers
             model.Unit =await  unit.GetUnit(id);
             return View(model);
         }
-       
+        [HttpGet]
+        public async Task<IActionResult> Create(int unitTypeId)
+        {
+            ViewBag.Title = "Create Unit";
+            UnitViewModel model = new(unit);
+            await model.InitializeNewsAsync();
+            model.Unit = new();
+            model.Unit.UnitTypeId = unitTypeId;
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(UnitViewModel model)
+        {
+            model.Unit.BackGroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+            await unit.CreateUnit(model.Unit);
+            return RedirectToAction("Units", new { unittype = StringEncryption.Encrypt(model.Unit.UnitTypeId.ToString())});
+        }
+        [HttpGet]
+        public async Task<IActionResult> CreateUnittype()
+        {
+            ViewBag.Title = "Create Unit Type";
+            UnitViewModel model = new(unit);
+            await model.InitializeNewsAsync();
+            return View(model);
 
-      
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateUnittype(UnitViewModel model)
+        {
+           await unit.CreateUnitType(model.Unit_Type);
+            return RedirectToAction("Index");
+        }
+
 
     }
 }

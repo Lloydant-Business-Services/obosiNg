@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
 
 namespace Obosi.ng.Presentation.Controllers
@@ -7,9 +8,11 @@ namespace Obosi.ng.Presentation.Controllers
     public class BlogController : Controller
     {
         private readonly IBlog blog;
-        public BlogController(IBlog _blog)
+        private readonly IHostEnvironment _hostingEnvironment;
+        public BlogController(IBlog _blog, IHostEnvironment hostingEnvironment)
         {
             blog = _blog;
+            _hostingEnvironment = hostingEnvironment;
         }
         public async Task<IActionResult> Index()
         {
@@ -39,6 +42,7 @@ namespace Obosi.ng.Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.Blog.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
                 await blog.CreateBlog(model.BlogDto);
                 return RedirectToAction("Index");
             }

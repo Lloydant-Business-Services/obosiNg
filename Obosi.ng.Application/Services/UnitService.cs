@@ -38,6 +38,27 @@ namespace Obosi.ng.Application.Services
             return null;
         }
 
+        public async Task<Unit> CreateUnit(Unit unit)
+        {
+            if(unit != null)
+            {
+                unit.DateCreated = DateTime.Now;
+                await _dataContext.Unit.AddAsync(unit);
+                await _dataContext.SaveChangesAsync();
+            }
+            throw new Exception("Unit is empty");
+        }
+
+        public async Task<Unit_Type> CreateUnitType(Unit_Type unittype)
+        {
+            if(unittype != null)
+            {
+                await _dataContext.Unit_Type.AddAsync(unittype);
+                await _dataContext.SaveChangesAsync();
+            }
+            throw new Exception("Unit type is empty");
+        }
+
         public async Task<List<ImeNne>> GetAllImeNneByUmunna(int unitId)
         {
             return await _dataContext.ImeNne.Where(x => x.UnitId == unitId).ToListAsync();

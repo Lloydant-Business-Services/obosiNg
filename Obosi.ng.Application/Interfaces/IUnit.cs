@@ -19,5 +19,8 @@ namespace Obosi.ng.Application.Interfaces
         Task<List<ImeNne>> GetAllImeNneByUmunna(int unitId);
         Task<DashBoardDTO> GetDashBoardDTO();
         Task<Unit> GetUnit(int unitId);
+        Task<Unit> CreateUnit(Unit unit);
+        Task<Unit_Type> CreateUnitType(Unit_Type unittype);
+
     }
 }

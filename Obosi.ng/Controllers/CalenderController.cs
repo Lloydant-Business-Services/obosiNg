@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
 
 namespace Obosi.ng.Presentation.Controllers
 {
     public class CalenderController : Controller
     { private readonly ICalender calender;
-        public CalenderController(ICalender _calender)
+        private readonly IHostEnvironment _hostingEnvironment;
+        public CalenderController(ICalender _calender, IHostEnvironment hostingEnvironment)
         {
             calender = _calender;
+            _hostingEnvironment = hostingEnvironment;
         }
         public async Task<IActionResult> Index()
         {
