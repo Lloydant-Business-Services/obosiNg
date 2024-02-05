@@ -33,6 +33,7 @@ namespace Obosi.ng.Application.Services
             if(blog != null) 
             {
                 blog.IsApproved = true;
+                blog.DateApproved = DateTime.Now;
                 _dataContext.Blogs.Update(blog);
                 await _dataContext.SaveChangesAsync();
             }
@@ -69,17 +70,30 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Blogs>> GetBlogs()
         {
-           return await _dataContext.Blogs.Include(x=>x.Category).ToListAsync();
+           return await _dataContext.Blogs.Include(x => x.User.Role).Include(x=>x.Category).ToListAsync();
+        }
+
+        public async Task<List<Blogs>> GetBlogs(int pageId)
+        {
+            // Determine the offset for the current page
+            int offset = (pageId - 1) * 10;
+
+            // Fetch the specified page of data
+            var ListObj = await _dataContext.Blogs.Where(x=>x.IsApproved == true).Include(x => x.User.Role).Include(x=>x.Category)
+                .Skip(offset)
+                .Take(10)
+                .ToListAsync();
+            return ListObj;
         }
 
         public async Task<Blogs?> GetBlogsById(int BlogId)
         {
-           return  await _dataContext.Blogs.Where(x => x.Id == BlogId).Include(x => x.Category).FirstOrDefaultAsync();
+           return  await _dataContext.Blogs.Where(x => x.Id == BlogId).Include(x=>x.User.Role).Include(x => x.Category).FirstOrDefaultAsync();
         }
 
         public async Task<List<Blogs>> GetHomePageBlogs()
         {
-            return await _dataContext.Blogs.Where(x=>x.IsApproved).OrderBy(x => x.DateApproved).Include(x => x.Category).Take(3).ToListAsync();
+            return await _dataContext.Blogs.Where(x=>x.IsApproved).Include(x => x.User.Role).OrderBy(x => x.DateApproved).Include(x => x.Category).Take(3).ToListAsync();
         }
 
         public async Task<Blogs> PublishBlog(int blogId)

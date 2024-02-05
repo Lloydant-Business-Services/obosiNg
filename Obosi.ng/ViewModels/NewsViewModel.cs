@@ -20,8 +20,14 @@ namespace Obosi.ng.Presentation.ViewModels
             this.NewsList = await news.GetNews();
             this.Categories = await news.AllCategories();
         }
+        public async Task NewsL()
+        {
+            this.NewsList = await news.GetNews(1);
+            this.SimilarNews = await news.GetHomePageNews();
+        }
 
         public List<News> NewsList { get; set; }
+        public List<News> SimilarNews { get; set; }
         public News NewsObject { get; set; }
         public News_Update News_Update { get; set; }
         public IFormFile Image { get; set; }

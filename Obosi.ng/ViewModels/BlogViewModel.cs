@@ -16,16 +16,23 @@ namespace Obosi.ng.Presentation.ViewModels
             this.Blogs = await blog.GetBlogs();
             this.Categories = await blog.AllCategories();
         }
+        public async Task BlogList()
+        {
+            this.Blogs = await blog.GetBlogs(1);
+            this.HomeBlogs = await blog.GetHomePageBlogs();
+        }
         public BlogViewModel()
         {
             
         }
 
         public List<Blogs> Blogs { get; set; }
+        public List<Blogs> HomeBlogs { get; set; }
         public Blogs Blog { get; set; }
         public BlogDTO BlogDto { get; set; }
         public Blogs_Update Blogs_Update { get; set; }
         public IFormFile Image { get; set;}
         public List<Category> Categories { get; set; }    
+
     }
 }

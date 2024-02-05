@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Obosi.ng.Domain.Entity;
+using System.Text.RegularExpressions;
 
 namespace Obosi.ng.Data
 {
@@ -84,21 +86,26 @@ namespace Obosi.ng.Data
      
      
         modelBuilder.Entity<Category>().HasData(
-                new Category() { Id=1,Name = "Politics", IsActive = true},
-                   new Category() { Id = 2, Name = "Business & Economy", IsActive = true },
-                    new Category() { Id = 3, Name = "Security & Defense", IsActive = true },
-                     new Category() { Id = 4, Name = "Education", IsActive = true },
-                      new Category() { Id = 5, Name = "Health", IsActive = true },
-                       new Category() { Id = 6, Name = "Infrastructure", IsActive = true },
-                        new Category() { Id = 7, Name = "Environment", IsActive = true },
-                         new Category() { Id = 8, Name = "Science & Technology", IsActive = true },
-                          new Category() { Id = 9, Name = "Sports", IsActive = true },
-                           new Category() { Id = 10, Name = "Entertainment", IsActive = true },
-                            new Category() { Id = 11, Name = "Fashion", IsActive = true },
-                             new Category() { Id = 12, Name = "Food", IsActive = true },
-                              new Category() { Id = 13, Name = "Travel & Tourism", IsActive = true },
-                                new Category() { Id = 14, Name = "Diaspora", IsActive = true }
+                new Category() { Id=1,Name = "Culture and Traditions", IsActive = true},
+                   new Category() { Id = 2, Name = "Community Events and News", IsActive = true },
+                    new Category() { Id = 3, Name = "Historical Insights", IsActive = true },
+                     new Category() { Id = 4, Name = "Local Business Spotlights", IsActive = true },
+                      new Category() { Id = 5, Name = "Tourism", IsActive = true },
+                       new Category() { Id = 6, Name = "Health and Wellness", IsActive = true },
+                        new Category() { Id = 7, Name = "Education", IsActive = true },
+                         new Category() { Id = 8, Name = "Art and Creativity", IsActive = true },
+                          new Category() { Id = 9, Name = "Food and nutrition", IsActive = true },
+                           new Category() { Id = 10, Name = "Community Initiatives", IsActive = true },
+                            new Category() { Id = 11, Name = "Religion", IsActive = true },
+                             new Category() { Id = 12, Name = "Politics", IsActive = true },
+                              new Category() { Id = 13, Name = "Government Initiatives", IsActive = true },
+                                new Category() { Id = 14, Name = "Science and Technology", IsActive = true },
+                                 new Category() { Id = 15, Name = "Education", IsActive = true },
+                                  new Category() { Id = 16, Name = "Jobs", IsActive = true },
+                                   new Category() { Id = 17, Name = "Love, life, and family", IsActive = true },
+                                    new Category() { Id =18, Name = "Sports and youth development", IsActive = true }
                 );
+           
 
         }
 

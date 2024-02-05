@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
 using System.Diagnostics;
 using System.Security.Claims;
@@ -119,6 +121,32 @@ namespace Obosi.ng.Controllers
             return View(model);
         }
         public async Task<IActionResult> UnitList()
+        {
+            var model = new HomePageViewModel(_unit);
+            return View(model);
+        }
+        public async Task<IActionResult> Blog(string id)
+        {
+            var model = new HomePageViewModel(_news, _blog, _calender);
+            await model.InitializeNewsAsync();
+            int blogId = Convert.ToInt16(StringEncryption.Decrypt(id));
+            await model.BlogInitailize(blogId);
+            return View(model);
+        }
+        public async Task<IActionResult> BlogList()
+        {
+            var model = new HomePageViewModel(_unit);
+            return View(model);
+        }
+        public async Task<IActionResult> News(string id)
+        {
+            var model = new HomePageViewModel(_news, _blog, _calender);
+            await model.InitializeNewsAsync();
+            int newsId = Convert.ToInt16(StringEncryption.Decrypt(id));
+            await model.NewsInitializeValue(newsId);
+            return View(model);
+        }
+        public async Task<IActionResult> NewsList()
         {
             var model = new HomePageViewModel(_unit);
             return View(model);

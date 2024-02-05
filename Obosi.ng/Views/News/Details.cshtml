@@ -1,0 +1,53 @@
+﻿@using Obosi.ng.Presentation.utility;
+@model Obosi.ng.Presentation.ViewModels.NewsViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div style="text-align: center;">
+    <p style="font-size: 48px; font-weight: 200;">@Model.NewsObject.Title</p>
+
+    <p style="font-size: 14px; font-weight: 100;">@Model?.NewsObject?.User?.LastName @Model?.NewsObject?.User?.FirstName </p>
+
+</div>
+<div style="" class="container py-5">
+
+    <div class="row mt-4">
+        <p class="mt-4 text-left responsive_font_size" style="color: #FB2B5F; font-size: 40px; font-weight: 700;">Introduction</p>
+        <div class="mt-4">
+            <img src="~/@Model.NewsObject.BackgroundImageUrl" alt="" class="img-fluid col-sm-12" />
+            <div style="background-color: #fff ; padding: 3vmin;" class="shadow-sm">
+                <p class="text-left " style="font-size: 3vmin;">Image Caption</p>
+            </div>
+        </div>
+    </div>
+    <pre class="text-left responsive_font_size mt-4" style="font-size: 20px; font-weight: 700; ">@Html.Raw(@Model.NewsObject.Body)</pre>
+    <p class="text-left responsive_font_size mt-4" style="font-size: 32px; font-weight:700; ">Summary</p>
+    <pre class="text-left responsive_font_size mt-4" style="font-size: 16px; font-weight:400; ">
+        @Html.Raw( @Model.NewsObject.Summary)
+       </pre>
+
+
+</div>
+
+ @if (!Model.NewsObject.IsPublished)
+    {
+<div class="text-center m-3">
+        <a class="btn btn-outline-primary btn-sm mb-0" href="~/News/Publish?id=@Model.NewsObject.Id">Publish</a>
+</div>
+    }
+
+@{
+    var userRole = IdentityExtensions.GetId(User.Identity);
+    if (userRole == 1 && Model.NewsObject.IsPublished)
+    {
+        <div class="text-center m-3">
+            <a class="btn btn-outline-primary btn-sm mb-0" href="~/News/Approve?id=@Model.NewsObject.Id">Approve</a>
+        </div>
+    }
+}
+
+
+

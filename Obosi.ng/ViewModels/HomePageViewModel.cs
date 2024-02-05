@@ -31,6 +31,16 @@ namespace Obosi.ng.Presentation.ViewModels
             this.Blogs = await blog.GetHomePageBlogs();
             this.CalenderAssets = await calender.GetHomePageAssets();
         }
+        public async Task BlogInitailize(int id)
+        {
+            this.blogItem = await blog.GetBlogsById(id);
+            this.Blogs = await blog.GetHomePageBlogs();
+        }
+        public async Task NewsInitializeValue(int id)
+        {
+            this.newsItem = await news.GetNewsById(id);
+            this.News = await news.GetHomePageNews();
+        }
         public async Task GetAllUmunna()
         {
             this.GetAllUmunnaList = await unit.GetAllUmunna();
@@ -45,5 +55,8 @@ namespace Obosi.ng.Presentation.ViewModels
         public Users user { get; set; }
         public int UnitId { get; set; }
         public bool RememberPassword { get; set; }
+        public Blogs blogItem { get; set; }
+        public News newsItem { get; set; }
+
     }
 }

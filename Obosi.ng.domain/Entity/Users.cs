@@ -17,6 +17,7 @@ namespace Obosi.ng.Domain.Entity
         public string Email { get; set; }
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
+        public string? PassportUrl { get; set; }
         public int GenderId { get; set; }
         public virtual Gender Gender { get; set; }
         public int? ImeNneId { get; set; }

@@ -556,16 +556,17 @@
                     foreach (var news in Model.News)
                     {
                         <div class="row" style="flex-direction: column;">
+                            <a href="~/Home/News?id=@Obosi.ng.Presentation.utility.StringEncryption.Encrypt(@news.Id.ToString())">
                             <div class="container" style="background-color: #fff;">
                                 <div class="container" style="display: flex; justify-content: center;">
-                                    <img src="@news.BackgroundImageUrl" class="img-fluid" style="border-radius: 5px;"/>
+                                    <img src="@news.BackgroundImageUrl" class="img-fluid w-50 h-50" style="border-radius: 5px;" />
                                 </div>
                                 <hr />
                                 <h5 style="color: #001C40; font-size: 13px;">@news.DateApproved.Value.ToLongDateString()</h5>
                                 <h1 style="color: #001C40; font-size: 20px;">@news.Title </h1>
 
                             </div>
-
+                            </a>
                         </div>
                     }
                 }
@@ -601,16 +602,17 @@
                 { foreach (var blogs in Model.Blogs)
                     {
                         <div class="row" style="flex-direction: column;">
+                            <a href="~/Home/Blog?id=@Obosi.ng.Presentation.utility.StringEncryption.Encrypt(@blogs.Id.ToString())">
                             <div class="container " style="background-color: #D4D8E2;">
                                 <div class="container" style="display: flex; justify-content: center;">
-                                    <img src="@blogs.BackgroundImageUrl" class="img-fluid" style="border-radius: 5px;"/>
+                                    <img src="@blogs.BackgroundImageUrl" class="img-fluid w-50 h-50" style="border-radius: 5px;" />
                                 </div>
                                 <hr />
                                 <h5 style="color: #001C40; font-size: 13px;">@blogs.DateApproved.Value.ToLongDateString()</h5>
                                 <h1 style="color: #001C40; font-size: 20px;"> @blogs.Title </h1>
 
                             </div>
-
+                            </a>
                         </div>
                     }
                 }

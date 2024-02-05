@@ -28,6 +28,7 @@
                                     <th>User</th>
                                     <th>Date Published</th>
                                     <th>Date Approved</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +41,7 @@
                                             <td>@k</td>
                                             <td>@item.Title</td>
                                             <td>@item.Category.Name</td>
-                                            <td>@item.User.Email</td>
+                                            <td>@item?.User?.Email</td>
                                             <td> @if (item.DatePublished != null)
                                                 {
                                                     @item.DatePublished.Value.ToShortDateString()
@@ -51,6 +52,9 @@
                                                 {
                                                     @item.DateApproved.Value.ToShortDateString()
                                                 }
+                                            </td>
+                                            <td>
+                                                <a href="~/News/Details?id=@item.Id">View</a>
                                             </td>
                                         </tr>
                                         k++;

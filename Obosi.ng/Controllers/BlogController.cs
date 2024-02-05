@@ -2,6 +2,7 @@
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
+using System.Security.Claims;
 
 namespace Obosi.ng.Presentation.Controllers
 {
@@ -42,6 +43,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             if (model?.Blog != null)
             {
+                var userRole = IdentityExtensions.GetId(User.Identity);
+                model.Blog.UserId = Convert.ToInt32(userRole);
                 model.Blog.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
                 await blog.CreateBlog(model.Blog);
                 return RedirectToAction("Index");
@@ -70,6 +73,16 @@ namespace Obosi.ng.Presentation.Controllers
         {
            await blog.DeleteBlog(id);
             return RedirectToAction("index");
-        }   
+        }
+        public async Task<IActionResult> Approve(int id)
+        {
+            await blog.ApproveBlog(id);
+            return RedirectToAction("index");
+        }
+        public async Task<IActionResult> Publish(int id)
+        {
+            await blog.PublishBlog(id);
+            return RedirectToAction("index");
+        }
     }
 }

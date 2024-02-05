@@ -24,14 +24,19 @@ namespace Obosi.ng.Application.Services
         {
             return await _dataContext.Category.ToListAsync();
         }
-        public async Task<News> ApproveNews(News news)
+        public async Task<News> ApproveNews(int id)
         {
-            if(news != null)
+            if(id >0)
             {
-                news.IsApproved = true;
-                _dataContext.News.Update(news);
-               await _dataContext.SaveChangesAsync();
-                return news;
+                var news = _dataContext.News.Where(x => x.Id == id).FirstOrDefault();
+                if (news != null)
+                {
+                    news.IsApproved = true;
+                    news.DateApproved = DateTime.Now;
+                    _dataContext.News.Update(news);
+                    await _dataContext.SaveChangesAsync();
+                    return news;
+                }
             }
             return null;
         }
@@ -83,25 +88,43 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<News>> GetNews()
         {
-            return await _dataContext.News.OrderBy(x => x.DateApproved).Include(x => x.Category).ToListAsync();
+            return await _dataContext.News.OrderBy(x => x.DateApproved).Include(x=>x.User.Role).Include(x => x.Category).ToListAsync();
+        }
+
+        public async Task<List<News>> GetNews(int pageId)
+        {
+            // Determine the offset for the current page
+            int offset = (pageId - 1) * 10;
+
+            // Fetch the specified page of data
+            var ListObj = await _dataContext.News.Where(x => x.IsApproved == true).Include(x => x.User.Role)
+                .Skip(offset)
+                .Take(10)
+                .ToListAsync();
+            return ListObj;
         }
 
         public async Task<News> GetNewsById(int NewsId)
         {
-            return await _dataContext.News.Where(x => x.Id == NewsId).Include(x => x.Category).FirstOrDefaultAsync(); 
+            return await _dataContext.News.Where(x => x.Id == NewsId).Include(x => x.User.Role)
+                .Include(x => x.Category).FirstOrDefaultAsync(); 
         }
 
-        public async Task<News> PublishNews(News news)
+        public async Task<News> PublishNews(int id)
         {
-           if(news != null)
+            if (id > 0)
             {
-                news.IsPublished = true;
-                news.DatePublished = DateTime.Now;
-                _dataContext.News.Update(news);
-               await _dataContext.SaveChangesAsync();
-                return news;
+                var news = _dataContext.News.Where(x => x.Id == id).FirstOrDefault();
+                if (news != null)
+                {
+                    news.IsPublished = true;
+                    news.DatePublished = DateTime.Now;
+                    _dataContext.News.Update(news);
+                    await _dataContext.SaveChangesAsync();
+                    return news;
+                }
             }
-            return null;    
+            return null;
         }
 
         public async Task<News_Update> UpdateNews(News_Update news)

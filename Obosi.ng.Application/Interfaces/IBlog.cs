@@ -11,6 +11,7 @@ namespace Obosi.ng.Application.Interfaces
     public interface IBlog
     {
         Task<List<Blogs>> GetBlogs();
+        Task<List<Blogs>> GetBlogs(int pageId);
         Task<List<Blogs>> GetHomePageBlogs();
         Task<Blogs?> GetBlogsById(int BlogId);
         Task<Blogs> CreateBlog(Blogs blog);
