@@ -5,28 +5,48 @@
 }
 
 
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Obosi.ng - Home</title>
-     <link rel="apple-touch-icon" sizes="76x76" href="~/Admin/assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="~/favicon (1).ico">
-
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontsource-inter@4.2.2/css/font-face.css" integrity="sha384-+dTx0gd5x4TB5pU8VR4MYeBp3x4YPH6EFLQV1H9eVQktIb2QQwK+8hJoI+1jRJMf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=MedievalSharp&family=Roboto:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/adlam-display" rel="stylesheet">
+                
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!-- <link 
     href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
     rel="stylesheet"  type='text/css'> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
 
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   
+
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-weSCl9iGU/TzcazYOk0b44gOMu20zWbv4+SYyl/bA73pWqTA4gM9muLkGPQ1Ocj1" crossorigin="anonymous">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <style>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rW9wTPHvMmL92f6h2OgG3Rn4HsoznT9roRVt5LwCkGqVR3hAgltTZOWtT27Mnq" crossorigin="anonymous"></script>
+
+      <style>
+        .adlam {
+          font-family: 'ADLaM Display', sans-serif;
+                                                
+        }
 
         .medievalsharp-regular {
           font-family: "MedievalSharp", cursive;
@@ -187,6 +207,16 @@
               align-items: center;
               text-align: center;
           }
+
+          @@media (min-width: 768px)  {
+            .single-news {
+              height: 305px;
+            }
+          }
+        
+          .form-control-lg::placeholder {
+        color: #fff;
+    }
         
           .menu-toggle {
               display: block;
@@ -351,16 +381,16 @@
         .footer {
           background-color: #D4D8E2;
         };
-                </style>
+      </style>
+     
 </head>
 <body>
+
     <div class="heroDiv">
         <div class="navbar container">
-            <a href="~/">
             <div class="logo">
                 <img src="images/obosiLogoText.png" alt="Logo">
             </div>
-            </a>
             <div class="menu-toggle" onclick="toggleMenu()">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -371,12 +401,14 @@
                     <p>Cancel</p>
                 </div>
                 <ul>
-                    <li><a href="#">PEOPLE</a></li>
-                    <li><a href="#">PLACES</a></li>
-                    <li><a href="#">CULTURE</a></li>
-                    <li><a href="#">MEDIA</a></li>
-                    <li><a href="~/home/signin">ACCOUNT</a></li>
+
+                    <li><span  data-bs-toggle="modal" data-bs-target="#peopleModal" style="color: #ffffff;">PEOPLE</span></li>
+                    <li><span  data-bs-toggle="modal" data-bs-target="#placesModal" style="color: #ffffff;">PLACES</span></li>
+                    <li><span  data-bs-toggle="modal" data-bs-target="#cultureModal" style="color: #ffffff;">CULTURE</span></li>
+                    <li><span  data-bs-toggle="modal" data-bs-target="#mediaModal" style="color: #ffffff;">MEDIA</span></li>
+                    <li><span  data-bs-toggle="modal" data-bs-target="#accountModal" style="color: #ffffff;">ACCOUNT</span></li>
                 </ul>
+
             </div>
         </div>
         <div class="story ">
@@ -386,103 +418,135 @@
             </button>
         </div>
     </div>
-    <div class=" mt-4 culture-grid ">
-       <div class="p-5">
-        <h2 class="medievalsharp-regular " style="text-align: center; font-size: 36px;">WELCOME TO THE OFFICIAL PLATFORM OF NDI OBOSI</h2>
-        <h2 class="medievalsharp-regular text-danger" style="text-align: center; font-size: 36px;">EXPLORE OUR RICH CULTURAL HERITAGE</h2>
-       </div>
+    <div class="row p-4 gap-3 justify-content-center">
+          <div class="col-md-3 p-4" style="background-image: url('~/images/monument.png'); background-size: cover; background-position: center; position: relative;  width: 330px; height: 330px;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;">
+              <p></p>
+              <h3 style="text-align: center; color:#ffffff; font-size: 30px; " class="adlam">MONUMENTS</h3>
+            </div>
+          </div>
+          <div class="col-md-3" style="background-image: url('~/images/masquerade.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;">
+              <p></p>
+              <h3 style="text-align: center; color:#ffffff;" class="adlam">MASQUERADES</h3>
 
-        <div class="row p-4">
-          <div class="col-md-3 ">
-            <img src="images/danceGroup.png" alt="Image 1" class="img-fluid">
+            </div>
+            
           </div>
-          <div class="col-md-3">
-            <img src="images/monuments.png" alt="Image 1" class="img-fluid">
+          <div class="col-md-3" style="background-image: url('~/images/danceGroupp.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 35%;">
+              <h3 style="text-align: center; color:#ffffff;" class="adlam">DANCE GROUPS</h3>
+
+            </div>
+
     
           </div>
-          <div class="col-md-3">
-            <img src="images/danceGroup.png" alt="Image 1" class="img-fluid">
-    
-          </div>
-          <div class="col-md-3">
-            <img src="images/monuments.png" alt="Image 1" class="img-fluid">
+          <div class="col-md-3" style="background-image: url('~/images/festival.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;">
+              <p></p>
+              <h3 style="text-align: center; color:#ffffff;" class="adlam">FESTIVALS</h3>
+
+            </div>
+
     
           </div>
         </div>
         
-        <div class="row mt-4 p-4">
-          <div class="col-md-3">
-            <img src="images/danceGroup.png" alt="Image 1" class="img-fluid">
+        <div class="row mt-4 p-4 gap-3 justify-content-center">
+          <div class="col-md-3" style="background-image: url('~/images/personalities.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%; justify-content: center; align-items: center;" >
+              <p></p>
+              <h3 style="text-align: center; color:#ffffff;" class="adlam">PERSONALITIES</h3>
+
+            </div>
+
           </div>
-          <div class="col-md-3">
-            <img src="images/monuments.png" alt="Image 1" class="img-fluid">   
+          <div class="col-md-3" style="background-image: url('~/images/villages.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%; padding-left: 30%;">
+              <p></p>
+              <h3 style="align-items: center; justify-content: center; color:#ffffff;" class="adlam">VILLAGES</h3>
+
+            </div>
+
           </div>
-          <div class="col-md-3">
-            <img src="images/danceGroup.png" alt="Image 1" class="img-fluid">
+          <div class="col-md-3" style="background-image: url('~/images/landmark.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+            <div style="position: absolute; top: 0; left: 10; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;;">
+              <p></p>
+              <h3 style="text-align: center; color:#ffffff;" class="adlam">LANDMARKS</h3>
+
+            </div>
+
           </div>
-          <div class="col-md-3">
-            <img src="images/monuments.png" alt="Image 1" class="img-fluid">
+          <div class="col-md-3" style="background-image: url('~/images/services.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding: 30%;">
+              <h3 style="text-align: center; color:#ffffff;" class="adlam">SERVICES & RESOURCES</h3>
+
+            </div>
+
           </div>
         </div>
     </div>
     <div class="p-5" style="background-color: #D4D8E2; ">
-        <h2 class="lato-bold container" style="text-align: center; font-size: 80px; color: #D4D8E2; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Obosi's Leadership Structure</h2>
+       <div class="">
+          <h2 class="lato-bold p-2" style="text-align: center; font-size: 60px; color: #D4D8E2; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Obosi's </h2>
+          <h2 class="lato-bold p-3" style="text-align: center; font-size: 60px; color: #D4D8E2; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Leadership Structure</h2>
+       </div>
         <div class="row">
             <div class="col-md-6">
                 <div style="border: 15px solid #fff;">
-                    <div class="col-12">
-                        <img src="~/images/igwe.png" alt="Image 1" class="img-fluid w-100">
-                    </div>
-                    <div style="background-color: transparent; padding: 3vmin; color: #4E4E4E;" class="shadow-sm">
-                        <p class="text-center " style="font-size: 3vmin; font-size: 31px; font-weight: 600;"> Igwe Chidubem Iweka</p>
-                        <p class="text-center " style="font-size: 3vmin; font-size: 23px; font-weight: 600;"> His Royal Majesty, Eze Iweka III, Igwe Obosi</p>
-                    </div>
+                 <div class="col-12" >
+                  <img src="images/igwe.png" alt="Image 1" class="img-fluid w-100">
+                 </div>
+                  <div style="background-color: transparent; padding: 3vmin; color: #4E4E4E;" class="shadow-sm">
+                    <p class="text-center " style="font-size: 3vmin; font-size: 31px; font-weight: 600;" > Igwe Chidubem Iweka</p>
+                    <p class="text-center " style="font-size: 3vmin; font-size: 23px; font-weight: 600;" > His Royal Majesty, Eze Iweka III, Igwe Obosi</p>
+                </div>
                 </div>
                 <div class="p-3" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                    <p style=" text-align: center; font-weight: 400; font-size: 17px; color: #001C40;">The Obosi traditional institution is made up of the Igwe of Obosi and members of his majesty's cabinet.</p>
-                    <button class="btn btn-danger w-50 p-3" style="justify-content: space-between; display: flex;">Learn More <span><i class="fas fa-arrow-circle-right"></i></span></button>
+                  <p style=" text-align: center; font-weight: 400; font-size: 17px; color: #001C40;">The Obosi traditional institution is made up of the Igwe of Obosi and members of his majesty's cabinet.</p>
+                  <button class="btn btn-danger w-50 p-3" style="justify-content: space-between; display: flex; font-size: 16px; font-weight: 600">LEARN MORE <span><i class="fas fa-arrow-circle-right"></i></span></button>
                 </div>
             </div>
             <div class="col-md-6">
-                <div style="border: 15px solid #fff;">
-                    <img src="~/images/president.png" alt="Image 1" class="img-fluid w-100">
-                    <div style="background-color: transparent; padding: 3vmin; color: #4E4E4E;" class="shadow-sm">
-                        <p class="text-center " style="font-size: 3vmin; font-size: 31px; font-weight: 600;"> Chimezie Obi, Esq.</p>
-                        <p class="text-center " style="font-size: 3vmin; font-size: 23px; font-weight: 600;"> President General, Obosi Development Union</p>
-                    </div>
-                </div>
-                <div class="p-3" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                    <p style="text-align: center; color: #001C40; font-weight: 400; font-size: 17px; ">The Obosi development union is the center of the Obosi adminsitrative structure. It has chapters across the world.</p>
-
-                    <button class="btn btn-danger w-50 p-3 " style="justify-content: space-between; display: flex;">Learn More <span><i class="fas fa-arrow-circle-right"></i></span></button>
-                </div>
-
+              <div style="border: 15px solid #fff;">
+                <img src="images/president.png" alt="Image 1" class="img-fluid w-100">
+                <div style="background-color: transparent; padding: 3vmin; color: #4E4E4E;" class="shadow-sm">
+                  <p class="text-center " style="font-size: 3vmin; font-size: 31px; font-weight: 600;" > Chimezie Obi, Esq.</p>
+                  <p class="text-center " style="font-size: 3vmin; font-size: 23px; font-weight: 600;" > President General, Obosi Development Union</p>
+              </div>
+              </div>
+              <div  class="p-3" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                <p style="text-align: center; color: #001C40; font-weight: 400; font-size: 17px; ">The Obosi development union is the center of the Obosi adminsitrative structure. It has chapters across the world.</p>
+             
+              <button class="btn btn-danger w-50 p-3 " style="justify-content: space-between; display: flex; font-size: 16px; font-weight: 600;">LEARN MORE <span><i class="fas fa-arrow-circle-right"></i></span></button>
+              </div>
+                
             </div>
-
-        </div>
+           
+          </div>
     </div>
     <div class="register">
-        <h1 class="inter-font" style="font-weight: 500;">ARE YOU AN OBOSI INDIGENE?</h1>
-        <h2 class="inter-font" style="font-weight: 400;">REGISTER AND BECOME PART OF THE DATABASE.</h2>
-        <a class="btn btn-danger p-3" style="justify-content: space-between; display: flex;" href="~/home/signup">
+        <h1 class="adlam" style="font-weight: 500;">ARE YOU AN OBOSI INDIGENE?</h1>
+        <h2 class="adlam" style="font-weight: 400;">REGISTER AND BECOME PART OF THE DATABASE.</h2>
+        <button class="btn btn-danger p-3" style="justify-content: space-between; display: flex; font-size: 16px; font-weight: 600;">
             GET STARTED <span><i class="fas fa-arrow-circle-right"></i></span>
-        </a>
+        </button>
 
 
     </div>
     <div class="events container-fluid">
-        <h1 class="lato-bold mb-3 mt-3 " style="text-align: center; font-size: 70px; color: #D4D8E2; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); padding: 10px;"> UPCOMING EVENTS</h1>
+        <h1 class="lato-bold mb-3 mt-3 " style="text-align: center; font-size: 60px; color: #D4D8E2; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); padding: 10px;"> Upcoming Events</h1>
         <div class="container">
             <div class="d-lg-flex" style="  " >
-                <!-- First Box -->
-                @if(Model.CalenderAssets != null){
+                  @if(Model.CalenderAssets != null){
                     foreach(var cal in Model.CalenderAssets){
+                <!-- First Box -->
                 <div class=" col-md-4 col-12 mb-4 " style=" border: 15px solid #AAB2C6; box-shadow: inset 0 2px 25px #A7A7A7; padding: 10px; margin-right: 15px;">
                     <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; box-shadow: inset 0 2px 25px #A7A7A7; padding: 10px;">
                         <div class="col-md-3" style="line-height: normal; color: #CFB174; margin: 0; padding: 10px;">
                             <h6 style="font-weight: 700; font-size: 40px; margin: 0;">@cal.StartDate.Month</h6>
-                                    <h6 style="font-weight: 700; font-size: 65px; margin: 0;">@cal.StartDate.Day</h6>
-                                    <h6 style="font-weight: 500; font-size: 28px; margin: 0;">@cal.StartDate.Year</h6>
+                            <h6 style="font-weight: 700; font-size: 65px; margin: 0;">@cal.StartDate.Day</h6>
+                            <h6 style="font-weight: 500; font-size: 28px; margin: 0;">@cal.StartDate.Year</h6>
                         </div>
                         <div class="col-md-9 " style="padding: 10px;">
                             <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;">@cal.Title</h6>
@@ -497,7 +561,7 @@
                 </div>
                 }}
         
-              @*   <!-- Second Box -->
+                <!-- Second Box -->
                 <div class=" col-md-4 col-sm-12 mb-4" style=" border: 15px solid #AAB2C6; box-shadow: inset 0 2px 25px #A7A7A7; padding: 10px; margin-right: 15px;">
                     <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; box-shadow: inset 0 2px 25px #A7A7A7; padding: 10px;">
                         <div class="col-md-3" style="line-height: normal; color: #CFB174; margin: 0; padding: 10px;">
@@ -535,7 +599,7 @@
                         </div>
                     </div>
                 </div>
- *@            </div>
+            </div>
         
           
         </div>
@@ -550,98 +614,57 @@
         <div class="blogDiv ">
             <div style="background-color: #242C3F; " class="newsContainer p-4">
                 <h1 style="color: #fff;">LATEST NEWS</h1>
-
-                @if (Model.News != null)
+                  @if (Model.News != null)
                 {
                     foreach (var news in Model.News)
                     {
-                        <div class="row" style="flex-direction: column;">
-                            <a href="~/Home/News?id=@Obosi.ng.Presentation.utility.StringEncryption.Encrypt(@news.Id.ToString())">
-                            <div class="container" style="background-color: #fff;">
-                                <div class="container" style="display: flex; justify-content: center;">
-                                    <img src="@news.BackgroundImageUrl" class="img-fluid w-50 h-50" style="border-radius: 5px;" />
-                                </div>
-                                <hr />
-                                <h5 style="color: #001C40; font-size: 13px;">@news.DateApproved.Value.ToLongDateString()</h5>
-                                <h1 style="color: #001C40; font-size: 20px;">@news.Title </h1>
-
-                            </div>
-                            </a>
-                        </div>
-                    }
-                }
-                @*   <div class="row" style="flex-direction: column;">
-                    <div class="container " style="background-color: #fff;">
-                       <div class="container" style="display: flex; justify-content: center;">
-                        <img src="images/danceGroup.png" class="img-fluid" style="border-radius: 5px;"/>
+                <div class="row" style="flex-direction: column;">
+                    <div class="container single-news" style="background-color: #fff; width: 100%; margin: auto; padding: 20px; margin-bottom: 20px;">
+                       <div class="container" style="display: flex; justify-content: center; padding: 20px;">
+                        <img src="~/@news.BackgroundImageUrl" class="img-fluid " style="height: 300px; width: 300px;"/>
                        </div>
                         <hr />
-                        <h5 style="color: #001C40; font-size: 13px;">Wednesday, January 17, 2024</h5>
-                        <h1 style="color: #001C40; font-size: 20px;">Anambra community protests insecurity, seeks more police presence </h1>
-
+                        <h5 style="color: #001C40; font-size: 13px;">@news.DateApproved.Value.ToLongDateString()</h5>
+                        <h1 style="color: #001C40; font-size: 20px;">@news.Title </h1>
                     </div>
 
                 </div>
-                <div class="row" style="flex-direction: column;">
-                    <div class="container " style="background-color: #fff;">
-                       <div class="container" style="display: flex; justify-content: center;">
-                        <img src="images/danceGroup.png" class="img-fluid" style="border-radius: 5px;"/>
-                       </div>
-                       <hr style="color: #C1C1C1; border-width: 2px;"/>
-                        <h5 style="color: #001C40; font-size: 13px;">Wednesday, January 17, 2024</h5>
-                        <h1 style="color: #001C40; font-size: 20px;">Anambra community protests insecurity, seeks more police presence </h1>
-
-                    </div>
-
-                </div> *@
-
+                }}
+              
+                
+                <div class="d-flex justify-content-center">
+                  <a href="~/Home/NewsList" class="btn btn-danger lato-regular w-lg-25 w-sm-100 p-3" style="font-weight: 700; justify-content: space-between; 
+display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arrow-circle-right"></i></span>
+                  </a>
+                </div>
+                
             </div>
             <div style="background-color: #fff;" class="newsContainer p-4">
                 <h1>LATEST BLOGS</h1>
                 @if (Model.Blogs != null)
                 { foreach (var blogs in Model.Blogs)
                     {
-                        <div class="row" style="flex-direction: column;">
-                            <a href="~/Home/Blog?id=@Obosi.ng.Presentation.utility.StringEncryption.Encrypt(@blogs.Id.ToString())">
-                            <div class="container " style="background-color: #D4D8E2;">
-                                <div class="container" style="display: flex; justify-content: center;">
-                                    <img src="@blogs.BackgroundImageUrl" class="img-fluid w-50 h-50" style="border-radius: 5px;" />
-                                </div>
-                                <hr />
-                                <h5 style="color: #001C40; font-size: 13px;">@blogs.DateApproved.Value.ToLongDateString()</h5>
-                                <h1 style="color: #001C40; font-size: 20px;"> @blogs.Title </h1>
-
-                            </div>
-                            </a>
-                        </div>
-                    }
-                }
-                @*  <div class="row" style="flex-direction: column;">
-                    <div class="container " style="background-color: #D4D8E2;">
-                       <div class="container" style="display: flex; justify-content: center;">
-                        <img src="images/monuments.png" class="img-fluid" style="border-radius: 5px;"/>
-                       </div>
-                        <hr />
-                        <h5 style="color: #001C40; font-size: 13px;">Wednesday, January 17, 2024</h5>
-                        <h1 style="color: #001C40; font-size: 20px;">Education is the key to solving the unemployment in Obosi: This is how we start  </h1>
-
-                    </div>
-
-                </div>
-
                 <div class="row" style="flex-direction: column;">
-                    <div class="container " style="background-color: #D4D8E2;">
+                    <div class="container " style="background-color: #D4D8E2; width: 100%; margin: auto; padding: 20px; margin-bottom: 20px;">
                        <div class="container" style="display: flex; justify-content: center;">
-                        <img src="images/monuments.png" class="img-fluid" style="border-radius: 5px;"/>
+                        <img src="~/@blogs.BackgroundImageUrl" class="img-fluid " style="height: 300px; width: 300px;"/>
+
                        </div>
                         <hr />
-                        <h5 style="color: #001C40; font-size: 13px;">Wednesday, January 17, 2024</h5>
-                        <h1 style="color: #001C40; font-size: 20px;">Education is the key to solving the unemployment in Obosi: This is how we start  </h1>
+                        <h5 style="color: #001C40; font-size: 13px;">@blogs.DateApproved.Value.ToLongDateString()</h5>
+                        <h1 style="color: #001C40; font-size: 20px;">@blogs.Title</h1>
 
                     </div>
 
                 </div>
- *@
+                }}
+              
+                <div class="d-flex justify-content-center">
+                  <a class="btn btn-danger lato-regular w-lg-25 w-sm-100 p-3" style="font-weight: 700; justify-content: space-between; display: flex; "
+                  href="~/Home/BlogList">MORE BLOGS <span style="margin-left: 10px;"><i class="fas fa-arrow-circle-right"></i></span>
+                  </a>
+                </div>
+
 
 
             </div>
@@ -660,7 +683,7 @@
                     <h6 style="font-size: 24px; color: #fff; font-weight: 500;" class="inter-font">Did you notice something suspicious?</h6>
                     <h6 style="font-size: 28px; color: #fff; font-weight: 600;">You can help secure Obosi by reporting suspicious activities</h6>
                    <div style="display: flex; justify-content: center;">
-                    <button class="btn btn-danger lato-regular w-50 mt-3 mb-3" style="font-weight: 700; justify-content: space-between; display: flex; justify-items: center;">REPORT SUSPICION <span><i class="fas fa-arrow-right"></i></span>
+                    <button class="btn btn-danger lato-regular w-50 mt-3 mb-3" style="font-weight: 700; justify-content: space-between; display: flex; justify-items: center; padding: 10px;">REPORT SUSPICION <span><i class="fas fa-arrow-circle-right"></i></span>
                     </button>
                    </div>
                     <h6 style="font-size: 12px; color: #fff; font-weight: 700;">Obosi Anonymous Reporting System ( OARS)</h6>
@@ -757,25 +780,470 @@
         </div>
 
 
+          
+
     </div>
 
+
+    <!-- Modals -->
+
+    <div class="modal fade" id="peopleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen" >
+          <div class="modal-content" style="background-color: #04042F;">
+              <div class="modal-header">
+                  <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                  <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div >
+                  <div class="row justify-content-between">
+                    <div class="col-md-3 col-12">
+                     <img src="images/obosiLogoText.png" alt=""/>
+                    </div>            
+                 </div>
+                 <div class="row justify-content-center">
+                     <div class="col-12 " style=" border-bottom: 1px solid #9D9CDB; " >
+                         <h1 class="medievalsharp-regular" style="color: #fff; font-size: 40px; font-weight: 500; text-align: center;" >Our People: Our Pride</h1>
+                     </div>
+                 </div>
+                  <div class="row p-2">
+                      <div class="col-md-3 p-3" style="border-right: 1px solid #9D9CDB;">
+                          <p style="color: #fff;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor obcaecati adipisci maxime eaque repellendus reprehenderit accusamus voluptates. Cum ab voluptatum tempore! Error et debitis maxime aliquam, velit voluptate accusantium sint.</p>
+                          <p style="color: #fff;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In ea veritatis ipsam molestias rem saepe velit dolor incidunt facere itaque laudantium sit laboriosam eligendi, inventore ex quaerat temporibus animi praesentium.</p>
+                      </div>
+                      <div class="col-md-9 p-3" >
+                          <div class="row" >
+                              <div class="col-md-4 col-12">
+                                  <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                      <img src="images/personalities.png" alt=""/>
+                                      <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
+                                     
+                                      </figcaption>
+                                  </figure>
+          
+                              </div>
+                              <div class="col-md-4 col-12">
+                                  <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                      <img src="images/personalities.png" alt=""/>
+                                      <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
+                                     
+                                      </figcaption>
+                                  </figure>
+          
+                              </div>
+                              <div class="col-md-4 col-12">
+                                  <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                      <img src="images/personalities.png" alt=""/>
+                                      <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
+                                     
+                                      </figcaption>
+                                  </figure>
+          
+                              </div>
+                              
+                          </div>
+                      </div>      
+                  </div>
+                  <div class="row gap-3 ">
+                    <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                      <p style="font-size: 18px; font-weight: 600; ">OBOSI'S PERSONALITIES</p>
+                    </div>
+                    <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                      <p style="font-size: 18px; font-weight: 600;">OBOSI'S PERSONALITIES</p>
+                    </div>
+                    <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                      <p style="font-size: 18px; font-weight: 600;">OBOSI'S PERSONALITIES</p>
+                    </div>
+                    <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;">
+                      <p style="font-size: 18px; font-weight: 600;">OBOSI'S PERSONALITIES</p>
+                    </div>
+                    <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                      <p style="font-size: 18px; font-weight: 600;">OBOSI'S PERSONALITIES</p>
+                    </div>
+                  </div>
+          
+              </div>
+              </div>
+            
+          </div>
+      </div>
+    </div>
+
+       
+    
+  <div class="modal fade" id="placesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen" >
+        <div class="modal-content" style="background-color: #04042F;">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div >
+                <div class="row justify-content-between">
+                  <div class="col-md-3 col-12">
+                   <img src="images/obosiLogoText.png" alt=""/>
+                  </div>            
+               </div>
+               <div class="row justify-content-center">
+                   <div class="col-12 " style=" border-bottom: 1px solid #9D9CDB; " >
+                       <h1 class="medievalsharp-regular" style="color: #fff; font-size: 40px; font-weight: 500; text-align: center;" >Our Places: Our Heritage</h1>
+                   </div>
+               </div>
+                <div class="row p-2">
+                    <div class="col-md-3 p-3" style="border-right: 1px solid #9D9CDB;">
+                        <p style="color: #fff;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor obcaecati adipisci maxime eaque repellendus reprehenderit accusamus voluptates. Cum ab voluptatum tempore! Error et debitis maxime aliquam, velit voluptate accusantium sint.</p>
+                        <p style="color: #fff;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In ea veritatis ipsam molestias rem saepe velit dolor incidunt facere itaque laudantium sit laboriosam eligendi, inventore ex quaerat temporibus animi praesentium.</p>
+                    </div>
+                    <div class="col-md-9 p-3" >
+                        <div class="row" >
+                            <div class="col-md-4 col-12">
+                                <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                    <img src="images/personalities.png" alt=""/>
+                                    <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
+                                   
+                                    </figcaption>
+                                </figure>
+        
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                    <img src="images/personalities.png" alt=""/>
+                                    <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
+                                   
+                                    </figcaption>
+                                </figure>
+        
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                    <img src="images/personalities.png" alt=""/>
+                                    <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
+                                   
+                                    </figcaption>
+                                </figure>
+        
+                            </div>
+                            
+                        </div>
+                    </div>      
+                </div>
+                <div class="row gap-3 ">
+                  <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                    <p style="font-size: 18px; font-weight: 600;">VILLAGES & SUBURBS</p>
+                  </div>
+                  <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                    <p style="font-size: 18px; font-weight: 600;">SCHOOLS</p>
+                  </div>
+                  <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;">
+                    <p style="font-size: 18px; font-weight: 600;">HOTELS</p>
+                  </div>
+                  <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                    <p style="font-size: 18px; font-weight: 600;">CHURCHES</p>
+                  </div>
+                  <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                    <p style="font-size: 18px; font-weight: 600;">MORE...</p>
+                  </div>
+                </div>
+        
+            </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="cultureModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen" >
+      <div class="modal-content" style="background-color: #04042F;">
+          <div class="modal-header">
+              <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+              <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div >
+              <div class="row justify-content-between">
+                <div class="col-md-3 col-12">
+                 <img src="images/obosiLogoText.png" alt=""/>
+                </div>            
+             </div>
+             <div class="row justify-content-center">
+                 <div class="col-12 " style=" border-bottom: 1px solid #9D9CDB; " >
+                     <h1 class="medievalsharp-regular" style="color: #fff; font-size: 40px; font-weight: 500; text-align: center;" >Our Culture: Our Life</h1>
+                 </div>
+             </div>
+              <div class="row p-2">
+                  <div class="col-md-3 p-3" style="border-right: 1px solid #9D9CDB;">
+                      <p style="color: #fff;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor obcaecati adipisci maxime eaque repellendus reprehenderit accusamus voluptates. Cum ab voluptatum tempore! Error et debitis maxime aliquam, velit voluptate accusantium sint.</p>
+                      <p style="color: #fff;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In ea veritatis ipsam molestias rem saepe velit dolor incidunt facere itaque laudantium sit laboriosam eligendi, inventore ex quaerat temporibus animi praesentium.</p>
+                  </div>
+                  <div class="col-md-9 p-3" >
+                      <div class="row" >
+                          <div class="col-md-4 col-12">
+                              <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                  <img src="images/personalities.png" alt=""/>
+                                  <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
+                                 
+                                  </figcaption>
+                              </figure>
+      
+                          </div>
+                          <div class="col-md-4 col-12">
+                              <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                  <img src="images/personalities.png" alt=""/>
+                                  <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
+                                 
+                                  </figcaption>
+                              </figure>
+      
+                          </div>
+                          <div class="col-md-4 col-12">
+                              <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                  <img src="images/personalities.png" alt=""/>
+                                  <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
+                                 
+                                  </figcaption>
+                              </figure>
+      
+                          </div>
+                          
+                      </div>
+                  </div>      
+              </div>
+              <div class="row gap-3 ">
+                <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                  <p style="font-size: 18px; font-weight: 600;">ITO-OGBO FESTIVAL</p>
+                </div>
+                <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                  <p style="font-size: 18px; font-weight: 600;">NEW YAM FESTIVAL</p>
+                </div>
+                <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;">
+                  <p style="font-size: 18px; font-weight: 600;">FESTIVALS</p>
+                </div>
+                <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                  <p style="font-size: 18px; font-weight: 600;">MASQUERADES</p>
+                </div>
+                <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                  <p style="font-size: 18px; font-weight: 600;">DANCE GROUPS</p>
+                </div>
+              </div>
+      
+          </div>
+          </div>
+          
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="mediaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen" >
+      <div class="modal-content" style="background-color: #04042F;">
+          <div class="modal-header">
+              <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+              <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body container">
+            <div >
+              <div class="row justify-content-between">
+                <div class="col-md-3 col-12">
+                 <img src="images/obosiLogoText.png" alt=""/>
+                </div>            
+             </div>
+             <div class="row justify-content-center">
+                 <div class="col-12 " style=" border-bottom: 1px solid #9D9CDB; " >
+                     <h1 class="medievalsharp-regular" style="color: #fff; font-size: 40px; font-weight: 500; text-align: center;" >Media Center</h1>
+                 </div>
+             </div>
+              <div class="row gap-3 mt-3">
+                  <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                    <p style="font-size: 18px; font-weight: 600;">ITO-OGBO FESTIVAL</p>
+                  </div>
+                  <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                    <p style="font-size: 18px; font-weight: 600;">NEW YAM FESTIVAL</p>
+                  </div>
+                  <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;">
+                    <p style="font-size: 18px; font-weight: 600;">FESTIVALS</p>
+                  </div>
+                  <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                    <p style="font-size: 18px; font-weight: 600;">MASQUERADES</p>
+                  </div>
+                  <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                    <p style="font-size: 18px; font-weight: 600;">DANCE GROUPS</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row gap-3 mt-3">
+                <div class="col-md-2" style="background-color: #FB376B; color: #010119; text-align: center; padding-top: 10px; border-radius: 4px;">
+                  <p style="font-size: 18px; font-weight: 600;">ITO-OGBO FESTIVAL</p>
+                </div>
+                <div class="col-md-2" style="background-color: #FB376B; color: #010119; text-align: center; padding-top: 10px; border-radius: 4px;">
+                  <p style="font-size: 18px; font-weight: 600;">NEW YAM FESTIVAL</p>
+                </div>
+                <div class="col-md-2" style="background-color: #FB376B; color: #010119; text-align: center;  padding-top: 10px; border-radius: 4px;">
+                  <p style="font-size: 18px; font-weight: 600;">FESTIVALS</p>
+                </div>
+                <div class="col-md-2" style="background-color: #FB376B; color: #010119; text-align: center; padding-top: 10px; border-radius: 4px;">
+                  <p style="font-size: 18px; font-weight: 600;">MASQUERADES</p>
+                </div>
+                <div class="col-md-2" style="background-color: #FB376B; color: #010119;text-align: center; padding-top: 10px; border-radius: 4px;">
+                  <p style="font-size: 18px; font-weight: 600;">DANCE GROUPS</p>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+      </div>
+  </div>
+</div>
+
+
+    <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background-color: #04042F;">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body container">
+                    <div>
+                        <div class="row justify-content-between">
+                            <div class="col-md-3 col-12">
+                                <img src="images/obosiLogoText.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12 " style=" border-bottom: 1px solid #9D9CDB; ">
+                                <h1 class="medievalsharp-regular" style="color: #fff; font-size: 40px; font-weight: 500; text-align: center;">Account Manager</h1>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-md-3 p-3" style="border-right: 1px solid #9D9CDB;">
+                                <p style="font-size: 18px; font-weight: 500; color: #FFFFFF;">Enter your email address or phone number to access your dashboard</p>
+                                <label for="" style="font-size: 16px; color: #fff; "> Email Address or Phone Number</label>
+                                <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example" style="background-color: #100E6C; color: #fff;" />
+                                <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Password</label>
+                                <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example" style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;" />
+                                <button class="btn w-100 mt-3 p-2" style="background-color: #FB376B; color: #010119; font-size: 16px; font-weight: 500;">LOGIN</button>
+
+
+                            </div>
+                            <div class="col-md-9 p-3 ">
+                                <p style="font-size: 18px; font-weight: 500; color: #FFFFFF; text-align: center;">Are you an Obosi indigene but not registered? Complete the following fields to get started or <span style="color: #0078D4;">verify your account</span></p>
+                                <div class="row p-3">
+                                    <div class="col-md-6 col-12">
+                                        <div>
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">First Name</label>
+                                            <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example" style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;" />
+                                        </div>
+                                        <div>
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Last Name</label>
+                                            <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example" style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;" />
+                                        </div>
+                                        <div class="">
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Village</label>
+                                            <select class="form-select form-select-lg" aria-label="Default select example" style="background-color: #100E6C; color: #ffffff; ">
+                                                <option selected>Select Village</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="">
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Gender</label>
+                                            <select class="form-select form-select-lg" aria-label="Default select example" style="background-color: #100E6C; color: #ffffff;">
+                                                <option selected>Select Gender</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 col-12 ">
+                                        <div class="">
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Umunna</label>
+                                            <select class="form-select form-select-lg " aria-label="Default select example" style="background-color: #100E6C; color: #ffffff; ">
+                                                <option selected>Select Umunna</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="">
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Ime Nne</label>
+                                            <select class="form-select form-select-lg " aria-label="Default select example" style="background-color: #100E6C; color: #ffffff; ">
+                                                <option selected>Select Ime Nne</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="">
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Age Range</label>
+                                            <select class="form-select form-select-lg" aria-label="Default select example" style="background-color: #100E6C; color: #ffffff; ">
+                                                <option selected>Select Age Range</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+
+
+                                    </div>
+                                    <button class="btn w-100 mt-3 p-2" style="background-color: #FB376B; color: #010119; font-size: 16px; font-weight: 500;">CONTINUE</button>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-bkKydT2eaO/RJFggoDGOOhMWXdXDl5cEW/8hXENIXIjApxXaoKVXFhw+tZbAdVBf" crossorigin="anonymous"></script>
+    <!-- <script>
+     function showModal () {
+      $(document).ready(function(){
+        // Trigger modal open
+        $("#peopleModal").modal('show');
+      });
+     }
+    </script> -->
     <script>
-        function toggleMenu() {
-            var navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('show-menu');
+      function toggleMenu() {
+          var navMenu = document.getElementById('navMenu');
+          navMenu.classList.toggle('show-menu');
 
-            var cancelButton = document.querySelector('.custom-button');
-            cancelButton.style.display = cancelButton.style.display === 'none' ? 'block' : 'none';
-        }
+          var cancelButton = document.querySelector('.custom-button');
+          cancelButton.style.display = cancelButton.style.display === 'none' ? 'block' : 'none';
+      }
 
-        function closeMenu() {
-            var navMenu = document.getElementById('navMenu');
-            navMenu.classList.remove('show-menu');
+      function closeMenu() {
+          var navMenu = document.getElementById('navMenu');
+          navMenu.classList.remove('show-menu');
 
-            var cancelButton = document.querySelector('.custom-button');
-            cancelButton.style.display = 'none';
-        }
-    </script>
+          var cancelButton = document.querySelector('.custom-button');
+          cancelButton.style.display = 'none';
+      }
+      function openModal() {
+
+      // var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+      // myModal.show();
+     }
+
+      // Function to close the modal
+      function closeMenu() {
+          // Bootstrap modal close
+          $('.modal').modal('hide');
+      }
+  </script>
 </body>
 </html>
 

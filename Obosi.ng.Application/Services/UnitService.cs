@@ -59,10 +59,7 @@ namespace Obosi.ng.Application.Services
             throw new Exception("Unit type is empty");
         }
 
-        public async Task<List<ImeNne>> GetAllImeNneByUmunna(int unitId)
-        {
-            return await _dataContext.ImeNne.Where(x => x.UnitId == unitId).ToListAsync();
-        }
+       
 
         public async Task<List<Member_Unit>> GetAllMembersByUnitId(int unitId)
         {

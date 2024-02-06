@@ -20,8 +20,6 @@ namespace Obosi.ng.Domain.Entity
         public string? PassportUrl { get; set; }
         public int GenderId { get; set; }
         public virtual Gender Gender { get; set; }
-        public int? ImeNneId { get; set; }
-        public virtual ImeNne ImeNne { get; set; }
         public DateTime DateCreated { get; set; }
         public bool IsActive { get; set; }
         public bool IsSuspended { get; set; }

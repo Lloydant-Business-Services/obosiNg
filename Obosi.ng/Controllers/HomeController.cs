@@ -85,7 +85,11 @@ namespace Obosi.ng.Controllers
         [HttpPost]
         public async Task<IActionResult> SignUp(HomePageViewModel model)
         {
-            
+            var user = await _user.CreateUser(model.user,model.UnitId);
+            if(user != null)
+            {
+                return RedirectToAction("Index", "DashBoard");
+            }
             return View(model);
         }
         public async Task<IActionResult> SignOut()
@@ -135,7 +139,8 @@ namespace Obosi.ng.Controllers
         }
         public async Task<IActionResult> BlogList()
         {
-            var model = new HomePageViewModel(_unit);
+            var model = new HomePageViewModel(_news, _blog, _calender);
+            await model.BlogInitailize();
             return View(model);
         }
         public async Task<IActionResult> News(string id)
@@ -148,7 +153,8 @@ namespace Obosi.ng.Controllers
         }
         public async Task<IActionResult> NewsList()
         {
-            var model = new HomePageViewModel(_unit);
+            var model = new HomePageViewModel(_news, _blog, _calender);
+            await model.NewsInitializeValue();
             return View(model);
         }
     }

@@ -36,10 +36,18 @@ namespace Obosi.ng.Presentation.ViewModels
             this.blogItem = await blog.GetBlogsById(id);
             this.Blogs = await blog.GetHomePageBlogs();
         }
+        public async Task BlogInitailize()
+        {
+            this.Blogs = await blog.GetBlogs(1);
+        }
         public async Task NewsInitializeValue(int id)
         {
             this.newsItem = await news.GetNewsById(id);
             this.News = await news.GetHomePageNews();
+        }
+        public async Task NewsInitializeValue()
+        {
+            this.News = await news.GetNews(1);
         }
         public async Task GetAllUmunna()
         {

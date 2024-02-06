@@ -40,7 +40,11 @@ namespace Obosi.ng.Data
                 new Unit_Type() { Id = 9, Name = "Masquerade" , IsActive = true },
                 new Unit_Type() { Id = 10, Name = "Monument", IsActive = true },
                 new Unit_Type() { Id = 11, Name = "Dance Group" , IsActive = true },
-                new Unit_Type() { Id = 12, Name = "Resource", IsActive = true });
+                new Unit_Type() { Id = 12, Name = "Resource", IsActive = true },
+                new Unit_Type() { Id = 13, Name = "Ime Nne", IsActive = true },
+                  new Unit_Type() { Id = 14, Name = "Aka", IsActive = true }
+                
+                );
             modelBuilder.Entity<Unit>().HasData(
                new Unit() { Id = 1,Name = "Umuota", About="",DateCreated=DateTime.Now,NeedsConfirmation = false,UnitTypeId = 1,BackGroundImageUrl = ""},
                new Unit() { Id = 2, Name = "Mmakwum", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 1, BackGroundImageUrl = "" },
@@ -117,7 +121,7 @@ namespace Obosi.ng.Data
         public DbSet<Category> Category { get; set;}
         public DbSet<Executive> Executive { get; set;}
         public DbSet<Gender> Gender { get; set;}
-        public DbSet<ImeNne> ImeNne { get; set;}
+        public DbSet<Personality> Personality { get; set;}
         public DbSet<Member_Unit> Member_Unit { get; set;}
         public DbSet<News> News { get; set;}
         public DbSet<News_Comment> News_Comment { get; set;}    
