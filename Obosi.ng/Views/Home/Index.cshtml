@@ -1,4 +1,5 @@
-﻿@model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
+﻿@using Obosi.ng.Presentation.utility;
+@model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
 @{
     ViewData["Title"] = "Home Page";
     Layout = null;
@@ -419,13 +420,13 @@
         </div>
     </div>
     <div class="row p-4 gap-3 justify-content-center">
-          <div class="col-md-3 p-4" style="background-image: url('~/images/monument.png'); background-size: cover; background-position: center; position: relative;  width: 330px; height: 330px;">
+          <div class="col-md-3 p-4" style="background-image: url('images/monument.png'); background-size: cover; background-position: center; position: relative;  width: 330px; height: 330px;">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;">
               <p></p>
               <h3 style="text-align: center; color:#ffffff; font-size: 30px; " class="adlam">MONUMENTS</h3>
             </div>
           </div>
-          <div class="col-md-3" style="background-image: url('~/images/masquerade.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+          <div class="col-md-3" style="background-image: url('images/masquerade.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;">
               <p></p>
               <h3 style="text-align: center; color:#ffffff;" class="adlam">MASQUERADES</h3>
@@ -433,7 +434,7 @@
             </div>
             
           </div>
-          <div class="col-md-3" style="background-image: url('~/images/danceGroupp.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+          <div class="col-md-3" style="background-image: url('images/danceGroupp.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 35%;">
               <h3 style="text-align: center; color:#ffffff;" class="adlam">DANCE GROUPS</h3>
 
@@ -441,7 +442,7 @@
 
     
           </div>
-          <div class="col-md-3" style="background-image: url('~/images/festival.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+          <div class="col-md-3" style="background-image: url('images/festival.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;">
               <p></p>
               <h3 style="text-align: center; color:#ffffff;" class="adlam">FESTIVALS</h3>
@@ -453,7 +454,7 @@
         </div>
         
         <div class="row mt-4 p-4 gap-3 justify-content-center">
-          <div class="col-md-3" style="background-image: url('~/images/personalities.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+          <div class="col-md-3" style="background-image: url('images/personalities.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%; justify-content: center; align-items: center;" >
               <p></p>
               <h3 style="text-align: center; color:#ffffff;" class="adlam">PERSONALITIES</h3>
@@ -461,7 +462,7 @@
             </div>
 
           </div>
-          <div class="col-md-3" style="background-image: url('~/images/villages.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+          <div class="col-md-3" style="background-image: url('images/villages.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%; padding-left: 30%;">
               <p></p>
               <h3 style="align-items: center; justify-content: center; color:#ffffff;" class="adlam">VILLAGES</h3>
@@ -469,7 +470,7 @@
             </div>
 
           </div>
-          <div class="col-md-3" style="background-image: url('~/images/landmark.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+          <div class="col-md-3" style="background-image: url('images/landmark.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
             <div style="position: absolute; top: 0; left: 10; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;;">
               <p></p>
               <h3 style="text-align: center; color:#ffffff;" class="adlam">LANDMARKS</h3>
@@ -477,7 +478,7 @@
             </div>
 
           </div>
-          <div class="col-md-3" style="background-image: url('~/images/services.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+          <div class="col-md-3" style="background-image: url('images/services.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding: 30%;">
               <h3 style="text-align: center; color:#ffffff;" class="adlam">SERVICES & RESOURCES</h3>
 
@@ -561,45 +562,7 @@
                 </div>
                 }}
         
-                <!-- Second Box -->
-                <div class=" col-md-4 col-sm-12 mb-4" style=" border: 15px solid #AAB2C6; box-shadow: inset 0 2px 25px #A7A7A7; padding: 10px; margin-right: 15px;">
-                    <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; box-shadow: inset 0 2px 25px #A7A7A7; padding: 10px;">
-                        <div class="col-md-3" style="line-height: normal; color: #CFB174; margin: 0; padding: 10px;">
-                            <h6 style="font-weight: 700; font-size: 40px; margin: 0;">DEC</h6>
-                            <h6 style="font-weight: 700; font-size: 65px; margin: 0;">10</h6>
-                            <h6 style="font-weight: 500; font-size: 28px; margin: 0;">2023</h6>
-                        </div>
-                        <div class="col-md-9 " style="padding: 10px;">
-                            <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;">End of Year Party, ODU Abuja</h6>
-                            <div class="py-5"></div>
-                            <div class=""  >
-                                <h6 style="color: #0078D4; margin: 0; font-size: 14px;" >LEARN MORE +</h6>
-                                <!-- <hr style="color: #CFB174; border-width: 2px;"/> -->
-                                <div style="border-bottom: 3px solid #CFB174; padding: 5px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Third Box -->
-                <div class=" col-md-4 col-sm-12 mb-4" style=" border: 15px solid #AAB2C6; box-shadow: inset 0 2px 25px #A7A7A7; padding: 10px;">
-                    <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; box-shadow: inset 0 2px 25px #A7A7A7; padding: 10px;">
-                        <div class="col-md-3" style="line-height: normal; color: #CFB174; margin: 0; padding: 10px;">
-                            <h6 style="font-weight: 700; font-size: 40px; margin: 0;">DEC</h6>
-                            <h6 style="font-weight: 700; font-size: 65px; margin: 0;">10</h6>
-                            <h6 style="font-weight: 500; font-size: 28px; margin: 0;">2023</h6>
-                        </div>
-                        <div class="col-md-9 " style="padding: 10px;">
-                            <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;">End of Year Party, ODU Abuja</h6>
-                            <div class="py-5"></div>
-                            <div class=""  >
-                                <h6 style="color: #0078D4; margin: 0; font-size: 14px;" >LEARN MORE +</h6>
-                                <!-- <hr style="color: #CFB174; border-width: 2px;"/> -->
-                                <div style="border-bottom: 3px solid #CFB174; padding: 5px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           </div>
         
           
         </div>
@@ -644,7 +607,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
                 @if (Model.Blogs != null)
                 { foreach (var blogs in Model.Blogs)
                     {
-                <div class="row" style="flex-direction: column;">
+                        <div class="row" style="flex-direction: column;" onclick="window.location.href = 'Home/Blog?id=@StringEncryption.Encrypt(@blogs.Id.ToString())';">
                     <div class="container " style="background-color: #D4D8E2; width: 100%; margin: auto; padding: 20px; margin-bottom: 20px;">
                        <div class="container" style="display: flex; justify-content: center;">
                         <img src="~/@blogs.BackgroundImageUrl" class="img-fluid " style="height: 300px; width: 300px;"/>
@@ -749,29 +712,29 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
         <div class="row" >
             <div class="p-3" style="display: flex; flex-direction: row; justify-content: center; gap: 10px;">
                <div style="display: flex;">
-                <img src="images/facebook.png" style="width: 16px; height: 16px; margin-top: 3px;"/>
+                    <img src="~/images/facebook.png" style="width: 16px; height: 16px; margin-top: 3px;" />
                 <p style="color: #3B5998; font-weight: 500;">Facebook</p>
                </div>
                <div style="display: flex;">
-                <img src="images/twitter.png" style="width: 16px; height: 16px; margin-top: 3px;"/>
+                <img src="~/images/twitter.png" style="width: 16px; height: 16px; margin-top: 3px;"/>
                 <p style="color: #3B5998;  font-weight: 500;">Twitter</p>
                </div>
                <div style="display: flex;">
-                <img src="images/linkedin.png" style="width: 16px; height: 16px; margin-top: 3px;"/>
+                    <img src="~/images/linkedin.png" style="width: 16px; height: 16px; margin-top: 3px;" />
                 <p style="color: #3B5998;  font-weight: 500;">LinkedIn</p>
                </div>
                <div style="display: flex;">
-                <img src="images/gmail.png" style="width: 16px; height: 12px; margin-top: 5px;"/>
+                    <img src="~/images/gmail.png" style="width: 16px; height: 12px; margin-top: 5px;" />
                 <p style="color: #3B5998;  font-weight: 500;" >info@obosi.ng</p>
                </div>
                <div style="display: flex;">
-                <img src="images/phone.png" style="width: 16px; height: 16px; margin-top: 5px; "/>
+                    <img src="~/images/phone.png" style="width: 16px; height: 16px; margin-top: 5px; " />
                 <p style="color: #3B5998;  font-weight: 500;" >+234 80 3731 7361</p>
                </div>
             </div>
         </div>
         <div style="display: flex; flex-direction: column; justify-content: center;" class="mt-4 mb-4">
-            <img src="images/obosiIcon.png" class="img-fluid" style="width: 200px; height: 190px; align-self: center;"/>
+            <img src="~/images/obosiIcon.png" class="img-fluid" style="width: 200px; height: 190px; align-self: center;" />
         </div>
         <div  style="display: flex; flex-direction: column; text-align: center;" class="mt-3">
             <h6 style="color: #916220; font-size: 13px; font-weight: 700;">Media & Orientation Committee, Obosi Development Union</h6>
@@ -798,7 +761,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
                 <div >
                   <div class="row justify-content-between">
                     <div class="col-md-3 col-12">
-                     <img src="images/obosiLogoText.png" alt=""/>
+                                <img src="~/images/obosiLogoText.png" alt="" />
                     </div>            
                  </div>
                  <div class="row justify-content-center">
@@ -815,7 +778,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
                           <div class="row" >
                               <div class="col-md-4 col-12">
                                   <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                      <img src="images/personalities.png" alt=""/>
+                                            <img src="~/images/personalities.png" alt="" />
                                       <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
                                      
                                       </figcaption>
@@ -824,7 +787,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
                               </div>
                               <div class="col-md-4 col-12">
                                   <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                      <img src="images/personalities.png" alt=""/>
+                                            <img src="~/images/personalities.png" alt="" />
                                       <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
                                      
                                       </figcaption>
@@ -833,7 +796,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
                               </div>
                               <div class="col-md-4 col-12">
                                   <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                      <img src="images/personalities.png" alt=""/>
+                                      <img src="~/images/personalities.png" alt=""/>
                                       <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
                                      
                                       </figcaption>
@@ -882,7 +845,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
               <div >
                 <div class="row justify-content-between">
                   <div class="col-md-3 col-12">
-                   <img src="images/obosiLogoText.png" alt=""/>
+                                <img src="~/images/obosiLogoText.png" alt="" />
                   </div>            
                </div>
                <div class="row justify-content-center">
@@ -899,7 +862,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
                         <div class="row" >
                             <div class="col-md-4 col-12">
                                 <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                    <img src="images/personalities.png" alt=""/>
+                                            <img src="~/images/personalities.png" alt="" />
                                     <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
                                    
                                     </figcaption>
@@ -908,7 +871,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
                             </div>
                             <div class="col-md-4 col-12">
                                 <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                    <img src="images/personalities.png" alt=""/>
+                                            <img src="~/images/personalities.png" alt="" />
                                     <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
                                    
                                     </figcaption>
@@ -917,7 +880,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
                             </div>
                             <div class="col-md-4 col-12">
                                 <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                    <img src="images/personalities.png" alt=""/>
+                                            <img src="~/images/personalities.png" alt="" />
                                     <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
                                    
                                     </figcaption>
@@ -965,7 +928,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
             <div >
               <div class="row justify-content-between">
                 <div class="col-md-3 col-12">
-                 <img src="images/obosiLogoText.png" alt=""/>
+                                <img src="~/images/obosiLogoText.png" alt="" />
                 </div>            
              </div>
              <div class="row justify-content-center">
@@ -982,7 +945,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
                       <div class="row" >
                           <div class="col-md-4 col-12">
                               <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                  <img src="images/personalities.png" alt=""/>
+                                            <img src="~/images/personalities.png" alt="" />
                                   <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
                                  
                                   </figcaption>
@@ -991,7 +954,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
                           </div>
                           <div class="col-md-4 col-12">
                               <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                  <img src="images/personalities.png" alt=""/>
+                                  <img src="~/images/personalities.png" alt=""/>
                                   <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;"><p class="text-center">Chief Emeka Anyaoku  <br/> <span>Third Commonwealth Secretary General</span></p>   
                                  
                                   </figcaption>
@@ -1047,7 +1010,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
             <div >
               <div class="row justify-content-between">
                 <div class="col-md-3 col-12">
-                 <img src="images/obosiLogoText.png" alt=""/>
+                                <img src="~/images/obosiLogoText.png" alt="" />
                 </div>            
              </div>
              <div class="row justify-content-center">
@@ -1109,7 +1072,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
                     <div>
                         <div class="row justify-content-between">
                             <div class="col-md-3 col-12">
-                                <img src="images/obosiLogoText.png" alt="" />
+                                <img src="~/images/obosiLogoText.png" alt="" />
                             </div>
                         </div>
                         <div class="row justify-content-center">
