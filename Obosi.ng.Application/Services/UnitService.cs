@@ -106,6 +106,11 @@ namespace Obosi.ng.Application.Services
             return await _dataContext.Unit.Where(x => x.Id == unitId).FirstOrDefaultAsync();
         }
 
+        public async Task<Unit_Type> GetUnitType(int unittypeId)
+        {
+            return await _dataContext.Unit_Type.Where(x=>x.Id == unittypeId).FirstOrDefaultAsync();
+        }
+
         public async Task<Unit?> JoinUnit(int unitId, long UserId)
         {
             var unit = await _dataContext.Unit.Where(x => x.Id == unitId).FirstOrDefaultAsync();

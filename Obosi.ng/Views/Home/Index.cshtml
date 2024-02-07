@@ -419,14 +419,16 @@
             </button>
         </div>
     </div>
-    <div class="row p-4 gap-3 justify-content-center">
-          <div class="col-md-3 p-4" style="background-image: url('images/monument.png'); background-size: cover; background-position: center; position: relative;  width: 330px; height: 330px;">
+    <div class="row mt-4 p-4 gap-3 justify-content-center">
+          <div class="col-md-3 p-4" style="background-image: url('images/monument.png'); background-size: cover; background-position: center; position: relative;  width: 330px; height: 330px;"
+             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt("10")';">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;">
               <p></p>
               <h3 style="text-align: center; color:#ffffff; font-size: 30px; " class="adlam">MONUMENTS</h3>
             </div>
           </div>
-          <div class="col-md-3" style="background-image: url('images/masquerade.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+          <div class="col-md-3" style="background-image: url('images/masquerade.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;"
+             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt("9")';">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;">
               <p></p>
               <h3 style="text-align: center; color:#ffffff;" class="adlam">MASQUERADES</h3>
@@ -442,7 +444,8 @@
 
     
           </div>
-          <div class="col-md-3" style="background-image: url('images/festival.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+          <div class="col-md-3" style="background-image: url('images/festival.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;"
+             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt("")';">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;">
               <p></p>
               <h3 style="text-align: center; color:#ffffff;" class="adlam">FESTIVALS</h3>
@@ -462,7 +465,8 @@
             </div>
 
           </div>
-          <div class="col-md-3" style="background-image: url('images/villages.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+          <div class="col-md-3" style="background-image: url('images/villages.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;"
+             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt("1")';">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%; padding-left: 30%;">
               <p></p>
               <h3 style="align-items: center; justify-content: center; color:#ffffff;" class="adlam">VILLAGES</h3>
@@ -478,7 +482,8 @@
             </div>
 
           </div>
-          <div class="col-md-3" style="background-image: url('images/services.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;">
+          <div class="col-md-3" style="background-image: url('images/services.png'); background-size: cover; background-position: center; position: relative; width: 330px; height: 330px;"
+            onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt("12")';">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding: 30%;">
               <h3 style="text-align: center; color:#ffffff;" class="adlam">SERVICES & RESOURCES</h3>
 
@@ -581,7 +586,7 @@
                 {
                     foreach (var news in Model.News)
                     {
-                <div class="row" style="flex-direction: column;">
+                        <div class="row" style="flex-direction: column;" onclick="window.location.href = 'Home/News?id=@StringEncryption.Encrypt(@news.Id.ToString())';">
                     <div class="container single-news" style="background-color: #fff; width: 100%; margin: auto; padding: 20px; margin-bottom: 20px;">
                        <div class="container" style="display: flex; justify-content: center; padding: 20px;">
                         <img src="~/@news.BackgroundImageUrl" class="img-fluid " style="height: 300px; width: 300px;"/>
@@ -1058,7 +1063,7 @@ display: flex; ">MORE NEWS <span style="margin-left: 10px;"><i class="fas fa-arr
          
       </div>
   </div>
-</div>
+
 
 
     <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

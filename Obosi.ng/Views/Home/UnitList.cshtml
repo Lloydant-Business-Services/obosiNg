@@ -1,4 +1,25 @@
-﻿@model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
+﻿
+@model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
 @{
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
+
+<div class="heroDiv py-5" style="text-align: center;">
+    <p style="font-size: 48px; font-weight: 700; color: #fff;">@Model.Unit_Type.Name </p>
+  
+</div>
+<div class="row p-4 gap-3 justify-content-center">
+    @if (Model.AllUnits != null)
+    {foreach (var item in Model.AllUnits)
+        {
+            <div class="col-md-3 p-4" style="background-image: url('@item.BackGroundImageUrl'); background-size: cover; background-position: center;
+            position: relative;  width: 330px; height: 330px;" onclick="window.location.href = '/Home/Unit?id=@StringEncryption.Encrypt(@item.Id.ToString())';">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;">
+                    <p></p>
+                    <h3 style="text-align: center; color:#ffffff; font-size: 30px; " class="adlam">@item.Name</h3>
+                </div>
+            </div>
+        }
+        }
+   </div>
+

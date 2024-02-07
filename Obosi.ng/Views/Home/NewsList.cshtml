@@ -30,10 +30,10 @@
             {
 
                 <div class="rounded col-md-3 col-12 " onclick="window.location.href = '/Home/News?id=@StringEncryption.Encrypt(item.Id.ToString())';">
-                    <img src="~/@item.BackgroundImageUrl" alt="" class="img-fluid" style="height: 300px; width: 300px;">
+                    <img src="~/@item.BackgroundImageUrl" alt="" class="img-fluid w-100 h-50" style="height: 300px; width: 300px;">
                     <div style="background-color: #fff;  padding: 1vmin;" class="shadow-sm">
                         <p class="text-left " style="font-size: 24px; font-weight: 700;">@item.Title</p>
-                        <p class="text-left " style="font-size: 16px; font-weight: 400;">@Html.Raw(item.Body)</p>
+                        <p class="text-left " style="font-size: 16px; font-weight: 400;"></p>
                         <div class="row">
                             <div class="col-sm-3">
                                 <img src="~/@item.User.PassportUrl" alt="" class="img-fluid col-md-3" style="margin: auto; width: 48px; height: 48px;border-radius: 50%; ">

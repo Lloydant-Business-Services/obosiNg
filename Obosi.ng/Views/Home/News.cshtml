@@ -1,22 +1,31 @@
-﻿@model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
+﻿@using Obosi.ng.Presentation.utility;
+@model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
 @{
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
-      <div class="heroDiv py-5" style="text-align: center;">
-        <p style="font-size: 48px; font-weight: 700; color: #fff;">@Model.newsItem.Title</p>
-        <div class="" style=" ">
-            <img src="" alt="" class="img-fluid " style="margin: auto; width: 48px; height: 48px;border-radius: 50%; display: flex; justify-self: center;">
-        </div>
-    <p style="font-size: 14px; font-weight: 600; color: #fff;">@Model.newsItem?.User?.LastName @Model?.newsItem?.User?.FirstName </p>
-        <p style="font-size: 14px; font-weight: 400; color: #fff;">11 Jan 2024 <span>&#8226; 5 min read</span></p>
-      </div>
-      <div style="" class="container py-5">
-       <div style="display: flex; justify-content: space-between;">
+<style>
+    p.responsive_font_size {
+        font-size: calc(16px + 0.2vw); /* Set a base font size with responsiveness */
+    }
+</style>
+
+
+
+<div class="heroDiv py-5" style="text-align: center;">
+    <p style="font-size: 48px; font-weight: 700; color: #fff;">@Model.newsItem.Title</p>
+    <div class="" style=" ">
+        <img src="~/@Model.newsItem.User.PassportUrl" alt="" class="img-fluid " style="margin: auto; width: 48px; height: 48px;border-radius: 50%; display: flex; justify-self: center;">
+    </div>
+    <p style="font-size: 14px; font-weight: 600; color: #fff;">@Model.newsItem?.User?.LastName @Model?.newsItem?.User?.FirstName</p>
+    <p style="font-size: 14px; font-weight: 400; color: #fff;">@Model.newsItem.DateApproved.Value.ToShortDateString() <span>&#8226; 5 min read</span></p>
+</div>
+<div style="" class="container py-5">
+    <div style="display: flex; justify-content: space-between;">
         <nav>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item" style="font-family: 16px; font-weight: 400;"><a href="index.html">News</a></li>
-                <li class="breadcrumb-item active" style="color: #0078D4;">@Model.newsItem.Title</li>
-    
+                <li class="breadcrumb-item" style="font-family: 16px; font-weight: 400;"><a href="index.html">News</a></li>
+                <li class="breadcrumb-item active" style="color: #0078D4;"> @Model.newsItem.Title</li>
+
             </ol>
         </nav>
         <div style="display: flex; flex-direction: row; gap: 5px;">
@@ -26,58 +35,62 @@
             <i class="fab fa-facebook-f"></i>
         </div>
 
-       </div>
-       <div class="col-sm-12 mt-4">
+    </div>
+    <div class="col-sm-12 mt-4">
         <p class="mt-4 text-left responsive_font_size" style="color: #FB2B5F; font-size: 40px; font-weight: 700;">Introduction</p>
-          <div class="mt-4">
+        @Html.Raw( @Model.newsItem.Body)
+
+        <div class="mt-4">
             <div>
-            <img src="~/@Model.newsItem.BackgroundImageUrl" alt="" class="img-fluid col-sm-12 w-100 h-50"/>
+                <img src="~/@Model.newsItem.BackgroundImageUrl" alt="" class="img-fluid col-sm-12 w-100"
+                     style="margin: auto; width: 400px;
+height: 400px; " />
             </div>
             <div style="background-color: #fff ; padding: 3vmin;" class="shadow-sm">
                 <p class="text-left " style="font-size: 3vmin;">Image Caption</p>
             </div>
-           </div>
-       </div>
-       <pre class="text-left responsive_font_size mt-4" style="font-size: 20px; font-weight: 700; ">@Html.Raw(Model.newsItem.Body)</pre>
-
-       <p class="text-left responsive_font_size mt-4" style="font-size: 32px; font-weight:700; ">Summary</p>
-       <pre class="text-left responsive_font_size mt-4" style="font-size: 16px; font-weight:400; "> @Html.Raw(Model.newsItem.Summary)</pre>
-      <div class="mt-5 mb-5">
-        <p class="text-center responsive_font_size mt-4" style="font-size: 48px; font-weight:700; tex">Related posts</p>
-       
-       </div>
-       <div class="row mt-5 justify-content-center gap-3">
-           @foreach(var item in Model.News){
-        <div class="rounded col-md-3 col-12 border border-black">
-            <div style="background-color: #fff;  padding: 1vmin;" class="shadow-sm">
-                <div>
-                    <img src="~/@item.BackgroundImageUrl" alt="" class="img-fluid w-100 h-50">
-                </div>
-                <p class="text-left " style="font-size: 24px; font-weight: 700;">@item.Title</p>
-                    <p class="text-left " style="font-size: 16px; font-weight: 400;">...</p>
-                <div class="row">
-                   <div class="col-sm-3">
-                    <img src="@item?.User?.PassportUrl" alt="" class="img-fluid col-md-3" style="margin: auto; width: 48px; height: 48px;border-radius: 50%; ">
-                   </div>
-                   <div style="flex-direction: row;"class="col-sm-6">
-                            <p class="text-left " style="font-size: 14px; font-weight: 600;">@item?.User?.LastName @item?.User?.FirstName</p>
-                    <p class="text-left " style="font-size: 14px; font-weight: 400;">@item.DateApproved.Value.ToShortDateString() <span>&#8226; 5 min read</span></p>
-                   </div>
-                  
-    
-                </div>
-            </div>
-           
         </div>
-       
-}
-       </div>
-       <div class="d-flex justify-content-center mt-5">
-        <button class="btn border border-black bg-white text-center">View all</button>
-       </div>
-      
+    </div>
 
-      </div>
-    
-      
-    
+    <p class="text-left responsive_font_size mt-4" style="font-size: 32px; font-weight:700; ">Conclusion</p>
+    @Html.Raw( @Model.newsItem.Summary)
+    <div class="mt-5 mb-5">
+        <p class="text-center responsive_font_size mt-4" style="font-size: 48px; font-weight:700; tex">Related posts</p>
+        <p class="text-center responsive_font_size mt-4" style="font-size: 16px; font-weight:400; ">You might also like these. </p>
+    </div>
+    <div class="row mt-5 justify-content-center gap-3">
+        @foreach (var item in Model.Blogs)
+        {
+            <div class="rounded col-md-3 col-12 border border-black" onclick="window.location.href = 'Home/News?id=@StringEncryption.Encrypt(@item.Id.ToString())';">
+                <div style="background-color: #fff;  padding: 1vmin;" class="shadow-sm">
+                    <div>
+                        <img src="~/@item.BackgroundImageUrl" alt="" class="img-fluid " style="height: 300px; width: 300px;">
+                    </div>
+                    <p class="text-left " style="font-size: 24px; font-weight: 700;">@item.Title</p>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img src="~/@item.User.PassportUrl" alt="" class="img-fluid col-md-3" style="margin: auto; width: 48px;
+height: 48px;border-radius: 50%; ">
+                        </div>
+                        <div style="flex-direction: row;" class="col-sm-6">
+                            <p class="text-left " style="font-size: 14px; font-weight: 600;">@item.User.LastName @item.User.FirstName</p>
+                            <p class="text-left " style="font-size: 14px; font-weight: 400;">@item.DateApproved.Value.ToShortDateString() <span>&#8226; 5 min read</span></p>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        }
+
+
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+        <a class="btn border border-black bg-white text-center" href="~/Home/NewsList">View all</a>
+    </div>
+
+
+</div>
+

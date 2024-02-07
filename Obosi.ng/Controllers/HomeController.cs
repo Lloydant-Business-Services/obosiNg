@@ -18,8 +18,11 @@ namespace Obosi.ng.Controllers
         private readonly ICalender _calender;
         private readonly IUnit _unit;
         private readonly IUser _user;
+        private readonly IMedia _media;
+        private readonly IExecutive _executive;
 
-        public HomeController(ILogger<HomeController> logger, INews news, IBlog blog, ICalender calender, IUnit unit, IUser user)
+        public HomeController(ILogger<HomeController> logger, INews news, IBlog blog, ICalender calender, IUnit unit, 
+            IUser user, IMedia media, IExecutive executive)
         {
             _logger = logger;
             _news = news;
@@ -27,6 +30,8 @@ namespace Obosi.ng.Controllers
             _calender = calender;
             _unit = unit;
             _user = user;
+            _media = media;
+            _executive = executive;
         }
 
         public async Task<IActionResult> Index()
@@ -119,14 +124,18 @@ namespace Obosi.ng.Controllers
             return View(model);
         }
        
-        public async Task<IActionResult> Unit()
+        public async Task<IActionResult> Unit(string id)
         {
-            var model = new HomePageViewModel(_unit);
+            int unitId = Convert.ToInt16(StringEncryption.Decrypt(id));
+            var model = new HomePageViewModel(_unit,_calender,_media,_executive);
+            await model.GetUnit(unitId);
             return View(model);
         }
-        public async Task<IActionResult> UnitList()
+        public async Task<IActionResult> UnitList(string id)
         {
+            int unitId = Convert.ToInt16(StringEncryption.Decrypt(id));
             var model = new HomePageViewModel(_unit);
+            await model.GetUnits(unitId);
             return View(model);
         }
         public async Task<IActionResult> Blog(string id)

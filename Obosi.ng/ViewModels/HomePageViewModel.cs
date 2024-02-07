@@ -10,6 +10,9 @@ namespace Obosi.ng.Presentation.ViewModels
         private readonly IBlog blog;
         private readonly ICalender calender;
         private readonly IUnit unit;
+        private readonly IMedia media;
+        private readonly IExecutive executive;
+        
         public HomePageViewModel(INews _news, IBlog _blog, ICalender _calender)
         {
             news = _news;
@@ -19,6 +22,13 @@ namespace Obosi.ng.Presentation.ViewModels
         public HomePageViewModel(IUnit _unit)
         {
             unit = _unit;
+        }
+        public HomePageViewModel(IUnit _unit, ICalender _calender, IMedia _media, IExecutive _executive)
+        {
+            unit = _unit;
+            calender = _calender;
+            media = _media;
+            executive = _executive;
         }
         public HomePageViewModel()
         {
@@ -53,6 +63,19 @@ namespace Obosi.ng.Presentation.ViewModels
         {
             this.GetAllUmunnaList = await unit.GetAllUmunna();
         }
+        public async Task GetUnits(int id)
+        {
+            this.AllUnits = await unit.GetAllUnitsByUnitType(id);  
+            this.Unit_Type = await unit.GetUnitType(id);
+        }
+        public async Task GetUnit(int id)
+        {
+            this.unitItem = await unit.GetUnit(id);
+            this.Picture_Assets = await media.GetPicturesByUnit(id);
+            this.Video_Assets = await media.GetVideoByUnit(id);
+            this.Executives = await executive.GetExecutivesByUnit(id); 
+            this.CalenderAssets = await calender.GetAssetsByUnitId(id);
+        }
         public List<Unit> AllUnits { get; set; }
         public List<News> News { get; set; } = new List<News>();
         public List<Blogs> Blogs { get; set; } = new List<Blogs>();
@@ -65,6 +88,13 @@ namespace Obosi.ng.Presentation.ViewModels
         public bool RememberPassword { get; set; }
         public Blogs blogItem { get; set; }
         public News newsItem { get; set; }
+        public Unit_Type Unit_Type { get; set; }
+        public Unit unitItem { get; set; }  
+        public List<Picture_Assets> Picture_Assets { get; set; }
+        public List<Video_Assets> Video_Assets { get; set; }
+        public List<Member_Unit> Member_Units { get; set; }  
+        public List<Executive> Executives { get; set; }
+        public List<Calender_Assets> Calender_Assets { get; set; }          
 
     }
 }
