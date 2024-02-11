@@ -13,6 +13,8 @@
         Masquerade = 9,
         Monument = 10,
         Dance_Group = 11,
-        Resource= 12
+        Resource= 12,
+        Imenne = 13,
+        Aka = 14,
     }
 }

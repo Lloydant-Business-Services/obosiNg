@@ -42,8 +42,7 @@ namespace Obosi.ng.Data
                 new Unit_Type() { Id = 11, Name = "Dance Group" , IsActive = true },
                 new Unit_Type() { Id = 12, Name = "Resource", IsActive = true },
                 new Unit_Type() { Id = 13, Name = "Ime Nne", IsActive = true },
-                  new Unit_Type() { Id = 14, Name = "Aka", IsActive = true }
-                
+                  new Unit_Type() { Id = 14, Name = "Aka", IsActive = true }               
                 );
             modelBuilder.Entity<Unit>().HasData(
                new Unit() { Id = 1,Name = "Umuota", About="",DateCreated=DateTime.Now,NeedsConfirmation = false,UnitTypeId = 1,BackGroundImageUrl = ""},
@@ -75,7 +74,10 @@ namespace Obosi.ng.Data
                new Unit() { Id = 27, Name = "ODU South Africa", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
                new Unit() { Id = 28, Name = "ODU Brazil", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
                new Unit() { Id = 29, Name = "ODU Kuwait", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" }
-                );
+                
+               
+               
+               );
            
      
       

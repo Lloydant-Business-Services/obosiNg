@@ -57,7 +57,7 @@ namespace Obosi.ng.Application.Services
 
      
 
-        public async Task<Users> CreateUser(Users user, int unitId)
+        public async Task<Users> CreateUser(Users user, int akaId, int umunnaId, int villageId, int imenneId)
         {
           if(user != null)
             {
@@ -68,14 +68,41 @@ namespace Obosi.ng.Application.Services
                 {
                     var createdUser = await _dataContext.Users.AddAsync(user);
                     await _dataContext.SaveChangesAsync();
-                    Member_Unit member = new()
+
+                    Member_Unit Aka = new()
                     {
                         UsersId = createdUser.Entity.Id,
-                        UnitId = unitId,
+                        UnitId = akaId,
+                        IsActive = true,
+                        DateJoined = DateTime.Now
+                    };
+                    await _dataContext.Member_Unit.AddAsync(Aka);
+                    Member_Unit Umunna = new()
+                    {
+                        UsersId = createdUser.Entity.Id,
+                        UnitId = umunnaId,
                         IsActive = false,
                         DateJoined = DateTime.Now
                     };
-                    await _dataContext.Member_Unit.AddAsync(member);
+                    await _dataContext.Member_Unit.AddAsync(Umunna);
+                    Member_Unit Imenne = new()
+                    {
+                        UsersId = createdUser.Entity.Id,
+                        UnitId = imenneId,
+                        IsActive = true,
+                        DateJoined = DateTime.Now
+                    };
+                    await _dataContext.Member_Unit.AddAsync(Imenne);
+                    Member_Unit Village = new()
+                    {
+                        UsersId = createdUser.Entity.Id,
+                        UnitId = villageId,
+                        IsActive = true,
+                        DateJoined = DateTime.Now
+                    };
+                    await _dataContext.Member_Unit.AddAsync(Village);
+
+             
                     await _dataContext.SaveChangesAsync();
                     return createdUser.Entity;
                 }

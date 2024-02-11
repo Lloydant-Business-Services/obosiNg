@@ -1,4 +1,5 @@
 ﻿
+using Obosi.ng.Application.Enums;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Domain.Entity;
 
@@ -18,6 +19,13 @@ namespace Obosi.ng.Presentation.ViewModels
             news = _news;
             blog = _blog;  
             calender = _calender;
+        }
+        public HomePageViewModel(INews _news, IBlog _blog, ICalender _calender, IUnit _unit)
+        {
+            news = _news;
+            blog = _blog;
+            calender = _calender;
+            unit = _unit;
         }
         public HomePageViewModel(IUnit _unit)
         {
@@ -40,6 +48,10 @@ namespace Obosi.ng.Presentation.ViewModels
             this.News = await news.GetHomePageNews();
             this.Blogs = await blog.GetHomePageBlogs();
             this.CalenderAssets = await calender.GetHomePageAssets();
+            this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
+            this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
+            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Imenne);
+            this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
         }
         public async Task BlogInitailize(int id)
         {
@@ -94,7 +106,16 @@ namespace Obosi.ng.Presentation.ViewModels
         public List<Video_Assets> Video_Assets { get; set; }
         public List<Member_Unit> Member_Units { get; set; }  
         public List<Executive> Executives { get; set; }
-        public List<Calender_Assets> Calender_Assets { get; set; }          
+        public List<Calender_Assets> Calender_Assets { get; set; }        
+        
+        public List<Unit> AllAka { get; set; }
+        public List<Unit> AllUmunna { get; set; }
+        public List<Unit> AllImene { get; set; }
+        public List<Unit> AllVillages { get; set; }
 
+        public int  AkaId { get; set; }
+        public int UmunnaId { get; set; }
+        public int ImeneId { get; set; }
+        public int VillageId { get; set; }
     }
 }

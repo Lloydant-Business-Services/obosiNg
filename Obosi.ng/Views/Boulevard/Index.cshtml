@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Obosi.ng.Presentation.ViewModels.BoulevardViewModel;
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -383,16 +384,18 @@
     </div>
     <div style="background-color: #D4D8E2;" class="container-fluid">
         <div class="container p-5" style="background-color: #fff; border-radius: 10px; position: relative; top: -100px;">
-            <div class="container p-5 row" style="background-color: #B08D57;  border-radius: 10px; ">
-                <div class="col-lg-6 col-12">
+            
+                    <div class="container p-5 row" style="background-color: #B08D57;  border-radius: 10px; ">
+                        <div class="col-lg-6 col-12">
                     <p class="inter-font" style="font-size: 32px; font-weight: 700; color: #FFDB96;">Donations</p>
 
                 </div>
                <div class="col-lg-6 col-12">
-                <p class="inter-font" style="font-size: 32px; font-weight: 700; color: #FFFFFF">₦2,005,345 <span style="font-size: 18px; font-weight: 500; color: #FFDA90">donated so far</span></p>
+                    <p class="inter-font" style="font-size: 32px; font-weight: 700; color: #FFFFFF">₦@Model.builders_Boulevards.Sum(x=>x.Amount).ToString("N0") <span style="font-size: 18px; font-weight: 500; color: #FFDA90">donated so far</span></p>
                </div>
 
             </div>
+           
             <div class=" mt-3 row">
                 <div class="col-lg-6 col-6">
                     <p class="inter-font" style="font-size: 24px; font-weight: 600; color: #000000;">Donor</p>
@@ -405,52 +408,42 @@
                 </div>
 
             </div>
+            @if (Model.builders_Boulevards != null)
+            {
+                foreach (var item in Model.builders_Boulevards)
+                {
             <hr  style="color: #000000;"/>
             <div class="row justify-content-between">
                 <div class="col-lg-6 col-12">
-                    <p class="inter-font" style="font-size: 16px; font-weight: 500; color: #222121;">Dr Eddy Nwokedi Onugha (Akaekpuchionwa na Ugamuma)</p>
+                    <p class="inter-font" style="font-size: 16px; font-weight: 500; color: #222121;">@item.FullName</p>
                     <p class="inter-font" style="font-size: 14px; font-weight: 500; color: #916220;">Description</p>
-                    <p class="inter-font" style="font-size: 14px; font-weight: 400; color: #000000AD">of Ugamuma Village donated the sum of ₦100,000.00 as well as prized contributions in the form of materials and suggestions towards the building of Obosi.ng.</p>
+                    <p class="inter-font" style="font-size: 14px; font-weight: 400; color: #000000AD">@item.Description</p>
 
                 </div>
                 <div class=" col-lg-4 col-12">
 
                 </div>
                 <div class="col-lg-2 col-12">
-                    <button class="btn " style="background-color: #A1A0A0; font-size: 16px; font-weight: 700; color: #FFFFFF;"> ₦200,000 <span><i class="far fa-star"></i></span></button>
+                    @if(item.Amount <= 200000 ){
+                                <button class="btn " style="background-color: #A1A0A0; font-size: 16px; font-weight: 700; color: #FFFFFF;"> ₦@item.Amount <span><i class="far fa-star"></i></span></button>
+                    }
+                            else if (item.Amount <= 500000 && item.Amount>= 200000)
+                            {
+                                <button class="btn " style="background-color: #B08D57; font-size: 16px; font-weight: 700; color: #FFFFFF;"> ₦@item.Amount <span><i class="far fa-star"></i><i class="far fa-star"></i></span></button>
+                            }
+                            else if (item.Amount <= 1000000 && item.Amount >= 500000)
+                            {
+                                <button class="btn " style="background-color: #F7C101; font-size: 16px; font-weight: 700; color: #FFFFFF;"> ₦@item.Amount <span><i class="far fa-star"></i><i class="far fa-star"></i></span></button>
+                            }
+
                 </div>
             </div>
-            <hr  style="color: #000000;"/>
-            <div class="row justify-content-between">
-                <div class="col-lg-6 col-12">
-                    <p class="inter-font" style="font-size: 16px; font-weight: 500; color: #222121;">Dr Eddy Nwokedi Onugha (Akaekpuchionwa na Ugamuma)</p>
-                    <p class="inter-font" style="font-size: 14px; font-weight: 500; color: #916220;">Description</p>
-                    <p class="inter-font" style="font-size: 14px; font-weight: 400; color: #000000AD">of Ugamuma Village donated the sum of ₦100,000.00 as well as prized contributions in the form of materials and suggestions towards the building of Obosi.ng.</p>
-
-                </div>
-                <div class=" col-lg-4 col-12">
-
-                </div>
-                <div class="col-lg-2 col-12">
-                    <button class="btn " style="background-color: #B08D57; font-size: 16px; font-weight: 700; color: #FFFFFF;"> ₦200,000 <span><i class="far fa-star"></i><i class="far fa-star"></i></span></button>
-                </div>
-            </div>
-            <hr  style="color: #000000;"/>
-            <div class="row justify-content-between">
-                <div class="col-lg-6 col-12">
-                    <p class="inter-font" style="font-size: 16px; font-weight: 500; color: #222121;">Dr Eddy Nwokedi Onugha (Akaekpuchionwa na Ugamuma)</p>
-                    <p class="inter-font" style="font-size: 14px; font-weight: 500; color: #916220;">Description</p>
-                    <p class="inter-font" style="font-size: 14px; font-weight: 400; color: #000000AD">of Ugamuma Village donated the sum of ₦100,000.00 as well as prized contributions in the form of materials and suggestions towards the building of Obosi.ng.</p>
-
-                </div>
-                <div class=" col-lg-4 col-12">
-
-                </div>
-                <div class="col-lg-2 col-12">
-                    <button class="btn " style="background-color: #F7C101; font-size: 16px; font-weight: 700; color: #FFFFFF;"> ₦200,000 <span><i class="far fa-star"></i><i class="far fa-star"></i></span></button>
-                </div>
-            </div>
-            <hr  style="color: #000000;"/>
+                    <hr style="color: #000000;" />
+                }
+            }
+          
+           
+            
             <div class="row d-flex justify-content-between ">
                 <div class="col-lg-6 col-6">
                  <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;">Previous Page</button>

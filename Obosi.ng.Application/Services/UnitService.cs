@@ -43,8 +43,9 @@ namespace Obosi.ng.Application.Services
             if(unit != null)
             {
                 unit.DateCreated = DateTime.Now;
-                await _dataContext.Unit.AddAsync(unit);
+                var created = await _dataContext.Unit.AddAsync(unit);
                 await _dataContext.SaveChangesAsync();
+                return created.Entity;
             }
             throw new Exception("Unit is empty");
         }
@@ -53,8 +54,9 @@ namespace Obosi.ng.Application.Services
         {
             if(unittype != null)
             {
-                await _dataContext.Unit_Type.AddAsync(unittype);
+                var created = await _dataContext.Unit_Type.AddAsync(unittype);
                 await _dataContext.SaveChangesAsync();
+                return created.Entity;  
             }
             throw new Exception("Unit type is empty");
         }

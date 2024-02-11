@@ -36,7 +36,7 @@ namespace Obosi.ng.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var model = new HomePageViewModel(_news, _blog,_calender);
+            var model = new HomePageViewModel(_news, _blog,_calender,_unit);
             await model.InitializeNewsAsync();
             return View(model);
         }
@@ -90,7 +90,7 @@ namespace Obosi.ng.Controllers
         [HttpPost]
         public async Task<IActionResult> SignUp(HomePageViewModel model)
         {
-            var user = await _user.CreateUser(model.user,model.UnitId);
+            var user = await _user.CreateUser(model.user,model.AkaId,model.UmunnaId,model.VillageId,model.ImeneId);
             if(user != null)
             {
                 return RedirectToAction("Index", "DashBoard");
