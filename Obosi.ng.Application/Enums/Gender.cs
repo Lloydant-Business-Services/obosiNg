@@ -5,4 +5,9 @@
         Male = 1,
         Female = 2
     }
+    public enum Role
+    {
+        Admin = 1,
+        User = 2
+    }
 }

@@ -57,28 +57,59 @@ namespace Obosi.ng.Presentation.ViewModels
         {
             this.blogItem = await blog.GetBlogsById(id);
             this.Blogs = await blog.GetHomePageBlogs();
+            this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
+            this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
+            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Imenne);
+            this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+
         }
         public async Task BlogInitailize()
         {
             this.Blogs = await blog.GetBlogs(1);
+            this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
+            this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
+            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Imenne);
+            this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+
         }
         public async Task NewsInitializeValue(int id)
         {
             this.newsItem = await news.GetNewsById(id);
             this.News = await news.GetHomePageNews();
+            this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
+            this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
+            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Imenne);
+            this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+
         }
         public async Task NewsInitializeValue()
         {
             this.News = await news.GetNews(1);
+            this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
+            this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
+            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Imenne);
+            this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+
         }
         public async Task GetAllUmunna()
         {
             this.GetAllUmunnaList = await unit.GetAllUmunna();
+            this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
+            this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
+            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Imenne);
+            this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+
+
         }
         public async Task GetUnits(int id)
         {
             this.AllUnits = await unit.GetAllUnitsByUnitType(id);  
             this.Unit_Type = await unit.GetUnitType(id);
+            this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
+            this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
+            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Imenne);
+            this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+
         }
         public async Task GetUnit(int id)
         {
@@ -87,6 +118,11 @@ namespace Obosi.ng.Presentation.ViewModels
             this.Video_Assets = await media.GetVideoByUnit(id);
             this.Executives = await executive.GetExecutivesByUnit(id); 
             this.CalenderAssets = await calender.GetAssetsByUnitId(id);
+            this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
+            this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
+            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Imenne);
+            this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+
         }
         public List<Unit> AllUnits { get; set; }
         public List<News> News { get; set; } = new List<News>();

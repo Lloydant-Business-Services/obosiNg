@@ -1128,16 +1128,16 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                                         <div>
                                             <label for="" style="font-size: 16px; color: #fff; " class="mt-2">First Name</label>
                                             <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
-                                            style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;" 
-                                            required asp-for="user.FirstName"/>
+                                            style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
+                                                       required asp-for="user.FirstName"  />
                                         </div>
                                         </div>  
                                         <div class="col-md-6 col-12">
                                             <div>
                                             <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Last Name</label>
                                             <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example" 
-                                            style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;" 
-                                            required asp-for="user.LastName"/>
+                                            style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
+                                                       required asp-for="user.LastName"  />
                                         </div>
                                         </div> 
                                         <div class="col-md-6 col-12">
@@ -1145,10 +1145,34 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                                                 <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Last Name</label>
                                                 <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
                                                        style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                        asp-for="user.OtherName" />
+                                                       asp-for="user.OtherName" required />
                                             </div>
-                                               </div>  
-                                               <div class="col-md-6 col-12">  
+                                               </div>
+                                        <div class="col-md-6 col-12">
+                                            <div>
+                                                <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Email</label>
+                                                <input class="form-control form-control-lg" type="email" aria-label=".form-control-lg example"
+                                                       style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
+                                                       asp-for="user.Email" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div>
+                                                <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Password</label>
+                                                <input class="form-control form-control-lg" type="password" aria-label=".form-control-lg example"
+                                                       style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
+                                                       asp-for="user.Password" required />
+                                            </div>
+                                        </div>
+                                         <div class="col-md-6 col-12">
+                                            <div>
+                                                <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Phone Number</label>
+                                                <input class="form-control form-control-lg" type="tel" aria-label=".form-control-lg example"
+                                                       style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
+                                                       asp-for="user.PhoneNumber" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">  
                                         <div class="">
                                             <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Village</label>
                                             <select class="form-select form-select-lg" aria-label="Default select example" style="background-color: #100E6C; 
@@ -1164,7 +1188,7 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                                         <div class="col-md-6 col-12">
                                             <div class="">
                                             <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Gender</label>
-                                            <select class="form-select form-select-lg" aria-label="Default select example" 
+                                                <select class="form-select form-select-lg" aria-label="Default select example" required
                                             style="background-color: #100E6C; color: #ffffff;" asp-for="user.GenderId">
                                                 <option selected>Select Gender</option>
                                                 <option value="1">Male</option>
@@ -1178,7 +1202,7 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                                     <div class="col-md-6 col-12 ">
                                         <div class="">
                                             <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Umunna</label>
-                                            <select class="form-select form-select-lg " aria-label="Default select example"
+                                                <select class="form-select form-select-lg " aria-label="Default select example" required
                                             style="background-color: #100E6C; color: #ffffff;" asp-for="UmunnaId">
                                                 <option selected>Select Umunna</option>
                                                 @foreach(var umu in Model.AllUmunna)
@@ -1192,7 +1216,7 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                                 <div class="col-md-6 col-12">
                                     <div class="">
                                             <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Ime Nne</label>
-                                            <select class="form-select form-select-lg " aria-label="Default select example" 
+                                                <select class="form-select form-select-lg " aria-label="Default select example" required
                                             style="background-color: #100E6C; color: #ffffff; " asp-for="ImeneId">
                                                 <option selected>Select Ime Nne</option>
                                                 @foreach(var ime in Model.AllImene){
@@ -1205,7 +1229,7 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                                 <div class="col-md-6 col-12">
                                     <div class="">
                                             <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Aka</label>
-                                            <select class="form-select form-select-lg" aria-label="Default select example" 
+                                                <select class="form-select form-select-lg" aria-label="Default select example" required
                                             style="background-color: #100E6C; color: #ffffff; " asp-for="AkaId">
                                                 <option selected>Select Aka</option>
                                                 @foreach(var ak in Model.AllAka){
@@ -1231,7 +1255,7 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                
             </div>
         </div>
-    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-bkKydT2eaO/RJFggoDGOOhMWXdXDl5cEW/8hXENIXIjApxXaoKVXFhw+tZbAdVBf" crossorigin="anonymous"></script>
     <!-- <script>
      function showModal () {
