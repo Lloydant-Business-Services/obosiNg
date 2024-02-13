@@ -1,5 +1,5 @@
-﻿
-
+﻿@using Obosi.ng.Application.Enums;
+@using Obosi.ng.Presentation.utility;
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -330,29 +330,56 @@
           </div>
           <div class="newsContainer">
               <h2 style="color: #916220; font-size: 16px; font-weight: 700;">PLACES</h2>
-              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"> Villages & Suburbs</h3>
+              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"
+                    onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())';">
+                    Villages & Suburbs
+                </h3>
               <hr style="color: #CFB174; border-width: 3px; width: 200px;"/>
-              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"> Schools</h3>
+              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"
+                    onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Schools).ToString())';">
+                    Schools
+                </h3>
               <hr style="color: #CFB174; border-width: 3px; width: 200px;"/>
-              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"> Hotels</h3>
+              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"
+                    onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Hotels).ToString())';">
+                    Hotels
+                </h3>
               <hr style="color: #CFB174; border-width: 3px; width: 200px;"/>
           </div>
           <div class="newsContainer">
               <h2 style="color: #916220; font-size: 16px; font-weight: 700;">CULTURE</h2>
-              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"> Festivals</h3>
+              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"
+                    onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())';">
+                    Festivals
+                </h3>
               <hr style="color: #CFB174; border-width: 3px; width: 200px;"/>
-              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"> Masquerades</h3>
+              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"
+                    onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())';">
+                    Masquerades
+                </h3>
               <hr style="color: #CFB174; border-width: 3px; width: 200px;"/>
-              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"> Dance Groups</h3>
+              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"
+                    onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())';">
+                    Dance Groups
+                </h3>
               <hr style="color: #CFB174; border-width: 3px; width: 200px;"/>
           </div>
           <div class="newsContainer">
               <h2 style="color: #916220; font-size: 16px; font-weight: 700;">MEDIA</h2>
-              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"> Festivals</h3>
+              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"
+                    onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())';">
+                    Festivals
+                </h3>
               <hr style="color: #CFB174; border-width: 3px; width: 200px;"/>
-              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"> Masquerades</h3>
+              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"
+                    onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())';">
+                    Masquerades
+                </h3>
               <hr style="color: #CFB174; border-width: 3px; width: 200px;"/>
-              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"> Dance Groups</h3>
+              <h3 style="color: #001C40; font-weight: 700; font-size: 16px;"
+                    onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())';">
+                    Dance Groups
+                </h3>
               <hr style="color: #CFB174; border-width: 3px; width: 200px;"/>
           </div>
           <div class="newsContainer">
@@ -430,7 +457,6 @@
 
 </html>
 
-
 <div class="modal fade" id="peopleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content" style="background-color: #04042F;">
@@ -502,25 +528,30 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                         </div>
                     </div>
                     <div class="row gap-3 ">
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Personalities).ToString())';">
                             <p style="font-size: 18px; font-weight: 600; ">OBOSI'S PERSONALITIES</p>
                         </div>
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;text-transform: uppercase;">
                                 Igwe Obosi's Cabinet
                             </p>
                         </div>
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;text-transform: uppercase;">
                                 Obosi Development Union
                             </p>
                         </div>
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;text-transform: uppercase;">
                                 Obosi Umunna/Kindreds
                             </p>
                         </div>
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;text-transform: uppercase;">
                                 Obosi Age Grade Societies
                             </p>
@@ -564,9 +595,9 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                             <div class="row">
                                 <div class="col-md-4 col-12">
                                     <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                        <img src="~/images/personalities.png" alt="" />
-                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;">
-                                            <p class="text-center">Chief Emeka Anyaoku  <br /> <span>Third Commonwealth Secretary General</span></p>
+                                        <img src="~/places/land1.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 250px; height: 90px;">
+                                            <p class="text-center">Aerial View of Idemili River  <br /> <span>into River Niger </span></p>
 
                                         </figcaption>
                                     </figure>
@@ -574,9 +605,9 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                        <img src="~/images/personalities.png" alt="" />
-                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;">
-                                            <p class="text-center">Chief Emeka Anyaoku  <br /> <span>Third Commonwealth Secretary General</span></p>
+                                        <img src="~/places/land2.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 250px; height: 90px;">
+                                            <p class="text-center">View of Awada Obosi,  <br /> <span>one of the most densely populated lands in Nigeria</span></p>
 
                                         </figcaption>
                                     </figure>
@@ -584,9 +615,9 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                        <img src="~/images/personalities.png" alt="" />
-                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;">
-                                            <p class="text-center">Chief Emeka Anyaoku  <br /> <span>Third Commonwealth Secretary General</span></p>
+                                        <img src="~/places/land3.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 250px; height: 90px;">
+                                            <p class="text-center">Road linking the newly constructed   <br /> <span>2nd Niger Bridge</span></p>
 
                                         </figcaption>
                                     </figure>
@@ -597,21 +628,23 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                         </div>
                     </div>
                     <div class="row gap-3 ">
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;">VILLAGES & SUBURBS</p>
                         </div>
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Schools).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;">SCHOOLS</p>
                         </div>
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Hotels).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;">HOTELS</p>
                         </div>
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Churches).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;">CHURCHES</p>
                         </div>
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
-                            <p style="font-size: 18px; font-weight: 600;">MORE...</p>
-                        </div>
+
                     </div>
 
                 </div>
@@ -650,9 +683,11 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                             <div class="row">
                                 <div class="col-md-4 col-12">
                                     <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                        <img src="~/images/personalities.png" alt="" />
-                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;">
-                                            <p class="text-center">Chief Emeka Anyaoku  <br /> <span>Third Commonwealth Secretary General</span></p>
+                                        <img src="~/places/masquerade1.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color:
+                                  #fff; bottom: 0; width: 250px; height: 90px;">
+
+                                            <p class="text-center">The beautiful & graceful  <br /> <span>Agbonma Masquerade</span></p>
 
                                         </figcaption>
                                     </figure>
@@ -660,9 +695,13 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                        <img src="~/images/personalities.png" alt="" />
-                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;">
-                                            <p class="text-center">Chief Emeka Anyaoku  <br /> <span>Third Commonwealth Secretary General</span></p>
+                                        <img src="~/places/masquerade2.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color:
+                                  #fff; bottom: 0; width: 250px; height: 90px;">
+                                            <p class="text-center">
+                                                The ferocious & revered
+                                                <br /> <span>Isi Odogwu Masquerade</span>
+                                            </p>
 
                                         </figcaption>
                                     </figure>
@@ -670,9 +709,14 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
-                                        <img src="images/personalities.png" alt="" />
-                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 350px; height: 90px;">
-                                            <p class="text-center">Chief Emeka Anyaoku  <br /> <span>Third Commonwealth Secretary General</span></p>
+                                        <img src="~/places/masquerade3.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color:
+                                  #fff; bottom: 0; width: 250px; height: 90px;">
+                                            <p class="text-center">
+                                                The ever-playful and agile   <br /> <span>
+                                                    Ajikwu Masquerade
+                                                </span>
+                                            </p>
 
                                         </figcaption>
                                     </figure>
@@ -683,19 +727,24 @@ center; color: #fff; bottom: 0; width: 250px; height: 90px;">
                         </div>
                     </div>
                     <div class="row gap-3 ">
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Ito_Ogbo).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;">ITO-OGBO FESTIVAL</p>
                         </div>
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.New_Yam_Festival).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;">NEW YAM FESTIVAL</p>
                         </div>
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;">FESTIVALS</p>
                         </div>
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;">MASQUERADES</p>
                         </div>
-                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())';">
                             <p style="font-size: 18px; font-weight: 600;">DANCE GROUPS</p>
                         </div>
                     </div>

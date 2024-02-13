@@ -42,7 +42,17 @@ namespace Obosi.ng.Data
                 new Unit_Type() { Id = 11, Name = "Dance Group" , IsActive = true },
                 new Unit_Type() { Id = 12, Name = "Resource", IsActive = true },
                 new Unit_Type() { Id = 13, Name = "Ime Nne", IsActive = true },
-                  new Unit_Type() { Id = 14, Name = "Aka", IsActive = true }               
+                  new Unit_Type() { Id = 14, Name = "Aka", IsActive = true } ,
+                     new Unit_Type() { Id = 15, Name = "Personalities", IsActive = true },
+                        new Unit_Type() { Id = 16, Name = "Igwes Cabinent", IsActive = true },
+                           new Unit_Type() { Id = 17, Name = "Schools", IsActive = true },
+                              new Unit_Type() { Id = 18, Name = "Hotels", IsActive = true },
+                                 new Unit_Type() { Id = 19, Name = "Churches", IsActive = true },
+                                    new Unit_Type() { Id = 20, Name = "Ito-Ogbo", IsActive = true },
+                                       new Unit_Type() { Id = 21, Name = "New Yam Festival", IsActive = true },
+                                          new Unit_Type() { Id = 22, Name = "Festivals", IsActive = true },
+                                             new Unit_Type() { Id = 23, Name = "Landmarks", IsActive = true },
+                                                new Unit_Type() { Id = 24, Name = "Services And Resources", IsActive = true }
                 );
             modelBuilder.Entity<Unit>().HasData(
                new Unit() { Id = 1,Name = "Umuota", About="",DateCreated=DateTime.Now,NeedsConfirmation = false,UnitTypeId = 1,BackGroundImageUrl = ""},
