@@ -41,7 +41,7 @@ namespace Obosi.ng.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(BoulevardViewModel model)
         {
-            if (ModelState.IsValid)
+            if (model.builders_Boulevard != null)
             {   
                 model.builders_Boulevard.DateAdded = DateTime.Now; 
                 await _boulevard.CreateBoulevard(model.builders_Boulevard);
