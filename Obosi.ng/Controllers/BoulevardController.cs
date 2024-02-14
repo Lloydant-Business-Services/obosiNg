@@ -45,7 +45,7 @@ namespace Obosi.ng.Presentation.Controllers
             {   
                 model.builders_Boulevard.DateAdded = DateTime.Now; 
                 await _boulevard.CreateBoulevard(model.builders_Boulevard);
-                return RedirectToAction("Index");
+                return RedirectToAction("BoulevardList");
             }
             return View(model);
         }   
@@ -62,7 +62,7 @@ namespace Obosi.ng.Presentation.Controllers
             if (ModelState.IsValid)
             {
                 await _boulevard.UpdateBoulevard(model.builders_Boulevard);
-                return RedirectToAction("Index");
+                return RedirectToAction("BoulevardList");
             }
             return View(model);
         }

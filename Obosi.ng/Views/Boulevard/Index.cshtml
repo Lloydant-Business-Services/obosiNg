@@ -426,15 +426,15 @@
                 </div>
                 <div class="col-lg-2 col-12">
                     @if(item.Amount <= 200000 ){
-                                <button class="btn " style="background-color: #A1A0A0; font-size: 16px; font-weight: 700; color: #FFFFFF;"> ₦@item.Amount <span><i class="far fa-star"></i></span></button>
+                                <button class="btn " style="background-color: #A1A0A0; font-size: 16px; font-weight: 700; color: #FFFFFF;"> ₦@item.Amount.ToString("N0") <span><i class="far fa-star"></i></span></button>
                     }
                             else if (item.Amount <= 500000 && item.Amount>= 200000)
                             {
-                                <button class="btn " style="background-color: #B08D57; font-size: 16px; font-weight: 700; color: #FFFFFF;"> ₦@item.Amount <span><i class="far fa-star"></i><i class="far fa-star"></i></span></button>
+                                <button class="btn " style="background-color: #B08D57; font-size: 16px; font-weight: 700; color: #FFFFFF;"> ₦@item.Amount.ToString("N0") <span><i class="far fa-star"></i><i class="far fa-star"></i></span></button>
                             }
                             else if (item.Amount <= 1000000 && item.Amount >= 500000)
                             {
-                                <button class="btn " style="background-color: #F7C101; font-size: 16px; font-weight: 700; color: #FFFFFF;"> ₦@item.Amount <span><i class="far fa-star"></i><i class="far fa-star"></i></span></button>
+                                <button class="btn " style="background-color: #F7C101; font-size: 16px; font-weight: 700; color: #FFFFFF;"> ₦@item.Amount.ToString("N0") <span><i class="far fa-star"></i><i class="far fa-star"></i></span></button>
                             }
 
                 </div>
