@@ -288,7 +288,7 @@
                 </p>
 
                 <p>
-                    ©2023 All Rights Reserved.
+                    ©@DateTime.Now.Year All Rights Reserved.
                 </p>
             </div>
 
@@ -309,7 +309,19 @@
 
         function scrollCarousel(direction) {
             let size = GetScreenSize();
-            if (size > 795) {
+            console.log(size)
+            if (size >= 2048) {
+                if (carouselIndex >= 3 && direction == 1)
+                    return;
+                carouselIndex += direction;
+                if (carouselIndex < 0) {
+                    carouselIndex = 0;
+                } else if (carouselIndex > 7) {
+                    carouselIndex = 8;
+                }
+                carousel.style.transform = `translateX(-${carouselIndex * 190}px)`;
+            }
+            else if (size > 795 && size < 2048) {
                 if (carouselIndex >= 5 && direction == 1)
                     return;
                 carouselIndex += direction;
@@ -341,6 +353,7 @@
 
 
     <!-- Carousel Script End -->
+
 
 
 </body>
