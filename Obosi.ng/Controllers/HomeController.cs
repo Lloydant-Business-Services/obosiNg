@@ -78,8 +78,10 @@ namespace Obosi.ng.Controllers
                 return RedirectToAction("Index", "DashBoard");
 
             }
-            throw new Exception("User Not Found");
-            
+            model.ErrorMessage ="User Not Found";
+
+            return RedirectToAction("Index", "Home");
+
         }
         [HttpGet]
         public async Task<IActionResult> SignUp()
@@ -97,7 +99,7 @@ namespace Obosi.ng.Controllers
             {
                 return RedirectToAction("Index", "DashBoard");
             }
-            return View(model);
+            return RedirectToAction("Index", "Home");
         }
         public async Task<IActionResult> SignOut()
         {

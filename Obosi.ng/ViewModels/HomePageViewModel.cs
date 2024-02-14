@@ -154,5 +154,7 @@ namespace Obosi.ng.Presentation.ViewModels
         public int UmunnaId { get; set; }
         public int ImeneId { get; set; }
         public int VillageId { get; set; }
+
+        public string ErrorMessage { get; set; }
     }
 }

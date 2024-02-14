@@ -3947,7 +3947,7 @@ main #see-say h6 {
       rgba(0, 0, 0, 0.728) 0%,
       rgba(0, 0, 0, 0.2) 100%
     ),
-    url(./land/monument.jpg);
+    url(/land/monument.jpg);
   background-size: cover;
   background-position: center;
 }
@@ -3957,7 +3957,7 @@ main #see-say h6 {
       rgba(0, 0, 0, 0.728) 0%,
       rgba(0, 0, 0, 0.2) 100%
     ),
-    url(/masquerade2.jpg);
+    url(/land/masquerade2.jpg);
   background-size: cover;
   background-position: center;
 }
@@ -3967,27 +3967,27 @@ main #see-say h6 {
     background-position: center;
 }
 .card-4 {
-    background: linear-gradient( 0deg, rgba(0, 0, 0, 0.728) 0%, rgba(0, 0, 0, 0.2) 100% ), url(./land/festival.jpg);
+    background: linear-gradient( 0deg, rgba(0, 0, 0, 0.728) 0%, rgba(0, 0, 0, 0.2) 100% ), url(/land/festival.jpg);
     background-size: cover;
     background-position: center;
 }
 .card-5 {
-    background: linear-gradient( 0deg, rgba(0, 0, 0, 0.728) 0%, rgba(0, 0, 0, 0.2) 100% ), url(./land/personalities.jpg);
+    background: linear-gradient( 0deg, rgba(0, 0, 0, 0.728) 0%, rgba(0, 0, 0, 0.2) 100% ), url(/land/personalities.jpg);
     background-size: cover;
     background-position: center;
 }
 .card-6 {
-    background: linear-gradient( 0deg, rgba(0, 0, 0, 0.728) 0%, rgba(0, 0, 0, 0.2) 100% ), url(./land/villages.jpg);
+    background: linear-gradient( 0deg, rgba(0, 0, 0, 0.728) 0%, rgba(0, 0, 0, 0.2) 100% ), url(/land/villages.jpg);
     background-size: cover;
     background-position: center;
 }
 .card-7 {
-    background: linear-gradient( 0deg, rgba(0, 0, 0, 0.728) 0%, rgba(0, 0, 0, 0.2) 100% ), url(./land/landmarks.jpg);
+    background: linear-gradient( 0deg, rgba(0, 0, 0, 0.728) 0%, rgba(0, 0, 0, 0.2) 100% ), url(/land/landmarks.jpg);
     background-size: cover;
     background-position: center;
 }
 .card-8 {
-    background: linear-gradient( 0deg, rgba(0, 0, 0, 0.728) 0%, rgba(0, 0, 0, 0.2) 100% ), url(./land/services.jpg);
+    background: linear-gradient( 0deg, rgba(0, 0, 0, 0.728) 0%, rgba(0, 0, 0, 0.2) 100% ), url(/land/services.jpg);
     background-size: cover;
     background-position: center;
 }
