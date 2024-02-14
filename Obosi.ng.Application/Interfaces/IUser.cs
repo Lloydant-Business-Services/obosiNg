@@ -15,7 +15,7 @@ namespace Obosi.ng.Application.Interfaces
         Task<Users> CreateUser(Users user,int akaId,int umunnaId,int villageId,int imenneId);
         Task<Users> UpdateUser(Users user);
         Task DeleteUser(string username);
-        Task<Users> ActivateUser(string username);
+        Task<Users> ActivateUser(string username,int unitId);
         Task<Users> SuspendUser(string username,string reasonforsuspension, long UserId);
         Task<Users> ResumeUser(string username);
         Task<Users> AssignUserToRole(string username, Role role);

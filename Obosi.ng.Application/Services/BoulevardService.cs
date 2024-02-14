@@ -28,6 +28,11 @@ namespace Obosi.ng.Application.Services
             throw new Exception("Failed To Create");
         }
 
+        public Task DeleteBoulevard(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<Builders_Boulevard>> GetBoulevard(int pageId)
         {
             // Determine the offset for the current page
@@ -39,6 +44,21 @@ namespace Obosi.ng.Application.Services
                 .Take(10)
                 .ToListAsync();
             return boulevardList;
+        }
+
+        public async Task<Builders_Boulevard> GetBoulevardById(int id)
+        {
+            return await _dataContext.Builders_Boulevard.Where(x => x.Id == id).FirstOrDefaultAsync();  
+        }
+
+        public async Task<Builders_Boulevard> UpdateBoulevard(Builders_Boulevard builders_Boulevard)
+        {
+            if(builders_Boulevard != null)
+            {
+                _dataContext.Builders_Boulevard.Update(builders_Boulevard);
+                await _dataContext.SaveChangesAsync();
+            }
+            return builders_Boulevard;
         }
     }
 }

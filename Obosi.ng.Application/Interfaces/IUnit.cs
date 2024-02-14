@@ -21,5 +21,9 @@ namespace Obosi.ng.Application.Interfaces
         Task<Unit> CreateUnit(Unit unit);
         Task<Unit_Type> CreateUnitType(Unit_Type unittype);
         Task<Unit_Type> GetUnitType(int unittypeId);
+        Task<Unit> UpdateUnit(Unit unit);   
+        Task<Unit_Type> UpdateUnitType(Unit_Type unittype);
+        Task<List<Member_Unit>> ViewApprovedMembers();
+        Task<List<Member_Unit>> ViewUnApprovedMembers();
     }
 }

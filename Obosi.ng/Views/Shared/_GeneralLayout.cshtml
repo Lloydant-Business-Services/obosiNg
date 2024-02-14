@@ -1,0 +1,1349 @@
+﻿@using Obosi.ng.Application.Enums;
+@using Obosi.ng.Presentation.utility;
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="robots" content="noindex">
+    <title>Obosi - @ViewData["Title"]</title>
+    @* <link rel="stylesheet" href="~/land/css/font-awesome.css" /> *@
+    <link rel="stylesheet" href="~/land/index.css" />
+    <!-- Font styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=MedievalSharp&display=swap" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-weSCl9iGU/TzcazYOk0b44gOMu20zWbv4+SYyl/bA73pWqTA4gM9muLkGPQ1Ocj1" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rW9wTPHvMmL92f6h2OgG3Rn4HsoznT9roRVt5LwCkGqVR3hAgltTZOWtT27Mnq" crossorigin="anonymous"></script>
+
+
+   
+  
+    
+</head>
+
+<body>
+
+    <div id="event-register">
+
+        <div class="top-dropdown">
+
+            <div class="dropdown-button-holder">
+
+                <button class="dropdown-button" id="btn">
+
+                    <div class="bars">
+                        <div class="bar top"></div>
+                        <div class="bar bottom"></div>
+                    </div>
+
+                </button>
+
+            </div>
+
+             <div id="people-dropdown" class="top-dropdown-contents" >
+
+                <div class="visible-large">
+                    <h1 class="top-header">
+                        Our People: Our Pride
+                    </h1>
+                    <div class="top-sections">
+                        <section class="top-text">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                            <p>
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </section>
+                        <div class="section-images">
+                            <section class="top-image">
+                                <figure>
+                                    <img src="~/land/anyaoku-people.jpg" />
+                                    <figcaption>
+                                        Chief Emeka Anyaoku <br />
+                                        Third Commonwealth Secretary General
+                                    </figcaption>
+                                </figure>
+                            </section>
+                            <section class="top-image">
+                                <figure>
+                                    <img src="~/land/chidoka-people.jpg" />
+                                    <figcaption>
+                                        Chief Osita Benjamin Chidoka <br />
+                                        Former Miniser of Aviation
+                                    </figcaption>
+                                </figure>
+                            </section>
+                            <section class="top-image">
+                                <figure>
+                                    <img src="~/land/kodilinye-people.jpg" />
+                                    <figcaption>
+                                        Herbert C. Kodilinye <br />
+                                        Fourth Vice Chancellor of the University of Nigeria
+                                    </figcaption>
+                                </figure>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="bottom-nav">
+                    <a href="javascript:void(0)">
+                        Obosi's Personalities
+                    </a>
+                    <a href="javascript:void(0)">
+                        Igwe Obosi's Cabinet
+                    </a>
+                    <a href="javascript:void(0)">
+                        Obosi Development Union
+                    </a>
+                    <a href="javascript:void(0)">
+                        Obosi Umunna/Kindreds
+                    </a>
+                    <a href="javascript:void(0)">
+                        Obosi Age Grade Societies
+                    </a>
+                </div>
+
+            </div>
+            <div id="places-dropdown" class="top-dropdown-contents">
+                <div class="visible-large">
+                    <h1 class="top-header">
+                        Our Places: Our Heritage
+                    </h1>
+                    <div class="top-sections">
+                        <section class="top-text">
+                            <p>
+                                Obosi Ukwala is situated in a hilly area, bordered by Onitsha to the North-west, Nkpor to the North-east and Oba to the south-east
+                            </p>
+                            <p>
+                                Obosi has five villages namely: Umuota, Ire, Ugamuma, Urowulu, & Mmakwum.
+                            </p>
+                            <p>
+                                Additionally it has suburbs namely: Awada, Enekwasumpu, Ugwuaba, & Odume.
+                            </p>
+                            <p>
+                                Obosi's proximity to Onitsha, a commercial city, has made it a
+                                desired home to several buinesses.
+                            </p>
+                        </section>
+                        <div class="section-images">
+                            <section class="top-image">
+                                <figure>
+                                    <img src="~/land/land1.jpg" />
+                                    <figcaption>
+                                        Aerial View of Idemili River into River Niger
+                                    </figcaption>
+                                </figure>
+                            </section>
+                            <section class="top-image">
+                                <figure>
+                                    <img src="~/land/land2.jpg" />
+                                    <figcaption>
+                                        View of Awada Obosi, one of the most densely populated lands in Nigeria
+                                    </figcaption>
+                                </figure>
+                            </section>
+                            <section class="top-image">
+                                <figure>
+                                    <img src="~/land/land3.jpg" />
+                                    <figcaption>
+                                        Road linking the newly constructed 2nd Niger Bridge
+                                    </figcaption>
+                                </figure>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="bottom-nav">
+                    <a href="javascript:void(0)">
+                        Villages & Suburbs
+                    </a>
+                    <a href="javascript:void(0)">
+                        Schools
+                    </a>
+                    <a href="javascript:void(0)">
+                        Hotels
+                    </a>
+                    <a href="javascript:void(0)">
+                        Churches
+                    </a>
+                    <a href="javascript:void(0)">
+                        More...
+                    </a>
+
+                </div>
+            </div>
+            <div id="culture-dropdown" class="top-dropdown-contents">
+                <div class="visible-large">
+                    <h1 class="top-header">
+                        Our Culture: Our Life
+                    </h1>
+                    <div class="top-sections">
+                        <section class="top-text">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                            <p>
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </section>
+                        <div class="section-images">
+                            <section class="top-image">
+                                <figure>
+                                    <img src="~/land/masquerade1.jpg" />
+                                    <figcaption>
+                                        The beautiful & graceful Agbonma Masquerade
+                                    </figcaption>
+                                </figure>
+                            </section>
+                            <section class="top-image">
+                                <figure>
+                                    <img src="~/land/masquerade2.jpg" />
+                                    <figcaption>
+                                        The ferocious & revered Isi Odogwu Masquerade
+                                    </figcaption>
+                                </figure>
+                            </section>
+                            <section class="top-image">
+                                <figure>
+                                    <img src="~/land/masquerade3.jpg" />
+                                    <figcaption>
+                                        The ever-playful and agile Ajikwu Masquerade
+                                    </figcaption>
+                                </figure>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="bottom-nav">
+                    <a href="javascript:void(0)">
+                        Ito-Ogbo Featival
+                    </a>
+                    <a href="javascript:void(0)">
+                        New Yam Festival
+                    </a>
+                    <a href="javascript:void(0)">
+                        Festivals
+                    </a>
+                    <a href="javascript:void(0)">
+                        Masquerades
+                    </a>
+                    <a href="javascript:void(0)">
+                        Dance Groups
+                    </a>
+
+                </div>
+            </div>
+            <div id="media-dropdown" class="top-dropdown-contents">
+                <h1 class="top-header alt">
+                    Media Center
+                </h1>
+                <div class="top-nav">
+                    <a href="javascript:void(0)">
+                        Opinion' Blogs
+                    </a>
+                    <a href="javascript:void(0)">
+                        News Articles
+                    </a>
+                    <a href="javascript:void(0)">
+                        Photo Gallery
+                    </a>
+                    <a href="javascript:void(0)">
+                        Events Calendar
+                    </a>
+
+                </div>
+
+                <div class="visible-large">
+
+                    <div class="media-sections">
+
+                        <section class="media-menu">
+                            <a href="javascript:void(0)">
+                                Education
+                            </a>
+                            <a href="javascript:void(0)">
+                                Security
+                            </a>
+                            <a href="javascript:void(0)">
+                                Health & Fitness
+                            </a>
+                            <a href="javascript:void(0)">
+                                Life, Religion & Family
+                            </a>
+                            <a href="javascript:void(0)">
+                                Science & Technology
+                            </a>
+                            <a href="javascript:void(0)">
+                                Movies, Music, & Arts
+                            </a>
+                        </section>
+                        <section class="media-menu">
+                            <a href="javascript:void(0)">
+                                Education
+                            </a>
+                            <a href="javascript:void(0)">
+                                Security
+                            </a>
+                            <a href="javascript:void(0)">
+                                Health & Fitness
+                            </a>
+                            <a href="javascript:void(0)">
+                                Life, Religion & Family
+                            </a>
+                            <a href="javascript:void(0)">
+                                Science & Technology
+                            </a>
+                            <a href="javascript:void(0)">
+                                Movies, Music, & Arts
+                            </a>
+                        </section>
+                        <section class="media-menu">
+                            <a href="javascript:void(0)">
+                                Igwe's Palace
+                            </a>
+                            <a href="javascript:void(0)">
+                                Obosi Development Union
+                            </a>
+                            <a href="javascript:void(0)">
+                                Umunnas/Kindreds
+                            </a>
+                            <a href="javascript:void(0)">
+                                Age Grade Societies
+                            </a>
+                        </section>
+                        <section class="media-menu">
+                            <a href="javascript:void(0)">
+                                Igwe's Palace
+                            </a>
+                            <a href="javascript:void(0)">
+                                Obosi Development Union
+                            </a>
+                            <a href="javascript:void(0)">
+                                Umunnas/Kindreds
+                            </a>
+                            <a href="javascript:void(0)">
+                                Age Grade Societies
+                            </a>
+                        </section>
+                    </div>
+
+                </div>
+            </div>
+            <div id="account-dropdown" class="top-dropdown-contents">
+                <h1 class="top-header alt">
+                    Account Manager
+                </h1>
+                <div class="forms-container">
+
+                    <div class="form-body login">
+
+                        <h2>
+                            Enter your email address or phone number to access your dashboard
+                        </h2>
+
+                        <form>
+
+                            <div class="field-group-alt">
+                                <div class="field-holder">
+
+                                    <input class="form-field" placeholder="Email address or phone number" />
+
+                                </div>
+
+                                <div class="field-holder">
+
+                                    <div class="password-box">
+
+                                        <input type="password" class="form-field" placeholder="Password" />
+
+                                        <a href="javascript:void(0)" id="show-password">
+                                            <i class="fa fa-eye-slash"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <button type="submit" class="submit-button">
+                                Login
+                            </button>
+
+                        </form>
+
+                        <a href="javascript:void(0)" class="alternative-link">
+                            Forgotten Password?
+                        </a>
+                    </div>
+
+                    <div class="form-body register">
+
+                        <h2>
+                            Are you an Obosi indigene but not registered? Complete the following fields to get started or
+                            <a href="javascript:void(0)">verify your account</a>.
+                        </h2>
+
+                        <form>
+
+                            <div class="field-group">
+                                <div class="field-holder">
+
+                                    <input class="form-field" placeholder="First name" />
+
+                                </div>
+                                <div class="field-holder">
+
+                                    <input class="form-field" placeholder="Last Name" />
+
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <div class="field-holder">
+
+                                    <select class="form-field">
+                                        <option value="">Select Village</option>
+                                    </select>
+
+                                </div>
+                                <div class="field-holder">
+
+                                    <select class="form-field">
+                                        <option value="">Select Umunna</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="field-group">
+                                <div class="field-holder">
+
+                                    <select class="form-field">
+                                        <option value="">Select Ime Nne</option>
+                                    </select>
+
+                                </div>
+                                <div class="field-holder">
+
+                                    <select class="form-field">
+                                        <option value="">Select Age Range</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="field-holder">
+
+                                <div class="options">
+
+                                    <label> Are you a </label>
+                                    <span>
+                                        <input type="radio" />  <label> Male</label>
+                                    </span>
+
+                                    <span>
+                                        <input type="radio" />  <label> Female</label>
+                                    </span>
+                                </div>
+
+                            </div>
+
+
+                            <button type="submit" class="submit-button">
+                                Continue
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+                <div class="bottom-nav alt">
+                    <a href="javascript:void(0)">
+                        Log into Account
+                    </a>
+                    <a href="javascript:void(0)">
+                        Recover Lost Password
+                    </a>
+                    <a href="javascript:void(0)">
+                        Start Registration
+                    </a>
+                    <a href="javascript:void(0)">
+                        Verify Registration
+                    </a>
+
+
+                </div>
+
+            </div> 
+
+        </div>
+
+        <header>
+
+            <div class="header-wrapper">
+
+                <div class="header-contents">
+
+                    <div class="top-header-contents">
+
+                        <div class="logo-links">
+
+                            <div id="logo">
+                                <a asp-controller="Home" asp-action="Index" class="">
+                                    <img src="~/OBOSI LOGO 1.png" />
+                                </a>
+                            </div>
+
+                            <button class="nav-button" id="nav-btn">
+
+                                <div class="bars">
+                                    <div class="bar top"></div>
+                                    <div class="bar middle"></div>
+                                    <div class="bar bottom"></div>
+                                </div>
+
+                            </button>
+
+                        </div>
+
+                        <nav>
+
+                            <span class="divider"></span>
+                            <a data-bs-toggle="modal" data-bs-target="#peopleModal"
+                               href="javascript:void(0)" data-target="#people-dropdown" class="@(ViewBag.ActivePage == "People" ? "active show-top-dropdown" : "show-top-dropdown")">
+                                People
+                            </a>
+                            <span class="divider"></span>
+                            <a data-bs-toggle="modal" data-bs-target="#placesModal"
+                               href="javascript:void(0)" data-target="#places-dropdown" class="@(ViewBag.ActivePage == "Places" ? "active show-top-dropdown" : "show-top-dropdown")">
+                                Places
+                            </a>
+                            <span class="divider"></span>
+                            <a data-bs-toggle="modal" data-bs-target="#cultureModal"
+                               href="javascript:void(0)" data-target="#culture-dropdown" class="@(ViewBag.ActivePage == "Culture" ? "active show-top-dropdown" : "show-top-dropdown")">
+                                Culture
+                            </a>
+                            <span class="divider"></span>
+                            <a data-bs-toggle="modal" data-bs-target="#mediaModal"
+                               href="javascript:void(0)" data-target="#media-dropdown" class="@(ViewBag.ActivePage == "Media" ? "active show-top-dropdown" : "show-top-dropdown")">
+                                Media
+                            </a>
+                            <span class="divider"></span>
+                            <a data-bs-toggle="modal" data-bs-target="#accountModal"
+                               href="javascript:void(0)" data-target="#account-dropdown" class="@(ViewBag.ActivePage == "Account" ? "active show-top-dropdown" : "show-top-dropdown")">
+                                Account
+                            </a>
+
+
+
+                            <span class="divider"></span>
+
+                        </nav>
+
+                    </div>
+
+                    <!-- Hero Content Begin -->
+                    <div class="container" style="margin: auto;">
+                        <p class="Hero_Content">
+                            <i class="fa fa-quote-left"></i> " Once Upon A Time, Many Centuries Ago, A brave Hunter went up a
+                            hill in search of game. When he looked down, he beheld one of the
+                            most beautiful lands he had ever seen. His name was Adike and the land
+                            he found was later to be known as...
+                        </p>
+                        <h1 class="Obosi_Uwakala" style="">
+                            OBOSI UWAKALA<i class="fa fa-quote-right"></i>
+                        </h1>
+
+                        <p class="iconed-holder" style="margin: 2rem 0;">
+
+                            <a href="javascript:void(0)" class="iconed red">
+                                <span>Read The Full Story of Adike's Daring Journey</span>
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+
+                        </p>
+
+                    </div>
+                    <!-- Hero Content end -->
+                </div>
+
+            </div>
+
+        </header>
+
+
+    <div>
+        @RenderBody()
+    </div>
+        <footer>
+
+
+
+            <div class="site-map">
+
+                <div class="coren-links-container">
+
+                    <div class="coren-link-holder">
+                        <h4>
+                            People
+                        </h4>
+
+                        <div class="coren-links">
+
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Personalities).ToString())">
+                                Obosi's Personalities
+                            </a>
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
+                                Igwe's Cabinet
+                            </a>
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
+                                Obosi Development Union
+                            </a>
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
+                                Obosi Umunnas/Kindreds
+                            </a>
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
+                                Obosi's Age Grades
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="coren-link-holder">
+                        <h4>
+                            Places
+                        </h4>
+                        <div class="coren-links">
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())">
+                                Villages & Suburbs
+                            </a>
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Schools).ToString())">
+                                Schools
+                            </a>
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Hotels).ToString())">
+                                Hotels
+                            </a>
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Churches).ToString())">
+                                Churches
+                            </a>
+                            <a href="javascript:void(0)">
+                                More...
+                            </a>
+                        </div>
+                    </div>
+                    <div class="coren-link-holder">
+                        <h4>
+                            Culture
+                        </h4>
+                        <div class="coren-links">
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())">
+                                Festivals
+                            </a>
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())">
+                                Masquerades
+                            </a>
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())">
+                                Dance Groups
+                            </a>
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Monument).ToString())">
+                                Monuments
+                            </a>
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Landmarks).ToString())">
+                                Landmarks
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="coren-link-holder">
+                        <h4>
+                            Media
+                        </h4>
+                        <div class="coren-links">
+                            <a href="javascript:void(0)">
+                                News Articles
+                            </a>
+                            <a href="javascript:void(0)">
+                                Events Calendar
+                            </a>
+                            <a href="javascript:void(0)">
+                                Opinion Blogs
+                            </a>
+                            <a href="javascript:void(0)">
+                                Photo Gallery
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="coren-link-holder">
+                        <h4>
+                            Account
+                        </h4>
+                        <div class="coren-links">
+                            <a href="javascript:void(0)">
+                                Log into Account
+                            </a>
+                            <a href="javascript:void(0)">
+                                Recover Lost Password
+                            </a>
+                            <a href="javascript:void(0)">
+                                Start Registration
+                            </a>
+                            <a href="javascript:void(0)">
+                                Verify Registration
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="social-links-container">
+
+                    <a href="javascript:void(0)" class="facebook">
+                        <i class="fa fa-facebook-official"></i><span>Facebook</span>
+                    </a>
+                    <a href="javascript:void(0)" class="twitter">
+                        <i class="fa fa-twitter"></i><span>Twitter</span>
+                    </a>
+                    <a href="javascript:void(0)" class="linkedin">
+                        <i class="fa fa-linkedin"></i><span>LinkedIn</span>
+                    </a>
+                    <a href="mailto:info@coren.gov.ng" class="email">
+                        <i class="fa fa-envelope"></i><span> info@obosi.ng</span>
+                    </a>
+                    <a href="tel:+2348037317361" class="phone">
+                        <i class="fa fa-phone"></i><span> +234 80 3731 7361</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="logo-icon">
+                <img src="~/OBOSI LOGO.jpeg" />
+            </div>
+
+            <div class="copyright">
+                <h4>
+                    Media & Orientation Committee, Obosi Development Union
+                </h4>
+                <p>
+                    Nkwo Junction, Obosi, Idemili North LGA, Anambra State, Nigeria
+                </p>
+
+                <p>
+                    ©2023 All Rights Reserved.
+                </p>
+            </div>
+
+        </footer>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/src/layout.js" asp-append-version="true"></script>
+
+    <!-- Carousel Script -->
+
+    <script>
+        let carouselIndex = 0;
+        const carousel = document.querySelector('.carousel');
+
+        function scrollCarousel(direction) {
+            let size = GetScreenSize();
+            if (size > 795) {
+                if (carouselIndex >= 5 && direction == 1)
+                    return;
+                carouselIndex += direction;
+                if (carouselIndex < 0) {
+                    carouselIndex = 0;
+                } else if (carouselIndex > 7) {
+                    carouselIndex = 8;
+                }
+                carousel.style.transform = `translateX(-${carouselIndex * 260}px)`;
+            }
+            else {
+                if (carouselIndex >= 7 && direction == 1)
+                    return;
+                carouselIndex += direction;
+                if (carouselIndex < 0) {
+                    carouselIndex = 0;
+                } else if (carouselIndex > 7) {
+                    carouselIndex = 8;
+                }
+                carousel.style.transform = `translateX(-${carouselIndex * 300}px)`;
+            }
+
+        }
+        function GetScreenSize() {
+            return window.screen.width;
+
+        }
+    </script>
+
+
+    <!-- Carousel Script End -->
+
+
+</body>
+</html>
+@* 
+<div class="modal fade" id="peopleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content" style="background-color: #04042F;">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="row justify-content-between">
+                        <div class="col-md-3 col-12">
+                            <img src="~/images/obosiLogoText.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12 " style=" border-bottom: 1px solid #9D9CDB; ">
+                            <h1 class="medievalsharp-regular" style="color: #fff; font-size: 40px; font-weight: 500; text-align: center;">Our People: Our Pride</h1>
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-md-3 p-3" style="border-right: 1px solid #9D9CDB;">
+                            <p style="color: #fff;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor obcaecati adipisci maxime eaque repellendus reprehenderit accusamus voluptates. Cum ab voluptatum tempore! Error et debitis maxime aliquam, velit voluptate accusantium sint.</p>
+                            <p style="color: #fff;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In ea veritatis ipsam molestias rem saepe velit dolor incidunt facere itaque laudantium sit laboriosam eligendi, inventore ex quaerat temporibus animi praesentium.</p>
+                        </div>
+                        <div class="col-md-9 p-3">
+                            <div class="row">
+                                <div class="col-md-4 col-12">
+                                    <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                        <img src="~/personality/anyaoku-people.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items:
+                                      center; color: #fff; bottom: 0; width:250px; height: 90px;">
+                                            <p class="text-center">
+                                                Chief Emeka Anyaoku  <br /> <span>Third Commonwealth Secretary General</span>
+                                            </p>
+
+                                        </figcaption>
+                                    </figure>
+
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                        <img src="~/personality/chidoka-people.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items:
+                                      center; color: #fff; bottom: 0; width: 250px; height: 90px;">
+                                            <p class="text-center">
+                                                Chief Osita Benjamin Chidoka <br /> <span>Former Miniser of Aviation</span>
+                                            </p>
+
+                                        </figcaption>
+                                    </figure>
+
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                        <img src="~/personality/kodilinye-people.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items:
+center; color: #fff; bottom: 0; width: 250px; height: 90px;">
+                                            <p class="text-center">
+                                                Herbert C. Kodilinye  <br />
+                                                <span>Fourth Vice Chancellor of the University of Nigeria</span>
+                                            </p>
+
+                                        </figcaption>
+                                    </figure>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gap-3 ">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Personalities).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600; ">OBOSI'S PERSONALITIES</p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;text-transform: uppercase;">
+                                Igwe Obosi's Cabinet
+                            </p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;text-transform: uppercase;">
+                                Obosi Development Union
+                            </p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;text-transform: uppercase;">
+                                Obosi Umunna/Kindreds
+                            </p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;text-transform: uppercase;">
+                                Obosi Age Grade Societies
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="placesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content" style="background-color: #04042F;">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="row justify-content-between">
+                        <div class="col-md-3 col-12">
+                            <img src="~/images/obosiLogoText.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12 " style=" border-bottom: 1px solid #9D9CDB; ">
+                            <h1 class="medievalsharp-regular" style="color: #fff; font-size: 40px; font-weight: 500; text-align: center;">Our Places: Our Heritage</h1>
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-md-3 p-3" style="border-right: 1px solid #9D9CDB;">
+                            <p style="color: #fff;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor obcaecati adipisci maxime eaque repellendus reprehenderit accusamus voluptates. Cum ab voluptatum tempore! Error et debitis maxime aliquam, velit voluptate accusantium sint.</p>
+                            <p style="color: #fff;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In ea veritatis ipsam molestias rem saepe velit dolor incidunt facere itaque laudantium sit laboriosam eligendi, inventore ex quaerat temporibus animi praesentium.</p>
+                        </div>
+                        <div class="col-md-9 p-3">
+                            <div class="row">
+                                <div class="col-md-4 col-12">
+                                    <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                        <img src="~/places/land1.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 250px; height: 90px;">
+                                            <p class="text-center">Aerial View of Idemili River  <br /> <span>into River Niger </span></p>
+
+                                        </figcaption>
+                                    </figure>
+
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                        <img src="~/places/land2.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 250px; height: 90px;">
+                                            <p class="text-center">View of Awada Obosi,  <br /> <span>one of the most densely populated lands in Nigeria</span></p>
+
+                                        </figcaption>
+                                    </figure>
+
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                        <img src="~/places/land3.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color: #fff; bottom: 0; width: 250px; height: 90px;">
+                                            <p class="text-center">Road linking the newly constructed   <br /> <span>2nd Niger Bridge</span></p>
+
+                                        </figcaption>
+                                    </figure>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gap-3 ">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;">VILLAGES & SUBURBS</p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Schools).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;">SCHOOLS</p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Hotels).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;">HOTELS</p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Churches).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;">CHURCHES</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="cultureModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content" style="background-color: #04042F;">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="row justify-content-between">
+                        <div class="col-md-3 col-12">
+                            <img src="~/images/obosiLogoText.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12 " style=" border-bottom: 1px solid #9D9CDB; ">
+                            <h1 class="medievalsharp-regular" style="color: #fff; font-size: 40px; font-weight: 500; text-align: center;">Our Culture: Our Life</h1>
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-md-3 p-3" style="border-right: 1px solid #9D9CDB;">
+                            <p style="color: #fff;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor obcaecati adipisci maxime eaque repellendus reprehenderit accusamus voluptates. Cum ab voluptatum tempore! Error et debitis maxime aliquam, velit voluptate accusantium sint.</p>
+                            <p style="color: #fff;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In ea veritatis ipsam molestias rem saepe velit dolor incidunt facere itaque laudantium sit laboriosam eligendi, inventore ex quaerat temporibus animi praesentium.</p>
+                        </div>
+                        <div class="col-md-9 p-3">
+                            <div class="row">
+                                <div class="col-md-4 col-12">
+                                    <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                        <img src="~/places/masquerade1.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color:
+                                  #fff; bottom: 0; width: 250px; height: 90px;">
+
+                                            <p class="text-center">The beautiful & graceful  <br /> <span>Agbonma Masquerade</span></p>
+
+                                        </figcaption>
+                                    </figure>
+
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                        <img src="~/places/masquerade2.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color:
+                                  #fff; bottom: 0; width: 250px; height: 90px;">
+                                            <p class="text-center">
+                                                The ferocious & revered
+                                                <br /> <span>Isi Odogwu Masquerade</span>
+                                            </p>
+
+                                        </figcaption>
+                                    </figure>
+
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <figure style="position: relative; box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;">
+                                        <img src="~/places/masquerade3.jpg" alt="" />
+                                        <figcaption style="position: absolute; background-color: rgba(10, 10, 72, 0.8); align-items: center; color:
+                                  #fff; bottom: 0; width: 250px; height: 90px;">
+                                            <p class="text-center">
+                                                The ever-playful and agile   <br /> <span>
+                                                    Ajikwu Masquerade
+                                                </span>
+                                            </p>
+
+                                        </figcaption>
+                                    </figure>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gap-3 ">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Ito_Ogbo).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;">ITO-OGBO FESTIVAL</p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.New_Yam_Festival).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;">NEW YAM FESTIVAL</p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;">FESTIVALS</p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;">MASQUERADES</p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;"
+                             onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())';">
+                            <p style="font-size: 18px; font-weight: 600;">DANCE GROUPS</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mediaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content" style="background-color: #04042F;">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body container">
+                <div>
+                    <div class="row justify-content-between">
+                        <div class="col-md-3 col-12">
+                            <img src="~/images/obosiLogoText.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12 " style=" border-bottom: 1px solid #9D9CDB; ">
+                            <h1 class="medievalsharp-regular" style="color: #fff; font-size: 40px; font-weight: 500; text-align: center;">Media Center</h1>
+                        </div>
+                    </div>
+                    <div class="row gap-3 mt-3">
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                            <p style="font-size: 18px; font-weight: 600;">ITO-OGBO FESTIVAL</p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                            <p style="font-size: 18px; font-weight: 600;">NEW YAM FESTIVAL</p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center;  padding-top: 10px; border-radius: 4px;">
+                            <p style="font-size: 18px; font-weight: 600;">FESTIVALS</p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                            <p style="font-size: 18px; font-weight: 600;">MASQUERADES</p>
+                        </div>
+                        <div class="col-md-2" style="background-color: #0A0A48; color: #FFFFFF; text-align: center; padding-top: 10px; border-radius: 4px;">
+                            <p style="font-size: 18px; font-weight: 600;">DANCE GROUPS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gap-3 mt-3">
+                    <div class="col-md-2" style="background-color: #FB376B; color: #010119; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <p style="font-size: 18px; font-weight: 600;">ITO-OGBO FESTIVAL</p>
+                    </div>
+                    <div class="col-md-2" style="background-color: #FB376B; color: #010119; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <p style="font-size: 18px; font-weight: 600;">NEW YAM FESTIVAL</p>
+                    </div>
+                    <div class="col-md-2" style="background-color: #FB376B; color: #010119; text-align: center;  padding-top: 10px; border-radius: 4px;">
+                        <p style="font-size: 18px; font-weight: 600;">FESTIVALS</p>
+                    </div>
+                    <div class="col-md-2" style="background-color: #FB376B; color: #010119; text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <p style="font-size: 18px; font-weight: 600;">MASQUERADES</p>
+                    </div>
+                    <div class="col-md-2" style="background-color: #FB376B; color: #010119;text-align: center; padding-top: 10px; border-radius: 4px;">
+                        <p style="font-size: 18px; font-weight: 600;">DANCE GROUPS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+ *@
+@* 
+<div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content" style="background-color: #04042F;">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body container">
+                <div>
+                    <div class="row justify-content-between">
+                        <div class="col-md-3 col-12">
+                            <img src="~/images/obosiLogoText.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12 " style=" border-bottom: 1px solid #9D9CDB; ">
+                            <h1 class="medievalsharp-regular" style="color: #fff; font-size: 40px; font-weight: 500; text-align: center;">Account Manager</h1>
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-md-3 p-3" style="border-right: 1px solid #9D9CDB;">
+                            <form class="form-inline" asp-action="SignIn" asp-controller="Home" method="POST">
+                                <p style="font-size: 18px; font-weight: 500; color: #FFFFFF;">Enter your email address or phone number to access your dashboard</p>
+                                <label for="" style="font-size: 16px; color: #fff; "> Email Address or Phone Number</label>
+                                <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
+                                       style="background-color: #100E6C; color: #fff;" required asp-for="Username" />
+                                <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Password</label>
+                                <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
+                                       style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
+                                       required asp-for="Password" />
+                                <button class="btn w-100 mt-3 p-2" style="background-color: #FB376B; color: #010119; font-size: 16px; font-weight: 500;">LOGIN</button>
+                            </form>
+
+                        </div>
+                        <div class="col-md-9 p-3 ">
+                            <p style="font-size: 18px; font-weight: 500; color: #FFFFFF; text-align: center;">Are you an Obosi indigene but not registered? Complete the following fields to get started or <span style="color: #0078D4;">verify your account</span></p>
+
+                            <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
+                                <div class="row p-3">
+                                    <div class="col-md-6 col-12">
+                                        <div>
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">First Name</label>
+                                            <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
+                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
+                                                   required asp-for="user.FirstName" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div>
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Last Name</label>
+                                            <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
+                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
+                                                   required asp-for="user.LastName" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div>
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Last Name</label>
+                                            <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
+                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
+                                                   asp-for="user.OtherName" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div>
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Email</label>
+                                            <input class="form-control form-control-lg" type="email" aria-label=".form-control-lg example"
+                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
+                                                   asp-for="user.Email" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div>
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Password</label>
+                                            <input class="form-control form-control-lg" type="password" aria-label=".form-control-lg example"
+                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
+                                                   asp-for="user.Password" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div>
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Phone Number</label>
+                                            <input class="form-control form-control-lg" type="tel" aria-label=".form-control-lg example"
+                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
+                                                   asp-for="user.PhoneNumber" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="">
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Village</label>
+                                            <select class="form-select form-select-lg" aria-label="Default select example" style="background-color: #100E6C;
+                                            color: #ffffff;" required asp-for="VillageId">
+                                                <option selected>Select Village</option>
+                                                @foreach (var vil in Model.AllVillages)
+                                                {
+                                                    <option value="@vil.Id">@vil.Name</option>
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="">
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Gender</label>
+                                            <select class="form-select form-select-lg" aria-label="Default select example" required
+                                                    style="background-color: #100E6C; color: #ffffff;" asp-for="user.GenderId">
+                                                <option selected>Select Gender</option>
+                                                <option value="1">Male</option>
+                                                <option value="2">Female</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6 col-12 ">
+                                        <div class="">
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Umunna</label>
+                                            <select class="form-select form-select-lg " aria-label="Default select example" required
+                                                    style="background-color: #100E6C; color: #ffffff;" asp-for="UmunnaId">
+                                                <option selected>Select Umunna</option>
+                                                @foreach (var umu in Model.AllUmunna)
+                                                {
+                                                    <option value="@umu.Id">@umu.Name</option>
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="">
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Ime Nne</label>
+                                            <select class="form-select form-select-lg " aria-label="Default select example" required
+                                                    style="background-color: #100E6C; color: #ffffff; " asp-for="ImeneId">
+                                                <option selected>Select Ime Nne</option>
+                                                @foreach (var ime in Model.AllImene)
+                                                {
+                                                    <option value="@ime.Id">@ime.Name</option>
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="">
+                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Aka</label>
+                                            <select class="form-select form-select-lg" aria-label="Default select example" required
+                                                    style="background-color: #100E6C; color: #ffffff; " asp-for="AkaId">
+                                                <option selected>Select Aka</option>
+                                                @foreach (var ak in Model.AllAka)
+                                                {
+                                                    <option value="@ak.Id">@ak.Name</option>
+                                                }
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn w-100 mt-3 p-2" style="background-color: #FB376B; color: #010119; font-size: 16px; font-weight: 500;">CONTINUE</button>
+
+                            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+ *@
+
+ 
+
+
+

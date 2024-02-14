@@ -22,6 +22,7 @@ namespace Obosi.ng.Presentation.ViewModels
         {
             this.Units = await unit.GetAllUnitsByUnitType(unitTypeId);
             this.UnitTypeId = UnitTypeId;
+            this.Unit_Type = await unit.GetUnitType(unitTypeId);    
         }
 
         public List<Unit_Type> UnitTypeList { get; set; }

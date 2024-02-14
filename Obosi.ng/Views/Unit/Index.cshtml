@@ -38,7 +38,10 @@
                                         <tr>
                                             <td>@k</td>
                                             <td>@item.Name</td>
-                                            <td><a href="~/Unit/Units?unittype=@StringEncryption.Encrypt(item.Id.ToString())">View</a></td>
+                                            <td>
+                                                <a class="btn btn-outline-primary btn-sm mb-0" href="~/Unit/Units?unittype=@StringEncryption.Encrypt(item.Id.ToString())">View</a>
+                                                <a class="btn btn-outline-primary btn-sm mb-0" href="~/Unit/EditUnitType?id=@item.Id.ToString()">Edit</a>
+                                            </td>
                                         </tr>
                                         k++;
                                     }

@@ -19,7 +19,7 @@ namespace Obosi.ng.Application.Services
         {
             _dataContext = dataContext;
         }
-        public async Task<Users> ActivateUser(string username)
+        public async Task<Users> ActivateUser(string username, int unitId)
         {
             var user = await _dataContext.Users.Where(x => x.Email == username).FirstOrDefaultAsync();
             if(user != null)
@@ -27,9 +27,16 @@ namespace Obosi.ng.Application.Services
                 user.IsActive = true;
                 _dataContext.Users.Update(user);
                 await _dataContext.SaveChangesAsync();
-                return user;
+               
             }
-            return null;
+            var member = await _dataContext.Member_Unit.Where(x => x.UnitId == unitId).FirstOrDefaultAsync();
+            if(member != null) 
+            {
+                member.IsActive = true;
+                _dataContext.Member_Unit.Update(member);
+                await _dataContext.SaveChangesAsync();
+            }
+            return user;
         }
 
         public async Task<Users> AssignUserToRole(string username, Role role)
@@ -47,7 +54,8 @@ namespace Obosi.ng.Application.Services
 
         public async  Task<Users> AuthenticateUser(string email, string password)
         {
-            var user = await _dataContext.Users.Where(x => x.Email == email && x.Password == password).Include(x=>x.Role).FirstOrDefaultAsync();
+            var user = await _dataContext.Users.Where(x => x.Email == email && x.Password == password && 
+            x.IsActive== true).Include(x=>x.Role).FirstOrDefaultAsync();
             if (user != null)
             {
                 return user;

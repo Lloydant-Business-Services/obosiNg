@@ -28,12 +28,12 @@ namespace Obosi.ng.Presentation.Controllers
             UnitViewModel model = new(unit);
             await model.GetUnitTypeList(unitTypeId);
             model.UnitTypeId = unitTypeId;
-            ViewBag.Title = "Units";
+            ViewBag.Title = model.Unit_Type.Name;
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
         {
-            ViewBag.Title = "Unit Detaisl";
+            ViewBag.Title = "Unit Details";
             UnitViewModel model = new(unit);
              model.Unit = await unit.GetUnit(id);
             return View();
@@ -79,7 +79,35 @@ namespace Obosi.ng.Presentation.Controllers
            await unit.CreateUnitType(model.Unit_Type);
             return RedirectToAction("Index");
         }
-
+        [HttpGet]
+        public async Task<IActionResult> EditUnitType(int id)
+        {
+            ViewBag.Title = "Edit Unit Type";
+            UnitViewModel model = new(unit);
+            model.Unit_Type = await unit.GetUnitType(id);
+            return View(model);
+        }
+        [HttpPost]  
+        public async Task<IActionResult> EditUnitType(UnitViewModel model)
+        {
+            await unit.UpdateUnitType(model.Unit_Type);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            ViewBag.Title = "Edit Unit";
+            UnitViewModel model = new(unit);
+            model.Unit = await unit.GetUnit(id);
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(UnitViewModel model)
+        {
+            model.Unit.BackGroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+            await unit.UpdateUnit(model.Unit);
+            return RedirectToAction("Units", new { unittype = StringEncryption.Encrypt(model.Unit.UnitTypeId.ToString())});
+        }
 
     }
 }

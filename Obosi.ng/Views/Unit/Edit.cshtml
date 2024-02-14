@@ -1,0 +1,73 @@
+﻿@model Obosi.ng.Presentation.ViewModels.UnitViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Edit Unit</h1>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <input type="hidden" asp-for="Unit.UnitTypeId" />
+            <div class="form-group">
+                <label for="CategoryId">Name:</label>
+                <input asp-for="Unit.Name" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="BackgroundImageUrl">Background Image:</label>
+                <input asp-for="Image" class="form-control" type="file" />
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="CategoryId">Description:</label>
+
+                <textarea name="Unit.Description" style="width: 300px; height: 100px;" required
+                          id="PassageQuestion2" class="ckeditor" asp-for="Unit.Description"></textarea>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="BackgroundImageUrl">About:</label>
+
+                <textarea name="Unit.About" style="width: 300px; height: 100px;" required
+                          id="PassageQuestion" class="ckeditor" asp-for="Unit.About"></textarea>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Can Have Members:</label>
+                <input asp-for="Unit.CanHaveMembers" class="form-check-input" type="checkbox" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Needs Membership Confirmation:</label>
+                <input asp-for="Unit.NeedsConfirmation" class="form-check-input" type="checkbox" />
+            </div>
+        </div>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form>
+
+<script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace('#PassageQuestion');
+        CKEDITOR.replace('#PassageQuestion2');
+    });
+
+</script>

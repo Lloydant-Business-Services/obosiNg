@@ -1,9 +1,11 @@
 ﻿
 @model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
 @{
-    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+   Layout = "~/Views/Shared/_HomeLayout.cshtml";
+   // Layout = "~/Views/Shared/_GeneralLayout2.cshtml";
 }
 
+  <main>
 <div class="heroDiv py-5" style="text-align: center;">
     <p style="font-size: 48px; font-weight: 700; color: #fff;">@Model.Unit_Type.Name </p>
   
@@ -24,7 +26,7 @@
    </div>
 
 
-<div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content" style="background-color: #04042F;">
             <div class="modal-header">
@@ -198,3 +200,4 @@
     </div>
 </div>
 
+ 

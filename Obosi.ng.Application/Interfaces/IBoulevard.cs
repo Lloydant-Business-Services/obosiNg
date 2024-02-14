@@ -11,5 +11,8 @@ namespace Obosi.ng.Application.Interfaces
     {
         Task<Builders_Boulevard> CreateBoulevard(Builders_Boulevard builders_Boulevard);
         Task<List<Builders_Boulevard>> GetBoulevard(int pageId);
+        Task<Builders_Boulevard> GetBoulevardById(int id);
+        Task<Builders_Boulevard> UpdateBoulevard(Builders_Boulevard builders_Boulevard);
+        Task DeleteBoulevard(int id);
     }
 }

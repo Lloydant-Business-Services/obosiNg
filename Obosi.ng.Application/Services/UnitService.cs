@@ -131,5 +131,37 @@ namespace Obosi.ng.Application.Services
             }
             return null;
         }
+
+        public Task<Unit> UpdateUnit(Unit unit)
+        {
+            if(unit != null)
+            {
+                _dataContext.Unit.Update(unit);
+                _dataContext.SaveChangesAsync();
+                return Task.FromResult(unit);
+            }
+            return null;
+        }
+
+        public Task<Unit_Type> UpdateUnitType(Unit_Type unittype)
+        {
+            if(unittype != null)
+            {
+                _dataContext.Unit_Type.Update(unittype);
+                _dataContext.SaveChangesAsync();
+                return Task.FromResult(unittype);
+            }
+            return null;
+        }
+
+        public async Task<List<Member_Unit>> ViewApprovedMembers()
+        {
+            return await _dataContext.Member_Unit.Where(x => x.IsActive == true && x.Unit.UnitTypeId == (int)UnitTypes.Umunna).Include(x=>x.Unit.UnitType).Include(x=>x.Users).ToListAsync();
+        }
+
+        public async Task<List<Member_Unit>> ViewUnApprovedMembers()
+        {
+            return await _dataContext.Member_Unit.Where(x => x.IsActive == false && x.Unit.UnitTypeId == (int)UnitTypes.Umunna).Include(x => x.Unit.UnitType).Include(x => x.Users).ToListAsync();
+        }
     }
 }

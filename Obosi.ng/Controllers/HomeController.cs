@@ -93,7 +93,7 @@ namespace Obosi.ng.Controllers
         {
             model.user.RoleId = (int)Role.User;
             var user = await _user.CreateUser(model.user,model.AkaId,model.UmunnaId,model.VillageId,model.ImeneId);
-            if(user != null)
+            if(user?.IsActive != true)
             {
                 return RedirectToAction("Index", "DashBoard");
             }
@@ -150,7 +150,7 @@ namespace Obosi.ng.Controllers
         }
         public async Task<IActionResult> BlogList()
         {
-            var model = new HomePageViewModel(_news, _blog, _calender);
+            var model = new HomePageViewModel(_news, _blog, _calender, _unit);
             await model.BlogInitailize();
             return View(model);
         }

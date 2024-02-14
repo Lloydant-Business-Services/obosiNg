@@ -6,9 +6,11 @@ namespace Obosi.ng.Presentation.ViewModels
     public class UserViewModel
     {
         private readonly IUser user;
-        public UserViewModel(IUser _user)
+        private readonly IUnit unit;
+        public UserViewModel(IUser _user, IUnit _unit)
         {
            user = _user;
+           unit = _unit;
         }
         public UserViewModel()
         {
@@ -17,9 +19,11 @@ namespace Obosi.ng.Presentation.ViewModels
         public async Task InitializeNewsAsync()
         {
             this.Users = await user.GetAllUsers();
+            this.Members = await unit.ViewUnApprovedMembers();
         }
 
         public List<Users> Users { get; set; }
         public Users User { get; set; }
+        public List<Member_Unit> Members { get; set; }
     }
 }

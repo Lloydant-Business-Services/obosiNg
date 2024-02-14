@@ -1,0 +1,37 @@
+﻿@model Obosi.ng.Presentation.ViewModels.UnitViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Edit Unit Type</h1>
+
+<form asp-action="EditUnitType" method="post">
+
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="form-group">
+                <label for="CategoryId">Name:</label>
+                <input asp-for="Unit_Type.Name" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="BackgroundImageUrl">Is Active:</label>
+                <input asp-for="Unit_Type.IsActive" class="form-group"
+                       type="checkbox" />
+            </div>
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form>
+
+<script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace('#PassageQuestion');
+    });
+
+</script>

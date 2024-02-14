@@ -1,4 +1,4 @@
-﻿@model Obosi.ng.Presentation.ViewModels.BlogViewModel
+﻿ @model Obosi.ng.Presentation.ViewModels.BlogViewModel
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -42,7 +42,9 @@
                                             <td>@item.DateApproved</td>
                                            
                                             <td>
-                                                <a href="~/Blog/Details?id=@item.Id">View</a>
+                                                <a class="btn btn-outline-primary btn-sm mb-0" href="~/Blog/Details?id=@item.Id">View</a>
+                                                <a class="btn btn-outline-primary btn-sm mb-0" href="~/Blog/Edit?id=@item.Id">Edit</a>
+                                              
                                             </td>
                                         </tr>
                                         k++;
@@ -63,4 +65,8 @@
     $(document).ready(function () {
         $('#example').DataTable();
     });
-</script> 
+</script>  
+
+
+
+
