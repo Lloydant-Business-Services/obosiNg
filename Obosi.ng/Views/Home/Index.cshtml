@@ -423,12 +423,12 @@
                 {
                     <div class="single-news">
                         <div class="image-holder">
-                            <img src="~/@news.BackgroundImageUrl" class="img-fluid " style="height: 300px; width: 300px;" />
+                            <img src="~/@news.BackgroundImageUrl" class="img-fluid " style="height: 100px; width: 200px;" />
                         </div>
                         <p>
                             @news.DateApproved.Value.ToLongDateString()
                         </p>
-                        <a href="javascript:void(0)">
+                        <a href="~/Home/News?id=@StringEncryption.Encrypt(@news.Id.ToString())">
                             @news.Title
                         </a>
                     </div>
@@ -463,12 +463,12 @@
                 {
                     <div class="single-blog">
                         <div class="image-holder">
-                            <img src="~/@blogs.BackgroundImageUrl" class="img-fluid " style="height: 300px; width: 300px;" />
+                            <img src="~/@blogs.BackgroundImageUrl" class="img-fluid " style="height: 100px; width: 200px;" />
                         </div>
                         <p>
                             @blogs.DateApproved.Value.ToLongDateString()
                         </p>
-                        <a href="javascript:void(0)">
+                        <a href="~/Home/Blog?id=@StringEncryption.Encrypt(@blogs.Id.ToString())">
                             @blogs.Title
                         </a>
                     </div>
