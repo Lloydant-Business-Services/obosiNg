@@ -42,6 +42,7 @@
   <ItemGroup>
     <None Include="wwwroot\images\.DS_Store" />
     <None Include="wwwroot\img\.DS_Store" />
+    <None Include="wwwroot\land\Blog Post\Icon\Link.svg" />
   </ItemGroup>
 
   <ItemGroup>

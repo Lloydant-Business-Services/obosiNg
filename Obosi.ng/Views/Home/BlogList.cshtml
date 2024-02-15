@@ -1,19 +1,23 @@
 ﻿@using Obosi.ng.Presentation.utility;
 @model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
 @{
-   Layout = "~/Views/Shared/_HomeLayout.cshtml";
+   //Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    Layout = "~/Views/Shared/_GeneralLayout2.cshtml";
 }
 
 
+<!-- Header -->
+
+<!-- Header End -->
 
 
 
-    <div class="container">
+    @* <div class="container">
         <p class="mt-4 text-center responsive_font_size" style="color: #FB2B5F; font-size: 40px; font-weight: 700;">Welcome to Obosi Blog</p>
         <p class="mt-4 text-center responsive_font_size" style="color: #000; font-size: 18px; font-weight: 400;">Emerging Stories and Blogs </p>
-    </div>
+    </div> *@
 
-   <div class="mb-5">
+   @* <div class="mb-5">
         <div class="row mt-5 justify-content-center gap-3">
              @if (Model.Blogs != null)
             {
@@ -57,179 +61,561 @@
         </div>
    </div>
 
+ *@
 
 
-<div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content" style="background-color: #04042F;">
-            <div class="modal-header">
-                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body container">
-                <div>
-                    <div class="row justify-content-between">
-                        <div class="col-md-3 col-12">
-                            <img src="~/images/obosiLogoText.png" alt="" />
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-12 " style=" border-bottom: 1px solid #9D9CDB; ">
-                            <h1 class="medievalsharp-regular" style="color: #fff; font-size: 40px; font-weight: 500; text-align: center;">Account Manager</h1>
-                        </div>
-                    </div>
-                    <div class="row p-2">
-                        <div class="col-md-3 p-3" style="border-right: 1px solid #9D9CDB;">
-                            <form class="form-inline" asp-action="SignIn" asp-controller="Home" method="POST">
-                                <p style="font-size: 18px; font-weight: 500; color: #FFFFFF;">Enter your email address or phone number to access your dashboard</p>
-                                <label for="" style="font-size: 16px; color: #fff; "> Email Address or Phone Number</label>
-                                <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
-                                       style="background-color: #100E6C; color: #fff;" required asp-for="Username" />
-                                <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Password</label>
-                                <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
-                                       style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                       required asp-for="Password" />
-                                <button class="btn w-100 mt-3 p-2" style="background-color: #FB376B; color: #010119; font-size: 16px; font-weight: 500;">LOGIN</button>
-                            </form>
-
-                        </div>
-                        <div class="col-md-9 p-3 ">
-                            <p style="font-size: 18px; font-weight: 500; color: #FFFFFF; text-align: center;">Are you an Obosi indigene but not registered? Complete the following fields to get started or <span style="color: #0078D4;">verify your account</span></p>
-
-                            <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
-                                <div class="row p-3">
-                                    <div class="col-md-6 col-12">
-                                        <div>
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">First Name</label>
-                                            <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
-                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                   required asp-for="user.FirstName" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div>
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Last Name</label>
-                                            <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
-                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                   required asp-for="user.LastName" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div>
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Last Name</label>
-                                            <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
-                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                   asp-for="user.OtherName" required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div>
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Email</label>
-                                            <input class="form-control form-control-lg" type="email" aria-label=".form-control-lg example"
-                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                   asp-for="user.Email" required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div>
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Password</label>
-                                            <input class="form-control form-control-lg" type="password" aria-label=".form-control-lg example"
-                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                   asp-for="user.Password" required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div>
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Phone Number</label>
-                                            <input class="form-control form-control-lg" type="tel" aria-label=".form-control-lg example"
-                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                   asp-for="user.PhoneNumber" required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="">
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Village</label>
-                                            <select class="form-select form-select-lg" aria-label="Default select example" style="background-color: #100E6C;
-                                            color: #ffffff;" required asp-for="VillageId">
-                                                <option selected>Select Village</option>
-                                                @foreach (var vil in Model.AllVillages)
-                                                {
-                                                    <option value="@vil.Id">@vil.Name</option>
-                                                }
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="">
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Gender</label>
-                                            <select class="form-select form-select-lg" aria-label="Default select example" required
-                                                    style="background-color: #100E6C; color: #ffffff;" asp-for="user.GenderId">
-                                                <option selected>Select Gender</option>
-                                                <option value="1">Male</option>
-                                                <option value="2">Female</option>
-
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-6 col-12 ">
-                                        <div class="">
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Umunna</label>
-                                            <select class="form-select form-select-lg " aria-label="Default select example" required
-                                                    style="background-color: #100E6C; color: #ffffff;" asp-for="UmunnaId">
-                                                <option selected>Select Umunna</option>
-                                                @foreach (var umu in Model.AllUmunna)
-                                                {
-                                                    <option value="@umu.Id">@umu.Name</option>
-                                                }
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="">
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Ime Nne</label>
-                                            <select class="form-select form-select-lg " aria-label="Default select example" required
-                                                    style="background-color: #100E6C; color: #ffffff; " asp-for="ImeneId">
-                                                <option selected>Select Ime Nne</option>
-                                                @foreach (var ime in Model.AllImene)
-                                                {
-                                                    <option value="@ime.Id">@ime.Name</option>
-                                                }
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="">
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Aka</label>
-                                            <select class="form-select form-select-lg" aria-label="Default select example" required
-                                                    style="background-color: #100E6C; color: #ffffff; " asp-for="AkaId">
-                                                <option selected>Select Aka</option>
-                                                @foreach (var ak in Model.AllAka)
-                                                {
-                                                    <option value="@ak.Id">@ak.Name</option>
-                                                }
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="btn w-100 mt-3 p-2" style="background-color: #FB376B; color: #010119; font-size: 16px; font-weight: 500;">CONTINUE</button>
-
-                            </form>
-                        </div>
-
-
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
+<div class="container-blog__page">
+    <div class="blog-header-container">
+        <h2 class="blog-header-text">Blog List</h2>
 
     </div>
 </div>
 
+
+<div class="related-post">
+    <div class="related-post__header">
+        <h2>Welcome to Obosi Blog</h2>
+    </div>
+
+    <p>Emerging Stories and Blogs.</p>
+
+    <!-- Cards -->
+
+    <div class="posts">
+
+
+        @if (Model.Blogs != null)
+        {
+            foreach (var item in Model.Blogs)
+            {
+
+                <!-- Post 1 -->
+                <div class="card" onclick="window.location.href = '/Home/Blog?id=@StringEncryption.Encrypt(@item.Id.ToString())';">
+                    <img src="~/@item.BackgroundImageUrl" alt="Blog Post Image" class="card-img">
+                    <div class="card-content">
+                        <h2 class="card-title">@item.Title</h2>
+                        <p class="card-description">Brief description of the blog post content...</p>
+                        <div class="author-info">
+                            <img src="~/@item.User.PassportUrl" alt="Author Avatar" class="author-avatar">
+                            <p class="author-name">@item.DateApproved.Value.ToShortDateString()</p>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+        }
+        <!-- Post 1 end-->
+        <!-- Post 3 end-->
+
+    </div>
+
+
+
+
+</div>
+
+<div class="top-dropdown">
+
+    <div class="dropdown-button-holder">
+
+        <button class="dropdown-button" id="btn">
+
+            <div class="bars">
+                <div class="bar top"></div>
+                <div class="bar bottom"></div>
+            </div>
+
+        </button>
+
+    </div>
+
+
+
+    <div id="people-dropdown" class="top-dropdown-contents">
+
+        <div class="visible-large">
+            <h1 class="top-header">
+                Our People: Our Pride
+            </h1>
+            <div class="top-sections">
+                <section class="top-text">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </section>
+                <div class="section-images">
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/Ikeazor.jpeg" />
+                            <figcaption>
+                                Chief Philip Ikeazor (Izoma-Obosi),  <br />
+                                Deputy CBN Governor
+
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/Ajegbo.jpeg" />
+                            <figcaption>
+                                Chief Mike Ajegbo (Ede Obosi), <br />
+                                7 Senator, Federal Republic of Nigeria
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/anyaoku-people.jpg" />
+                            <figcaption>
+                                Chief Emeka Anyaoku <br />
+                                Third Commonwealth Secretary General
+                            </figcaption>
+                        </figure>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-nav">
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Personalities).ToString())">
+                Obosi's Personalities
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
+                Igwe Obosi's Cabinet
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
+                Obosi Development Union
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
+                Obosi Umunna/Kindreds
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
+                Obosi Age Grade Societies
+            </a>
+        </div>
+
+    </div>
+    <div id="places-dropdown" class="top-dropdown-contents">
+        <div class="visible-large">
+            <h1 class="top-header">
+                Our Places: Our Heritage
+            </h1>
+            <div class="top-sections">
+                <section class="top-text">
+                    <p>
+                        Obosi Ukwala is situated in a hilly area, bordered by Onitsha to the North-west, Nkpor to the North-east and Oba to the south-east
+                    </p>
+                    <p>
+                        Obosi has five villages namely: Umuota, Ire, Ugamuma, Urowulu, & Mmakwum.
+                    </p>
+                    <p>
+                        Additionally it has suburbs namely: Awada, Enekwasumpu, Ugwuaba, & Odume.
+                    </p>
+                    <p>
+                        Obosi's proximity to Onitsha, a commercial city, has made it a
+                        desired home to several buinesses.
+                    </p>
+                </section>
+                <div class="section-images">
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/land1.jpg" />
+                            <figcaption>
+                                Aerial View of Idemili River into River Niger
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/land2.jpg" />
+                            <figcaption>
+                                View of Awada Obosi, one of the most densely populated lands in Nigeria
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/land3.jpg" />
+                            <figcaption>
+                                Road linking the newly constructed 2nd Niger Bridge
+                            </figcaption>
+                        </figure>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bottom-nav">
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())">
+                Villages & Suburbs
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Schools).ToString())">
+                Schools
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Hotels).ToString())">
+                Hotels
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Churches).ToString())">
+                Churches
+            </a>
+            <a href="javascript:void(0)">
+                More...
+            </a>
+
+        </div>
+    </div>
+    <div id="culture-dropdown" class="top-dropdown-contents">
+        <div class="visible-large">
+            <h1 class="top-header">
+                Our Culture: Our Life
+            </h1>
+            <div class="top-sections">
+                <section class="top-text">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </section>
+                <div class="section-images">
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/masquerade1.jpg" />
+                            <figcaption>
+                                The beautiful & graceful Agbonma Masquerade
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/masquerade2.jpg" />
+                            <figcaption>
+                                The ferocious & revered Isi Odogwu Masquerade
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/masquerade3.jpg" />
+                            <figcaption>
+                                The ever-playful and agile Ajikwu Masquerade
+                            </figcaption>
+                        </figure>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bottom-nav">
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Ito_Ogbo).ToString())">
+                Ito-Ogbo Featival
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.New_Yam_Festival).ToString())">
+                New Yam Festival
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())">
+                Festivals
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())">
+                Masquerades
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())">
+                Dance Groups
+            </a>
+
+        </div>
+    </div>
+    <div id="media-dropdown" class="top-dropdown-contents">
+        <h1 class="top-header alt">
+            Media Center
+        </h1>
+        <div class="top-nav">
+            <a href="javascript:void(0)">
+                Opinion' Blogs
+            </a>
+            <a href="javascript:void(0)">
+                News Articles
+            </a>
+            <a href="javascript:void(0)">
+                Photo Gallery
+            </a>
+            <a href="javascript:void(0)">
+                Events Calendar
+            </a>
+
+        </div>
+
+        <div class="visible-large">
+
+            <div class="media-sections">
+
+                <section class="media-menu">
+                    <a href="javascript:void(0)">
+                        Education
+                    </a>
+                    <a href="javascript:void(0)">
+                        Security
+                    </a>
+                    <a href="javascript:void(0)">
+                        Health & Fitness
+                    </a>
+                    <a href="javascript:void(0)">
+                        Life, Religion & Family
+                    </a>
+                    <a href="javascript:void(0)">
+                        Science & Technology
+                    </a>
+                    <a href="javascript:void(0)">
+                        Movies, Music, & Arts
+                    </a>
+                </section>
+                <section class="media-menu">
+                    <a href="javascript:void(0)">
+                        Education
+                    </a>
+                    <a href="javascript:void(0)">
+                        Security
+                    </a>
+                    <a href="javascript:void(0)">
+                        Health & Fitness
+                    </a>
+                    <a href="javascript:void(0)">
+                        Life, Religion & Family
+                    </a>
+                    <a href="javascript:void(0)">
+                        Science & Technology
+                    </a>
+                    <a href="javascript:void(0)">
+                        Movies, Music, & Arts
+                    </a>
+                </section>
+                <section class="media-menu">
+                    <a href="javascript:void(0)">
+                        Igwe's Palace
+                    </a>
+                    <a href="javascript:void(0)">
+                        Obosi Development Union
+                    </a>
+                    <a href="javascript:void(0)">
+                        Umunnas/Kindreds
+                    </a>
+                    <a href="javascript:void(0)">
+                        Age Grade Societies
+                    </a>
+                </section>
+                <section class="media-menu">
+                    <a href="javascript:void(0)">
+                        Igwe's Palace
+                    </a>
+                    <a href="javascript:void(0)">
+                        Obosi Development Union
+                    </a>
+                    <a href="javascript:void(0)">
+                        Umunnas/Kindreds
+                    </a>
+                    <a href="javascript:void(0)">
+                        Age Grade Societies
+                    </a>
+                </section>
+            </div>
+
+        </div>
+    </div>
+    <div id="account-dropdown" class="top-dropdown-contents">
+        <h1 class="top-header alt">
+            Account Manager
+        </h1>
+        <div class="forms-container">
+
+            <div class="form-body login">
+
+                <h2>
+                    Enter your email address or phone number to access your dashboard
+                </h2>
+
+                <form class="form-inline" asp-action="SignIn" asp-controller="Home" method="POST">
+
+                    <div class="field-group-alt">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Email address" required asp-for="Username" />
+
+                        </div>
+
+                        <div class="field-holder">
+
+                            <div class="password-box">
+
+                                <input type="password" class="form-field" placeholder="Password" required asp-for="Password" />
+
+                                <a href="javascript:void(0)" id="show-password">
+                                    <i class="fa fa-eye-slash"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        Login
+                    </button>
+
+                </form>
+
+                <a href="javascript:void(0)" class="alternative-link">
+                    Forgotten Password?
+                </a>
+            </div>
+
+            <div class="form-body register">
+
+                <h2>
+                    Are you an Obosi indigene but not registered? Complete the following fields to get started or
+                    <a href="javascript:void(0)">verify your account</a>.
+                </h2>
+
+                <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
+
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="First name" required asp-for="user.FirstName" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Last Name" required asp-for="user.LastName" />
+
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Other name" asp-for="user.OtherName" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Email" asp-for="user.Email" required />
+
+                        </div>
+                    </div>  <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Password" required asp-for="user.Password" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Phone Number" asp-for="user.PhoneNumber" required />
+
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <select class="form-field" required asp-for="VillageId">
+                                <option selected>Select Village</option>
+                                @foreach (var vil in Model.AllVillages)
+                                {
+                                    <option value="@vil.Id">@vil.Name</option>
+                                }
+                            </select>
+
+                        </div>
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="AkaId">
+                                <option selected>Select Aka</option>
+                                @foreach (var ak in Model.AllAka)
+                                {
+                                    <option value="@ak.Id">@ak.Name</option>
+                                }
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="UmunnaId">
+                                <option selected>Select Umunna</option>
+                                @foreach (var umu in Model.AllUmunna)
+                                {
+                                    <option value="@umu.Id">@umu.Name</option>
+                                }
+                            </select>
+
+                        </div>
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="ImeneId">
+                                <option value="">Select Ime Nne</option>
+                                @foreach (var ime in Model.AllImene)
+                                {
+                                    <option value="@ime.Id">@ime.Name</option>
+                                }
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="field-holder">
+
+                        <div class="options">
+
+                            <label> Are you a </label>
+
+                            <span>
+                                <input type="radio" id="male" name="GenderId" asp-for="user.GenderId" value="1" />
+                                <label for="male">Male</label>
+                            </span>
+
+                            <span>
+                                <input type="radio" id="female" name="GenderId" asp-for="user.GenderId" value="2" />
+                                <label for="female">Female</label>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="submit-button">
+                        Continue
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+        <div class="bottom-nav alt">
+            <a href="javascript:void(0)">
+                Log into Account
+            </a>
+            <a href="javascript:void(0)">
+                Recover Lost Password
+            </a>
+            <a href="javascript:void(0)">
+                Start Registration
+            </a>
+            <a href="javascript:void(0)">
+                Verify Registration
+            </a>
+
+
+        </div>
+
+    </div>
+</div>
