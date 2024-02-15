@@ -27,6 +27,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=MedievalSharp&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/land/index.css" />
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"> 
+    
+        <style>
+        a {
+            text-decoration: none;
+          }
+    </style>
+    
 </head>
 
 <body>
@@ -493,9 +501,9 @@
 
         </div> *@
 
-        <header style="min-height: 0 !important;">
+        <header style="min-height: 0 !important; background-image: none; background-color: #d4d8e2 !important;">
 
-            <div style="min-height: 0 !important;" class="header-wrapper ">
+            <div style="min-height: 0 !important; background-image: none;" class="header-wrapper ">
 
                 <div style="min-height: 0!important;" class="header-contents">
 
@@ -524,23 +532,23 @@
                         <nav>
 
                             <span class="divider"></span>
-                            <a href="javascript:void(0)" data-target="#people-dropdown" class="@(ViewBag.ActivePage == "People" ? "active show-top-dropdown" : "show-top-dropdown")">
+                            <a style="text-decoration:none;" href="javascript:void(0)" data-target="#people-dropdown" class="@(ViewBag.ActivePage == "People" ? "active show-top-dropdown" : "show-top-dropdown")">
                                 People
                             </a>
                             <span class="divider"></span>
-                            <a href="javascript:void(0)" data-target="#places-dropdown" class="@(ViewBag.ActivePage == "Places" ? "active show-top-dropdown" : "show-top-dropdown")">
+                            <a style="text-decoration:none;" href="javascript:void(0)" data-target="#places-dropdown" class="@(ViewBag.ActivePage == "Places" ? "active show-top-dropdown" : "show-top-dropdown")">
                                 Places
                             </a>
                             <span class="divider"></span>
-                            <a href="javascript:void(0)" data-target="#culture-dropdown" class="@(ViewBag.ActivePage == "Culture" ? "active show-top-dropdown" : "show-top-dropdown")">
+                            <a style="text-decoration:none;" href="javascript:void(0)" data-target="#culture-dropdown" class="@(ViewBag.ActivePage == "Culture" ? "active show-top-dropdown" : "show-top-dropdown")">
                                 Culture
                             </a>
                             <span class="divider"></span>
-                            <a href="javascript:void(0)" data-target="#media-dropdown" class="@(ViewBag.ActivePage == "Media" ? "active show-top-dropdown" : "show-top-dropdown")">
+                            <a style="text-decoration:none;" href="javascript:void(0)" data-target="#media-dropdown" class="@(ViewBag.ActivePage == "Media" ? "active show-top-dropdown" : "show-top-dropdown")">
                                 Media
                             </a>
                             <span class="divider"></span>
-                            <a href="javascript:void(0)" data-target="#account-dropdown" class="@(ViewBag.ActivePage == "Account" ? "active show-top-dropdown" : "show-top-dropdown")">
+                            <a style="text-decoration:none;" href="javascript:void(0)" data-target="#account-dropdown" class="@(ViewBag.ActivePage == "Account" ? "active show-top-dropdown" : "show-top-dropdown")">
                                 Account
                             </a>
                             <span class="divider"></span>

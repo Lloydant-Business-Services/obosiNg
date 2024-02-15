@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.IdentityModel.Tokens;
 using Obosi.ng.Application.Enums;
 using Obosi.ng.Application.Interfaces;
@@ -80,8 +81,7 @@ namespace Obosi.ng.Controllers
             }
             model.ErrorMessage ="User Not Found";
 
-            return RedirectToAction("Index", "Home");
-
+            return View(model); 
         }
         [HttpGet]
         public async Task<IActionResult> SignUp()
@@ -93,13 +93,28 @@ namespace Obosi.ng.Controllers
         [HttpPost]
         public async Task<IActionResult> SignUp(HomePageViewModel model)
         {
-            model.user.RoleId = (int)Role.User;
-            var user = await _user.CreateUser(model.user,model.AkaId,model.UmunnaId,model.VillageId,model.ImeneId);
-            if(user?.IsActive != true)
+            try
             {
-                return RedirectToAction("Index", "DashBoard");
+                model.user.RoleId = (int)Role.User;
+                var user = await _user.CreateUser(model.user, model.AkaId, model.UmunnaId, model.VillageId, model.ImeneId);
+                if (user?.IsActive != true)
+                {
+                  
+                     return RedirectToAction("Confirmation", "Home");
+                }
+            }
+            catch(Exception ex)
+            {
+                model = new HomePageViewModel(_unit);
+                model.ErrorMessage = ex.Message;
+                await model.GetAllUmunna();
+                return View(model);
             }
             return RedirectToAction("Index", "Home");
+        }
+        public async Task<IActionResult> Confirmation()
+        {
+            return View();
         }
         public async Task<IActionResult> SignOut()
         {

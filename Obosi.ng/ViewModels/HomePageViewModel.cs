@@ -87,8 +87,7 @@ namespace Obosi.ng.Presentation.ViewModels
             this.News = await news.GetNews(1);
             this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
             this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
-            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne
-                );
+            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne);
             this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
 
         }
@@ -99,8 +98,6 @@ namespace Obosi.ng.Presentation.ViewModels
             this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
             this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne);
             this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
-
-
         }
         public async Task GetUnits(int id)
         {

@@ -799,28 +799,28 @@ body.open {
   height: auto;
   width: 25%;
 }
-.top-dropdown
-  .top-dropdown-contents#media-dropdown
-  .media-sections
-  .media-menu
-  a {
-  width: auto;
-  border: 1px solid #010119;
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-  color: #04042f;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
-  font-size: 18px;
-  line-height: 22px;
-  text-align: center;
-  padding: 5px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  justify-content: center;
-  width: 100%;
-  background-color: #fb376b;
-}
+    .top-dropdown
+    .top-dropdown-contents#media-dropdown
+    .media-sections
+    .media-menu
+    a {
+        width: auto;
+        border: 1px solid #010119;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        color: #04042f;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+        font-size: 18px;
+        line-height: 22px;
+        text-align: center;
+        padding: 5px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        justify-content: center;
+        width: 100%;
+        background-color: #808080;
+    }
 @media only screen and (min-width: 768px) and (max-width: 991.98px) {
   .top-dropdown
     .top-dropdown-contents#media-dropdown
@@ -3921,13 +3921,15 @@ main #see-say h6 {
 }
 
 .carousel-container {
-  margin: 2rem 0;
-  overflow: hidden;
-  position: relative;
+    margin: 0 auto;
+}
+
+.Gallery-card{
+    display: flex;
 }
 .carousel {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
 }
 .card {
   flex: 0 0 auto;
@@ -3937,6 +3939,7 @@ main #see-say h6 {
   margin: 0 10px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor:pointer
 }
 
 /* Gallery Cards*/
@@ -4020,7 +4023,7 @@ main #see-say h6 {
 }
 /*  Card Label */
 /* media queries - mobile */
-@media only screen and (max-width: 767.98px) {
+@media only screen and (max-width: 768px) {
   .container {
     width: 90%;
   }
@@ -4031,6 +4034,10 @@ main #see-say h6 {
     font-size: 1.4rem;
     line-height: 32px;
     color: #fff;
+  }
+
+  .Gallery-card {
+        display: block;
   }
 
   .Obosi_Uwakala {
@@ -4056,6 +4063,17 @@ main #see-say h6 {
     line-height: 45px;
     text-align: left;
   }
+
+    .card {
+        flex: 0 0 auto;
+        width: 360px;
+        height: 400px;
+        font-size: 1.5rem;
+        margin: 0 10px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer
+    }
 }
 
 /* Blog Page CSS */
@@ -4359,7 +4377,7 @@ h6 {
 /* CARDS */
 
 .card {
-  width: 300px;
+  /*width: 300px;*/
   border: 1px solid #f4f4f4;
   /* border-radius: 8px; */
   overflow: hidden;
