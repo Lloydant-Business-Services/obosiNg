@@ -114,7 +114,8 @@ namespace Obosi.ng.Controllers
         }
         public async Task<IActionResult> Confirmation()
         {
-            return View();
+            var model = new HomePageViewModel(_news, _blog, _calender, _unit);
+            return View(model);
         }
         public async Task<IActionResult> SignOut()
         {
