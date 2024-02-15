@@ -38,8 +38,8 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-5 text-center mx-auto">
-                            <h1 class="text-white mb-2 mt-5">Welcome!</h1>
-                            <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p>
+                            <h1 class="text-white mb-2 mt-5">WELCOME </h1>
+                            <p class="text-lead text-white">TO THE OFFICIAL PLATFORM OF NDI OBOSI.</p>
                         </div>
                     </div>
                 </div>
@@ -85,15 +85,65 @@
                                                asp-for="user.Email">
                                     </div>
                                     <div class="mb-3">
+                                        <select class="form-control" required asp-for="VillageId">
+                                            <option selected>Select Village</option>
+                                            @foreach (var vil in Model.AllVillages)
+                                            {
+                                                <option value="@vil.Id">@vil.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <select class="form-control" asp-for="AkaId">
+                                            <option selected>Select Aka</option>
+                                            @foreach (var ak in Model.AllAka)
+                                            {
+                                                <option value="@ak.Id">@ak.Name</option>
+                                            }
+
+                                        </select>
+                                      </div>
+                                      <div class="mb-3">
+
+                                        <select class="form-control" asp-for="UmunnaId">
+                                            <option selected>Select Umunna</option>
+                                            @foreach (var umu in Model.AllUmunna)
+                                            {
+                                                <option value="@umu.Id">@umu.Name</option>
+                                            }
+                                        </select>
+                                      </div>
+                                      <div class="mb-3">
+
+                                        <select class="form-control" asp-for="ImeneId">
+                                            <option value="">Select Ime Nne</option>
+                                            @foreach (var ime in Model.AllImene)
+                                            {
+                                                <option value="@ime.Id">@ime.Name</option>
+                                            }
+                                        </select>
+                                      </div>
+                                    <div class="mb-3">
                                         <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon"
                                         asp-for="user.Password">
                                     </div>
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="Umunna" aria-label="Umunna" aria-describedby="umunna-addon"
-                                        asp-for="UnitId">
+                                    <div class="options">
+
+                                        <label> Are you a </label>
+
+                                        <span>
+                                            <input type="radio" id="male" name="user.GenderId" asp-for="user.GenderId" value="1" />
+                                            <label for="male">Male</label>
+                                        </span>
+
+                                        <span>
+                                            <input type="radio" id="female" name="user.GenderId" asp-for="user.GenderId" value="2" />
+                                            <label for="female">Female</label>
+                                        </span>
                                     </div>
                                    
                                     <div class="text-center">
+                                        <p style="text-decoration-color:red">@Model.ErrorMessage</p>
                                         <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
                                     </div>
                                     <p class="text-sm mt-3 mb-0">Already have an account? <a href="~/Home/SignIn" class="text-dark font-weight-bolder">Sign in</a></p>
@@ -162,3 +212,4 @@
 </body>
 
 </html>
+
