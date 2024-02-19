@@ -5,45 +5,45 @@ using Obosi.ng.Presentation.ViewModels;
 
 namespace Obosi.ng.Presentation.Controllers
 {
-    public class CalenderController : Controller
-    { private readonly ICalender calender;
+    public class PictureAssetController : Controller
+    { private readonly  IMedia media;
         private readonly IHostEnvironment _hostingEnvironment;
         private readonly IUnit unit;    
-        public CalenderController(ICalender _calender, IHostEnvironment hostingEnvironment, IUnit _unit)
+        public PictureAssetController(IMedia _media, IHostEnvironment hostingEnvironment, IUnit _unit)
         {
-            calender = _calender;
+            media = _media; 
             _hostingEnvironment = hostingEnvironment;
             unit = _unit;
         }
         public async Task<IActionResult> Index()
         {
             ViewBag.Title = "Calender";
-            CalenderViewModel model = new(calender);
-            await model.InitializeNewsAsync();
+            MediaViewModel model = new(media, unit);
+            await model.InitializePicturesAsync();
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
         {
             ViewBag.Title = "Calender";
-            CalenderViewModel model = new(calender);
-            await model.InitializeNewsAsync();
-            model.Calender_Asset = await calender.GetAssets(id);
+            MediaViewModel model = new(media, unit);
+            await model.InitializePicturesAsync();
+     
             return View(model);
         }
         [HttpGet]
         public async Task<IActionResult> Create()
         {
             ViewBag.Title = "Calender";
-            CalenderViewModel model = new(calender,unit);
-            await model.InitializeNewsAsyncUnits();
+            MediaViewModel model = new(media,unit);
+            await model.InitializePicturesAsync();
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(CalenderViewModel model)
+        public async Task<IActionResult> Create(MediaViewModel model)
         {
-            if (model.Calender_Asset != null)
+            if (model.Picture_Asset != null)
             {
-                await calender.CreateAsset(model.Calender_Asset);
+                await media.CreatePicture(model.Picture_Asset);
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -52,13 +52,13 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             ViewBag.Title = "Calender";
-            CalenderViewModel model = new(calender,unit);
-            await model.InitializeNewsAsyncUnits();
+            MediaViewModel model = new(media, unit);
+            await model.InitializePicturesAsync();
             model.Calender_Asset = await calender.GetAssets(id);
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(CalenderViewModel model)
+        public async Task<IActionResult> Edit(MediaViewModel model)
         {
             if (model.Calender_Asset != null)
             {
@@ -70,7 +70,7 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             ViewBag.Title = "Calender";
-            CalenderViewModel model = new(calender);
+            MediaViewModel model = new(media, unit);
             await model.InitializeNewsAsync();
             return View(model);
         }

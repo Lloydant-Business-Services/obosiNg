@@ -26,7 +26,7 @@
 
 
 
-            if (file.Length > 0)
+            if (file?.Length > 0)
             {
 
                 var extType = Path.GetExtension(file.FileName);

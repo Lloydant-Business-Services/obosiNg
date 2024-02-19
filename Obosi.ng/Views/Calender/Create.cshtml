@@ -26,7 +26,14 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="CategoryId">Unit:</label>
-                <input asp-for="Calender_Asset.UnitId" class="form-control" />
+                @* <input asp-for="Calender_Asset.UnitId" class="form-control" /> *@
+                <select asp-for="Calender_Asset.UnitId" class="form-select">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.Units)
+                    {
+                        <option value="@item.Id">@item.Name (@item.UnitType.Name)</option>
+                    }
+                </select>
             </div>
         </div>
         <div class="col-md-6">
@@ -41,6 +48,12 @@
             <div class="form-group">
                 <label for="CategoryId">Location:</label>
                 <input asp-for="Calender_Asset.Location" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Start Date:</label>
+                <input asp-for="Calender_Asset.StartDate" class="form-control"  type="date"/>
             </div>
         </div>
     </div>

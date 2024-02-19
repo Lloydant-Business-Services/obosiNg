@@ -75,6 +75,11 @@ namespace Obosi.ng.Application.Services
             return await _dataContext.Unit.Where(x => x.UnitTypeId == (int)UnitTypes.Umunna).Include(x => x.UnitType).ToListAsync();
         }
 
+        public async Task<List<Unit>> GetAllUnits()
+        {
+            return await _dataContext.Unit.Include(x => x.UnitType).ToListAsync();
+        }
+
         public async Task<List<Unit>> GetAllUnitsByUnitType(int unitTypeId)
         {
             return await _dataContext.Unit.Where(x => x.UnitTypeId == unitTypeId).Include(x=>x.UnitType).ToListAsync();
