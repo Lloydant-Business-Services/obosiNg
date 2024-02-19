@@ -52,7 +52,8 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             ViewBag.Title = "News";
-            NewsViewModel model = new();
+            NewsViewModel model = new(news);
+            await model.InitializeNewsAsync();
             model.NewsObject =  await news.GetNewsById(id);
             return View(model);
         }

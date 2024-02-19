@@ -54,15 +54,15 @@ namespace Obosi.ng.Presentation.Controllers
             ViewBag.Title = "Calender";
             MediaViewModel model = new(media, unit);
             await model.InitializePicturesAsync();
-            model.Calender_Asset = await calender.GetAssets(id);
+           
             return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> Edit(MediaViewModel model)
         {
-            if (model.Calender_Asset != null)
+            if (model.Picture_Asset != null)
             {
-                await calender.UpdateAsset(model.Calender_Asset);
+              
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -71,7 +71,7 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Calender";
             MediaViewModel model = new(media, unit);
-            await model.InitializeNewsAsync();
+           
             return View(model);
         }
     }

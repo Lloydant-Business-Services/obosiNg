@@ -21,15 +21,14 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Video";
             MediaViewModel model = new(media,unit);
-            await model.InitializeNewsAsync();
+          
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
         {
             ViewBag.Title = "Calender";
             MediaViewModel model = new(media, unit);
-            await model.InitializeNewsAsync();
-            model.Calender_Asset = await calender.GetAssets(id);
+          
             return View(model);
         }
         [HttpGet]
@@ -37,15 +36,15 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Calender";
             MediaViewModel model = new(media, unit);
-            await model.InitializeNewsAsyncUnits();
+           
             return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> Create(MediaViewModel model)
         {
-            if (model.Calender_Asset != null)
+            if (model.Video_Asset != null)
             {
-                await calender.CreateAsset(model.Calender_Asset);
+               
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -55,16 +54,15 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Calender";
             MediaViewModel model = new(media, unit);
-            await model.InitializeNewsAsyncUnits();
-            model.Calender_Asset = await calender.GetAssets(id);
+           
             return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> Edit(MediaViewModel model)
         {
-            if (model.Calender_Asset != null)
+            if (model.Video_Asset != null)
             {
-                await calender.UpdateAsset(model.Calender_Asset);
+             
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -73,7 +71,7 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Video";
             MediaViewModel model = new(media, unit);
-            await model.InitializeNewsAsync();
+         
             return View(model);
         }
     }
