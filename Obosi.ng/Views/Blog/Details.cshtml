@@ -6,7 +6,7 @@
 
 
     
-      <div  style="text-align: center;">
+    @*   <div  style="text-align: center;">
         <p style="font-size: 48px; font-weight: 200;">@Model.Blog.Title</p>
       
         <p style="font-size: 14px; font-weight: 100;">@Model?.Blog?.User?.LastName @Model?.Blog?.User?.FirstName </p>
@@ -46,7 +46,44 @@ height: 400px; " />
             <a class="btn btn-outline-primary btn-sm mb-0" href="~/Blog/Approve?id=@Model.Blog.Id">Approve</a>
 </div>
       }
-}
-    
-    
+} *@
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-center mb-4">@Model.Blog.Title</h1>
+            <p class="text-center mb-4">By: @Model?.Blog?.User?.FirstName @Model?.Blog?.User?.LastName</p>
+
+            <div class="card mb-4">
+                <img src="/@Model.Blog.BackgroundImageUrl" class="card-img-top" alt="Blog Image" 
+                style="max-height: 400px; width: auto;">
+                <div class="card-body">
+                    <p class="card-text text-center">@Html.Raw(@Model.Blog.Body)</p>
+                
+
+                <h3 class="text-center mb-3">Summary</h3>
+                    <p class="card-text text-center">@Html.Raw(@Model.Blog.Summary)</p>
+                </div>
+            </div>
+
+
+            @if (!Model.Blog.IsPublished)
+            {
+                <div class="text-center mt-4">
+                    <a class="btn btn-primary" href="~/Blog/Publish?id=@Model.Blog.Id">Publish</a>
+                </div>
+            }
+
+            @{
+                var userRole = IdentityExtensions.GetId(User.Identity);
+                if (userRole == 1 && Model.Blog.IsPublished && Model.Blog.IsApproved == false)
+                {
+                    <div class="text-center mt-4">
+                        <a class="btn btn-primary" href="~/Blog/Approve?id=@Model.Blog.Id">Approve</a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
 

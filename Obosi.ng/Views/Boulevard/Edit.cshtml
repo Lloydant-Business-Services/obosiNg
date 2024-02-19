@@ -6,6 +6,7 @@
 <h1>Create Boulevard </h1>
 
 <form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input asp-for="builders_Boulevard.Id" type="hidden" />
     <div class="form-group">
         <label for="title">FullName:</label>
         <input asp-for="builders_Boulevard.FullName" class="form-control" />

@@ -115,5 +115,24 @@ namespace Obosi.ng.Application.Services
             await _dataContext.SaveChangesAsync();
             return blog;
         }
+
+        public async Task<Blogs> UpdateBlog(Blogs blog)
+        {
+            var blogDetail = _dataContext.Blogs.Where(x => x.Id == blog.Id).FirstOrDefault();
+            if (blogDetail != null)
+            {
+                blogDetail.Title = blog.Title;
+                blogDetail.Body = blog.Body;
+                blogDetail.CategoryId = blog.CategoryId;
+                if (!string.IsNullOrEmpty(blog.BackgroundImageUrl))
+                {
+                    blogDetail.BackgroundImageUrl = blog.BackgroundImageUrl;
+                }
+                blogDetail.Summary = blog.Summary;
+                _dataContext.Blogs.Update(blogDetail);
+                await _dataContext.SaveChangesAsync();
+            }
+            return blog;
+        }
     }
 }

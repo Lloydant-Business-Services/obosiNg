@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
+@* 
 
 <div style="text-align: center;">
     <p style="font-size: 48px; font-weight: 200;">@Model.NewsObject.Title</p>
@@ -51,4 +51,46 @@ height: 400px; " />
 }
 
 
+
+ *@
+
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-center mb-4">@Model.NewsObject.Title</h1>
+            <p class="text-center mb-4">By: @Model?.NewsObject?.User?.FirstName @Model?.NewsObject?.User?.LastName</p>
+
+            <div class="card mb-4">
+                <img src="/@Model.NewsObject.BackgroundImageUrl" class="card-img-top" alt="NewsObject Image"
+                     style="max-height: 400px; width: auto;">
+                <div class="card-body">
+                    <p class="card-text text-center">@Html.Raw(@Model.NewsObject.Body)</p>
+               
+                <h3 class="text-center mb-3">Summary</h3>
+                    <p class="card-text text-center">@Html.Raw(@Model.NewsObject.Summary)</p>
+                </div>
+                
+            </div>
+
+           
+            @if (!Model.NewsObject.IsPublished)
+            {
+                <div class="text-center mt-4">
+                    <a class="btn btn-primary" href="~/NewsObject/Publish?id=@Model.NewsObject.Id">Publish</a>
+                </div>
+            }
+
+            @{
+                var userRole = IdentityExtensions.GetId(User.Identity);
+                if (userRole == 1 && Model.NewsObject.IsPublished && Model.NewsObject.IsApproved == false)
+                {
+                    <div class="text-center mt-4">
+                        <a class="btn btn-primary" href="~/NewsObject/Approve?id=@Model.NewsObject.Id">Approve</a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
 

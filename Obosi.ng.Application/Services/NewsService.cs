@@ -6,6 +6,7 @@ using Obosi.ng.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -136,6 +137,29 @@ namespace Obosi.ng.Application.Services
                 return newsup.Entity;
             }
             return null;
+        }
+
+        public async Task<News> UpdateNews(News news)
+        {
+           if(news != null)
+            {
+                var newsDetail = await _dataContext.News.Where(x => x.Id == news.Id).FirstOrDefaultAsync();
+                if(newsDetail != null)
+                {
+                    newsDetail.Title = news.Title;
+                    newsDetail.Body = news.Body;
+                    newsDetail.CategoryId = news.CategoryId;
+                    if (!string.IsNullOrEmpty(news.BackgroundImageUrl))
+                    {
+                        newsDetail.BackgroundImageUrl = news.BackgroundImageUrl;
+                    }
+                    newsDetail.Summary = news.Summary;
+                    _dataContext.News.Update(newsDetail);
+                   await  _dataContext.SaveChangesAsync();
+                    
+                }   
+            }
+            return news;
         }
     }
 }

@@ -59,9 +59,10 @@ namespace Obosi.ng.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(NewsViewModel model)
         {
-            if (ModelState.IsValid)
+            if (model.NewsObject != null)
             {
-                await news.UpdateNews(model.News_Update);    
+                model.NewsObject.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+                await news.UpdateNews(model.NewsObject);    
                 return RedirectToAction("Index");
             }
             return View(model);

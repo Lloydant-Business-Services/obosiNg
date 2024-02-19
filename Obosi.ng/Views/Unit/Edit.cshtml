@@ -7,7 +7,7 @@
 
 <form asp-action="Edit" method="post" enctype="multipart/form-data">
 
-
+    <input asp-for="Unit.Id" type="hidden" />
     <div class="row">
         <div class="col-md-6">
             <input type="hidden" asp-for="Unit.UnitTypeId" />

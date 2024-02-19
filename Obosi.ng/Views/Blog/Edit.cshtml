@@ -6,6 +6,8 @@
 <h1>Edit Blog Post</h1>
 
 <form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+    <input asp-for="Blog.Id" type="hidden"/>
     <div class="form-group">
         <label for="title">Title:</label>
         <input asp-for="Blog.Title" class="form-control" />
@@ -45,7 +47,7 @@
         <textarea name="Blog.Summary" style="width: 300px; height: 100px;" required
                   id="PassageQuestion2" class="ckeditor" asp-for="Blog.Summary"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" class="btn btn-primary">Edit</button>
 </form>
 
 <script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>

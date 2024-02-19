@@ -15,6 +15,7 @@ namespace Obosi.ng.Application.Interfaces
         Task<List<Blogs>> GetHomePageBlogs();
         Task<Blogs?> GetBlogsById(int BlogId);
         Task<Blogs> CreateBlog(Blogs blog);
+        Task<Blogs> UpdateBlog(Blogs blog);
         Task<Blogs_Update> UpdateBlog(Blogs_Update blog);
         Task DeleteBlog(int BlogId);
         Task<Blogs> PublishBlog(int blogId);
