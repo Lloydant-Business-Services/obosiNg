@@ -57,6 +57,7 @@ namespace Obosi.ng.Presentation.Controllers
             return View(model);
         }
         [HttpPost]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Edit(BoulevardViewModel model)
         {
             if (ModelState.IsValid)

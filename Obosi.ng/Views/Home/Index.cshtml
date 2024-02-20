@@ -557,17 +557,33 @@
                         <div class="carouse">
 
                             <div class="Gallery-card">
-                        <div onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Monument).ToString())';" class="card card-label-control card-1" style="background-color: #f1c40f;"> <span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Monuments</span></div>
-                        <div onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())';" class="card card-2 card-label-control" style="background-color: #e67e22;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Masquerades</span></div>
-                        <div onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())';" class="card card-3 card-label-control" style="background-color: #e74c3c;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Dance Groups</span></div>
-                        <div onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())';" class="card card-4 card-label-control" style="background-color: #3498db;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Festivals</span></div>
-                            </div>
+                        <a href="Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Monument).ToString())">
+                        <div  class="card card-label-control card-1" style="background-color: #f1c40f;"> <span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Monuments</span></div>
+                        </a>
+                        <a href="Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())">
+                        <div  class="card card-2 card-label-control" style="background-color: #e67e22;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Masquerades</span></div>
+                        </a>
+                        <a href="Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())">
+                        <div  class="card card-3 card-label-control" style="background-color: #e74c3c;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Dance Groups</span></div>
+                        </a>
+                        <a href="Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())">
+                        <div  class="card card-4 card-label-control" style="background-color: #3498db;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Festivals</span></div>
+                        </a>
+                    </div>
 
                     <div class="Gallery-card">
-                        <div onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Personalities).ToString())';" class="card card-5 card-label-control" style="background-color: #9b59b6;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Personalities</span></div>
-                        <div onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())';" class="card card-6 card-label-control" style="background-color: #2ecc71;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Village Suburbs</span></div>
-                        <div onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Landmarks).ToString())';" class="card card-7 card-label-control" style="background-color: #1abc9c;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Landmarks</span></div>
-                        <div onclick="window.location.href = 'Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Services_And_Resources).ToString())';" class="card card-8 card-label-control" style="background-color: #34495e;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Services Resources</span></div>
+                        <a href="Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Personalities).ToString())">
+                        <div  class="card card-5 card-label-control" style="background-color: #9b59b6;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Personalities</span></div>
+                        </a>
+                        <a href="Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())">
+                        <div class="card card-6 card-label-control" style="background-color: #2ecc71;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Village Suburbs</span></div>
+                        </a>
+                        <a href="Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Landmarks).ToString())">
+                        <div class="card card-7 card-label-control" style="background-color: #1abc9c;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Landmarks</span></div>
+                        </a>
+                        <a href="Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Services_And_Resources).ToString())"> 
+                        <div  class="card card-8 card-label-control" style="background-color: #34495e;"><span style="font-weight: 600; color: aliceblue; margin: 2rem 3rem; display: flex;"> <span class="bar"></span> Services Resources</span></div>
+                        </a>
                     </div>
                     
                         </div>
@@ -739,7 +755,8 @@
                                 <div class="event-date-container">
                                     <div class="event-date">
                                         <p class="month">
-                                            @cal.StartDate.Month
+                                            @{var mon = cal.StartDate.ToString("MMM");}
+                                            @mon
                                         </p>
                                         <p class="day">
                                             @cal.StartDate.Day

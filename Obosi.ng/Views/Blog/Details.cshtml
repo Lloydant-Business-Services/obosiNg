@@ -58,11 +58,13 @@ height: 400px; " />
                 <img src="/@Model.Blog.BackgroundImageUrl" class="card-img-top" alt="Blog Image" 
                 style="max-height: 400px; width: auto;">
                 <div class="card-body">
+                    <h3 class="text-center mb-3">Summary</h3>
+                    <p class="card-text text-center">@Html.Raw(@Model.Blog.Summary)</p>
+                     <h3 class="text-center mb-3">Body</h3>
                     <p class="card-text text-center">@Html.Raw(@Model.Blog.Body)</p>
                 
 
-                <h3 class="text-center mb-3">Summary</h3>
-                    <p class="card-text text-center">@Html.Raw(@Model.Blog.Summary)</p>
+               
                 </div>
             </div>
 

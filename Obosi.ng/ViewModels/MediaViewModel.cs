@@ -27,6 +27,18 @@ namespace Obosi.ng.Presentation.ViewModels
           this.Picture_Assets = await media.GetPicturesByUnit();
             this.Units = await unit.GetAllUnits();
         }
+        public async Task InitializVideoAsync(int id)
+        {
+            this.Video_Assets = await media.GetVideoByUnit();
+            this.Units = await unit.GetAllUnits();
+            this.Video_Asset = await media.GetVideo(id);
+        }
+        public async Task InitializePicturesAsync(int id)
+        {
+            this.Picture_Assets = await media.GetPicturesByUnit();
+            this.Units = await unit.GetAllUnits();
+            this.Picture_Asset = await media.GetPicture(id);
+        }
         public MediaViewModel()
         {
 

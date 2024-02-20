@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Obosi.ng.Presentation.utility
 {
-    
+
     public static class StringEncryption
     {
         public static string Encrypt(string encrypData)

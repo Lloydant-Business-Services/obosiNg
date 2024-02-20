@@ -58,6 +58,7 @@ namespace Obosi.ng.Presentation.Controllers
             return View(model);
         }
         [HttpPost]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Edit(CalenderViewModel model)
         {
             if (model.Calender_Asset != null)

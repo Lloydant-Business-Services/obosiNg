@@ -4,6 +4,7 @@ using Microsoft.Extensions.FileProviders;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Application.Services;
 using Obosi.ng.Data;
+using Obosi.ng.Presentation.utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,12 +44,12 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    using (var scope = app.Services.CreateScope())
-    {
-        var services = scope.ServiceProvider;
-        var context = services.GetRequiredService<DataContext>();
-        context.Database.Migrate();
-    }
+//    using (var scope = app.Services.CreateScope())
+//    {
+//        var services = scope.ServiceProvider;
+//        var context = services.GetRequiredService<DataContext>();
+//        context.Database.Migrate();
+//    }
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
@@ -74,6 +75,8 @@ app.UseStaticFiles(new StaticFileOptions
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+app.PrepareDatabase().GetAwaiter().GetResult();
+
 
 app.MapControllerRoute(
     name: "default",

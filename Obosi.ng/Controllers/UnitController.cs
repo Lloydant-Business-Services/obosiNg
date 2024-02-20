@@ -87,7 +87,8 @@ namespace Obosi.ng.Presentation.Controllers
             model.Unit_Type = await unit.GetUnitType(id);
             return View(model);
         }
-        [HttpPost]  
+        [HttpPost]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> EditUnitType(UnitViewModel model)
         {
             await unit.UpdateUnitType(model.Unit_Type);
@@ -102,6 +103,7 @@ namespace Obosi.ng.Presentation.Controllers
             return View(model);
         }
         [HttpPost]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Edit(UnitViewModel model)
         {
             model.Unit.BackGroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);

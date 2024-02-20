@@ -17,23 +17,23 @@ namespace Obosi.ng.Presentation.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            ViewBag.Title = "Calender";
+            ViewBag.Title = "Pictures";
             MediaViewModel model = new(media, unit);
             await model.InitializePicturesAsync();
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
         {
-            ViewBag.Title = "Calender";
+            ViewBag.Title = "Pictures";
             MediaViewModel model = new(media, unit);
-            await model.InitializePicturesAsync();
+            await model.InitializePicturesAsync(id);
      
             return View(model);
         }
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            ViewBag.Title = "Calender";
+            ViewBag.Title = "Pictures";
             MediaViewModel model = new(media,unit);
             await model.InitializePicturesAsync();
             return View(model);
@@ -51,27 +51,28 @@ namespace Obosi.ng.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            ViewBag.Title = "Calender";
+            ViewBag.Title = "Pictures";
             MediaViewModel model = new(media, unit);
-            await model.InitializePicturesAsync();
+            await model.InitializePicturesAsync(id);
            
             return View(model);
         }
         [HttpPost]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Edit(MediaViewModel model)
         {
             if (model.Picture_Asset != null)
             {
-              
+                await media.UpdatePicture(model.Picture_Asset);
                 return RedirectToAction("Index");
             }
             return View(model);
         }
         public async Task<IActionResult> Delete(int id)
         {
-            ViewBag.Title = "Calender";
+            ViewBag.Title = "Pictures";
             MediaViewModel model = new(media, unit);
-           
+           await media.DeletePicture(id);   
             return View(model);
         }
     }

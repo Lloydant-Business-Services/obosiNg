@@ -21,14 +21,14 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Video";
             MediaViewModel model = new(media,unit);
-          
+            await  model.InitializVideoAsync();
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
         {
             ViewBag.Title = "Calender";
             MediaViewModel model = new(media, unit);
-          
+            await model.InitializVideoAsync(id);
             return View(model);
         }
         [HttpGet]
@@ -36,7 +36,7 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Calender";
             MediaViewModel model = new(media, unit);
-           
+            await  model.InitializVideoAsync();
             return View(model);
         }
         [HttpPost]
@@ -44,7 +44,7 @@ namespace Obosi.ng.Presentation.Controllers
         {
             if (model.Video_Asset != null)
             {
-               
+                await media.CreateVideo(model.Video_Asset);
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -54,15 +54,16 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Calender";
             MediaViewModel model = new(media, unit);
-           
+            await model.InitializVideoAsync(id);
             return View(model);
         }
         [HttpPost]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Edit(MediaViewModel model)
         {
             if (model.Video_Asset != null)
             {
-             
+                await media.UpdateVideo(model.Video_Asset);
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -71,7 +72,7 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Video";
             MediaViewModel model = new(media, unit);
-         
+            await media.DeleteVideo(id);
             return View(model);
         }
     }
