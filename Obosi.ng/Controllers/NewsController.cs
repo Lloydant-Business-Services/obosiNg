@@ -52,19 +52,25 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             ViewBag.Title = "News";
-            NewsViewModel model = new();
+            NewsViewModel model = new(news);
+            await model.InitializeNewsAsync();
             model.NewsObject =  await news.GetNewsById(id);
             return View(model);
         }
+
         [HttpPost]
         public async Task<IActionResult> Edit(NewsViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                await news.UpdateNews(model.News_Update);    
+            var userRole = IdentityExtensions.GetId(User.Identity);
+            model.NewsObject.UserId = Convert.ToInt32(userRole);
+
+            if (model.Image != null)
+                model.NewsObject.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+            else
+                model.NewsObject.BackgroundImageUrl = "";
+
+            await news.UpdateNews(model.NewsObject);
                 return RedirectToAction("Index");
-            }
-            return View(model);
         }
         public async Task<IActionResult> Delete(int id) 
         {

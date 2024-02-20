@@ -115,5 +115,11 @@ namespace Obosi.ng.Application.Services
             await _dataContext.SaveChangesAsync();
             return blog;
         }
+        public async Task<Blogs> UpdateBlog(Blogs blog)
+        {
+            _dataContext.Blogs.Update(blog);
+            await _dataContext.SaveChangesAsync();
+            return await Task.FromResult(blog);
+        }
     }
 }

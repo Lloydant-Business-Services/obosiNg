@@ -59,15 +59,25 @@ namespace Obosi.ng.Presentation.Controllers
             ViewBag.Title = "Blogs";
             return View(model);
         }
+        //[HttpPost]
+        //public async Task<IActionResult> Edit(BlogViewModel model)
+        //{
+        //    await blog.UpdateBlog(model.Blogs_Update);
+        //    return RedirectToAction("Index");
+        //}
         [HttpPost]
         public async Task<IActionResult> Edit(BlogViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                await blog.UpdateBlog(model.Blogs_Update);
-                return RedirectToAction("Index");
-            }
-            return View(model);
+            var userRole = IdentityExtensions.GetId(User.Identity);
+            model.Blog.UserId = Convert.ToInt32(userRole);
+
+            if (model.Image != null)
+                model.Blog.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+            else
+                model.Blog.BackgroundImageUrl = "";
+
+            await blog.UpdateBlog(model.Blog);
+            return RedirectToAction("Index");
         }
         public async Task<IActionResult> Delete(int id)
         {

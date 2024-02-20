@@ -21,6 +21,7 @@ namespace Obosi.ng.Application.Interfaces
         Task<Blogs> ApproveBlog(int blogId);
         Task<Blogs_Comment> CreateReaction(Blogs_Comment comment);
         Task<List<Category>> AllCategories();
+        Task<Blogs> UpdateBlog(Blogs blog);
 
     }
 }

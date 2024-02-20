@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
@@ -104,7 +105,9 @@ namespace Obosi.ng.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(UnitViewModel model)
         {
-            model.Unit.BackGroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+            if(model.Image != null)
+                model.Unit.BackGroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+
             await unit.UpdateUnit(model.Unit);
             return RedirectToAction("Units", new { unittype = StringEncryption.Encrypt(model.Unit.UnitTypeId.ToString())});
         }
