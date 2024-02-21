@@ -50,6 +50,41 @@ namespace Obosi.ng.Presentation.utility
             }
             return data;
         }
+
+        public static string GetYouTubeVideoId(string youtubeUrl)
+        {
+            Uri uri = new Uri(youtubeUrl);
+            string host = uri.Host;
+            string videoId = "";
+
+            if (host.Contains("youtu.be"))
+            {
+                videoId = uri.Segments[1];
+                if (videoId.EndsWith("/"))
+                {
+                    videoId = videoId.TrimEnd('/');
+                }
+            }
+            else if (host.Contains("youtube.com"))
+            {
+                string queryString = uri.Query;
+                string[] queryParams = queryString.Split('&');
+                foreach (string param in queryParams)
+                {
+                    string[] keyValue = param.Split('=');
+                    if (keyValue[0] == "v")
+                    {
+                        videoId = keyValue[1];
+                        break;
+                    }
+                }
+            }
+            if (string.IsNullOrEmpty(videoId))
+            {
+                throw new ArgumentException("Invalid YouTube URL");
+            }
+            return videoId;
+        }
     }
 
 }

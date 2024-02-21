@@ -26,7 +26,7 @@ namespace Obosi.ng.Presentation.Controllers
         }
         public async Task<IActionResult> Details(int id)
         {
-            ViewBag.Title = "Calender";
+            ViewBag.Title = "Video";
             MediaViewModel model = new(media, unit);
             await model.InitializVideoAsync(id);
             return View(model);
@@ -34,7 +34,7 @@ namespace Obosi.ng.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            ViewBag.Title = "Calender";
+            ViewBag.Title = "Video";
             MediaViewModel model = new(media, unit);
             await  model.InitializVideoAsync();
             return View(model);
@@ -44,6 +44,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             if (model.Video_Asset != null)
             {
+                model.Video_Asset.Title = model.Video_Asset.Caption;
+                model.Video_Asset.DateAdded = DateTime.Now;
                 await media.CreateVideo(model.Video_Asset);
                 return RedirectToAction("Index");
             }
@@ -52,7 +54,7 @@ namespace Obosi.ng.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            ViewBag.Title = "Calender";
+            ViewBag.Title = "Video";
             MediaViewModel model = new(media, unit);
             await model.InitializVideoAsync(id);
             return View(model);

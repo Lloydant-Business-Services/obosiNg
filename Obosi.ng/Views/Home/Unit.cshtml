@@ -5,7 +5,7 @@
 }
 
 
-<div class="container-fluid mt-3" style="background-color: #fff ; padding: 3vmin">
+@* <div class="container-fluid mt-3" style="background-color: #fff ; padding: 3vmin">
     <p class="text-center " style="font-size: 3vmin; font-weight: 600;">OFFICIAL PAGE OF @Model.unitItem.Name.ToUpper()</p>
 </div>
 <div class="container-fluid pt-2" style="background-color: #D4D8E2; ">
@@ -52,7 +52,7 @@
                 </li>
             </ul>
  *@
-            <ul class="nav nav-pills nav-fill mb-3 container d-lg-flex justify-content-lg-between gap-3" id="pills-tab" style="">
+          @*   <ul class="nav nav-pills nav-fill mb-3 container d-lg-flex justify-content-lg-between gap-3" id="pills-tab" style="">
                 <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
                     <a class="nav-link btn btn-primary text-white" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about"
                        role="tab" aria-controls="pills-about" aria-selected="true" tabindex="0" href="#pills-about">
@@ -353,8 +353,8 @@
 
 
     </div>
-</div>
-
+</div> *@
+ 
 
 <div class="top-dropdown">
 
@@ -861,6 +861,309 @@
 
     </div>
 </div>
+
+<div class="container-fluid mt-3" style="background-color: #fff ; padding: 3vmin">
+    <p class="text-center " style="font-size: 3vmin; font-weight: 600;">OFFICIAL PAGE OF @Model.unitItem.Name.ToUpper()</p>
+</div>
+<div class="row p-3">
+    <div class="col-3 p-5">
+        <ul class="nav  flex-column nav-pills nav-fill mb-3 container d-lg-flex justify-content-center gap-3" id="pills-tab" style="">
+            <li class="nav-item bg-primary text-white rounded col-lg-12 col-12 col-sm-3" role="presentation">
+                <a class="nav-link btn btn-primary text-white" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about"
+                   role="tab" aria-controls="pills-about" aria-selected="true" tabindex="0" href="#pills-about">
+                    ABOUT US
+                </a>
+            </li>
+            @if (Model.unitItem.CanHaveMembers)
+            {
+            <li class="nav-item bg-primary text-white rounded col-lg-12 col-12 col-sm-3" role="presentation">
+                <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-executive-tab" data-bs-toggle="pill" data-bs-target="#pills-executive"
+                   role="tab" aria-controls="pills-executive" aria-selected="false" tabindex="0" href="#pills-executive">
+                    EXECUTIVE
+                </a>
+            </li>
+           
+                <li class="nav-item bg-primary text-white rounded col-lg-12 col-12 col-sm-3" role="presentation">
+                    <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-members-tab" data-bs-toggle="pill" data-bs-target="#pills-members"
+                   role="tab" aria-controls="pills-members" aria-selected="false" tabindex="0" href="#pills-members">
+                    MEMBERS
+                </a>
+            </li>
+            }
+            <li class="nav-item bg-primary text-white rounded col-lg-12 col-12 col-sm-3" role="presentation">
+                <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-photos-tab" data-bs-toggle="pill" data-bs-target="#pills-photos"
+                   role="tab" aria-controls="pills-photos" aria-selected="false" tabindex="0" href="#pills-photos">
+                    PHOTOS
+                </a>
+            </li>
+            <li class="nav-item bg-primary text-white rounded col-lg-12 col-12 col-sm-3" role="presentation">
+                <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-videos-tab" data-bs-toggle="pill" data-bs-target="#pills-videos"
+                   role="tab" aria-controls="pills-videos" aria-selected="false" tabindex="0" href="#pills-videos">
+                    VIDEOS
+                </a>
+            </li>
+            <li class="nav-item bg-primary text-white rounded col-lg-12 col-12 col-sm-3" role="presentation">
+                <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-calender-tab" data-bs-toggle="pill" data-bs-target="#pills-calender"
+                   role="tab" aria-controls="pills-calender" aria-selected="false" tabindex="0" href="#pills-calender">
+                    CALENDAR
+                </a>
+            </li>
+        </ul>
+        <!-- <ul class=" mb-3 container mt-4" id="pills-tab"  style="text-decoration: none; ">
+            <li class=" bg-primary text-white rounded  " role="presentation" >
+                <button class=" nav-link btn btn-primary text-white mb-3  btn-selections-1 " id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about"
+                        type="button" role="tab" aria-controls="pills-about" aria-selected="true">
+                    ABOUT US
+                </button>
+            </li>
+            <li class=" bg-primary text-white rounded " role="presentation">
+                <button class=" nav-link btn btn-primary  btn-selections-1  text-white  mb-3" id="pills-executive-tab" data-bs-toggle="pill" data-bs-target="#pills-executive"
+                        type="button" role="tab" aria-controls="pills-executive" aria-selected="false">
+                    EXECUTIVE
+                </button>
+            </li>
+            <li class=" bg-primary text-white rounded " role="presentation">
+                <button class=" nav-link btn btn-primary btn-selections-1 text-white  mb-3" id="pills-members-tab" data-bs-toggle="pill" data-bs-target="#pills-members"
+                        type="button" role="tab" aria-controls="pills-members" aria-selected="false">
+                    MEMBERS
+                </button>
+            </li>
+            <li class=" bg-primary text-white rounded " role="presentation">
+                <button class="nav-link  btn btn-primary btn-selections-1 text-white  mb-3" id="pills-photos-tab" data-bs-toggle="pill" data-bs-target="#pills-photos"
+                        type="button" role="tab" aria-controls="pills-photos" aria-selected="false">
+                    PHOTOS
+                </button>
+            </li>
+            <li class=" bg-primary text-white rounded " role="presentation">
+                <button class="nav-link  btn btn-primary btn-selections-1 text-white  mb-3" id="pills-calender-tab" data-bs-toggle="pill" data-bs-target="#pills-calender"
+                        type="button" role="tab" aria-controls="pills-calender" aria-selected="false">
+                    CALENDER
+                </button>
+            </li>
+        </ul> -->
+
+    </div>
+    <div class="col-8">
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
+                <div class="row container" style="margin-left: auto; margin-right: auto;">
+                    <div class="col-sm-12 mt-5">
+                        <p style="font-size: 4vmin; font-weight: 700;">ABOUT US</p>
+                        @if (string.IsNullOrEmpty(Model.unitItem.BackGroundImageUrl))
+                        {
+
+                            <img src = "~/OBOSI LOGO 1.png" style = "width: 100%; height:400px; object-fit:cover; background-position:top;" class="col-sm-12" alt="#">
+                        }else{
+                        <img src="~/@Model.unitItem.BackGroundImageUrl" style="width: 100%; height:400px; object-fit:cover; background-position:top;" class="col-sm-12" alt="#">
+                        }
+                        <div style="background-color: #fff ; padding: 3vmin;" class="shadow-sm">
+                            <p class="text-center " style="font-size: 3vmin;"><span style="font-weight: 700;">@Model.unitItem.Name</span></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 mt-4">
+                        <p class="text-left responsive_font_size">
+                            @Html.Raw(Model.unitItem.About)
+                            <br />
+
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="pills-executive" role="tabpanel" aria-labelledby="pills-executive-tab">
+
+                <div class="row container" style="margin-left: auto; margin-right: auto;">
+                    <div class="col-sm-12 mt-5">
+                        <p style="font-size: 4vmin; font-weight: 700;">EXECUTIVE</p>
+
+                    </div>
+                    <div>
+                        <div class="row ">
+                            @if (Model.Executives != null)
+                            {
+                                foreach (var item in Model.Executives)
+                                {
+                                    <div class="col-md-3 ">
+                                        <div style="border: 15px solid #fff;">
+                                            <div class="col-12">
+                                                <img src="~/@item.User.PassportUrl" alt="Image 1" class="img-fluid w-100">
+                                            </div>
+                                            <div style="background-color: transparent;  color: #4E4E4E;" class="">
+                                                <p class="text-center " style="font-size: 3vmin; font-size: 17px; font-weight: 700;">@item.User.LastName @item.User.FirstName</p>
+                                                <p class="text-center " style="font-size: 3vmin; font-size: 16px; font-weight: 700;">@item.Designation</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+
+
+
+                        </div>
+                        <div class="row d-flex justify-content-between mt-3">
+                            @if (Model.Executives != null)
+                            {
+                                <div class="col-lg-6 col-6">
+                                    <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;">Previous Page</button>
+                                </div>
+                                <div class=" col-lg-4 col-6">
+                                </div>
+                                <div class="col-lg-2 col-6">
+                                    <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;"> Next Page</button>
+                                </div>
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+                <div class="tab-pane fade" id="pills-members" role="tabpanel" aria-labelledby="pills-members-tab">
+                <div class="row container" style="margin-left: auto; margin-right: auto;">
+                    <div class="col-sm-12 mt-5">
+                        <p style="font-size: 4vmin; font-weight: 700;">MEMBERS</p>
+
+                    </div>
+                    <div>
+                        <div class="row ">
+                            @if (Model.Member_Units != null)
+                            {
+                                foreach (var mem in Model.Member_Units)
+                                {
+                                    <div class="col-md-3 ">
+                                        <div style="border: 15px solid #fff;">
+                                            <div class="col-12">
+                                                <img src="~/@mem.Users.PassportUrl" alt="Image 1" class="img-fluid w-100">
+                                            </div>
+                                            <div style="background-color: transparent;  color: #4E4E4E;" class="">
+                                                <p class="text-center " style="font-size: 3vmin; font-size: 17px; font-weight: 700;">@mem.Users.LastName @mem.Users.FirstName </p>
+                                                <p class="text-center " style="font-size: 3vmin; font-size: 16px; font-weight: 700;">Member</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+
+
+                        </div>
+                        <div class="row d-flex justify-content-between mt-3">
+                            @if (Model.Member_Units != null)
+                            {
+                                <div class="col-lg-6 col-6">
+                                    <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;">Previous Page</button>
+                                </div>
+                                <div class=" col-lg-4 col-6">
+                                </div>
+                                <div class="col-lg-2 col-6">
+                                    <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;"> Next Page</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="tab-pane fade" id="pills-photos" role="tabpanel" aria-labelledby="pills-photos-tab">
+
+                <p style="font-size: 32px; font-weight: 700; color: #000000;">Photo Gallery</p>
+                <div style="background-color: #FFFFFF;" class="container">
+                    <p style="font-size: 32px; font-weight: 600; color: #916220; padding: 10px;">Ito Ogbo Ceremony <span style="font-size: 32px; font-weight: 600; color: #000000;">- March 2024</span></p>
+                    <div class="row mt-3 container">
+                        @foreach(var item in Model.Picture_Assets)
+                        {
+                        <div class="col-md-4 col-12">
+                            <figure>
+                                <img src="/@item.AssetUrl" style="width:100%;height:100%" />
+                                <figcaption>
+                                  
+                                    <span>@item.Caption</span>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        }
+                      
+                    </div>
+                
+
+                </div>
+               
+                </div>
+                <div class="tab-pane fade" id="pills-calender" role="tabpanel" aria-labelledby="pills-calender-tab">
+                    <div class="row container" style="margin-left: auto; margin-right: auto;">
+                        <div class="col-sm-12 mt-5">
+                            <p style="font-size: 4vmin; font-weight: 700;">ABOUT US</p>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="d-lg-flex" style="  ">
+                            @foreach(var cal in Model.CalenderAssets){
+                            <!-- First Box -->
+                            <div class=" col-md-4 col-12 mb-4 " style=" padding: 10px; margin-right: 15px;">
+                                <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; padding: 10px;">
+                                    <div class="col-md-3" style="line-height: normal; color: #FFFFFF; margin: 0; padding: 10px; background-color: #CFB174;">
+                                        @{
+                                            var mon = cal.StartDate.ToString("MMM");
+                                        }
+
+                                        <h6 style="font-weight: 700; font-size: 40px; margin: 0;"> @mon</h6>
+                                        <h6 style="font-weight: 700; font-size: 65px; margin: 0;"> @cal.StartDate.Day</h6>
+                                        <h6 style="font-weight: 500; font-size: 28px; margin: 0;">  @cal.StartDate.Year</h6>
+                                    </div>
+                                    <div class="col-md-9 " style="padding: 10px;">
+                                        <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;"> @cal.Title</h6>
+                                        <div class="py-5"></div>
+                                        <div class="">
+                                            <div style="border-bottom: 3px solid #CFB174; padding: 5px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+
+                           
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                <div class="tab-pane fade" id="pills-videos" role="tabpanel" aria-labelledby="pills-videos-tab">
+
+
+                <p style="font-size: 32px; font-weight: 700; color: #000000;">Video Gallery</p>
+                <div style="background-color: #FFFFFF;" class="container">
+                    <p style="font-size: 32px; font-weight: 600; color: #916220; padding: 10px;">Ito Ogbo Ceremony <span style="font-size: 32px; font-weight: 600; color: #000000;">- March 2024</span></p>
+                    <div class="row mt-3 container">
+                        @foreach (var item in Model.Video_Assets)
+                        {
+                            var url = "https://www.youtube.com/embed/" + @StringEncryption.GetYouTubeVideoId(item.AssetUrl);
+                            <div class="col-md-4 col-12">
+
+                                <iframe style={{ width: "100%" , height: "100%" }} 
+                                src="@url"></iframe>
+                                <span>@item.Caption</span>
+                                
+                            </div>
+                        }
+                       
+                    </div>
+                  
+
+                </div>
+               
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 <script>
     // JavaScript for tab navigation
     var tabTriggerList = document.querySelectorAll('[data-bs-toggle="pill"]');
@@ -875,3 +1178,4 @@
         });
     });
 </script>
+

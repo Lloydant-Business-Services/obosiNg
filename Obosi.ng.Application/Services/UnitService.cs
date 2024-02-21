@@ -137,24 +137,35 @@ namespace Obosi.ng.Application.Services
             return null;
         }
 
-        public Task<Unit> UpdateUnit(Unit unit)
+        public async Task<Unit> UpdateUnit(Unit unit)
         {
             if(unit != null)
             {
-                _dataContext.Unit.Update(unit);
-                _dataContext.SaveChangesAsync();
-                return Task.FromResult(unit);
+                var updateUnit = await _dataContext.Unit.Where(x => x.Id == unit.Id).FirstOrDefaultAsync();
+                if (updateUnit != null)
+                {
+                    updateUnit.Name = unit.Name;
+                    updateUnit.About = unit.About;
+                    if (!string.IsNullOrEmpty(unit.BackGroundImageUrl))
+                    {
+                        updateUnit.BackGroundImageUrl = unit.BackGroundImageUrl;
+                    }
+                    updateUnit.Description = unit.Description;
+                    _dataContext.Unit.Update(updateUnit);
+                 await  _dataContext.SaveChangesAsync();
+                }
+                return  unit;
             }
             return null;
         }
 
-        public Task<Unit_Type> UpdateUnitType(Unit_Type unittype)
+        public async Task<Unit_Type> UpdateUnitType(Unit_Type unittype)
         {
             if(unittype != null)
             {
                 _dataContext.Unit_Type.Update(unittype);
-                _dataContext.SaveChangesAsync();
-                return Task.FromResult(unittype);
+               await  _dataContext.SaveChangesAsync();
+                return unittype;
             }
             return null;
         }

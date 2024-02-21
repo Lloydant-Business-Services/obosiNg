@@ -43,6 +43,9 @@ namespace Obosi.ng.Presentation.Controllers
         {
             if (model.Picture_Asset != null)
             {
+                model.Picture_Asset.AssetUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+                model.Picture_Asset.Title = model.Picture_Asset.Caption;
+                model.Picture_Asset.DateAdded = DateTime.Now;
                 await media.CreatePicture(model.Picture_Asset);
                 return RedirectToAction("Index");
             }

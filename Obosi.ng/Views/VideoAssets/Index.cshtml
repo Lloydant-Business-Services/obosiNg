@@ -17,7 +17,7 @@
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="text-start m-3">
-                        <a class="btn btn-outline-primary btn-sm mb-0" href="~/PictureAsset/create">Create</a>
+                        <a class="btn btn-outline-primary btn-sm mb-0" href="~/VideoAssets/create">Create</a>
                     </div>
                     <div class="table-responsive p-0">
                         <table id="example" class="table table-striped p-3 m-3" style="width:100%">
@@ -31,17 +31,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (Model.Picture_Assets != null)
+                                @if (Model.Video_Assets != null)
                                 {
                                     int k = 1;
-                                    @foreach (var item in Model.Picture_Assets)
+                                    @foreach (var item in Model.Video_Assets)
                                     {
                                         <tr>
                                             <td>@k</td>
                                             <td>@item.Caption</td>
                                             <td>@item.Unit.Name</td>
                                             <td>
-                                              <a class="btn btn-outline-primary btn-sm mb-0" href="~/PictureAsset/Edit?id=@item.Id.ToString()">Edit</a>
+                                                <a class="btn btn-outline-primary btn-sm mb-0" href="~/VideoAssets/Edit?id=@item.Id.ToString()">Edit</a>
                                             </td>
                                         </tr>
                                         k++;
