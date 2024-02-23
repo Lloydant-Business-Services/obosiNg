@@ -146,14 +146,26 @@ namespace Obosi.ng.Application.Services
                 var newsDetail = await _dataContext.News.Where(x => x.Id == news.Id).FirstOrDefaultAsync();
                 if(newsDetail != null)
                 {
-                    newsDetail.Title = news.Title;
-                    newsDetail.Body = news.Body;
-                    newsDetail.CategoryId = news.CategoryId;
+                    if (!string.IsNullOrWhiteSpace(news.Title))
+                    {
+                        newsDetail.Title = news.Title;
+                    }
+                    if (!string.IsNullOrWhiteSpace(news.Body))
+                    {
+                        newsDetail.Body = news.Body;
+                    }
+                    if (news?.CategoryId > 0)
+                    {
+                        newsDetail.CategoryId = news.CategoryId;
+                    }
                     if (!string.IsNullOrEmpty(news.BackgroundImageUrl))
                     {
                         newsDetail.BackgroundImageUrl = news.BackgroundImageUrl;
                     }
-                    newsDetail.Summary = news.Summary;
+                    if (!string.IsNullOrWhiteSpace(news.Summary))
+                    {
+                        newsDetail.Summary = news.Summary;
+                    }
                     _dataContext.News.Update(newsDetail);
                    await  _dataContext.SaveChangesAsync();
                     

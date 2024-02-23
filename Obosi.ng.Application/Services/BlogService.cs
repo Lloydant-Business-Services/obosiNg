@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Obosi.ng.Application.DTO;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Data;
@@ -121,14 +122,26 @@ namespace Obosi.ng.Application.Services
             var blogDetail = _dataContext.Blogs.Where(x => x.Id == blog.Id).FirstOrDefault();
             if (blogDetail != null)
             {
-                blogDetail.Title = blog.Title;
-                blogDetail.Body = blog.Body;
-                blogDetail.CategoryId = blog.CategoryId;
-                if (!string.IsNullOrEmpty(blog.BackgroundImageUrl))
+                if (!string.IsNullOrWhiteSpace(blog.Title))
+                {
+                    blogDetail.Title = blog.Title;
+                }
+                if (!string.IsNullOrWhiteSpace(blog.Body))
+                {
+                    blogDetail.Body = blog.Body;
+                }
+                if (blog?.CategoryId>0)
+                {
+                    blogDetail.CategoryId = blog.CategoryId;
+                }
+                if (!string.IsNullOrWhiteSpace(blog.BackgroundImageUrl))
                 {
                     blogDetail.BackgroundImageUrl = blog.BackgroundImageUrl;
                 }
-                blogDetail.Summary = blog.Summary;
+                if (!string.IsNullOrWhiteSpace(blog.Summary))
+                {
+                    blogDetail.Summary = blog.Summary;
+                }
                 _dataContext.Blogs.Update(blogDetail);
                 await _dataContext.SaveChangesAsync();
             }

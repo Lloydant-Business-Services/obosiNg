@@ -41,7 +41,8 @@
                                             <td>@item.Caption</td>
                                             <td>@item.Unit.Name</td>
                                             <td>
-                                                <a class="btn btn-outline-primary btn-sm mb-0" href="~/VideoAssets/Edit?id=@item.Id.ToString()">Edit</a>
+                                               @*  <a class="btn btn-outline-primary btn-sm mb-0" href="~/VideoAssets/Edit?id=@item.Id.ToString()">Edit</a> *@
+                                                <a class="btn btn-outline-primary btn-sm mb-0" href="~/VideoAssets/Delete?id=@item.Id">Delete</a>
                                             </td>
                                         </tr>
                                         k++;

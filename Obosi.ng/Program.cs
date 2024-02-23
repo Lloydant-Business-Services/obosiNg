@@ -16,6 +16,8 @@ builder.Services
     ServiceLifetime.Transient);
 builder.Services.AddAutoMapper(typeof(Program));
 
+builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
 builder.Services.AddTransient<IBlog, BlogService>();
 builder.Services.AddTransient<ICalender, CalenderService>();
 builder.Services.AddTransient<INews, NewsService>();

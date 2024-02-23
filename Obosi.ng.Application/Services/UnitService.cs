@@ -66,28 +66,28 @@ namespace Obosi.ng.Application.Services
         public async Task<List<Member_Unit>> GetAllMembersByUnitId(int unitId)
         {
             return await _dataContext.Member_Unit.Where(x=>x.UnitId == unitId).Include
-                (x=>x.Users).Include(x=>x.Unit).ToListAsync();
+                (x=>x.Users).Include(x=>x.Unit).OrderBy(p => p.Users.LastName).ToListAsync();
 
         }
 
         public async Task<List<Unit>> GetAllUmunna()
         {
-            return await _dataContext.Unit.Where(x => x.UnitTypeId == (int)UnitTypes.Umunna).Include(x => x.UnitType).ToListAsync();
+            return await _dataContext.Unit.Where(x => x.UnitTypeId == (int)UnitTypes.Umunna).Include(x => x.UnitType).OrderBy(p => p.Name).ToListAsync();
         }
 
         public async Task<List<Unit>> GetAllUnits()
         {
-            return await _dataContext.Unit.Include(x => x.UnitType).ToListAsync();
+            return await _dataContext.Unit.Include(x => x.UnitType).OrderBy(p => p.Name).ToListAsync();
         }
 
         public async Task<List<Unit>> GetAllUnitsByUnitType(int unitTypeId)
         {
-            return await _dataContext.Unit.Where(x => x.UnitTypeId == unitTypeId).Include(x=>x.UnitType).ToListAsync();
+            return await _dataContext.Unit.Where(x => x.UnitTypeId == unitTypeId).Include(x => x.UnitType).OrderBy(p => p.Name).ToListAsync();
         }
 
         public async Task<List<Unit_Type>> GetAllUnitTypes()
         {
-            return await _dataContext.Unit_Type.ToListAsync();
+            return await _dataContext.Unit_Type.OrderBy(p => p.Name).ToListAsync();
         }
 
         public async Task<DashBoardDTO> GetDashBoardDTO()
@@ -95,9 +95,9 @@ namespace Obosi.ng.Application.Services
             DashBoardDTO model = new();
             var Users = await _dataContext.Users.ToListAsync();
             var units = await _dataContext.Unit.ToListAsync();
-            var Umunna = units.Where(x => x.UnitTypeId == (int)UnitTypes.Umunna).ToList();
-            var Odus = units.Where(x => x.UnitTypeId == (int)UnitTypes.ODU_chapter).ToList();
-            var villages = units.Where(x => x.UnitTypeId == (int)UnitTypes.Village).ToList();
+            var Umunna = units.Where(x => x.UnitTypeId == (int)UnitTypes.Umunna).OrderBy(p => p.Name).ToList();
+            var Odus = units.Where(x => x.UnitTypeId == (int)UnitTypes.ODU_chapter).OrderBy(p => p.Name).ToList();
+            var villages = units.Where(x => x.UnitTypeId == (int)UnitTypes.Village).OrderBy(p => p.Name).ToList();
             model.TotalMembers = Users.Where(x => x.IsActive == true).Count();
             model.NewMembers = Users.Where(x => x.IsActive == false).Count();
             model.TotalOdu = Odus.Count();
@@ -144,13 +144,22 @@ namespace Obosi.ng.Application.Services
                 var updateUnit = await _dataContext.Unit.Where(x => x.Id == unit.Id).FirstOrDefaultAsync();
                 if (updateUnit != null)
                 {
-                    updateUnit.Name = unit.Name;
+                    if (!string.IsNullOrWhiteSpace(unit.Name))
+                    {
+                        updateUnit.Name = unit.Name;
+                    }
+                    if (!string.IsNullOrWhiteSpace(unit.About)) 
+                    { 
                     updateUnit.About = unit.About;
+                     }
                     if (!string.IsNullOrEmpty(unit.BackGroundImageUrl))
                     {
                         updateUnit.BackGroundImageUrl = unit.BackGroundImageUrl;
                     }
-                    updateUnit.Description = unit.Description;
+                    if (!string.IsNullOrWhiteSpace(unit.Description))
+                    {
+                        updateUnit.Description = unit.Description;
+                    }
                     _dataContext.Unit.Update(updateUnit);
                  await  _dataContext.SaveChangesAsync();
                 }
@@ -163,8 +172,11 @@ namespace Obosi.ng.Application.Services
         {
             if(unittype != null)
             {
-                _dataContext.Unit_Type.Update(unittype);
-               await  _dataContext.SaveChangesAsync();
+                if (!string.IsNullOrWhiteSpace(unittype.Name))
+                {
+                    _dataContext.Unit_Type.Update(unittype);
+                    await _dataContext.SaveChangesAsync();
+                }
                 return unittype;
             }
             return null;
