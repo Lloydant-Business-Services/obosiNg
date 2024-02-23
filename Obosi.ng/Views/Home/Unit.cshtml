@@ -787,19 +787,19 @@
 
         </div>
         <div class="bottom-nav">
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Personalities).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Personalities).ToString())">
                 Obosi's Personalities
             </a>
             <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
                 Igwe Obosi's Cabinet
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
                 Obosi Development Union
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
                 Obosi Umunna/Kindreds
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
                 Obosi Age Grade Societies
             </a>
         </div>
@@ -857,16 +857,16 @@
         </div>
 
         <div class="bottom-nav">
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())">
                 Villages & Suburbs
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Schools).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Schools).ToString())">
                 Schools
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Hotels).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Hotels).ToString())">
                 Hotels
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Churches).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Churches).ToString())">
                 Churches
             </a>
             <a href="javascript:void(0)">
@@ -920,19 +920,19 @@
         </div>
 
         <div class="bottom-nav">
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Ito_Ogbo).ToString())">
-                Ito-Ogbo Featival
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Ito_Ogbo).ToString())">
+                Ito-Ogbo Festival
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.New_Yam_Festival).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.New_Yam_Festival).ToString())">
                 New Yam Festival
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())">
                 Festivals
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())">
                 Masquerades
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())">
                 Dance Groups
             </a>
 
@@ -1208,13 +1208,13 @@
 
         </div>
         <div class="bottom-nav alt">
-            <a href="javascript:void(0)">
+            <a href="~/home/signin">
                 Log into Account
             </a>
             <a href="javascript:void(0)">
                 Recover Lost Password
             </a>
-            <a href="javascript:void(0)">
+            <a href="~/home/signup">
                 Start Registration
             </a>
             <a href="javascript:void(0)">
@@ -1317,12 +1317,13 @@
 
                     </div>
                         <div class="col-sm-12 mt-4">
+                            <div style="height: 500px; overflow-y: scroll;">
                         <div class="row ">
                             @if (Model.Executives?.Count>0)
                             {
                                 foreach (var item in Model.Executives)
                                 {
-                                    <div class="col-md-3 ">
+                                    @* <div class="col-md-3 ">
                                         <div style="border: 15px solid #fff;">
                                             <div class="col-12">
                                                 <img src="~/@item.User.PassportUrl" alt="Image 1" class="img-fluid w-100">
@@ -1333,6 +1334,31 @@
 
                                             </div>
                                         </div>
+                                        </div>
+ *@
+
+
+                                        <div class="col-md-4 mb-4 ">
+                                            <div class="card shadow-sm" style="border-radius: 15px;">
+                                                <div class="card-body text-center">
+                                                    @if (string.IsNullOrWhiteSpace(@item.User.PassportUrl))
+                                                    {
+                                                        <div class="profile-image-container d-flex justify-content-center">
+                                                            <img src="/images.jpg" alt="Profile Image"
+                                                                 style="border-radius: 50%; width: 100px; height: 100px;"
+                                                                 class="img-thumbnail">
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/@item.User.PassportUrl" alt="Profile Image"
+                                                             style="border-radius: 15px; width: 100%; height: auto;"
+                                                             class="card-img-top">
+                                                    }
+                                                    <h5 class="card-title mt-3">@item.User.LastName @item.User.FirstName</h5>
+                                                    <p class="card-text">@item.Designation</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     }
 
@@ -1345,8 +1371,9 @@
 
 
                         </div>
+                        </div>
                         <div class="row d-flex justify-content-between mt-3">
-                            @if (Model.Executives != null)
+                         @*    @if (Model.Executives != null)
                             {
                                 <div class="col-lg-6 col-6">
                                     <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;">Previous Page</button>
@@ -1357,7 +1384,7 @@
                                     <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;"> Next Page</button>
                                 </div>
 
-                            }
+                            } *@
 
                         </div>
                     </div>
@@ -1371,23 +1398,36 @@
 
                     </div>
                         <div class="col-sm-12 mt-4">
+                            <div style="height: 500px; overflow-y: scroll;">
                         <div class="row ">
                             @if (Model.Member_Units?.Count()>0)
                             {
                                 foreach (var mem in Model.Member_Units)
                                 {
-                                    <div class="col-md-3 ">
-                                        <div style="border: 15px solid #fff;">
-                                            <div class="col-12">
-                                                <img src="~/@mem.Users.PassportUrl" alt="Image 1" class="img-fluid w-100">
+                                      
+                                        <div class="col-md-4 mb-4 ">
+                                            <div class="card shadow-sm" style="border-radius: 15px;">
+                                                <div class="card-body text-center">
+                                                    @if (string.IsNullOrWhiteSpace(@mem.Users.PassportUrl))
+                                                    {
+                                                        <div class="profile-image-container d-flex justify-content-center">
+                                                            <img src="/images.jpg" alt="Profile Image"
+                                                                 style="border-radius: 50%; width: 100px; height: 100px;"
+                                                                 class="img-thumbnail">
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/@mem.Users.PassportUrl" alt="Profile Image"
+                                                             style="border-radius: 15px; width: 100%; height: auto;"
+                                                             class="card-img-top">
+                                                    }
+                                                    <h5 class="card-title mt-3">@mem.Users.LastName @mem.Users.FirstName</h5>
+                                                    <p class="card-text">Member</p>
+                                                </div>
                                             </div>
-                                            <div style="background-color: transparent;  color: #4E4E4E;" class="">
-                                                <p class="text-center " style="font-size: 3vmin; font-size: 17px; font-weight: 700;">@mem.Users.LastName @mem.Users.FirstName </p>
-                                                <p class="text-center " style="font-size: 3vmin; font-size: 16px; font-weight: 700;">Member</p>
+                                        </div>
 
-                                            </div>
-                                        </div>
-                                        </div>
                                     }
                                 }
 
@@ -1399,7 +1439,9 @@
 
 
                         </div>
-                        <div class="row d-flex justify-content-between mt-3">
+
+                        </div>
+                       @*  <div class="row d-flex justify-content-between mt-3">
                             @if (Model.Member_Units != null)
                             {
                                 <div class="col-lg-6 col-6">
@@ -1411,7 +1453,7 @@
                                     <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;"> Next Page</button>
                                 </div>
                             }
-                        </div>
+                        </div> *@
                     </div>
                 </div>
                 </div>
@@ -1553,7 +1595,7 @@
         </div>
     </div>
 
-    </body>
+     </div></body>
 
 <script>
     // JavaScript for tab navigation
@@ -1895,3 +1937,126 @@
 
   
                                                 </body> *@
+
+
+
+
+
+<script>
+    var currentPage = 1;
+    var pageSize = 10; // Set your desired page size
+
+    function paginateData(page) {
+        currentPage = page; // Update current page
+        var offset = (page - 1) * pageSize;
+        var paginatedItems = dataList.slice(offset, offset + pageSize);
+        displayData(paginatedItems);
+        updatePaginationControls(dataList.length, page, pageSize);
+    }
+
+    function displayData(data) {
+        var container = $('#dataContainer');
+        container.html(''); // Clear previous content
+        $.each(data, function (index, item) {
+            container.append('<div>' + item.Property + '</div>'); // Customize display
+        });
+    }
+
+    function updatePaginationControls(totalItems, currentPage, pageSize) {
+        var totalPages = Math.ceil(totalItems / pageSize);
+        var pagination = $('#pagination');
+        pagination.html(''); // Clear existing pagination controls
+
+        // Previous button
+        var prevClass = currentPage === 1 ? ' disabled' : '';
+        pagination.append('<li class="page-item' + prevClass + '"><a class="page-link" href="#" onclick="paginateData(' + (currentPage - 1) + '); return false;">Previous</a></li>');
+
+        // Page numbers
+        for (var i = 1; i <= totalPages; i++) {
+            var activeClass = i === currentPage ? ' active' : '';
+            pagination.append('<li class="page-item' + activeClass + '"><a class="page-link" href="#" onclick="paginateData(' + i + '); return false;">' + i + '</a></li>');
+        }
+
+        // Next button
+        var nextClass = currentPage === totalPages ? ' disabled' : '';
+        pagination.append('<li class="page-item' + nextClass + '"><a class="page-link" href="#" onclick="paginateData(' + (currentPage + 1) + '); return false;">Next</a></li>');
+    }
+
+    $(document).ready(function () {
+        paginateData(currentPage); // Initial pagination setup
+    });
+</script>
+
+
+<div id="dataContainer" class="row"></div> <!-- Use a row here for proper alignment of the cols -->
+<nav aria-label="Page navigation">
+    <ul class="pagination" id="pagination"></ul>
+</nav>
+
+<script>
+   @*  var dataList = @Html.Raw(Json.Encode(Model.Member_Units)); *@
+    var dataList = JSON.parse(@Html.Raw(Model.Member_Units));
+    // Assuming 'dataList' is your array of data passed from ASP.NET MVC model to JavaScript
+    // Initialize with an example structure that matches your provided HTML requirement
+
+    var currentPage = 1;
+    var pageSize = 10; // Adjust based on how many items you want per page
+
+    function paginateData(page) {
+        currentPage = page;
+        var offset = (page - 1) * pageSize;
+        var paginatedItems = dataList.slice(offset, offset + pageSize);
+        displayData(paginatedItems);
+        updatePaginationControls(dataList.length, page, pageSize);
+    }
+
+    function displayData(data) {
+        var container = $('#dataContainer');
+        container.html(''); // Clear previous content
+        $.each(data, function (index, mem) {
+            var userImage = mem.Users.PassportUrl || '/images.jpg'; // Default image if PassportUrl is empty
+            var fullName = mem.Users.LastName + ' ' + mem.Users.FirstName;
+            var memberHtml = `
+            <div class="col-md-3">
+                <div style="border: 15px solid #fff;">
+                    <div class="col-12">` +
+                (mem.Users.PassportUrl ?
+                    `<img src="${userImage}" alt="Profile Image" class="img-fluid w-100">` :
+                    `<div class="profile-image-container" style="align-content:center">
+                            <img src="${userImage}" alt="Profile Image" style="border-radius: 50%;height:auto;width:auto" class="profile-image rounded-full border-2 border-gray-200 shadow-md">
+                         </div>`) +
+                `</div>
+                    <div style="background-color: transparent; color: #4E4E4E;">
+                        <p class="text-center" style="font-size: 17px; font-weight: 700;">${fullName}</p>
+                        <p class="text-center" style="font-size: 16px; font-weight: 700;">Member</p>
+                    </div>
+                </div>
+            </div>`;
+            container.append(memberHtml); // Append the HTML for each member
+        });
+    }
+
+    function updatePaginationControls(totalItems, currentPage, pageSize) {
+        var totalPages = Math.ceil(totalItems / pageSize);
+        var pagination = $('#pagination');
+        pagination.html(''); // Clear existing controls
+
+        // Previous button
+        var prevDisabled = currentPage === 1 ? ' disabled' : '';
+        pagination.append(`<li class="page-item${prevDisabled}"><a class="page-link" href="#" onclick="paginateData(${currentPage - 1}); return false;">Previous</a></li>`);
+
+        // Page numbers (optional, could be omitted for simplicity)
+        for (var i = 1; i <= totalPages; i++) {
+            var activeClass = i === currentPage ? ' active' : '';
+            pagination.append(`<li class="page-item${activeClass}"><a class="page-link" href="#" onclick="paginateData(${i}); return false;">${i}</a></li>`);
+        }
+
+        // Next button
+        var nextDisabled = currentPage === totalPages ? ' disabled' : '';
+        pagination.append(`<li class="page-item${nextDisabled}"><a class="page-link" href="#" onclick="paginateData(${currentPage + 1}); return false;">Next</a></li>`);
+    }
+
+    $(document).ready(function () {
+        paginateData(currentPage); // Initial call to paginate data
+    });
+</script>

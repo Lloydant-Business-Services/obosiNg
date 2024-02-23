@@ -120,7 +120,7 @@ namespace Obosi.ng.Presentation.ViewModels
             this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
             this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne);
             this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
-
+            this.Member_Units = await unit.GetAllMembersByUnitId(id);
         }
         public List<Unit> AllUnits { get; set; }
         public List<News> News { get; set; } = new List<News>();
