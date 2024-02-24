@@ -5,722 +5,6 @@
 }
 
 
-@* <div class="container-fluid mt-3" style="background-color: #fff ; padding: 3vmin">
-    <p class="text-center " style="font-size: 3vmin; font-weight: 600;">OFFICIAL PAGE OF @Model.unitItem.Name.ToUpper()</p>
-</div>
-<div class="container-fluid pt-2" style="background-color: #D4D8E2; ">
-    <div>
-    </div>
-
-
-
-
-
-    <div class="container">
-        <div class="mt-3" style="flex-direction: row; display: flex; gap: 6px;">
-         
-          @*   <ul class="nav nav-pills nav-fill mb-3 container d-lg-flex  justify-content-lg-between gap-3" id="pills-tab" style="">
-                <li class="nav-item bg-primary text-white rounded  col-lg-2 col-12" role="presentation">
-                    <button class="nav-link  btn btn-primary text-white " id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about"
-                            type="button" role="tab" aria-controls="pills-about" aria-selected="true">
-                        ABOUT US
-                    </button>
-                </li>
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <button class="nav-link  btn btn-primary btn-selections-1 text-white" id="pills-executive-tab" data-bs-toggle="pill" data-bs-target="#pills-executive"
-                            type="button" role="tab" aria-controls="pills-executive" aria-selected="false">
-                        EXECUTIVE
-                    </button>
-                </li>
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <button class="nav-link  btn btn-primary btn-selections-1 text-white" id="pills-members-tab" data-bs-toggle="pill" data-bs-target="#pills-members"
-                            type="button" role="tab" aria-controls="pills-members" aria-selected="false">
-                        MEMBERS
-                    </button>
-                </li>
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <button class="nav-link  btn btn-primary btn-selections-1 text-white" id="pills-photos-tab" data-bs-toggle="pill" data-bs-target="#pills-photos"
-                            type="button" role="tab" aria-controls="pills-photos" aria-selected="false">
-                        PHOTOS
-                    </button>
-                </li>
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <button class="nav-link  btn btn-primary btn-selections-1 text-white" id="pills-calender-tab" data-bs-toggle="pill" data-bs-target="#pills-calender"
-                            type="button" role="tab" aria-controls="pills-calender" aria-selected="false">
-                        CALENDER
-                    </button>
-                </li>
-            </ul>
- *@
-          @*   <ul class="nav nav-pills nav-fill mb-3 container d-lg-flex justify-content-lg-between gap-3" id="pills-tab" style="">
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <a class="nav-link btn btn-primary text-white" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about"
-                       role="tab" aria-controls="pills-about" aria-selected="true" tabindex="0" href="#pills-about">
-                        ABOUT US
-                    </a>
-                </li>
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-executive-tab" data-bs-toggle="pill" data-bs-target="#pills-executive"
-                       role="tab" aria-controls="pills-executive" aria-selected="false" tabindex="0" href="#pills-executive">
-                        EXECUTIVE
-                    </a>
-                </li>
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-members-tab" data-bs-toggle="pill" data-bs-target="#pills-members"
-                       role="tab" aria-controls="pills-members" aria-selected="false" tabindex="0" href="#pills-members">
-                        MEMBERS
-                    </a>
-                </li>
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-photos-tab" data-bs-toggle="pill" data-bs-target="#pills-photos"
-                       role="tab" aria-controls="pills-photos" aria-selected="false" tabindex="0" href="#pills-photos">
-                        PHOTOS
-                    </a>
-                </li>
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-calender-tab" data-bs-toggle="pill" data-bs-target="#pills-calender"
-                       role="tab" aria-controls="pills-calender" aria-selected="false" tabindex="0" href="#pills-calender">
-                        CALENDAR
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-
-
-
-
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
-                <div class="row container" style="margin-left: auto; margin-right: auto;">
-                    <div class="col-sm-12 mt-5">
-                        <p style="font-size: 4vmin; font-weight: 700;">ABOUT US</p>
-                        <img src="~/@Model.unitItem.BackGroundImageUrl" style="width: 100%; height:400px; object-fit:cover; background-position:top;" class="col-sm-12" alt="#">
-                        <div style="background-color: #fff ; padding: 3vmin;" class="shadow-sm">
-                            <p class="text-center " style="font-size: 3vmin;"><span style="font-weight: 700;">@Model.unitItem.Name</span></p>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 mt-4">
-                        <p class="text-left responsive_font_size">
-                           @Html.Raw(Model.unitItem.About)
-                            <br />
-                            
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="tab-pane fade" id="pills-executive" role="tabpanel" aria-labelledby="pills-executive-tab">
-
-
-                <div class="row container" style="margin-left: auto; margin-right: auto;">
-                    <div class="col-sm-12 mt-5">
-                        <p style="font-size: 4vmin; font-weight: 700;">EXECUTIVE</p>
-
-                    </div>
-                    <div>
-                        <div class="row ">
-                            @if (Model.Executives != null)
-                            {
-                                foreach (var item in Model.Executives)
-                                {
-                                    <div class="col-md-3 ">
-                                        <div style="border: 15px solid #fff;">
-                                            <div class="col-12">
-                                                <img src="~/@item.User.PassportUrl" alt="Image 1" class="img-fluid w-100">
-                                            </div>
-                                            <div style="background-color: transparent;  color: #4E4E4E;" class="">
-                                                <p class="text-center " style="font-size: 3vmin; font-size: 17px; font-weight: 700;">@item.User.LastName @item.User.FirstName</p>
-                                                <p class="text-center " style="font-size: 3vmin; font-size: 16px; font-weight: 700;">@item.Designation</p>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-
-                            }
-                            
-
-
-                        </div>
-                        <div class="row d-flex justify-content-between mt-3">
-                             @if (Model.Executives != null)
-                            {
-                                <div class="col-lg-6 col-6">
-                                    <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;">Previous Page</button>
-                                </div>
-                                <div class=" col-lg-4 col-6">
-                                </div>
-                                <div class="col-lg-2 col-6">
-                                    <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;"> Next Page</button>
-                                </div>
-
-                            }
-
-                        </div>
-                    </div>
-                    </div>
-            </div>
-            <div class="tab-pane fade" id="pills-members" role="tabpanel" aria-labelledby="pills-members-tab">
-                <div class="row container" style="margin-left: auto; margin-right: auto;">
-                    <div class="col-sm-12 mt-5">
-                        <p style="font-size: 4vmin; font-weight: 700;">MEMBERS</p>
-
-                    </div>
-                    <div>
-                        <div class="row ">
-                            @if (Model.Member_Units != null)
-                            {foreach (var mem in Model.Member_Units)
-                                {
-                                    <div class="col-md-3 ">
-                                        <div style="border: 15px solid #fff;">
-                                            <div class="col-12">
-                                                <img src="~/@mem.Users.PassportUrl" alt="Image 1" class="img-fluid w-100">
-                                            </div>
-                                            <div style="background-color: transparent;  color: #4E4E4E;" class="">
-                                                <p class="text-center " style="font-size: 3vmin; font-size: 17px; font-weight: 700;">@mem.Users.LastName @mem.Users.FirstName </p>
-                                                <p class="text-center " style="font-size: 3vmin; font-size: 16px; font-weight: 700;">Member</p>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            }
-                           
-
-
-                        </div>
-                        <div class="row d-flex justify-content-between mt-3">
-                            @if (Model.Member_Units != null)
-                            {
-                                <div class="col-lg-6 col-6">
-                                    <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;">Previous Page</button>
-                                </div>
-                                <div class=" col-lg-4 col-6">
-                                </div>
-                                <div class="col-lg-2 col-6">
-                                    <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;"> Next Page</button>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="pills-photos" role="tabpanel" aria-labelledby="pills-photos-tab">
-                <p style="font-size: 32px; font-weight: 700; color: #000000;">Photo Gallery</p>
-                <div style="background-color: #FFFFFF;" class="container">
-                    <p style="font-size: 32px; font-weight: 600; color: #916220; padding: 10px;">Ito Ogbo Ceremony <span style="font-size: 32px; font-weight: 600; color: #000000;">- March 2024</span></p>
-                    <div class="row mt-3 container">
-                        <div class="col-md-4 col-12">
-                            <img src="~/images/president.png" class="img-fluid" />
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <img src="~/images/president.png" class="img-fluid" />
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <img src="~/images/president.png" class="img-fluid" />
-                        </div>
-                    </div>
-                    <div class="row mt-3 container">
-                        <div class="col-md-4 col-12">
-                            <img src="~/images/president.png" class="img-fluid" />
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <img src="~/images/president.png" class="img-fluid" />
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <img src="~/images/president.png" class="img-fluid" />
-                        </div>
-                    </div>
-
-                </div>
-                <div style="background-color: #FFFFFF;" class="container mt-4">
-                    <p style="font-size: 32px; font-weight: 600; color: #916220; padding: 10px;">Ito Ogbo Ceremony <span style="font-size: 32px; font-weight: 600; color: #000000;">- March 2024</span></p>
-                    <div class="row mt-3 container gap-2">
-                        <div class="col-md-4 col-12">
-                            <img src="~/images/president.png" class="img-fluid" />
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <img src="~/images/president.png" class="img-fluid" />
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <img src="~/images/president.png" class="img-fluid" />
-                        </div>
-                    </div>
-                    <div class="row mt-3 container">
-                        <div class="col-md-4 col-12">
-                            <img src="~/images/president.png" class="img-fluid" />
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <img src="~/images/president.png" class="img-fluid" />
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <img src="~/simages/president.png" class="img-fluid" />
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-      
-            <div class="tab-pane fade" id="pills-calender" role="tabpanel" aria-labelledby="pills-calender-tab">
-                <div class="row container" style="margin-left: auto; margin-right: auto;">
-                    <div class="col-sm-12 mt-5">
-                        <p style="font-size: 4vmin; font-weight: 700;">Events</p>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="d-lg-flex" style="  ">
-                        <!-- First Box -->
-                        <div class=" col-md-4 col-12 mb-4 " style=" padding: 10px; margin-right: 15px;">
-                            <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; padding: 10px;">
-                                <div class="col-md-3" style="line-height: normal; color: #FFFFFF; margin: 0; padding: 10px; background-color: #CFB174;">
-                                    <h6 style="font-weight: 700; font-size: 40px; margin: 0;">DEC</h6>
-                                    <h6 style="font-weight: 700; font-size: 65px; margin: 0;">10</h6>
-                                    <h6 style="font-weight: 500; font-size: 28px; margin: 0;">2023</h6>
-                                </div>
-                                <div class="col-md-9 " style="padding: 10px;">
-                                    <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;">End of Year Party, ODU Abuja</h6>
-                                    <div class="py-5"></div>
-                                    <div class="">
-                                        <div style="border-bottom: 3px solid #CFB174; padding: 5px;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Second Box -->
-                        <div class=" col-md-4 col-12 mb-4 " style=" padding: 10px; margin-right: 15px;">
-                            <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; padding: 10px;">
-                                <div class="col-md-3" style="line-height: normal; color: #FFFFFF; margin: 0; padding: 10px; background-color: #CFB174;">
-                                    <h6 style="font-weight: 700; font-size: 40px; margin: 0;">DEC</h6>
-                                    <h6 style="font-weight: 700; font-size: 65px; margin: 0;">10</h6>
-                                    <h6 style="font-weight: 500; font-size: 28px; margin: 0;">2023</h6>
-                                </div>
-                                <div class="col-md-9 " style="padding: 10px;">
-                                    <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;">End of Year Party, ODU Abuja</h6>
-                                    <div class="py-5"></div>
-                                    <div class="">
-                                        <div style="border-bottom: 3px solid #CFB174; padding: 5px;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Third Box -->
-                        <div class=" col-md-4 col-12 mb-4 " style=" padding: 10px; margin-right: 15px;">
-                            <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; padding: 10px;">
-                                <div class="col-md-3" style="line-height: normal; color: #FFFFFF; margin: 0; padding: 10px; background-color: #CFB174;">
-                                    <h6 style="font-weight: 700; font-size: 40px; margin: 0;">DEC</h6>
-                                    <h6 style="font-weight: 700; font-size: 65px; margin: 0;">10</h6>
-                                    <h6 style="font-weight: 500; font-size: 28px; margin: 0;">2023</h6>
-                                </div>
-                                <div class="col-md-9 " style="padding: 10px;">
-                                    <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;">End of Year Party, ODU Abuja</h6>
-                                    <div class="py-5"></div>
-                                    <div class="">
-                                        <div style="border-bottom: 3px solid #CFB174; padding: 5px;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
-    <div class="" style="background-color: #D4D8E2;">
-
-        <div class="row">
-            <div class="col-lg-10 col-sm-12">
-            </div>
-            <div class="col-sm-10">
-            </div>
-        </div>
-
-        <div class="middle-body mt-5">
-        </div>
-
-
-        <hr style="color: #fff; size: bold;">
-
-
-    </div>
-</div> *@
-@* 
-<style>
-.scrollable-container {
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-}
-
-.scrollable-container::-webkit-scrollbar {
-    width: 8px;
-    display: none;
-    /* width: 4px; */
-    /* height: 4px; */
-}
-
-.scrollable-container::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-}
-
-.obosi_nav {
-    --bs-nav-link-padding-x: 1rem;
-    --bs-nav-link-padding-y: 0.5rem;
-    --bs-nav-link-font-weight: ;
-    --bs-nav-link-color: var(--bs-link-color);
-    --bs-nav-link-hover-color: var(--bs-link-hover-color);
-    --bs-nav-link-disabled-color: #6c757d;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-@@media (max-width: 600px) {
-    .obosi_nav {
-        flex-wrap: nowrap;
-    }
-}
-
-.navDiv {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    /* min-height: 100vh;  */
-    width: 100vw;
-    overflow: hidden;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 100px;
-}
-
-.logo img {
-    filter: brightness(100%);
-}
-
-@@media (min-width: 768px) {
-    .nav-menu ul li::before {
-        content: '\2022';
-        color: red;
-        margin-right: 8px;
-        font-weight: bold;
-    }
-}
-
-@@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
-    }
-
-    .nav-menu {
-        display: none;
-        width: 100%;
-    }
-}
-
-</style>
- 
-<style>
-
-    .scrollable-container {
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
-
-        .scrollable-container::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .scrollable-container::-webkit-scrollbar {
-            display: none;
-            /* width: 4px; */
-            /* height: 4px; */
-        }
-
-        .scrollable-container::-webkit-scrollbar-thumb {
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 4px;
-        }
-
-    .obosi_nav {
-        --bs-nav-link-padding-x: 1rem;
-        --bs-nav-link-padding-y: 0.5rem;
-        --bs-nav-link-font-weight:;
-        --bs-nav-link-color: var(--bs-link-color);
-        --bs-nav-link-hover-color: var(--bs-link-hover-color);
-        --bs-nav-link-disabled-color: #6c757d;
-        display: flex;
-        flex-wrap: wrap;
-        padding-left: 0;
-        margin-bottom: 0;
-        list-style: none;
-    }
-
-    @@media (max-width: 600px) {
-        .obosi_nav {
-            flex-wrap: nowrap;
-        }
-    }
-
-    .navDiv {
-        position: relative;
-        margin: 0;
-        padding: 0;
-        /* min-height: 100vh;  */
-        width: 100vw;
-        overflow: hidden;
-    }
-
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 100px;
-    }
-
-    .logo img {
-        filter: brightness(100%);
-    }
-
-    @@media (min-width: 768px) {
-        .nav-menu ul li::before {
-            content: '\2022';
-            color: red;
-            margin-right: 8px;
-            font-weight: bold;
-        }
-    }
-
-    @@media (max-width: 768px) {
-        .navbar {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .menu-toggle {
-            display: block;
-            cursor: pointer;
-        }
-
-        .nav-menu {
-            display: none;
-            width: 100%;
-        }
-
-            .nav-menu.show-menu {
-                display: block;
-                position: absolute;
-                top: 70px;
-                background-color: #04042F;
-                z-index: 1;
-            }
-
-            .nav-menu ul {
-                flex-direction: column;
-            }
-
-            .nav-menu li {
-                margin-right: 0;
-                margin-bottom: 10px;
-                background-color: #0A0A48;
-            }
-
-        .story {
-            padding: 10%;
-        }
-
-        .menu-toggle .bar {
-            background-color: #fff;
-        }
-    }
-
-    .nav-menu ul {
-        list-style: none;
-        display: flex;
-    }
-
-    .nav-menu li {
-        margin-right: 15px;
-        font-weight: bold;
-    }
-
-    .nav-menu a {
-        text-decoration: none;
-        color: white;
-        position: relative;
-    }
-
-    .nav-item li:active {
-        background-color: #fff;
-        color: #0078D4;
-        border: 1px solid #0078D4;
-    }
-
-    .col.tab:hover {
-        color: #0078D4;
-        background-color: #fff;
-    }
-
-    .story {
-        color: #fff;
-        font-size: larger;
-        align-content: center;
-        line-height: "35px";
-        padding: 20%;
-    }
-
-        .story p {
-            margin: 5px 0;
-        }
-
-        .story h2 {
-            font-size: xx-large;
-        }
-
-    @@media (max-width: 768px) {
-        .navbar {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .menu-toggle {
-            display: block;
-            cursor: pointer;
-        }
-
-            .menu-toggle .bar {
-                display: block;
-                width: 25px;
-                height: 3px;
-                background-color: #fff;
-                margin: 5px 0;
-                transition: 0.4s;
-            }
-
-        .nav-menu {
-            display: none;
-            width: 100%;
-        }
-
-            .nav-menu.show-menu {
-                display: block;
-                position: absolute;
-                top: 70px;
-                background-color: #04042F;
-                z-index: 1;
-            }
-
-            .nav-menu ul {
-                flex-direction: column;
-            }
-
-            .nav-menu li {
-                margin-right: 0;
-                margin-bottom: 10px;
-                background-color: #0A0A48;
-            }
-
-        .story {
-            padding: 10%;
-        }
-    }
-
-    .custom-button {
-        color: #fff;
-        display: block
-    }
-
-    .cancal-button {
-        height: 60px;
-        border-radius: 4px;
-        background-color: #fff;
-        color: #fff;
-        display: flex;
-    }
-
-
-    @@media (max-width: 768px) {
-        .custom-button {
-            display: block;
-        }
-
-        .nav-menu ul {
-            flex-direction: column;
-            padding-top: 50px;
-        }
-    }
-
-
-    @@media (min-width: 769px) {
-        .custom-button {
-            display: none;
-        }
-    }
-
-    .btn-selection-active {
-        background-color: #fff !important;
-        color: #0078D4 !important;
-    }
-
-    .btn-selections-1 {
-        font-size: 15px;
-        padding: 10px;
-        font-weight: 500;
-    }
-
-    .responsive_font_size {
-        font-size: 16px;
-    }
-
-    @@media (max-width: 600px) {
-        .btn-selections-1 {
-            font-size: 10px;
-            padding: 3px;
-        }
-
-        .responsive_font_size {
-            font-size: 13px;
-        }
-    }
-
-    @@media (max-width: 600px) {
-        .blogDiv {
-            flex-direction: column;
-        }
-    }
-
-    .newsContainer {
-        flex: 1;
-    }
-
-    .footer {
-        background-color: #D4D8E2;
-    }
-</style>
-
 <div class="top-dropdown">
 
     <div class="dropdown-button-holder">
@@ -869,7 +153,7 @@
             <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Churches).ToString())">
                 Churches
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 More...
             </a>
 
@@ -943,16 +227,16 @@
             Media Center
         </h1>
         <div class="top-nav">
-            <a href="javascript:void(0)">
+            <a href="#">
                 Opinion' Blogs
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 News Articles
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 Photo Gallery
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 Events Calendar
             </a>
 
@@ -963,70 +247,70 @@
             <div class="media-sections">
 
                 <section class="media-menu">
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Education
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Security
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Health & Fitness
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Life, Religion & Family
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Science & Technology
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Movies, Music, & Arts
                     </a>
                 </section>
                 <section class="media-menu">
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Education
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Security
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Health & Fitness
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Life, Religion & Family
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Science & Technology
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Movies, Music, & Arts
                     </a>
                 </section>
                 <section class="media-menu">
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
                         Igwe's Palace
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
                         Obosi Development Union
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
                         Umunnas/Kindreds
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
                         Age Grade Societies
                     </a>
                 </section>
                 <section class="media-menu">
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
                         Igwe's Palace
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
                         Obosi Development Union
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
                         Umunnas/Kindreds
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
                         Age Grade Societies
                     </a>
                 </section>
@@ -1061,7 +345,7 @@
 
                                 <input type="password" class="form-field" placeholder="Password" required asp-for="Password" />
 
-                                <a href="javascript:void(0)" id="show-password">
+                                <a href="#" id="show-password">
                                     <i class="fa fa-eye-slash"></i>
                                 </a>
                             </div>
@@ -1075,7 +359,7 @@
 
                 </form>
 
-                <a href="javascript:void(0)" class="alternative-link">
+                <a href="#" class="alternative-link">
                     Forgotten Password?
                 </a>
             </div>
@@ -1084,7 +368,7 @@
 
                 <h2>
                     Are you an Obosi indigene but not registered? Complete the following fields to get started or
-                    <a href="javascript:void(0)">verify your account</a>.
+                    <a href="#">verify your account</a>.
                 </h2>
 
                 <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
@@ -1211,13 +495,13 @@
             <a href="~/home/signin">
                 Log into Account
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 Recover Lost Password
             </a>
             <a href="~/home/signup">
                 Start Registration
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 Verify Registration
             </a>
 
@@ -1226,342 +510,6 @@
 
     </div>
 </div>
-
-<body style="background-color: #D4D8E2;">
-
-<div class="container-fluid mt-3" style="background-color: #fff ; padding: 3vmin">
-    <p class="text-center " style="font-size: 3vmin; font-weight: 600;">OFFICIAL PAGE OF @Model.unitItem.Name.ToUpper()</p>
-</div>
-<div class="row p-3">
-        <div class="col-md-3  col-12  order-1" style="display: flex; flex-direction: column; overflow-block: scroll; white-space: nowrap;">
-            <div class="scrollable-container" style="">
-              
-                <ul class="nav obosi_nav  flex-column nav-pills nav-fill mb-3 container d-lg-flex justify-content-center gap-1" id="pills-tab" style="">
-            <li class="nav-item bg-primary text-white  col-lg-12  " role="presentation">
-                <a class="nav-link btn btn-primary text-white" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about"
-                   role="tab" aria-controls="pills-about" aria-selected="true" tabindex="0" href="#pills-about">
-                    ABOUT US
-                </a>
-            </li>
-            @if (Model.unitItem.CanHaveMembers)
-            {
-            <li class="nav-item bg-primary text-white  col-lg-12  " role="presentation">
-                <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-executive-tab" data-bs-toggle="pill" data-bs-target="#pills-executive"
-                   role="tab" aria-controls="pills-executive" aria-selected="false" tabindex="0" href="#pills-executive">
-                    EXECUTIVE
-                </a>
-            </li>
-           
-                <li class="nav-item bg-primary text-white  col-lg-12  " role="presentation">
-                    <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-members-tab" data-bs-toggle="pill" data-bs-target="#pills-members"
-                   role="tab" aria-controls="pills-members" aria-selected="false" tabindex="0" href="#pills-members">
-                    MEMBERS
-                </a>
-            </li>
-            }
-            <li class="nav-item bg-primary text-white  col-lg-12  " role="presentation">
-                <a class="nav-link btn btn-primary   text-white" id="pills-photos-tab" data-bs-toggle="pill" data-bs-target="#pills-photos"
-                   role="tab" aria-controls="pills-photos" aria-selected="false" tabindex="0" href="#pills-photos">
-                    PHOTOS
-                </a>
-            </li>
-            <li class="nav-item bg-primary text-white  col-lg-12 " role="presentation">
-                <a class="nav-link btn btn-primary  text-white" id="pills-videos-tab" data-bs-toggle="pill" data-bs-target="#pills-videos"
-                   role="tab" aria-controls="pills-videos" aria-selected="false" tabindex="0" href="#pills-videos">
-                    VIDEOS
-                </a>
-            </li>
-            <li class="nav-item bg-primary text-white  col-lg-12 " role="presentation">
-                <a class="nav-link btn btn-primary  text-white" id="pills-calender-tab" data-bs-toggle="pill" data-bs-target="#pills-calender"
-                   role="tab" aria-controls="pills-calender" aria-selected="false" tabindex="0" href="#pills-calender">
-                    CALENDAR
-                </a>
-            </li>
-        </ul>
-        </div>
-      
-    </div>
-        <div class="col-md-8 col-12 order-md-2 order-2">
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
-                <div class="row container" style="margin-left: auto; margin-right: auto;">
-                    <div class="col-sm-12 mt-5">
-                        <p style="font-size: 4vmin; font-weight: 700;">ABOUT US</p>
-                        @if (string.IsNullOrEmpty(Model.unitItem.BackGroundImageUrl))
-                        {
-
-                            <img src = "~/OBOSI LOGO 1.png" style = "width: 100%; height:400px; object-fit:cover; background-position:top;" class="col-sm-12" alt="#">
-                        }else{
-                        <img src="~/@Model.unitItem.BackGroundImageUrl" style="width: 100%; height:400px; object-fit:cover; background-position:top;" class="col-sm-12" alt="#">
-                        }
-                        <div style="background-color: #fff ; padding: 3vmin;" class="shadow-sm">
-                            <p class="text-center " style="font-size: 3vmin;"><span style="font-weight: 700;">@Model.unitItem.Name</span></p>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 mt-4">
-                        <p class="text-left responsive_font_size">
-                            @Html.Raw(Model.unitItem.About)
-                            <br />
-
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="tab-pane fade" id="pills-executive" role="tabpanel" aria-labelledby="pills-executive-tab">
-
-                <div class="row container" style="margin-left: auto; margin-right: auto;">
-                    <div class="col-sm-12 mt-5">
-                        <p style="font-size: 4vmin; font-weight: 700;">EXECUTIVE</p>
-
-                    </div>
-                        <div class="col-sm-12 mt-4">
-                            <div style="height: 500px; overflow-y: scroll;">
-                                <div class="row gap-3 justify-content-center">
-                            @if (Model.Executives?.Count>0)
-                            {
-                                foreach (var item in Model.Executives)
-                                {
-                                            <div class="col-md-3 ">
-                                                <div style="border: 15px solid #fff;">
-                                                    <div class="col-12">
-                                                          @if (string.IsNullOrWhiteSpace(@item.User.PassportUrl))
-                                                    {
-                                                            <img src="/images.jpg" alt="Image 1" class="img-fluid w-100">
-                                                    }else{
-                                                            <img src="~/@item.User.PassportUrl" alt="Image 1" class="img-fluid w-100">
-                                                    }
-                                                    </div>
-                                                    <div style="background-color: transparent;  color: #4E4E4E;" class="">
-                                                        <p class="text-center " style="font-size: 3vmin; font-size: 17px; font-weight: 700;">@item.User.LastName @item.User.FirstName <br /><span>@item.Designation</span></p>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-
-
-
-                                      
-                                    }
-
-                                }
-                                else
-                                {
-                                    <p style="font-size: 4vmin; font-weight: 700;">No Executives Found</p>
-                                }
-
-
-
-                        </div>
-                        </div>
-                        <div class="row d-flex justify-content-between mt-3">
-                         @*    @if (Model.Executives != null)
-                            {
-                                <div class="col-lg-6 col-6">
-                                    <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;">Previous Page</button>
-                                </div>
-                                <div class=" col-lg-4 col-6">
-                                </div>
-                                <div class="col-lg-2 col-6">
-                                    <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;"> Next Page</button>
-                                </div>
-
-                            } *@
-@* 
-                        </div>
-                    </div>
-                </div>
-
-                </div>
-                <div class="tab-pane fade" id="pills-members" role="tabpanel" aria-labelledby="pills-members-tab">
-                <div class="row container" style="margin-left: auto; margin-right: auto;">
-                    <div class="col-sm-12 mt-5">
-                        <p style="font-size: 4vmin; font-weight: 700;">MEMBERS</p>
-
-                    </div>
-                        <div class="col-sm-12 mt-4">
-                            <div style="height: 500px; overflow-y: scroll;">
-                                <div class="row gap-3 justify-content-center">
-                            @if (Model.Member_Units?.Count()>0)
-                            {
-                                foreach (var mem in Model.Member_Units)
-                                {
-
-                                            <div class="col-md-3 ">
-                                                <div style="border: 15px solid #fff;">
-                                                    <div class="col-12">
-                                                        @if (string.IsNullOrWhiteSpace(@mem.Users.PassportUrl))
-                                                        {
-                                                            <img src="/images.jpg" alt="Image 1" class="img-fluid w-100">
-                                                        }
-                                                        else
-                                                        {
-                                                            <img src="~/@mem.Users.PassportUrl" alt="Image 1" class="img-fluid w-100">
-                                                        }
-                                                    </div>
-                                                    <div style="background-color: transparent;  color: #4E4E4E;" class="">
-                                                        <p class="text-center " style="font-size: 3vmin; font-size: 17px; font-weight: 700;">@mem.Users.LastName @mem.Users.FirstName <br /><span>Member</span></p>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-
-                                    }
-                                }
-
-                                else
-                                {
-                                    <p style="font-size: 4vmin; font-weight: 700;">No Members Found</p>
-                                }
-
-
-
-                        </div>
-
-                        </div>
-                       @*  <div class="row d-flex justify-content-between mt-3">
-                            @if (Model.Member_Units != null)
-                            {
-                                <div class="col-lg-6 col-6">
-                                    <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;">Previous Page</button>
-                                </div>
-                                <div class=" col-lg-4 col-6">
-                                </div>
-                                <div class="col-lg-2 col-6">
-                                    <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;"> Next Page</button>
-                                </div>
-                            }
-                @*         </div> *@
-                    @* </div>
-                </div>
-                </div>
-                <div class="tab-pane fade" id="pills-photos" role="tabpanel" aria-labelledby="pills-photos-tab">
-
-                <p style="font-size: 32px; font-weight: 700; color: #000000;">Photo Gallery</p>
-                <div style="background-color: #FFFFFF;" class="container">
-                            <div class="row mt-3 container">
-                            @if (Model.Picture_Assets?.Count()>0)
-                            {
-                                foreach (var item in Model.Picture_Assets)
-                                {
-                                    <div class="col-md-4 col-12">
-                                        <figure>
-                                            <img src="/@item.AssetUrl" style="width:100%;height:100%" />
-                                            <figcaption>
-
-                                                <p>@item.Caption</p>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                }
-
-                            }
-                            else
-                            {
-                                <p style="font-size: 4vmin; font-weight: 700;">No Images Found</p>
-                            }
-                        </div>
-                
-
-                </div>
-               
-                </div>
-                <div class="tab-pane fade" id="pills-calender" role="tabpanel" aria-labelledby="pills-calender-tab">
-                    <div class="row container" style="margin-left: auto; margin-right: auto;">
-                        <div class="col-sm-12 mt-5">
-                            <p style="font-size: 4vmin; font-weight: 700;">CALENDER</p>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="d-lg-flex" style="  ">
-
-                            @if (Model.Calender_Assets?.Count()>0)
-                            {
-                                foreach (var cal in Model.CalenderAssets)
-                                {
-                                    <!-- First Box -->
-                                    <div class=" col-md-6 col-sm-12 col-12 mb-4 " style=" padding: 5px; margin-right: 15px;">
-                                        <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; padding: 10px;">
-                                            <div class="col-md-3" style="line-height: normal; color: #FFFFFF; margin: 0; padding: 10px; background-color: #CFB174;">
-                                                @{
-                                                    var mon = cal.StartDate.ToString("MMM");
-                                                }
-
-                                                <h6 style="font-weight: 700; font-size: 40px; margin: 0;"> @mon</h6>
-                                                <h6 style="font-weight: 700; font-size: 65px; margin: 0;"> @cal.StartDate.Day</h6>
-                                                <h6 style="font-weight: 500; font-size: 28px; margin: 0;">  @cal.StartDate.Year</h6>
-                                            </div>
-                                            <div class="col-md-9 " style="padding: 10px;">
-                                                <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;"> @cal.Title</h6>
-                                                <div class="py-5"></div>
-                                                <div class="">
-                                                    <div style="border-bottom: 3px solid #CFB174; padding: 5px;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            }
-                              else
-                            {
-                                <p style="font-size: 4vmin; font-weight: 700;">No Events Found</p>
-                            }
-                           
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-                <div class="tab-pane fade" id="pills-videos" role="tabpanel" aria-labelledby="pills-videos-tab">
-
-
-                <p style="font-size: 32px; font-weight: 700; color: #000000;">VIDEOS</p>
-             
-                    <div style="background-color: #FFFFFF; padding:2em; ">
-                        <div style="
-    display: flex;
-    flex-wrap: wrap;
- justify-content:space-around;
-">
-                            @if (Model.Video_Assets?.Count()>0)
-                            {
-                                @foreach (var item in Model.Video_Assets)
-                                {
-                                    var url = "https://www.youtube.com/embed/" + @StringEncryption.GetYouTubeVideoId(item.AssetUrl);
-
-                                    <div style="
-
-">
-
-                                        <iframe style="{{" width:="" "100%" ="" ,="" height:="" }}="" src="@url"></iframe>
-                                        <p>@item.Caption</p>
-
-                                    </div>
-                                }
-
-                            }
-                            else
-                            {
-                                <p style="font-size: 4vmin; font-weight: 700;">No Videos Found</p>
-                            }
-
-                        </div>
-
-
-                    </div>
-               
-            </div>
-        </div>
-    </div>
-
-     </div></body> *@
-
-
  
 
 
@@ -1860,7 +808,7 @@ background-color: #fff;
     <div class="container-fluid mt-3" style="background-color: #fff ; padding: 3vmin">
         <p class="text-center " style="font-size: 3vmin; font-weight: 600;" >OFFICIAL PAGE OF @Model.unitItem.Name.ToUpper()</p>
     </div>
-    <div class="row ">
+    <div class="row " >
         <div class="col-md-3  col-12 mt-3 order-1" style="display: flex; flex-direction: row; overflow-block: scroll; white-space: nowrap; border-bottom: 1px solid white;">
           <div class="p-5" id="myDiv">
 
@@ -1934,17 +882,18 @@ background-color: #fff;
                             }
                            @*  <img src="/img/odu.jpg.png" style="width: 100%;" class="col-sm-12" alt="#"> *@
                             <div style="background-color: #fff ; padding: 3vmin;" class="shadow-sm">
-                                <p class="text-center " style="font-size: 3vmin;"><span style="font-weight: 700;">Election
-                                        Day</span> - Contestants for post of president general</p>
+                                <p class="text-center " style="font-size: 3vmin;"><span style="font-weight: 700;">Official Image</span> - 
+                                    
+                                   Of @Model.unitItem.Name</p>
                             </div>
                         </div>
                         <div class="col-sm-12 mt-4">
-                            <p class="text-left responsive_font_size">
+                            <div class="text-left responsive_font_size">
                                 @Html.Raw(Model.unitItem.About)
                                 <br />
-                                <br />
+                              
                                
-                            </p>
+                            </div>
                         </div>
     
                     </div>
@@ -1964,7 +913,7 @@ background-color: #fff;
                         <div>
                             
                                 <div style="height: 500px; overflow-y: scroll;">
-                                    <div class="row gap-3 justify-content-center">
+                                    <div class="row gap-4 justify-content-center">
                                         @if (Model.Executives?.Count > 0)
                                         {
                                             foreach (var item in Model.Executives)
@@ -1997,7 +946,16 @@ background-color: #fff;
                                         }
                                         else
                                         {
-                                            <p style="font-size: 4vmin; font-weight: 700;">No Executives Found</p>
+                                          
+                                        <div style="background-color: #fff;" class="p-3">
+                                            <div style="text-align: center;">
+                                                <img src="~/notFound.gif" alt="Empty Page Image" class="w-10 h-10mb-3" style="width: 100px; height: 100px;">
+                                                <h3>Ooops! This content seems to be empty.</h3>
+                                                <p>No Executive Found.</p>
+                                             
+                                            </div>
+
+                                        </div>
                                         }
 
 
@@ -2009,7 +967,7 @@ background-color: #fff;
     
                           
                           
-    
+    s
                         </div>
     
     
@@ -2025,7 +983,7 @@ background-color: #fff;
                             </div>
                             <div class="col-sm-12 mt-4">
                                 <div style="height: 500px; overflow-y: scroll;">
-                                    <div class="row gap-3 justify-content-center">
+                                    <div class="row gap-4 justify-content-center">
                                         @if (Model.Member_Units?.Count() > 0)
                                         {
                                             foreach (var mem in Model.Member_Units)
@@ -2056,7 +1014,16 @@ background-color: #fff;
 
                                         else
                                         {
-                                            <p style="font-size: 4vmin; font-weight: 700;">No Members Found</p>
+                                           
+                                        <div style="background-color: #fff;" class="p-3">
+                                            <div style="text-align: center;">
+                                                <img src="~/notFound.gif" alt="Empty Page Image" class="w-10 h-10mb-3" style="width: 100px; height: 100px;">
+                                                <h3>Ooops! This content seems to be empty.</h3>
+                                                <p>No Members Found.</p>
+
+                                            </div>
+
+                                        </div>
                                         }
 
 
@@ -2082,7 +1049,7 @@ background-color: #fff;
                     </div>
                     <div class="tab-pane fade" id="pills-photos" role="tabpanel" aria-labelledby="pills-photos-tab">
                          <div class="col-sm-12 mt-5">
-                        <p style="font-size: 32px; font-weight: 700; color: #000000;">Photo Gallery</p>
+                        <p style="font-size: 4vmin; font-weight: 700;">Photo Gallery</p>
                         </div>
                         <div style="background-color: #FFFFFF;" class="container">
                             <div class="row mt-3 container">
@@ -2104,7 +1071,16 @@ background-color: #fff;
                                 }
                                 else
                                 {
-                                    <p style="font-size: 4vmin; font-weight: 700;">No Images Found</p>
+                                   
+                                <div style="background-color: #fff;" class="p-3">
+                                    <div style="text-align: center;">
+                                        <img src="~/notFound.gif" alt="Empty Page Image" class="w-10 h-10mb-3" style="width: 100px; height: 100px;">
+                                        <h3>Ooops! This content seems to be empty.</h3>
+                                        <p>No Images Found.</p>
+
+                                    </div>
+
+                                </div>
                                 }
                             </div>
 
@@ -2115,15 +1091,16 @@ background-color: #fff;
 
                         <div class="row container" style="margin-left: auto; margin-right: auto;">
                             <div class="col-sm-12 mt-5">
-                                <p style="font-size: 4vmin; font-weight: 700;">CALENDER</p>
+                            <p style="font-size: 4vmin; font-weight: 700;">CALENDER</p>
                             </div>
                         </div>
                         <div class="container">
-                            <div class="d-lg-flex" style="  ">
+                          
 
-                                @if (Model.Calender_Assets?.Count() > 0)
-                                {
-                                    foreach (var cal in Model.CalenderAssets)
+                                @if (Model.CalenderAssets?.Count() > 0)
+                        {
+                              <div class="d-lg-flex" style="  ">
+                                    @foreach (var cal in Model.CalenderAssets)
                                     {
                                         <!-- First Box -->
                                         <div class=" col-md-6 col-sm-12 col-12 mb-4 " style=" padding: 5px; margin-right: 15px;">
@@ -2146,14 +1123,26 @@ background-color: #fff;
                                                 </div>
                                             </div>
                                         </div>
+
+                                        
                                     }
+                            </div>
                                 }
                                 else
                                 {
-                                    <p style="font-size: 4vmin; font-weight: 700;">No Events Found</p>
+                                   
+                                <div style="background-color: #fff;" class="p-3">
+                                    <div style="text-align: center;">
+                                        <img src="~/notFound.gif" alt="Empty Page Image" class="w-10 h-10mb-3" style="width: 100px; height: 100px;">
+                                        <h3>Ooops! This content seems to be empty.</h3>
+                                        <p>No Events Found.</p>
+
+                                    </div>
+
+                                </div>
                                 }
 
-                            </div>
+                           
 
 
                         </div>
@@ -2161,16 +1150,17 @@ background-color: #fff;
                     <div class="tab-pane fade" id="pills-videos" role="tabpanel" aria-labelledby="pills-videos-tab">
                         <div class="col-sm-12 mt-5">
 
-                        <p style="font-size: 32px; font-weight: 700; color: #000000;">VIDEOS</p>
+                        <p style="font-size: 4vmin; font-weight: 700;">VIDEOS</p>
                         </div>
+                       
+                                @if (Model.Video_Assets?.Count() > 0)
+                    {
                         <div style="background-color: #FFFFFF; padding:2em; ">
                             <div style="
     display: flex;
     flex-wrap: wrap;
  justify-content:space-around;
 ">
-                                @if (Model.Video_Assets?.Count() > 0)
-                                {
                                     @foreach (var item in Model.Video_Assets)
                                     {
                                         var url = "https://www.youtube.com/embed/" + @StringEncryption.GetYouTubeVideoId(item.AssetUrl);
@@ -2184,17 +1174,27 @@ background-color: #fff;
 
                                         </div>
                                     }
-
-                                }
-                                else
-                                {
-                                    <p style="font-size: 4vmin; font-weight: 700;">No Videos Found</p>
-                                }
-
                             </div>
 
 
                         </div>
+
+                                }
+                                else
+                                {
+                                   
+                                <div style="background-color: #fff;" class="p-3">
+                                    <div style="text-align: center;">
+                                        <img src="~/notFound.gif" alt="Empty Page Image" class="w-10 h-10mb-3" style="width: 100px; height: 100px;">
+                                        <h3>Ooops! This content seems to be empty.</h3>
+                                        <p>No Videos Found.</p>
+
+                                    </div>
+
+                                </div>
+                                }
+
+                           
 
                     </div>
                 </div>

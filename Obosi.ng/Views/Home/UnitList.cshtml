@@ -6,19 +6,20 @@
 }
 
   
-<div class="heroDiv py-5" style="text-align: center;">
+<div class="heroDiv py-3" style="text-align: center;">
     <p style="font-size: 48px; font-weight: 700; color: black;">@Model.Unit_Type.Name </p>
   
 </div>
-<div class="row p-4  justify-content-center">
+
+@* <div class="row gap-3   p-2" style="background-color: #D4D8E2;border-bottom:1px solid #ffff">
     @if (Model.AllUnits?.Count() >0)
     {foreach (var item in Model.AllUnits)
         {
-            <div class="col-md-3 p-4">
+            <div class="col-md-3">
             <a   href="/Home/Unit?id=@StringEncryption.Encrypt(@item.Id.ToString())">
             
             <div style="background-image: url('/@item.BackGroundImageUrl'); background-size: cover; background-position: center;
-            position: relative;  width: 330px; height: 330px;" >
+            position: relative;  width: 100%; height: 100%;" >
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;">
                     <p></p>
                     <h3 style="text-align: center; color:#ffffff; font-size: 30px; " class="adlam">@item.Name</h3>
@@ -42,9 +43,59 @@
         </div>
     }
 </div>
+ *@
+
+<div class="row p-5">
+
+    <div class="col-md-12 mt-3 col-12 order-md-2 order-2 p-">
+        <div class="row ">
+
+              @if (Model.AllUnits?.Count() >0)
+    {foreach (var item in Model.AllUnits)
+        {
+            <div class="col-md-3 ">
+                        <a href="/Home/Unit?id=@StringEncryption.Encrypt(@item.Id.ToString())">
+                <div style="border: 15px solid #fff;">
+                    <div class="col-12">
+                        @if(string.IsNullOrEmpty(@item.BackGroundImageUrl)){
+                                    <img src="~/bg.jpg" alt="Image 1" class="img-fluid w-100">
+                        }else{
+                                <img src="~/@item.BackGroundImageUrl" alt="Image 1" class="img-fluid w-100">
+
+                        }
+                    </div>
+                    <div style="background-color: transparent;  color: #4E4E4E;" class="">
+                                <p class="text-center " style="font-size: 3vmin; font-size: 17px; font-weight: 700;">
+                                    @item.Name
+                            
+                            </p>
+                    </div>
+                </div>
+
+                </a>
+            </div>
+          
+                }
+            }
+            else
+            {
+                <div style="background-color: #fff;" class="p-3">
+                    <div style="text-align: center;">
+                        <img src="~/notFound.gif" alt="Empty Page Image" class="w-10 h-10mb-3" style="width: 100px; height: 100px;">
+                        <h3>Ooops! This page seems to be empty.</h3>
+                        <p>Return to the homepage to discover more content.</p>
+                        <a href="/" class="btn btn-danger">Return to Homepage</a>
+                    </div>
+
+                </div>
+            }
 
 
+        </div>
 
+    </div>
+
+</div>
 
 
 <div class="top-dropdown">
@@ -195,7 +246,7 @@
             <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Churches).ToString())">
                 Churches
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 More...
             </a>
 
@@ -269,16 +320,16 @@
             Media Center
         </h1>
         <div class="top-nav">
-            <a href="javascript:void(0)">
+            <a href="#">
                 Opinion' Blogs
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 News Articles
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 Photo Gallery
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 Events Calendar
             </a>
 
@@ -289,70 +340,70 @@
             <div class="media-sections">
 
                 <section class="media-menu">
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Education
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Security
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Health & Fitness
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Life, Religion & Family
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Science & Technology
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Movies, Music, & Arts
                     </a>
                 </section>
                 <section class="media-menu">
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Education
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Security
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Health & Fitness
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Life, Religion & Family
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Science & Technology
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Movies, Music, & Arts
                     </a>
                 </section>
                 <section class="media-menu">
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
                         Igwe's Palace
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
                         Obosi Development Union
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
                         Umunnas/Kindreds
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
                         Age Grade Societies
                     </a>
                 </section>
                 <section class="media-menu">
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
                         Igwe's Palace
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
                         Obosi Development Union
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
                         Umunnas/Kindreds
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
                         Age Grade Societies
                     </a>
                 </section>
@@ -387,7 +438,7 @@
 
                                 <input type="password" class="form-field" placeholder="Password" required asp-for="Password" />
 
-                                <a href="javascript:void(0)" id="show-password">
+                                <a href="#" id="show-password">
                                     <i class="fa fa-eye-slash"></i>
                                 </a>
                             </div>
@@ -401,7 +452,7 @@
 
                 </form>
 
-                <a href="javascript:void(0)" class="alternative-link">
+                <a href="#" class="alternative-link">
                     Forgotten Password?
                 </a>
             </div>
@@ -410,7 +461,7 @@
 
                 <h2>
                     Are you an Obosi indigene but not registered? Complete the following fields to get started or
-                    <a href="javascript:void(0)">verify your account</a>.
+                    <a href="#">verify your account</a>.
                 </h2>
 
                 <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
@@ -537,13 +588,13 @@
             <a href="~/home/signin">
                 Log into Account
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 Recover Lost Password
             </a>
             <a href="~/home/signup">
                 Start Registration
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 Verify Registration
             </a>
 
@@ -552,6 +603,3 @@
 
     </div>
 </div>
-
-
-       

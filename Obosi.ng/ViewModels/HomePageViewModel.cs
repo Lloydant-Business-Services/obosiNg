@@ -52,6 +52,7 @@ namespace Obosi.ng.Presentation.ViewModels
             this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
             this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne);
             this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+          
         }
         public async Task BlogInitailize(int id)
         {
