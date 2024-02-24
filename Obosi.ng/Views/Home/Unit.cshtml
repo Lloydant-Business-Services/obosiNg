@@ -1237,7 +1237,7 @@
             <div class="scrollable-container" style="">
               
                 <ul class="nav obosi_nav  flex-column nav-pills nav-fill mb-3 container d-lg-flex justify-content-center gap-1" id="pills-tab" style="">
-            <li class="nav-item bg-primary text-white rounded col-lg-12  " role="presentation">
+            <li class="nav-item bg-primary text-white  col-lg-12  " role="presentation">
                 <a class="nav-link btn btn-primary text-white" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about"
                    role="tab" aria-controls="pills-about" aria-selected="true" tabindex="0" href="#pills-about">
                     ABOUT US
@@ -1245,33 +1245,33 @@
             </li>
             @if (Model.unitItem.CanHaveMembers)
             {
-            <li class="nav-item bg-primary text-white rounded col-lg-12  " role="presentation">
+            <li class="nav-item bg-primary text-white  col-lg-12  " role="presentation">
                 <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-executive-tab" data-bs-toggle="pill" data-bs-target="#pills-executive"
                    role="tab" aria-controls="pills-executive" aria-selected="false" tabindex="0" href="#pills-executive">
                     EXECUTIVE
                 </a>
             </li>
            
-                <li class="nav-item bg-primary text-white rounded col-lg-12  " role="presentation">
+                <li class="nav-item bg-primary text-white  col-lg-12  " role="presentation">
                     <a class="nav-link btn btn-primary btn-selections-1 text-white" id="pills-members-tab" data-bs-toggle="pill" data-bs-target="#pills-members"
                    role="tab" aria-controls="pills-members" aria-selected="false" tabindex="0" href="#pills-members">
                     MEMBERS
                 </a>
             </li>
             }
-            <li class="nav-item bg-primary text-white rounded col-lg-12  " role="presentation">
+            <li class="nav-item bg-primary text-white  col-lg-12  " role="presentation">
                 <a class="nav-link btn btn-primary   text-white" id="pills-photos-tab" data-bs-toggle="pill" data-bs-target="#pills-photos"
                    role="tab" aria-controls="pills-photos" aria-selected="false" tabindex="0" href="#pills-photos">
                     PHOTOS
                 </a>
             </li>
-            <li class="nav-item bg-primary text-white rounded col-lg-12 " role="presentation">
+            <li class="nav-item bg-primary text-white  col-lg-12 " role="presentation">
                 <a class="nav-link btn btn-primary  text-white" id="pills-videos-tab" data-bs-toggle="pill" data-bs-target="#pills-videos"
                    role="tab" aria-controls="pills-videos" aria-selected="false" tabindex="0" href="#pills-videos">
                     VIDEOS
                 </a>
             </li>
-            <li class="nav-item bg-primary text-white rounded col-lg-12 " role="presentation">
+            <li class="nav-item bg-primary text-white  col-lg-12 " role="presentation">
                 <a class="nav-link btn btn-primary  text-white" id="pills-calender-tab" data-bs-toggle="pill" data-bs-target="#pills-calender"
                    role="tab" aria-controls="pills-calender" aria-selected="false" tabindex="0" href="#pills-calender">
                     CALENDAR
@@ -1318,48 +1318,32 @@
                     </div>
                         <div class="col-sm-12 mt-4">
                             <div style="height: 500px; overflow-y: scroll;">
-                        <div class="row ">
+                                <div class="row gap-3 justify-content-center">
                             @if (Model.Executives?.Count>0)
                             {
                                 foreach (var item in Model.Executives)
                                 {
-                                    @* <div class="col-md-3 ">
-                                        <div style="border: 15px solid #fff;">
-                                            <div class="col-12">
-                                                <img src="~/@item.User.PassportUrl" alt="Image 1" class="img-fluid w-100">
-                                            </div>
-                                            <div style="background-color: transparent;  color: #4E4E4E;" class="">
-                                                <p class="text-center " style="font-size: 3vmin; font-size: 17px; font-weight: 700;">@item.User.LastName @item.User.FirstName</p>
-                                                <p class="text-center " style="font-size: 3vmin; font-size: 16px; font-weight: 700;">@item.Designation</p>
-
-                                            </div>
-                                        </div>
-                                        </div>
- *@
-
-
-                                        <div class="col-md-4 mb-4 ">
-                                            <div class="card shadow-sm" style="border-radius: 15px;">
-                                                <div class="card-body text-center">
-                                                    @if (string.IsNullOrWhiteSpace(@item.User.PassportUrl))
+                                            <div class="col-md-3 ">
+                                                <div style="border: 15px solid #fff;">
+                                                    <div class="col-12">
+                                                          @if (string.IsNullOrWhiteSpace(@item.User.PassportUrl))
                                                     {
-                                                        <div class="profile-image-container d-flex justify-content-center">
-                                                            <img src="/images.jpg" alt="Profile Image"
-                                                                 style="border-radius: 50%; width: 100px; height: 100px;"
-                                                                 class="img-thumbnail">
-                                                        </div>
+                                                            <img src="/images.jpg" alt="Image 1" class="img-fluid w-100">
+                                                    }else{
+                                                            <img src="~/@item.User.PassportUrl" alt="Image 1" class="img-fluid w-100">
                                                     }
-                                                    else
-                                                    {
-                                                        <img src="~/@item.User.PassportUrl" alt="Profile Image"
-                                                             style="border-radius: 15px; width: 100%; height: auto;"
-                                                             class="card-img-top">
-                                                    }
-                                                    <h5 class="card-title mt-3">@item.User.LastName @item.User.FirstName</h5>
-                                                    <p class="card-text">@item.Designation</p>
+                                                    </div>
+                                                    <div style="background-color: transparent;  color: #4E4E4E;" class="">
+                                                        <p class="text-center " style="font-size: 3vmin; font-size: 17px; font-weight: 700;">@item.User.LastName @item.User.FirstName <br /><span>@item.Designation</span></p>
+                                                    </div>
                                                 </div>
+
+
                                             </div>
-                                        </div>
+
+
+
+                                      
                                     }
 
                                 }
@@ -1399,34 +1383,31 @@
                     </div>
                         <div class="col-sm-12 mt-4">
                             <div style="height: 500px; overflow-y: scroll;">
-                        <div class="row ">
+                                <div class="row gap-3 justify-content-center">
                             @if (Model.Member_Units?.Count()>0)
                             {
                                 foreach (var mem in Model.Member_Units)
                                 {
-                                      
-                                        <div class="col-md-4 mb-4 ">
-                                            <div class="card shadow-sm" style="border-radius: 15px;">
-                                                <div class="card-body text-center">
-                                                    @if (string.IsNullOrWhiteSpace(@mem.Users.PassportUrl))
-                                                    {
-                                                        <div class="profile-image-container d-flex justify-content-center">
-                                                            <img src="/images.jpg" alt="Profile Image"
-                                                                 style="border-radius: 50%; width: 100px; height: 100px;"
-                                                                 class="img-thumbnail">
-                                                        </div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <img src="~/@mem.Users.PassportUrl" alt="Profile Image"
-                                                             style="border-radius: 15px; width: 100%; height: auto;"
-                                                             class="card-img-top">
-                                                    }
-                                                    <h5 class="card-title mt-3">@mem.Users.LastName @mem.Users.FirstName</h5>
-                                                    <p class="card-text">Member</p>
+
+                                            <div class="col-md-3 ">
+                                                <div style="border: 15px solid #fff;">
+                                                    <div class="col-12">
+                                                        @if (string.IsNullOrWhiteSpace(@mem.Users.PassportUrl))
+                                                        {
+                                                            <img src="/images.jpg" alt="Image 1" class="img-fluid w-100">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/@mem.Users.PassportUrl" alt="Image 1" class="img-fluid w-100">
+                                                        }
+                                                    </div>
+                                                    <div style="background-color: transparent;  color: #4E4E4E;" class="">
+                                                        <p class="text-center " style="font-size: 3vmin; font-size: 17px; font-weight: 700;">@mem.Users.LastName @mem.Users.FirstName <br /><span>Member</span></p>
+                                                    </div>
                                                 </div>
+
+
                                             </div>
-                                        </div>
 
                                     }
                                 }
@@ -1940,123 +1921,3 @@
 
 
 
-
-
-<script>
-    var currentPage = 1;
-    var pageSize = 10; // Set your desired page size
-
-    function paginateData(page) {
-        currentPage = page; // Update current page
-        var offset = (page - 1) * pageSize;
-        var paginatedItems = dataList.slice(offset, offset + pageSize);
-        displayData(paginatedItems);
-        updatePaginationControls(dataList.length, page, pageSize);
-    }
-
-    function displayData(data) {
-        var container = $('#dataContainer');
-        container.html(''); // Clear previous content
-        $.each(data, function (index, item) {
-            container.append('<div>' + item.Property + '</div>'); // Customize display
-        });
-    }
-
-    function updatePaginationControls(totalItems, currentPage, pageSize) {
-        var totalPages = Math.ceil(totalItems / pageSize);
-        var pagination = $('#pagination');
-        pagination.html(''); // Clear existing pagination controls
-
-        // Previous button
-        var prevClass = currentPage === 1 ? ' disabled' : '';
-        pagination.append('<li class="page-item' + prevClass + '"><a class="page-link" href="#" onclick="paginateData(' + (currentPage - 1) + '); return false;">Previous</a></li>');
-
-        // Page numbers
-        for (var i = 1; i <= totalPages; i++) {
-            var activeClass = i === currentPage ? ' active' : '';
-            pagination.append('<li class="page-item' + activeClass + '"><a class="page-link" href="#" onclick="paginateData(' + i + '); return false;">' + i + '</a></li>');
-        }
-
-        // Next button
-        var nextClass = currentPage === totalPages ? ' disabled' : '';
-        pagination.append('<li class="page-item' + nextClass + '"><a class="page-link" href="#" onclick="paginateData(' + (currentPage + 1) + '); return false;">Next</a></li>');
-    }
-
-    $(document).ready(function () {
-        paginateData(currentPage); // Initial pagination setup
-    });
-</script>
-
-
-<div id="dataContainer" class="row"></div> <!-- Use a row here for proper alignment of the cols -->
-<nav aria-label="Page navigation">
-    <ul class="pagination" id="pagination"></ul>
-</nav>
-
-<script>
-   @*  var dataList = @Html.Raw(Json.Encode(Model.Member_Units)); *@
-    var dataList = JSON.parse(@Html.Raw(Model.Member_Units));
-    // Assuming 'dataList' is your array of data passed from ASP.NET MVC model to JavaScript
-    // Initialize with an example structure that matches your provided HTML requirement
-
-    var currentPage = 1;
-    var pageSize = 10; // Adjust based on how many items you want per page
-
-    function paginateData(page) {
-        currentPage = page;
-        var offset = (page - 1) * pageSize;
-        var paginatedItems = dataList.slice(offset, offset + pageSize);
-        displayData(paginatedItems);
-        updatePaginationControls(dataList.length, page, pageSize);
-    }
-
-    function displayData(data) {
-        var container = $('#dataContainer');
-        container.html(''); // Clear previous content
-        $.each(data, function (index, mem) {
-            var userImage = mem.Users.PassportUrl || '/images.jpg'; // Default image if PassportUrl is empty
-            var fullName = mem.Users.LastName + ' ' + mem.Users.FirstName;
-            var memberHtml = `
-            <div class="col-md-3">
-                <div style="border: 15px solid #fff;">
-                    <div class="col-12">` +
-                (mem.Users.PassportUrl ?
-                    `<img src="${userImage}" alt="Profile Image" class="img-fluid w-100">` :
-                    `<div class="profile-image-container" style="align-content:center">
-                            <img src="${userImage}" alt="Profile Image" style="border-radius: 50%;height:auto;width:auto" class="profile-image rounded-full border-2 border-gray-200 shadow-md">
-                         </div>`) +
-                `</div>
-                    <div style="background-color: transparent; color: #4E4E4E;">
-                        <p class="text-center" style="font-size: 17px; font-weight: 700;">${fullName}</p>
-                        <p class="text-center" style="font-size: 16px; font-weight: 700;">Member</p>
-                    </div>
-                </div>
-            </div>`;
-            container.append(memberHtml); // Append the HTML for each member
-        });
-    }
-
-    function updatePaginationControls(totalItems, currentPage, pageSize) {
-        var totalPages = Math.ceil(totalItems / pageSize);
-        var pagination = $('#pagination');
-        pagination.html(''); // Clear existing controls
-
-        // Previous button
-        var prevDisabled = currentPage === 1 ? ' disabled' : '';
-        pagination.append(`<li class="page-item${prevDisabled}"><a class="page-link" href="#" onclick="paginateData(${currentPage - 1}); return false;">Previous</a></li>`);
-
-        // Page numbers (optional, could be omitted for simplicity)
-        for (var i = 1; i <= totalPages; i++) {
-            var activeClass = i === currentPage ? ' active' : '';
-            pagination.append(`<li class="page-item${activeClass}"><a class="page-link" href="#" onclick="paginateData(${i}); return false;">${i}</a></li>`);
-        }
-
-        // Next button
-        var nextDisabled = currentPage === totalPages ? ' disabled' : '';
-        pagination.append(`<li class="page-item${nextDisabled}"><a class="page-link" href="#" onclick="paginateData(${currentPage + 1}); return false;">Next</a></li>`);
-    }
-
-    $(document).ready(function () {
-        paginateData(currentPage); // Initial call to paginate data
-    });
-</script>

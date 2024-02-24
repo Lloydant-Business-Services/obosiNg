@@ -10,11 +10,13 @@
     <p style="font-size: 48px; font-weight: 700; color: black;">@Model.Unit_Type.Name </p>
   
 </div>
-<div class="row p-4 gap-3 justify-content-center">
-    @if (Model.AllUnits != null)
+<div class="row p-4  justify-content-center">
+    @if (Model.AllUnits?.Count() >0)
     {foreach (var item in Model.AllUnits)
         {
-            <a  class="col-md-3 p-4" href="/Home/Unit?id=@StringEncryption.Encrypt(@item.Id.ToString())">
+            <div class="col-md-3 p-4">
+            <a   href="/Home/Unit?id=@StringEncryption.Encrypt(@item.Id.ToString())">
+            
             <div style="background-image: url('/@item.BackGroundImageUrl'); background-size: cover; background-position: center;
             position: relative;  width: 330px; height: 330px;" >
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); padding-top: 30%;">
@@ -22,10 +24,19 @@
                     <h3 style="text-align: center; color:#ffffff; font-size: 30px; " class="adlam">@item.Name</h3>
                 </div>
             </div>
+               
             </a>
+            </div>
         }
-        }
-   </div>
+    }
+    else
+    {
+        <div class="heroDiv py-5" style="text-align: center;">
+            <p style="font-size: 48px; font-weight: 400; color: black;">No Record Found </p>
+
+        </div>
+    }
+</div>
 
 
 
@@ -536,3 +547,6 @@
 
     </div>
 </div>
+
+
+       
