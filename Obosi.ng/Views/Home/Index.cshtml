@@ -770,9 +770,9 @@
                                     <h2>
                                         @cal.Title
                                     </h2>
-                                  @*   <a href="#">
+                                    <a href="~/Home/Events?id=@StringEncryption.Encrypt(@cal.Id.ToString())" class="font-weight-bold">
                                         Learn More
-                                    </a> *@
+                                    </a> 
                                    
                                 </div>
                             </div>
@@ -785,7 +785,7 @@
 
                     <p class="iconed-holder">
 
-                        <a href="#" class="iconed red">
+                        <a href="~/Home/EventList" class="iconed red">
                             <span>More Events</span>
                             <i class="fa fa-arrow-circle-right"></i>
                         </a>

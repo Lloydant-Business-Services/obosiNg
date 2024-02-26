@@ -159,6 +159,20 @@ namespace Obosi.ng.Controllers
             await model.GetUnits(unitId);
             return View(model);
         }
+        public async Task<IActionResult> Events(string id)
+        {
+            int unitId = Convert.ToInt16(StringEncryption.Decrypt(id));
+            var model = new HomePageViewModel(_unit, _calender, _media, _executive);
+            await model.GetEvent(unitId);
+            return View(model);
+        }
+        public async Task<IActionResult> EventList()
+        {
+            
+            var model = new HomePageViewModel(_news, _blog, _calender, _unit);
+            await model.GetEvents();
+            return View(model);
+        }
         public async Task<IActionResult> Blog(string id)
         {
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);

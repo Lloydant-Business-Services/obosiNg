@@ -17,8 +17,8 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="BackgroundImageUrl">Description:</label>
-                <input asp-for="Calender_Asset.Description" class="form-control"  />
+                <label for="CategoryId">Location:</label>
+                <input asp-for="Calender_Asset.Location" class="form-control" />
             </div>
         </div>
     </div>
@@ -44,12 +44,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="CategoryId">Location:</label>
-                <input asp-for="Calender_Asset.Location" class="form-control" />
-            </div>
-        </div>
+       
         <div class="col-md-6">
             <div class="form-group">
                 <label for="CategoryId">Start Date:</label>
@@ -57,7 +52,16 @@
             </div>
         </div>
     </div>
-
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="BackgroundImageUrl">Description:</label>
+            @* <input asp-for="Calender_Asset.Description" class="form-control"  /> *@
+            <textarea name="Calender_Asset.Description" style="width: 300px; height: 100px;" required
+                      id="PassageQuestion" class="ckeditor" asp-for="Calender_Asset.Description"></textarea>
+        </div>
+    </div>
+    </div>
    
     <button type="submit" class="btn btn-primary">Create</button>
 </form>
