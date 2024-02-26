@@ -834,6 +834,12 @@
         a {
             text-decoration: none;
         }
+
+        .imgfx {
+            Width: auto;
+            max-width: 100%;
+            Height: auto;
+        }
     </style>
 
 </head>
@@ -850,7 +856,7 @@
             <div class="scrollable-container" style="">
                 <ul class="obosi_nav nav-pills nav-fill mb-3 container d-flex  gap-1" id="pills-tab" style="">
                     <li class="nav-item bg-primary text-white  col-lg-12 col-4 text-center " role="presentation">
-                        <a class="nav-link btn responsive_font_size text-white" id="pills-about-tab" data-bs-toggle="pill"
+                        <a class="nav-link btn responsive_font_size text-white active-nav-link" id="pills-about-tab" data-bs-toggle="pill"
                            data-bs-target="#pills-about" role="tab" aria-controls="pills-about" aria-selected="true"
                            tabindex="0" href="#pills-about" style="background-color: #0078D4; height: 50px; font-weight: 600">
                             ABOUT US
@@ -908,11 +914,11 @@
                             @if (string.IsNullOrEmpty(Model.unitItem.BackGroundImageUrl))
                             {
 
-                                <img src="~/OBOSI LOGO 1.png" style="width: 100%; height:400px; object-fit:cover; background-position:top;" class="col-sm-12" alt="#">
+                                <img src="~/OBOSI LOGO 1.png" style="width: 100%; height:400px; object-fit:cover; background-position:top;" class="col-sm-12 imgfx" alt="#">
                             }
                             else
                             {
-                                <img src="~/@Model.unitItem.BackGroundImageUrl" style="width: 100%; height:400px; object-fit:cover; background-position:top;" class="col-sm-12" alt="#">
+                                <img src="~/@Model.unitItem.BackGroundImageUrl" style="width: 100%; height:400px; object-fit:cover; background-position:top;" class="col-sm-12 imgfx" alt="#">
                             }
                             @*  <img src="/img/odu.jpg.png" style="width: 100%;" class="col-sm-12" alt="#"> *@
                             <div style="background-color: #fff ; padding: 3vmin;" class="shadow-sm">
