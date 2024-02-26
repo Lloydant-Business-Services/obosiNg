@@ -913,12 +913,18 @@
                         <div class="col-sm-12">
                             @if (string.IsNullOrEmpty(Model.unitItem.BackGroundImageUrl))
                             {
-
-                                <img src="~/OBOSI LOGO 1.png" style="width: 100%; height:400px; object-fit:cover; background-position:top;" class="col-sm-12 imgfx" alt="#">
+                        
+                          @*                   ~/ OBOSI LOGO 1.png *@
+                                <img src="~/adike2.jpg" style="width: 100%;
+Height: auto;
+ object-fit:cover; background-position:top;" class="col-sm-12 imgfx" alt="#">
                             }
                             else
                             {
-                                <img src="~/@Model.unitItem.BackGroundImageUrl" style="width: 100%; height:400px; object-fit:cover; background-position:top;" class="col-sm-12 imgfx" alt="#">
+                                <img src="~/@Model.unitItem.BackGroundImageUrl" style="
+width: 100%;
+Height: auto;
+ object-fit:cover; background-position:top;" class="col-sm-12 imgfx" alt="#">
                             }
                             @*  <img src="/img/odu.jpg.png" style="width: 100%;" class="col-sm-12" alt="#"> *@
                             <div style="background-color: #fff ; padding: 3vmin;" class="shadow-sm">
