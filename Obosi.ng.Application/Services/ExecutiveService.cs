@@ -70,7 +70,16 @@ namespace Obosi.ng.Application.Services
         {
             if(executive != null)
             {
-                _dataContext.Executive.Update(executive);
+                var existingExecutive = await _dataContext.Executive.Where(x => x.Id == executive.Id).FirstOrDefaultAsync();
+                if(existingExecutive != null)
+                {
+                    if(!string.IsNullOrWhiteSpace(executive.Designation))
+                    {
+                        existingExecutive.Designation = executive.Designation;
+                    }
+                    
+                }
+                _dataContext.Executive.Update(existingExecutive);
                 await _dataContext.SaveChangesAsync();
                 return executive;
             }

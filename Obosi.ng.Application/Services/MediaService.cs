@@ -73,7 +73,7 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Picture_Assets>> GetPicturesByUnit(int unitId)
         {
-           return await _dataContext.Picture_Assets.Where(x=>x.UnitId == unitId).Include(x => x.Unit).ToListAsync();
+           return await _dataContext.Picture_Assets.Where(x=>x.UnitId == unitId).Include(x => x.Unit).OrderBy(x=>x.Caption).ToListAsync();
         }
 
         public async Task<List<Picture_Assets>> GetPicturesByUnit()
@@ -88,7 +88,7 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Video_Assets>> GetVideoByUnit(int unitId)
         {
-            return await _dataContext.Video_Assets.Where(x => x.UnitId == unitId).ToListAsync();
+            return await _dataContext.Video_Assets.Where(x => x.UnitId == unitId).OrderBy(x=>x.Caption).ToListAsync();
         }
 
         public Task<List<Video_Assets>> GetVideoByUnit()

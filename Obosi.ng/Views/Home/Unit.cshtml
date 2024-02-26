@@ -4,6 +4,11 @@
     Layout = "~/Views/Shared/_GeneralLayout2.cshtml";
 }
 
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
 
 <div class="top-dropdown">
 
@@ -799,14 +804,19 @@ background-color: #fff;
 }
 .footer {
   background-color: #D4D8E2;
-};
+}
+
+        a {
+            text-decoration: none;
+        }
 </style>
     
 </head>
 <body style="background-color: #D4D8E2;">
  
-    <div class="container-fluid mt-3" style="background-color: #fff ; padding: 3vmin">
-        <p class="text-center " style="font-size: 3vmin; font-weight: 600;" >OFFICIAL PAGE OF @Model.unitItem.Name.ToUpper()</p>
+    <div class="container-fluid mt-3 ml-6" style="background-color: #fff ;align-items:center">
+        <p class="ml-6 " style="font-size: 3vmin; font-weight: 600; font-family:MedievalSharp, sans-serif;line-height: 1.2">OFFICIAL PAGE OF</p>
+        <p class="ml-6 " style="font-size: 6vmin; font-weight: 600; font-family:MedievalSharp, sans-serif;line-height: 1.2"> @Model.unitItem.Name.ToUpper()</p>
     </div>
     <div class="row " >
         <div class="col-md-3  col-12 mt-3 order-1" style="display: flex; flex-direction: row; overflow-block: scroll; white-space: nowrap; border-bottom: 1px solid white;">
@@ -906,20 +916,20 @@ background-color: #fff;
     
     
                     <div class="row container" style="margin-left: auto; margin-right: auto;">
-                        <div class="col-sm-12 mt-5">
+                        <div class="col-sm-12 ">
                             <p style="font-size: 4vmin; font-weight: 700;">EXECUTIVE</p>
     
                         </div>
                         <div>
                             
-                                <div style="height: 500px; overflow-y: scroll;">
-                                    <div class="row gap-4 justify-content-center">
+                                <div>
+                                    <div class="row ">
                                         @if (Model.Executives?.Count > 0)
                                         {
                                             foreach (var item in Model.Executives)
                                             {
-                                                <div class="col-md-3 ">
-                                                    <div style="border: 15px solid #fff;">
+                                                <div class="col-md-4 mb-3">
+                                                <div style="border: 15px solid #fff; box-shadow: rgba(0, 0, 0, 0.45) 0px 1px 5px;">
                                                         <div class="col-12">
                                                             @if (string.IsNullOrWhiteSpace(@item.User.PassportUrl))
                                                             {
@@ -967,7 +977,7 @@ background-color: #fff;
     
                           
                           
-    s
+    
                         </div>
     
     
@@ -977,20 +987,20 @@ background-color: #fff;
 
                     <div class="tab-pane fade" id="pills-members" role="tabpanel" aria-labelledby="pills-members-tab">
                         <div class="row container" style="margin-left: auto; margin-right: auto;">
-                            <div class="col-sm-12 mt-5">
+                            <div class="col-sm-12 ">
                                 <p style="font-size: 4vmin; font-weight: 700;">MEMBERS</p>
 
                             </div>
                             <div class="col-sm-12 mt-4">
-                                <div style="height: 500px; overflow-y: scroll;">
-                                    <div class="row gap-4 justify-content-center">
+                                <div >
+                                    <div class="row  ">
                                         @if (Model.Member_Units?.Count() > 0)
                                         {
                                             foreach (var mem in Model.Member_Units)
                                             {
 
-                                                <div class="col-md-3 ">
-                                                    <div style="border: 15px solid #fff;">
+                                                <div class="col-md-4 mb-3">
+                                                    <div style="border: 15px solid #fff; box-shadow: rgba(0, 0, 0, 0.45) 0px 1px 5px;">
                                                         <div class="col-12">
                                                             @if (string.IsNullOrWhiteSpace(@mem.Users.PassportUrl))
                                                             {
@@ -1048,7 +1058,7 @@ background-color: #fff;
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-photos" role="tabpanel" aria-labelledby="pills-photos-tab">
-                         <div class="col-sm-12 mt-5">
+                         <div class="col-sm-12 ">
                         <p style="font-size: 4vmin; font-weight: 700;">Photo Gallery</p>
                         </div>
                         <div style="background-color: #FFFFFF;" class="container">
@@ -1090,7 +1100,7 @@ background-color: #fff;
                     <div class="tab-pane fade" id="pills-calender" role="tabpanel" aria-labelledby="pills-calender-tab">
 
                         <div class="row container" style="margin-left: auto; margin-right: auto;">
-                            <div class="col-sm-12 mt-5">
+                            <div class="col-sm-12 ">
                             <p style="font-size: 4vmin; font-weight: 700;">CALENDER</p>
                             </div>
                         </div>
@@ -1148,7 +1158,7 @@ background-color: #fff;
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-videos" role="tabpanel" aria-labelledby="pills-videos-tab">
-                        <div class="col-sm-12 mt-5">
+                        <div class="col-sm-12 ">
 
                         <p style="font-size: 4vmin; font-weight: 700;">VIDEOS</p>
                         </div>
