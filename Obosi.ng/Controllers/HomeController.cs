@@ -123,7 +123,7 @@ namespace Obosi.ng.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index");
         }
-        public async Task<IActionResult> AboutUs()
+        public async Task<IActionResult> About()
         {
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
             return View(model);
@@ -207,7 +207,7 @@ namespace Obosi.ng.Controllers
             await model.NewsInitializeValue();
             return View(model);
         }
-        public async Task<IActionResult> History()
+        public async Task<IActionResult> AboutUs()
         {
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
             await model.NewsInitializeValue();
