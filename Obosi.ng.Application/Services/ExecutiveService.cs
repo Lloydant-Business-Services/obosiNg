@@ -48,12 +48,12 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Executive>> GetAllExecutives()
         {
-            return await _dataContext.Executive.ToListAsync();
+            return await _dataContext.Executive.Include(x => x.Unit).Include(x=>x.User).ToListAsync();
         }
 
         public async Task<Executive> GetExecutivesById(int id)
         {
-            return await _dataContext.Executive.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _dataContext.Executive.Where(x => x.Id == id).Include(x => x.User).Include(x => x.Unit.UnitType).FirstOrDefaultAsync();
         }
 
         public async Task<List<Executive>> GetExecutivesByUnit(int unitId)
