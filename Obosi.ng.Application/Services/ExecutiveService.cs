@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Configuration.Annotations;
 using Microsoft.EntityFrameworkCore;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Data;
@@ -49,6 +50,16 @@ namespace Obosi.ng.Application.Services
         public async Task<List<Executive>> GetAllExecutives()
         {
             return await _dataContext.Executive.Include(x => x.Unit).Include(x=>x.User).ToListAsync();
+        }
+
+        public async Task<List<Users>> GetAllUsers(int unitId)
+        {
+            var users = await _dataContext.Member_Unit
+                .Where(x => x.UnitId == unitId)
+                .Include(x=>x.Users)
+                .Select(x => x.Users)
+                .ToListAsync();
+            return users;
         }
 
         public async Task<Executive> GetExecutivesById(int id)

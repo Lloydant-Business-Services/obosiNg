@@ -66,6 +66,10 @@ namespace Obosi.ng.Presentation.Controllers
             }
             return View(model);
         }
+       public async Task<List<Users>> GetUserMembers(int id)
+        {
+            return await executive.GetAllUsers(id);
+        }   
         public async Task<IActionResult> Delete(int id)
         {
             await executive.DeleteExecutive(id);
