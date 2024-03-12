@@ -58,6 +58,7 @@ namespace Obosi.ng.Application.Services
                 .Where(x => x.UnitId == unitId)
                 .Include(x=>x.Users)
                 .Select(x => x.Users)
+                .OrderBy(x=>x.FirstName)
                 .ToListAsync();
             return users;
         }
