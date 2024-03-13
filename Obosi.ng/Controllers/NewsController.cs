@@ -52,16 +52,19 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             ViewBag.Title = "News";
-            NewsViewModel model = new();
+            NewsViewModel model = new(news);
+            await model.InitializeNewsAsync();
             model.NewsObject =  await news.GetNewsById(id);
             return View(model);
         }
         [HttpPost]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Edit(NewsViewModel model)
         {
-            if (ModelState.IsValid)
+            if (model.NewsObject != null)
             {
-                await news.UpdateNews(model.News_Update);    
+                model.NewsObject.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+                await news.UpdateNews(model.NewsObject);    
                 return RedirectToAction("Index");
             }
             return View(model);

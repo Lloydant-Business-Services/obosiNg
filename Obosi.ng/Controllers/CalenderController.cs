@@ -8,10 +8,12 @@ namespace Obosi.ng.Presentation.Controllers
     public class CalenderController : Controller
     { private readonly ICalender calender;
         private readonly IHostEnvironment _hostingEnvironment;
-        public CalenderController(ICalender _calender, IHostEnvironment hostingEnvironment)
+        private readonly IUnit unit;    
+        public CalenderController(ICalender _calender, IHostEnvironment hostingEnvironment, IUnit _unit)
         {
             calender = _calender;
             _hostingEnvironment = hostingEnvironment;
+            unit = _unit;
         }
         public async Task<IActionResult> Index()
         {
@@ -32,14 +34,14 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Create()
         {
             ViewBag.Title = "Calender";
-            CalenderViewModel model = new(calender);
-            await model.InitializeNewsAsync();
+            CalenderViewModel model = new(calender,unit);
+            await model.InitializeNewsAsyncUnits();
             return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> Create(CalenderViewModel model)
         {
-            if (ModelState.IsValid)
+            if (model.Calender_Asset != null)
             {
                 await calender.CreateAsset(model.Calender_Asset);
                 return RedirectToAction("Index");
@@ -50,15 +52,16 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             ViewBag.Title = "Calender";
-            CalenderViewModel model = new(calender);
-            await model.InitializeNewsAsync();
+            CalenderViewModel model = new(calender,unit);
+            await model.InitializeNewsAsyncUnits();
             model.Calender_Asset = await calender.GetAssets(id);
             return View(model);
         }
         [HttpPost]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Edit(CalenderViewModel model)
         {
-            if (ModelState.IsValid)
+            if (model.Calender_Asset != null)
             {
                 await calender.UpdateAsset(model.Calender_Asset);
                 return RedirectToAction("Index");

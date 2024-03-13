@@ -1,0 +1,97 @@
+﻿@model Obosi.ng.Presentation.ViewModels.ExecutuveViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create Executive</h1>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+
+
+    <div class="row">
+       
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Unit:</label>
+               
+                <select asp-for="ExecutiveObject.UnitId" class="form-select" id="unitId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.Unit)
+                    {
+                        <option value="@item.Id">@item.Name (@item.UnitType.Name)</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">User:</label>
+
+                <select asp-for="ExecutiveObject.UserId" class="form-select" id="userId">
+                   @*  <option value="">Select</option>
+                    @foreach (var item in Model.Users)
+                    {
+                        <option value="@item.Id">@item.FirstName @item.OtherName @item.LastName</option>
+                    } *@
+                </select>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Designation:</label>
+                <input asp-for="ExecutiveObject.Designation" class="form-control" />
+            </div>
+        </div>
+    </div>
+  
+   
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<script src="~/js/jquery.min.js"></script>
+
+<script>
+   
+
+    $('#unitId').on('change', function (e) {
+        loadMembers($('#unitId').val())
+    });
+    function loadMembers(objectiveid) {
+
+        if (objectiveid > 0) {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetUserMembers", "Executive")', // we are calling json method
+                dataType: 'json',
+                data: { id: objectiveid },
+                success: function (result) {
+                    console.log(result)
+                  
+
+                        $("#userId").empty();
+                        //populate ExamBatch
+                        $("#userId").append('<option value = "" > -- Select User -- </option>');
+                    if (result.length > 0) {
+                        $.each(result, function (i, specification) {
+                            $("#userId").append('<option value = "' + specification.id + '" >' + specification.firstName + ' ' + specification.otherName + ' ' + specification.lastName + '' + '</option>');
+                        });
+                    }
+
+
+                    
+                    
+
+                },
+                error: function (ex) {
+                    alert('error' + ex);
+                }
+
+            });
+        }
+    }
+
+</script>

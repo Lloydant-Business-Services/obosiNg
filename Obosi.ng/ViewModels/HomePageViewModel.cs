@@ -52,6 +52,7 @@ namespace Obosi.ng.Presentation.ViewModels
             this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
             this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne);
             this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+          
         }
         public async Task BlogInitailize(int id)
         {
@@ -120,6 +121,32 @@ namespace Obosi.ng.Presentation.ViewModels
             this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
             this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne);
             this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+            this.Member_Units = await unit.GetAllMembersByUnitId(id);
+        }
+        public async Task GetEvent(int id)
+        {
+            this.unitItem = await unit.GetUnit(id);
+            this.Picture_Assets = await media.GetPicturesByUnit(id);
+            this.Video_Assets = await media.GetVideoByUnit(id);
+            this.Executives = await executive.GetExecutivesByUnit(id);
+            this.CalenderAssets = await calender.GetAssetsByUnitId(id);
+            this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
+            this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
+            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne);
+            this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+            this.Member_Units = await unit.GetAllMembersByUnitId(id);
+            this.Calender_AssetsItem = await calender.GetAssets(id);
+
+        }
+        public async Task GetEvents()
+        {
+           
+            this.CalenderAssets = await calender.GetAssets();
+            this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
+            this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
+            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne);
+            this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+           
 
         }
         public List<Unit> AllUnits { get; set; }
@@ -140,7 +167,8 @@ namespace Obosi.ng.Presentation.ViewModels
         public List<Video_Assets> Video_Assets { get; set; }
         public List<Member_Unit> Member_Units { get; set; }  
         public List<Executive> Executives { get; set; }
-        public List<Calender_Assets> Calender_Assets { get; set; }        
+        public List<Calender_Assets> Calender_Assets { get; set; }      
+        public Calender_Assets Calender_AssetsItem { get; set; }
         
         public List<Unit> AllAka { get; set; }
         public List<Unit> AllUmunna { get; set; }

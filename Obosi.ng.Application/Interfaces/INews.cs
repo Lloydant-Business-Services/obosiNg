@@ -14,6 +14,7 @@ namespace Obosi.ng.Application.Interfaces
         Task<List<News>> GetHomePageNews();
         Task<News> GetNewsById(int NewsId);
         Task<News> CreateNews(News news);
+        Task<News> UpdateNews(News news);
         Task<News_Update> UpdateNews(News_Update news);
         Task DeleteNews(int NewsId);
         Task<News> PublishNews(int id);

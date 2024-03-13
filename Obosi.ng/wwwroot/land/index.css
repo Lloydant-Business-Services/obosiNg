@@ -2346,11 +2346,11 @@ header
   }
 }
 header .header-wrapper .header-contents .top-header-contents nav a {
-  color: #ffffff;
-  font-weight: normal;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+    color: #04042F;
+    font-weight: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
 }
 @media only screen and (max-width: 767.98px) {
   header .header-wrapper .header-contents .top-header-contents nav a {

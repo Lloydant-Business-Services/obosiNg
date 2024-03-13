@@ -16,5 +16,6 @@ namespace Obosi.ng.Application.Interfaces
         Task<Executive> CreateExecutive(Executive executive);
         Task<Executive> UpdateExecutive(Executive executive);
         Task DeleteExecutive(int id);
+        Task<List<Users>> GetAllUsers(int unitId);
     }
 }

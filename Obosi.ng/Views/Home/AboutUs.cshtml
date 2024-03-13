@@ -1,488 +1,648 @@
-﻿@model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
+﻿@using Obosi.ng.Presentation.utility;
+@model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
 @{
-    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    Layout = "~/Views/Shared/_GeneralLayout2.cshtml";
+            //Layout = null;
 }
 
+<style>
 
-    <div class="container-fluid mt-3" style="background-color: #fff ; padding: 3vmin">
-        <p class="text-center " style="font-size: 3vmin; font-weight: 600;" >OFFICIAL PAGE OF OBOSI DEVELOPMENT UNION WORLDWIDE</p>
+    .container-blog__page {
+        display: flex;
+        width: 100vw;
+        padding: 96px 64px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        /* Image */
+        background: linear-gradient( 0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100% ), url(/Blog\ Hero.png), lightgray 50% / cover no-repeat;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .image {
+        height: 353.713px;
+        align-self: stretch;
+        background: url(/), lightgray 0px -123.664px / 100% 144.75% no-repeat;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .avatarr {
+        width: 48px;
+        height: 48px;
+        background: url(/), lightgray 50% / cover no-repeat;
+        background-size: cover;
+        border-radius: 100%;
+    }
+</style>
+
+
+
+
+<!-- Header -->
+<div class="container-blog__page">
+    <div class="blog-header-container">
+        <h2 class="blog-header-text">THE BRIEF HISTORY OF OBOSI PEOPLE</h2>
+        <div class="avatar-content">
+            
+        </div>
     </div>
-    <div class="container-fluid pt-2" style="background-color: #D4D8E2; ">
-        <div>
+</div>
+<!-- Header End -->
+
+<main class="container-blog">
+    <div class="containerr">
+        <div class="blog-links">
+
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">History</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        THE BRIEF HISTORY OF OBOSI PEOPLE
+                    </li>
+                </ol>
+            </nav>
+
+            <div class="breadcrumb-links">
+                <!-- icons go here -->
+
+                <div>
+                    <img src="" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+
+        <div class="introduction-container">
+            <h2>  THE BRIEF HISTORY OF OBOSI PEOPLE</h2>
+
            
         </div>
 
-   
-   
+        <!-- Content Area -->
 
-
-      <div class="container" >
-        <div class="mt-3" style="flex-direction: row; display: flex; gap: 6px;">
-            @* <button class="btn btn-primary btn-selection-active btn-selections-1"style="flex-grow: 1;">ABOUT US</button>
-            <button class="btn btn-primary btn-selections-1" style="flex-grow: 1;">EXECUTIVE</button>
-            <button class="btn btn-primary btn-selections-1" style="flex-grow: 1;">MEMBERS</button>
-            <button class="btn btn-primary btn-selections-1" style="flex-grow: 1;">PHOTOS</button>
-            <button class="btn btn-primary btn-selections-1" style="flex-grow: 1;">CALENDER</button> *@
-
-           @*  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="flex-direction: row; display: flex; gap: 6px;">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active btn btn-primary  btn-selections-1" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about"
-                            type="button" role="tab" aria-controls="pills-about" aria-selected="true">
-                        ABOUT US
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link btn btn-primary btn-selections-1" id="pills-executive-tab" data-bs-toggle="pill" data-bs-target="#pills-executive"
-                            type="button" role="tab" aria-controls="pills-executive" aria-selected="false">
-                        EXECUTIVE
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link btn btn-primary btn-selections-1" id="pills-members-tab" data-bs-toggle="pill" data-bs-target="#pills-members"
-                            type="button" role="tab" aria-controls="pills-members" aria-selected="false">
-                        MEMBERS
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link btn btn-primary btn-selections-1" id="pills-photos-tab" data-bs-toggle="pill" data-bs-target="#pills-photos"
-                            type="button" role="tab" aria-controls="pills-photos" aria-selected="false">
-                        PHOTOS
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link btn btn-primary btn-selections-1" id="pills-calender-tab" data-bs-toggle="pill" data-bs-target="#pills-calender"
-                            type="button" role="tab" aria-controls="pills-calender" aria-selected="false">
-                        CALENDER
-                    </button>
-                </li>
-            </ul>
-      *@
-            <ul class="nav nav-pills nav-fill mb-3 container d-lg-flex  justify-content-lg-between gap-3" id="pills-tab" style="">
-                <li class="nav-item bg-primary text-white rounded  col-lg-2 col-12" role="presentation">
-                    <button class="nav-link  btn btn-primary text-white " id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about"
-                            type="button" role="tab" aria-controls="pills-about" aria-selected="true">
-                        ABOUT US
-                    </button>
-                </li>
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <button class="nav-link  btn btn-primary btn-selections-1 text-white" id="pills-executive-tab" data-bs-toggle="pill" data-bs-target="#pills-executive"
-                            type="button" role="tab" aria-controls="pills-executive" aria-selected="false">
-                        EXECUTIVE
-                    </button>
-                </li>
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <button class="nav-link  btn btn-primary btn-selections-1 text-white" id="pills-members-tab" data-bs-toggle="pill" data-bs-target="#pills-members"
-                            type="button" role="tab" aria-controls="pills-members" aria-selected="false">
-                        MEMBERS
-                    </button>
-                </li>
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <button class="nav-link  btn btn-primary btn-selections-1 text-white" id="pills-photos-tab" data-bs-toggle="pill" data-bs-target="#pills-photos"
-                            type="button" role="tab" aria-controls="pills-photos" aria-selected="false">
-                        PHOTOS
-                    </button>
-                </li>
-                <li class="nav-item bg-primary text-white rounded col-lg-2 col-12" role="presentation">
-                    <button class="nav-link  btn btn-primary btn-selections-1 text-white" id="pills-calender-tab" data-bs-toggle="pill" data-bs-target="#pills-calender"
-                            type="button" role="tab" aria-controls="pills-calender" aria-selected="false">
-                        CALENDER
-                    </button>
-                </li>
-            </ul>
-        
-        </div>
-       
-       
-
-
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
-                <div class="row container" style="margin-left: auto; margin-right: auto;">
-                    <div class="col-sm-12 mt-5">
-                        <p style="font-size: 4vmin; font-weight: 700;">ABOUT US</p>
-                        <img src="~/img/odu.jpg.png" style="width: 100%;" class="col-sm-12" alt="#">
-                        <div style="background-color: #fff ; padding: 3vmin;" class="shadow-sm">
-                            <p class="text-center " style="font-size: 3vmin;"><span style="font-weight: 700;">Election Day</span> - Contestants for post of president general</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 mt-4">
-                        <p class="text-left responsive_font_size">
-                            Lorem ipsum dolor sit amet consectetur. In dictum ultricies imperdiet mattis dui semper varius.
-                            Felis lacus purus sit ultrices nisi cum sed. Vitae consectetur proin sollicitudin mattis mauris.
-                            Lobortis sit aliquet nullam quam nulla dignissim. Cursus aliquam neque facilisis auctor. Maecenas
-                            morbi sed sed sem mi tellus amet sed. Sit a in tellus at a vulputate odio vestibulum. Bibendum dolor
-                            non a tortor nibh massa. Sem et scelerisque aliquet quam viverra aliquam consectetur semper. Lectus
-                            scelerisque eget purus nulla nec vitae. Sit quam risus morbi libero vestibulum sit tincidunt orci.
-                            In maecenas sed ultricies velit pellentesque sagittis fermentum tellus augue.
-                            Eget nulla commodo orci sed nunc scelerisque ut. Faucibus mi diam pharetra eget nullam laoreet
-                            consectetur tempor. At donec lacus egestas velit massa sagittis et. Risus mattis dolor ut quam et
-                            enim arcu sit auctor. Tortor porttitor arcu netus sed mattis ullamcorper.
-                            Interdum aliquet nisl dui vel nulla mauris nunc nulla. Pellentesque platea commodo enim viverra quam
-                            tincidunt eget. Porttitor urna faucibus fermentum enim viverra tincidunt turpis. Enim facilisi
-                            faucibus amet cras fames nulla. Dis id consequat odio at. Et est id nisl aliquam tincidunt.
-                            <br />
-                            <br />
-                            Felis sed vitae mattis in arcu rhoncus. Nunc eget et sit aenean dictumst amet volutpat. Amet odio
-                            enim malesuada ultricies tortor enim vestibulum lectus neque. Ornare accumsan posuere felis tempor
-                            porta at praesent venenatis. Integer non amet ipsum aliquet cursus eget nec integer sit. Nibh dolor
-                            varius id dictum lacus et. Velit diam diam sed enim tellus lectus quam bibendum id. Amet tristique
-                            nunc id elit nec volutpat integer. Scelerisque suspendisse viverra phasellus sapien augue lacus et
-                            morbi. Nec maecenas montes tortor bibendum fringilla aliquet donec et. Integer id viverra diam arcu.
-                            Et nunc in feugiat auctor egestas nisi in.
-                            Dolor hendrerit quis etiam imperdiet nisl. Proin lorem ipsum sapien laoreet volutpat etiam orci.
-                            Augue sed maecenas non elit. Id sed vehicula vel nisl magna morbi mi fringilla amet. Amet et eget
-                            vitae mauris. Venenatis vulputate tristique commodo nunc porttitor ac sit. Nunc tellus integer morbi
-                            sit leo adipiscing. Felis nunc arcu nulla molestie mi ac donec. Ante malesuada duis adipiscing
-                            scelerisque at sodales risus sed. Vulputate neque euismod molestie morbi pellentesque. Integer netus
-                            ac sodales id elementum aliquam eget sem.
-                            Pulvinar amet nunc pulvinar pretium ultrices urna. Sit in vitae id ut pellentesque adipiscing.
-                            Lectus commodo gravida risus vitae urna varius ac in. Mauris sed libero at fermentum malesuada netus
-                            eu tristique. Morbi amet eu ultrices at. Vel id mattis odio nibh enim.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="tab-pane fade" id="pills-executive" role="tabpanel" aria-labelledby="pills-executive-tab">
-               
-                  
-                   
-                   
-
-                            <div class="row container" style="margin-left: auto; margin-right: auto;">
-                                <div class="col-sm-12 mt-5">
-                                    <p style="font-size: 4vmin; font-weight: 700;">EXECUTIVE</p>
-
-                                </div>
-                                <div>
-                                    <div class="row p-4">
-                                        <div class="col-md-3 ">
-                                            <img src="~/images/president.png" alt="Image 1" class="img-fluid">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <img src="~/images/president.png" alt="Image 1" class="img-fluid">
-
-
-                                        </div>
-                                        <div class="col-md-3">
-                                            <img src="~/images/president.png" alt="Image 1" class="img-fluid">
-
-
-                                        </div>
-                                        <div class="col-md-3">
-                                            <img src="~/images/president.png" alt="Image 1" class="img-fluid">
-
-
-                                        </div>
-
-
-                                    </div>
-                                    <div>
-                                        <div class="row p-4">
-                                            <div class="col-md-3 ">
-                                                <img src="~/images/president.png" alt="Image 1" class="img-fluid">
-                                            </div>
-
-
-
-                                        </div>
-                                    </div>
-
-                                    <div class="" style="background-color: #D4D8E2;">
-
-                                        <div class="row">
-                                            <div class="col-lg-10 col-sm-12">
-                                            </div>
-                                            <div class="col-sm-10">
-                                            </div>
-                                        </div>
-
-                                        <div class="middle-body mt-5">
-                                        </div>
-
-
-                                        <hr style="color: #fff; size: bold;">
-
-
-                                    </div>
-                                </div>
-                              
-                               
-
-              
-
-
-            </div>
-            </div>
-            <div class="tab-pane fade" id="pills-members" role="tabpanel" aria-labelledby="pills-members-tab">...</div>
-            <div class="tab-pane fade" id="pills-photos" role="tabpanel" aria-labelledby="pills-photos-tab">...</div>
-            <div class="tab-pane fade" id="pills-calender" role="tabpanel" aria-labelledby="pills-calender-tab">
-                    <div class="row container" style="margin-left: auto; margin-right: auto;">
-                        <div class="col-sm-12 mt-5">
-                            <p style="font-size: 4vmin; font-weight: 700;">ABOUT US</p>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="d-lg-flex" style="  ">
-                            <!-- First Box -->
-                            <div class=" col-md-4 col-12 mb-4 " style=" padding: 10px; margin-right: 15px;">
-                                <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; padding: 10px;">
-                                    <div class="col-md-3" style="line-height: normal; color: #FFFFFF; margin: 0; padding: 10px; background-color: #CFB174;">
-                                        <h6 style="font-weight: 700; font-size: 40px; margin: 0;">DEC</h6>
-                                        <h6 style="font-weight: 700; font-size: 65px; margin: 0;">10</h6>
-                                        <h6 style="font-weight: 500; font-size: 28px; margin: 0;">2023</h6>
-                                    </div>
-                                    <div class="col-md-9 " style="padding: 10px;">
-                                        <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;">End of Year Party, ODU Abuja</h6>
-                                        <div class="py-5"></div>
-                                        <div class="">
-                                            <div style="border-bottom: 3px solid #CFB174; padding: 5px;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Second Box -->
-                            <div class=" col-md-4 col-12 mb-4 " style=" padding: 10px; margin-right: 15px;">
-                                <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; padding: 10px;">
-                                    <div class="col-md-3" style="line-height: normal; color: #FFFFFF; margin: 0; padding: 10px; background-color: #CFB174;">
-                                        <h6 style="font-weight: 700; font-size: 40px; margin: 0;">DEC</h6>
-                                        <h6 style="font-weight: 700; font-size: 65px; margin: 0;">10</h6>
-                                        <h6 style="font-weight: 500; font-size: 28px; margin: 0;">2023</h6>
-                                    </div>
-                                    <div class="col-md-9 " style="padding: 10px;">
-                                        <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;">End of Year Party, ODU Abuja</h6>
-                                        <div class="py-5"></div>
-                                        <div class="">
-                                            <div style="border-bottom: 3px solid #CFB174; padding: 5px;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Third Box -->
-                            <div class=" col-md-4 col-12 mb-4 " style=" padding: 10px; margin-right: 15px;">
-                                <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; padding: 10px;">
-                                    <div class="col-md-3" style="line-height: normal; color: #FFFFFF; margin: 0; padding: 10px; background-color: #CFB174;">
-                                        <h6 style="font-weight: 700; font-size: 40px; margin: 0;">DEC</h6>
-                                        <h6 style="font-weight: 700; font-size: 65px; margin: 0;">10</h6>
-                                        <h6 style="font-weight: 500; font-size: 28px; margin: 0;">2023</h6>
-                                    </div>
-                                    <div class="col-md-9 " style="padding: 10px;">
-                                        <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;">End of Year Party, ODU Abuja</h6>
-                                        <div class="py-5"></div>
-                                        <div class="">
-                                            <div style="border-bottom: 3px solid #CFB174; padding: 5px;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-
-            </div>
-        </div>
-      </div>
-        
-        <div class="" style="background-color: #D4D8E2;">
-            
-            <div class="row">
-               <div class="col-lg-10 col-sm-12">
-                
-               </div>
-               <div class="col-sm-10">
-               
-               </div>
-            </div>
-
-            <div class="middle-body mt-5">
-               
-            </div>
-
-
-            <hr style="color: #fff; size: bold;">
-
+        <div>
           
+            <p>
+                Obosi town was founded by a man called Adike Ukwala, who came from the Ire Quarters Of Nri town, in the kingdom. His father was Afuluenu Ukwala and it is this name, Ukwala, that Obosi people often affix in their name as Obosi-Ukwala. Nri Town is regarded as the cradle of Igbo civilisation and from where many Igbo towns originated. Adike had siblings named; Alor', Ojoto., Nwankwo who were males and a sister called Mgbogafor. Because of femine that ravaged Igboland in 10" Century AD that led to dispersals, Adike with his siblings led by the eldest Alor left Nri in search of greener pastures for farming and wandered south-eastwards till they got to present Alor town where they briefly settled. From here the other three brothers continued their movement till they got to place now called Ojoto town They stayed awhile at Ojoto and formed families. Still not satisfied with their stay at Ojoto as they were adventurous hunters and farmers, Adike and Nwankwo chose to wander further south with Adike deciding to settle at uppermost part land elevation overlooking the great river that came to be known as Orimili Niger while Nwankwo chose to continue down south and managed to cross the great river Niger, and aware of the seasonal flooding of the river, chose to establish a settlement further south that was later referred to as Igbo-na-uzo or Igbuzo now known as Ibusa.
+            </p>
+            <p>
+            The relationship between the brothers is not lost on some of their descendants as those who are in the know have continued to maintain the link through bilateral cultural interactions of need arises. Occasions have risen in the past when cultural groups have come from Igbuzo to Ojoto and to Obosi. In Obosi, time was when the stick for making the Ofor symbol must be plucked from Ojoto town.
+            </p>  <p>
+            Today there are no strong ties between Obosi and Ibusa with different groups claiming ownership of Igbuzo [Ibusa] town. Since Igbuzo meant Igbo-bi-na-uzo which implies Igbo people staying on major highway and founded by the brother of Adike, it is not surprising that emigrants from other places now settle there and even claim to being the founder of the now famous town. The truth remains that the first inhabitants of Igbuzo were Adike's brothers as at were later joined by Umuru people, descendants of Adike, who came after they were driven out of Obosi because of certain historical developments. Now it is surprising that some Ibusa families bear name Nwobosi which is a dialectical variation of popular name Nwobosi.
+            </p>  <p>
+            The place Adike settled with his wife, Akwugo, was very sandy and all his attempts to mould a block and make a shelter was frustrated by non-adhesiveness of soil. In frustration he lamented that “Ana ne ebosisi ebosi” The name Obosi is believed to have originated from this Adike’s expression meaning the soil cannot stick together.
+
+            Adike soon had a family. His first habitat was at the present Mmakwum village and it is where he built his Iba [forecourt] and had his ancestral home. He had two children. The first son was named Oba while the second son was named Okodu, Oba had his children as Okpo, Ezeani and Okpununo. Okodu had children named Nnebo, Uru, and Owelebe. Nnebo gave birth to two children namely Ota and Ire while Owulebe gave birth to Mmakwum, Urowulu, and Ugamuma.
+            Adike’s children and grand-children are;
+            </p>
+            1.Okpala 2. Ezeani 3. Okpo 4. Ota 5.Ire 6.Umuru 7.Mmakwum 8.Urowulu 9.Ugamuma. These then constituted the nine patriarchs after Adike and are called Obosi Ebo - Itenani.
+
+            These Ebo Itenani each had their initial settlements, what is now referred to as Adike ground.
+            <p>
+            Obosi at the moment comprises the five villages of Umuota, Ire Ugamuma, Urowulu, and Mmakwum because the other four generations after Adike that could have constituted as villages got assimilated and integrated into these five villages because of historical dynamics of various causes including assimilations.
+            </p>
+
+
+            <h1>Eze Chima: The Aro Native Doctor & The True Story</h1>
+            <p>
+            Eze Chima was an Aro native doctor. In pursuance of the role of the Aros in the Atlantic Slave Trade quoted…from Michael Crowder’s story of Nigeria, Chima left Arochukwu to Benin to set up as an agent of the Aro Long Juju, for the usual purpose of collecting slaves from Benin.
+            </p> <p>
+            Whenever, in the olden days, a native doctor travelled to a place, he by custom would, on arrival, report himself to the local chief or to the head of the society of native doctors of the land. He is either the guest of the head chief of the clan or puts up with head of the local society of native doctors. Accordingly, when Chima arrived Benin he reported himself to the Oba of Benin who accepted him as his guest. In time Chima settled down and set up practice as a native doctor and agent of Aro Oracle. He impressed the Oba of Benin so much with his magical art that he became very influential over the Oba. In consequence, the Oba installed Chima a chief in the palace of Benin. Thus the plain blunt and ordinary native doctor who left Arochukwu to establish an agency of the Long Juju, earned a chieftaincy title and became Chief Chima or Eze Chima.
+            </p> <p>
+            Having found his feet firm in Benin, Eze Chima sent for his brother Ekensu and other relatives from Arochukwu, and also set up an Aro settlement in Benin similar to those Aros had set up within the description of Michael Crowder, in other areas throughout former Eastern Nigeria.
+            With the march of time, Chima’s practice in Benin expanded down to Niger Delta. Among the Urhobos and Itshekiris also the fame of the Aro Oracle spread and clients from those areas trooped to him to consult the Oracle. The greatest index of Chima’s influence on culture in Benin Kingdom is found in the fact that Benin people adopted the Igbo days of the week – Eke, Orie, Afo and Nkwo – on which Chima made one sacrifice or the other or observed his abstinences and spiritual disciplines, as names also of Benin week days. And till today the Binis have, as the Igbo, Eke, Orie, Afo, Nkwo – as names of their week days.
+            </p> <p>
+            According to Mr Wellington Igunbor a Benin historian, who on the mother side, belongs to one of Benin’s traditional chieftaincy families (Chief Gaius Obaseki’s family – Gaius Obaseki who was the Iyase or Prime Minister of Benin in 1947) – the settlement of Eze Chima in Old Benin was established in the area through which Siliku Street runs in the present-day Benin city. As Eze Chima’s influence increased so did population of his settlement expand. So influential was Eze Chima and so completely absorbed in the society was he and his clan that there was hardly a thing he and his people could not do on the basis of equality with Benin indigenes.
+            </p> <p>
+            At the time Eze Chima lived in Benin, the mother of Oba of Benin was Asije. The Oba’s brother who also was the Oba’s War Lord was called Gbunwala. One day, Asije the mother of both the Oba and Gbunwala, the Benin War Lord went into a farm belonging to Eze Chima’s people and collected firewood. Eze Chima’s people then caught Asije the Oba’s mother, and beat her thoroughly for taking wood from their farm without permission. Back home, Asije reported to her children – the Oba of Benin and Gbunwala, the Benin War Lord, her bitter experience with Eze Chima’s people. Red witha anger, Gbunwala, the Oba’s brother and War Lord, took some of his soldiers, went to Chima’s settlement, set upon Chima’s people – beat them thoroughly and killed some of them.
+            </p> <p>
+            From that day, Gbunwala began to harass Eze Chima and his people. In the circumstance, Eze Chima decided to quit Benin with his people and return to the East whence he came to rejoin his Igbo kith and kin – or, in the alternative to find new settlements for himself and his people in places far and safe beyond the reach of Oba of Benin.
+            </p> <p>
+            This story was told in Igbo Primer popularly known as “Azu Ndu”, approved by Government Education Department for infant classes of primary schools in the Igbo Provinces of then Eastern Nigeria, now Biafra, since the beginning of the 20th century.
+            </p> <p>
+            On their way out of Benin, some of the Eze Chima’s people settled at Agbo (Agbor), 44 miles away from Benin City which they considered far, and out of reach, molestations and influence of the Oba of Benin and his brother, Gbunwala. Others went beyond this distance and settled at Isele-Uku, Onicha-Olona, Onicha-Ugbo and Obio. When they reached the West bank of the Niger, some took a canoe and paddled down the River to Abo and settled. Led by Oreze, the eldest son of Eze Chima, the balance of Eze Chima clan crossed the River Niger to the eastern bank and settled among Oze people – the original inhabitants of what is today the big and prosperous commercial and education centre in Biafra – Onicha (Onitsha). On page 73 of his story of Nigeria, Mr Michael Crowder believed that the migration of Onicha (Onitsha) people – this is of Umu Eze Chima clans – from Benin took place in the 17th century.
+            </p> <p>
+            Having lived for some years in Benin as one of the chiefs of the palace of the Oba of Benin, Eze Chima, the Aro agent of the Aro Oracle in Benin and his people had learnt Benin chieftaincy institutions and titles and so adapted the Benin system to the administrative structures and customs of the place where they settled among other West Niger Igbo and in Onicha (Onitsha) on the east bank. But as Eze Chima took away from Benin a copy of their chieftaincy institutions, so did he deposit in Benin, and the Binis adopted it, Igbo weekdays – Eke, Orie, Afo, Nkwo – which are vital in the determination of appropriate days for abstinences , spiritual religious cultures of the Igbo and Bini too. In other words, the West Niger Igbo borrowed from Benin in chieftaincy, traditions, just as the Binis borrowed from the Igbo in religious traditions—through the agency of Eze Chima.”
+            End of quote! </p>
+            <p>
+            (Reference is: Pgs 171-174 of THE IGBO AND THEIR NEIGHBOURS by Professor Adiele Eberechukwu Afigbo. Published in 1987).
+            </p>
         </div>
+
+      
+    </div>
+
+</main>
+
+<div class="top-dropdown">
+
+    <div class="dropdown-button-holder">
+
+        <button class="dropdown-button" id="btn">
+
+            <div class="bars">
+                <div class="bar top"></div>
+                <div class="bar bottom"></div>
+            </div>
+
+        </button>
+
     </div>
 
 
 
+    <div id="people-dropdown" class="top-dropdown-contents">
 
-<div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content" style="background-color: #04042F;">
-            <div class="modal-header">
-                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body container">
-                <div>
-                    <div class="row justify-content-between">
-                        <div class="col-md-3 col-12">
-                            <img src="~/images/obosiLogoText.png" alt="" />
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-12 " style=" border-bottom: 1px solid #9D9CDB; ">
-                            <h1 class="medievalsharp-regular" style="color: #fff; font-size: 40px; font-weight: 500; text-align: center;">Account Manager</h1>
-                        </div>
-                    </div>
-                    <div class="row p-2">
-                        <div class="col-md-3 p-3" style="border-right: 1px solid #9D9CDB;">
-                            <form class="form-inline" asp-action="SignIn" asp-controller="Home" method="POST">
-                                <p style="font-size: 18px; font-weight: 500; color: #FFFFFF;">Enter your email address or phone number to access your dashboard</p>
-                                <label for="" style="font-size: 16px; color: #fff; "> Email Address or Phone Number</label>
-                                <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
-                                       style="background-color: #100E6C; color: #fff;" required asp-for="Username" />
-                                <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Password</label>
-                                <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
-                                       style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                       required asp-for="Password" />
-                                <button class="btn w-100 mt-3 p-2" style="background-color: #FB376B; color: #010119; font-size: 16px; font-weight: 500;">LOGIN</button>
-                            </form>
+        <div class="visible-large">
+            <h1 class="top-header">
+                Our People: Our Pride
+            </h1>
+            <div class="top-sections">
+                <section class="top-text">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </section>
+                <div class="section-images">
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/Ikeazor.jpeg" />
+                            <figcaption>
+                                Chief Philip Ikeazor (Izoma-Obosi),  <br />
+                                Deputy CBN Governor
 
-                        </div>
-                        <div class="col-md-9 p-3 ">
-                            <p style="font-size: 18px; font-weight: 500; color: #FFFFFF; text-align: center;">Are you an Obosi indigene but not registered? Complete the following fields to get started or <span style="color: #0078D4;">verify your account</span></p>
-
-                            <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
-                                <div class="row p-3">
-                                    <div class="col-md-6 col-12">
-                                        <div>
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">First Name</label>
-                                            <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
-                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                   required asp-for="user.FirstName" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div>
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Last Name</label>
-                                            <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
-                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                   required asp-for="user.LastName" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div>
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Last Name</label>
-                                            <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example"
-                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                   asp-for="user.OtherName" required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div>
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Email</label>
-                                            <input class="form-control form-control-lg" type="email" aria-label=".form-control-lg example"
-                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                   asp-for="user.Email" required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div>
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Password</label>
-                                            <input class="form-control form-control-lg" type="password" aria-label=".form-control-lg example"
-                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                   asp-for="user.Password" required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div>
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Phone Number</label>
-                                            <input class="form-control form-control-lg" type="tel" aria-label=".form-control-lg example"
-                                                   style="background-color: #100E6C; color: #ffffff; caret-color: #ffffff; opacity: 0.7;"
-                                                   asp-for="user.PhoneNumber" required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="">
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Village</label>
-                                            <select class="form-select form-select-lg" aria-label="Default select example" style="background-color: #100E6C;
-                                            color: #ffffff;" required asp-for="VillageId">
-                                                <option selected>Select Village</option>
-                                                @foreach (var vil in Model.AllVillages)
-                                                {
-                                                    <option value="@vil.Id">@vil.Name</option>
-                                                }
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="">
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Gender</label>
-                                            <select class="form-select form-select-lg" aria-label="Default select example" required
-                                                    style="background-color: #100E6C; color: #ffffff;" asp-for="user.GenderId">
-                                                <option selected>Select Gender</option>
-                                                <option value="1">Male</option>
-                                                <option value="2">Female</option>
-
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-6 col-12 ">
-                                        <div class="">
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Umunna</label>
-                                            <select class="form-select form-select-lg " aria-label="Default select example" required
-                                                    style="background-color: #100E6C; color: #ffffff;" asp-for="UmunnaId">
-                                                <option selected>Select Umunna</option>
-                                                @foreach (var umu in Model.AllUmunna)
-                                                {
-                                                    <option value="@umu.Id">@umu.Name</option>
-                                                }
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="">
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Ime Nne</label>
-                                            <select class="form-select form-select-lg " aria-label="Default select example" required
-                                                    style="background-color: #100E6C; color: #ffffff; " asp-for="ImeneId">
-                                                <option selected>Select Ime Nne</option>
-                                                @foreach (var ime in Model.AllImene)
-                                                {
-                                                    <option value="@ime.Id">@ime.Name</option>
-                                                }
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="">
-                                            <label for="" style="font-size: 16px; color: #fff; " class="mt-2">Aka</label>
-                                            <select class="form-select form-select-lg" aria-label="Default select example" required
-                                                    style="background-color: #100E6C; color: #ffffff; " asp-for="AkaId">
-                                                <option selected>Select Aka</option>
-                                                @foreach (var ak in Model.AllAka)
-                                                {
-                                                    <option value="@ak.Id">@ak.Name</option>
-                                                }
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="btn w-100 mt-3 p-2" style="background-color: #FB376B; color: #010119; font-size: 16px; font-weight: 500;">CONTINUE</button>
-
-                            </form>
-                        </div>
-
-
-                    </div>
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/Ajegbo.jpeg" />
+                            <figcaption>
+                                Chief Mike Ajegbo (Ede Obosi), <br />
+                                7 Senator, Federal Republic of Nigeria
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/anyaoku-people.jpg" />
+                            <figcaption>
+                                Chief Emeka Anyaoku <br />
+                                Third Commonwealth Secretary General
+                            </figcaption>
+                        </figure>
+                    </section>
                 </div>
+            </div>
 
+        </div>
+        <div class="bottom-nav">
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Personalities).ToString())">
+                Obosi's Personalities
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
+                Igwe Obosi's Cabinet
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
+                Obosi Development Union
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
+                Obosi Umunna/Kindreds
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
+                Obosi Age Grade Societies
+            </a>
+        </div>
+
+    </div>
+    <div id="places-dropdown" class="top-dropdown-contents">
+        <div class="visible-large">
+            <h1 class="top-header">
+                Our Places: Our Heritage
+            </h1>
+            <div class="top-sections">
+                <section class="top-text">
+                    <p>
+                        Obosi Ukwala is situated in a hilly area, bordered by Onitsha to the North-west, Nkpor to the North-east and Oba to the south-east
+                    </p>
+                    <p>
+                        Obosi has five villages namely: Umuota, Ire, Ugamuma, Urowulu, & Mmakwum.
+                    </p>
+                    <p>
+                        Additionally it has suburbs namely: Awada, Enekwasumpu, Ugwuaba, & Odume.
+                    </p>
+                    <p>
+                        Obosi's proximity to Onitsha, a commercial city, has made it a
+                        desired home to several buinesses.
+                    </p>
+                </section>
+                <div class="section-images">
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/land1.jpg" />
+                            <figcaption>
+                                Aerial View of Idemili River into River Niger
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/land2.jpg" />
+                            <figcaption>
+                                View of Awada Obosi, one of the most densely populated lands in Nigeria
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/land3.jpg" />
+                            <figcaption>
+                                Road linking the newly constructed 2nd Niger Bridge
+                            </figcaption>
+                        </figure>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bottom-nav">
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())">
+                Villages & Suburbs
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Schools).ToString())">
+                Schools
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Hotels).ToString())">
+                Hotels
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Churches).ToString())">
+                Churches
+            </a>
+            <a href="#">
+                More...
+            </a>
+
+        </div>
+    </div>
+    <div id="culture-dropdown" class="top-dropdown-contents">
+        <div class="visible-large">
+            <h1 class="top-header">
+                Our Culture: Our Life
+            </h1>
+            <div class="top-sections">
+                <section class="top-text">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </section>
+                <div class="section-images">
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/masquerade1.jpg" />
+                            <figcaption>
+                                The beautiful & graceful Agbonma Masquerade
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/masquerade2.jpg" />
+                            <figcaption>
+                                The ferocious & revered Isi Odogwu Masquerade
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/masquerade3.jpg" />
+                            <figcaption>
+                                The ever-playful and agile Ajikwu Masquerade
+                            </figcaption>
+                        </figure>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bottom-nav">
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Ito_Ogbo).ToString())">
+                Ito-Ogbo Festival
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.New_Yam_Festival).ToString())">
+                New Yam Festival
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())">
+                Festivals
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())">
+                Masquerades
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())">
+                Dance Groups
+            </a>
+
+        </div>
+    </div>
+    <div id="media-dropdown" class="top-dropdown-contents">
+        <h1 class="top-header alt">
+            Media Center
+        </h1>
+        <div class="top-nav">
+            <a href="#">
+                Opinion' Blogs
+            </a>
+            <a href="#">
+                News Articles
+            </a>
+            <a href="#">
+                Photo Gallery
+            </a>
+            <a href="#">
+                Events Calendar
+            </a>
+
+        </div>
+
+        <div class="visible-large">
+
+            <div class="media-sections">
+
+                <section class="media-menu">
+                    <a href="#">
+                        Education
+                    </a>
+                    <a href="#">
+                        Security
+                    </a>
+                    <a href="#">
+                        Health & Fitness
+                    </a>
+                    <a href="#">
+                        Life, Religion & Family
+                    </a>
+                    <a href="#">
+                        Science & Technology
+                    </a>
+                    <a href="#">
+                        Movies, Music, & Arts
+                    </a>
+                </section>
+                <section class="media-menu">
+                    <a href="#">
+                        Education
+                    </a>
+                    <a href="#">
+                        Security
+                    </a>
+                    <a href="#">
+                        Health & Fitness
+                    </a>
+                    <a href="#">
+                        Life, Religion & Family
+                    </a>
+                    <a href="#">
+                        Science & Technology
+                    </a>
+                    <a href="#">
+                        Movies, Music, & Arts
+                    </a>
+                </section>
+                <section class="media-menu">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
+                        Igwe's Palace
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
+                        Obosi Development Union
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
+                        Umunnas/Kindreds
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
+                        Age Grade Societies
+                    </a>
+                </section>
+                <section class="media-menu">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
+                        Igwe's Palace
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
+                        Obosi Development Union
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
+                        Umunnas/Kindreds
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
+                        Age Grade Societies
+                    </a>
+                </section>
+            </div>
+
+        </div>
+    </div>
+    <div id="account-dropdown" class="top-dropdown-contents">
+        <h1 class="top-header alt">
+            Account Manager
+        </h1>
+        <div class="forms-container">
+
+            <div class="form-body login">
+
+                <h2>
+                    Enter your email address or phone number to access your dashboard
+                </h2>
+
+                <form class="form-inline" asp-action="SignIn" asp-controller="Home" method="POST">
+
+                    <div class="field-group-alt">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Email address" required asp-for="Username" />
+
+                        </div>
+
+                        <div class="field-holder">
+
+                            <div class="password-box">
+
+                                <input type="password" class="form-field" placeholder="Password" required asp-for="Password" />
+
+                                <a href="#" id="show-password">
+                                    <i class="fa fa-eye-slash"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        Login
+                    </button>
+
+                </form>
+
+                <a href="#" class="alternative-link">
+                    Forgotten Password?
+                </a>
+            </div>
+
+            <div class="form-body register">
+
+                <h2>
+                    Are you an Obosi indigene but not registered? Complete the following fields to get started or
+                    <a href="#">verify your account</a>.
+                </h2>
+
+                <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
+
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="First name" required asp-for="user.FirstName" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Last Name" required asp-for="user.LastName" />
+
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Other name" asp-for="user.OtherName" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Email" asp-for="user.Email" required />
+
+                        </div>
+                    </div>  <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Password" required asp-for="user.Password" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Phone Number" asp-for="user.PhoneNumber" required />
+
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <select class="form-field" required asp-for="VillageId">
+                                <option selected>Select Village</option>
+                                @foreach (var vil in Model.AllVillages)
+                                {
+                                    <option value="@vil.Id">@vil.Name</option>
+                                }
+                            </select>
+
+                        </div>
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="AkaId">
+                                <option selected>Select Aka</option>
+                                @foreach (var ak in Model.AllAka)
+                                {
+                                    <option value="@ak.Id">@ak.Name</option>
+                                }
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="UmunnaId">
+                                <option selected>Select Umunna</option>
+                                @foreach (var umu in Model.AllUmunna)
+                                {
+                                    <option value="@umu.Id">@umu.Name</option>
+                                }
+                            </select>
+
+                        </div>
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="ImeneId">
+                                <option value="">Select Ime Nne</option>
+                                @foreach (var ime in Model.AllImene)
+                                {
+                                    <option value="@ime.Id">@ime.Name</option>
+                                }
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="field-holder">
+
+                        <div class="options">
+
+                            <label> Are you a </label>
+
+                            <span>
+                                <input type="radio" id="male" name="user.GenderId" asp-for="user.GenderId" value="1" />
+                                <label for="male">Male</label>
+                            </span>
+
+                            <span>
+                                <input type="radio" id="female" name="user.GenderId" asp-for="user.GenderId" value="2" />
+                                <label for="female">Female</label>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="submit-button">
+                        Continue
+                    </button>
+
+                </form>
 
             </div>
+
+        </div>
+        <div class="bottom-nav alt">
+            <a href="~/home/signin">
+                Log into Account
+            </a>
+            <a href="#">
+                Recover Lost Password
+            </a>
+            <a href="~/home/signup">
+                Start Registration
+            </a>
+            <a href="#">
+                Verify Registration
+            </a>
+
+
         </div>
 
     </div>
 </div>
-

@@ -185,11 +185,35 @@ namespace Obosi.ng.Application.Services
             var userDetails = await _dataContext.Users.Where(x => x.Id == user.Id).FirstOrDefaultAsync();
             if (userDetails != null)
             {
-                userDetails.OtherName = user.OtherName;
-                userDetails.PhoneNumber = user.PhoneNumber;
-                userDetails.FirstName = user.FirstName;
-                userDetails.LastName = user.LastName;
-                userDetails.Password = user.Password;
+                if (!string.IsNullOrWhiteSpace(user.OtherName))
+                {
+                    userDetails.OtherName = user.OtherName;
+                }
+                if (!string.IsNullOrWhiteSpace(user.PhoneNumber))
+                {
+                    userDetails.PhoneNumber = user.PhoneNumber;
+                }
+                if (!string.IsNullOrWhiteSpace(user.FirstName))
+                {
+                    userDetails.FirstName = user.FirstName;
+                }
+                if (!string.IsNullOrWhiteSpace(user.LastName))
+                {
+                    userDetails.LastName = user.LastName;
+                }
+                if (!string.IsNullOrWhiteSpace(user.Email))
+                {
+                    userDetails.Email = user.Email;
+                }
+                if (!string.IsNullOrWhiteSpace(user.PassportUrl))
+                {
+                    userDetails.PassportUrl = user.PassportUrl;
+                }
+                if (!string.IsNullOrWhiteSpace(user.Password))
+                {
+                    userDetails.Password = user.Password;
+                }
+
                 _dataContext.Users.Update(userDetails);
                 await _dataContext.SaveChangesAsync();
                 return userDetails;

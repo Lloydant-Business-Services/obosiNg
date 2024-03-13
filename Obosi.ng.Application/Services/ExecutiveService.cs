@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Configuration.Annotations;
 using Microsoft.EntityFrameworkCore;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Data;
@@ -48,17 +49,28 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Executive>> GetAllExecutives()
         {
-            return await _dataContext.Executive.ToListAsync();
+            return await _dataContext.Executive.Include(x => x.Unit).Include(x=>x.User).ToListAsync();
+        }
+
+        public async Task<List<Users>> GetAllUsers(int unitId)
+        {
+            var users = await _dataContext.Member_Unit
+                .Where(x => x.UnitId == unitId)
+                .Include(x=>x.Users)
+                .Select(x => x.Users)
+                .OrderBy(x=>x.FirstName)
+                .ToListAsync();
+            return users;
         }
 
         public async Task<Executive> GetExecutivesById(int id)
         {
-            return await _dataContext.Executive.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _dataContext.Executive.Where(x => x.Id == id).Include(x => x.User).Include(x => x.Unit.UnitType).FirstOrDefaultAsync();
         }
 
         public async Task<List<Executive>> GetExecutivesByUnit(int unitId)
         {
-            return await _dataContext.Executive.Where(x=>x.UnitId == unitId).ToListAsync();
+            return await _dataContext.Executive.Where(x=>x.UnitId == unitId).Include(x=>x.User).ToListAsync();
         }
 
         public Task<List<Executive>> GetHomePageExecutives()
@@ -70,7 +82,16 @@ namespace Obosi.ng.Application.Services
         {
             if(executive != null)
             {
-                _dataContext.Executive.Update(executive);
+                var existingExecutive = await _dataContext.Executive.Where(x => x.Id == executive.Id).FirstOrDefaultAsync();
+                if(existingExecutive != null)
+                {
+                    if(!string.IsNullOrWhiteSpace(executive.Designation))
+                    {
+                        existingExecutive.Designation = executive.Designation;
+                    }
+                    
+                }
+                _dataContext.Executive.Update(existingExecutive);
                 await _dataContext.SaveChangesAsync();
                 return executive;
             }

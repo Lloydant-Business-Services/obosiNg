@@ -25,6 +25,7 @@ namespace Obosi.ng.Application.Services
         {
             if(asset != null)
             {
+                asset.IsActive = true;
                 asset.DateAdded = DateTime.Now;
                 var assets=  await _dataContext.Calender_Assets.AddAsync(asset);
                 await _dataContext.SaveChangesAsync();

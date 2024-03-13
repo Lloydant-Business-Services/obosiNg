@@ -35,14 +35,26 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Builders_Boulevard>> GetBoulevard(int pageId)
         {
-            // Determine the offset for the current page
-            int offset = (pageId - 1) * 10;
+            if (pageId > 0)
+            {
+                // Determine the offset for the current page
+                int offset = (pageId-1)  * 10;
 
-            // Fetch the specified page of data
+                // Fetch the specified page of data
+                var boulevardList = await _dataContext.Builders_Boulevard
+                    .Skip(offset)
+                    .Take(10)
+                    .ToListAsync();
+                return boulevardList;
+
+            }
+            return null;
+        }
+
+        public async Task<List<Builders_Boulevard>> GetBoulevard()
+        {
             var boulevardList = await _dataContext.Builders_Boulevard
-                .Skip(offset)
-                .Take(10)
-                .ToListAsync();
+                    .ToListAsync();
             return boulevardList;
         }
 

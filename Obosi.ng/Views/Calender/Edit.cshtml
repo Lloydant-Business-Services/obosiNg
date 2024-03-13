@@ -6,7 +6,7 @@
 <h1>Edit Calender</h1>
 
 <form asp-action="Edit" method="post" enctype="multipart/form-data">
-
+    <input asp-for="Calender_Asset.Id" type="hidden" />
 
     <div class="row">
         <div class="col-md-6">
@@ -17,8 +17,8 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="BackgroundImageUrl">Description:</label>
-                <input asp-for="Calender_Asset.Description" class="form-control" />
+                <label for="CategoryId">Location:</label>
+                <input asp-for="Calender_Asset.Location" class="form-control" />
             </div>
         </div>
     </div>
@@ -26,7 +26,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="CategoryId">Unit:</label>
-                <input asp-for="Calender_Asset.UnitId" class="form-control" />
+                @*   <input asp-for="Calender_Asset.UnitId" class="form-control" /> *@ <select asp-for="Calender_Asset.UnitId" class="form-select">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.Units)
+                    {
+                        <option value="@item.Id">@item.Name (@item.UnitType.Name)</option>
+                    }
+                </select>
             </div>
         </div>
         <div class="col-md-6">
@@ -37,16 +43,27 @@
         </div>
     </div>
     <div class="row">
+        
         <div class="col-md-6">
             <div class="form-group">
-                <label for="CategoryId">Location:</label>
-                <input asp-for="Calender_Asset.Location" class="form-control" />
+                <label for="CategoryId">Start Date:</label>
+                <input asp-for="Calender_Asset.StartDate" class="form-control" type="date" />
             </div>
         </div>
     </div>
+    <div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="BackgroundImageUrl">Description:</label>
+            @* <input asp-for="Calender_Asset.Description" class="form-control" /> *@
+            <textarea name="Calender_Asset.Description" style="width: 300px; height: 100px;" required
+                      id="PassageQuestion" class="ckeditor" asp-for="Calender_Asset.Description"></textarea>
+        </div>
+    </div>
+    </div>
 
 
-    <button type="submit" class="btn btn-primary">Edit</button>
+    <button type="submit" class="btn btn-primary">Save</button>
 </form>
 
 <script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>

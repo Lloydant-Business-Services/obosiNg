@@ -1,0 +1,556 @@
+﻿@model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
+@{
+    //Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    Layout = "~/Views/Shared/_GeneralLayout2.cshtml";
+}
+
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<div class="top-dropdown">
+
+    <div class="dropdown-button-holder">
+
+        <button class="dropdown-button" id="btn">
+
+            <div class="bars">
+                <div class="bar top"></div>
+                <div class="bar bottom"></div>
+            </div>
+
+        </button>
+
+    </div>
+
+
+
+    <div id="people-dropdown" class="top-dropdown-contents">
+
+        <div class="visible-large">
+            <h1 class="top-header">
+                Our People: Our Pride
+            </h1>
+            <div class="top-sections">
+                <section class="top-text">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </section>
+                <div class="section-images">
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/Ikeazor.jpeg" />
+                            <figcaption>
+                                Chief Philip Ikeazor (Izoma-Obosi),  <br />
+                                Deputy CBN Governor
+
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/Ajegbo.jpeg" />
+                            <figcaption>
+                                Chief Mike Ajegbo (Ede Obosi), <br />
+                                7 Senator, Federal Republic of Nigeria
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/anyaoku-people.jpg" />
+                            <figcaption>
+                                Chief Emeka Anyaoku <br />
+                                Third Commonwealth Secretary General
+                            </figcaption>
+                        </figure>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-nav">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Personalities).ToString())">
+                Obosi's Personalities
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
+                Igwe Obosi's Cabinet
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
+                Obosi Development Union
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
+                Obosi Umunna/Kindreds
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
+                Obosi Age Grade Societies
+            </a>
+        </div>
+
+    </div>
+    <div id="places-dropdown" class="top-dropdown-contents">
+        <div class="visible-large">
+            <h1 class="top-header">
+                Our Places: Our Heritage
+            </h1>
+            <div class="top-sections">
+                <section class="top-text">
+                    <p>
+                        Obosi Ukwala is situated in a hilly area, bordered by Onitsha to the North-west, Nkpor to the North-east and Oba to the south-east
+                    </p>
+                    <p>
+                        Obosi has five villages namely: Umuota, Ire, Ugamuma, Urowulu, & Mmakwum.
+                    </p>
+                    <p>
+                        Additionally it has suburbs namely: Awada, Enekwasumpu, Ugwuaba, & Odume.
+                    </p>
+                    <p>
+                        Obosi's proximity to Onitsha, a commercial city, has made it a
+                        desired home to several buinesses.
+                    </p>
+                </section>
+                <div class="section-images">
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/land1.jpg" />
+                            <figcaption>
+                                Aerial View of Idemili River into River Niger
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/land2.jpg" />
+                            <figcaption>
+                                View of Awada Obosi, one of the most densely populated lands in Nigeria
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/land3.jpg" />
+                            <figcaption>
+                                Road linking the newly constructed 2nd Niger Bridge
+                            </figcaption>
+                        </figure>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bottom-nav">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())">
+                Villages & Suburbs
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Schools).ToString())">
+                Schools
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Hotels).ToString())">
+                Hotels
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Churches).ToString())">
+                Churches
+            </a>
+            <a href="#">
+                More...
+            </a>
+
+        </div>
+    </div>
+    <div id="culture-dropdown" class="top-dropdown-contents">
+        <div class="visible-large">
+            <h1 class="top-header">
+                Our Culture: Our Life
+            </h1>
+            <div class="top-sections">
+                <section class="top-text">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </section>
+                <div class="section-images">
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/masquerade1.jpg" />
+                            <figcaption>
+                                The beautiful & graceful Agbonma Masquerade
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/masquerade2.jpg" />
+                            <figcaption>
+                                The ferocious & revered Isi Odogwu Masquerade
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/masquerade3.jpg" />
+                            <figcaption>
+                                The ever-playful and agile Ajikwu Masquerade
+                            </figcaption>
+                        </figure>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bottom-nav">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Ito_Ogbo).ToString())">
+                Ito-Ogbo Festival
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.New_Yam_Festival).ToString())">
+                New Yam Festival
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())">
+                Festivals
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())">
+                Masquerades
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())">
+                Dance Groups
+            </a>
+
+        </div>
+    </div>
+    <div id="media-dropdown" class="top-dropdown-contents">
+        <h1 class="top-header alt">
+            Media Center
+        </h1>
+        <div class="top-nav">
+            <a href="#">
+                Opinion' Blogs
+            </a>
+            <a href="#">
+                News Articles
+            </a>
+            <a href="#">
+                Photo Gallery
+            </a>
+            <a href="#">
+                Events Calendar
+            </a>
+
+        </div>
+
+        <div class="visible-large">
+
+            <div class="media-sections">
+
+                <section class="media-menu">
+                    <a href="#">
+                        Education
+                    </a>
+                    <a href="#">
+                        Security
+                    </a>
+                    <a href="#">
+                        Health & Fitness
+                    </a>
+                    <a href="#">
+                        Life, Religion & Family
+                    </a>
+                    <a href="#">
+                        Science & Technology
+                    </a>
+                    <a href="#">
+                        Movies, Music, & Arts
+                    </a>
+                </section>
+                <section class="media-menu">
+                    <a href="#">
+                        Education
+                    </a>
+                    <a href="#">
+                        Security
+                    </a>
+                    <a href="#">
+                        Health & Fitness
+                    </a>
+                    <a href="#">
+                        Life, Religion & Family
+                    </a>
+                    <a href="#">
+                        Science & Technology
+                    </a>
+                    <a href="#">
+                        Movies, Music, & Arts
+                    </a>
+                </section>
+                <section class="media-menu">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
+                        Igwe's Palace
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
+                        Obosi Development Union
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
+                        Umunnas/Kindreds
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
+                        Age Grade Societies
+                    </a>
+                </section>
+                <section class="media-menu">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
+                        Igwe's Palace
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
+                        Obosi Development Union
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
+                        Umunnas/Kindreds
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
+                        Age Grade Societies
+                    </a>
+                </section>
+            </div>
+
+        </div>
+    </div>
+    <div id="account-dropdown" class="top-dropdown-contents">
+        <h1 class="top-header alt">
+            Account Manager
+        </h1>
+        <div class="forms-container">
+
+            <div class="form-body login">
+
+                <h2>
+                    Enter your email address or phone number to access your dashboard
+                </h2>
+
+                <form class="form-inline" asp-action="SignIn" asp-controller="Home" method="POST">
+
+                    <div class="field-group-alt">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Email address" required asp-for="Username" />
+
+                        </div>
+
+                        <div class="field-holder">
+
+                            <div class="password-box">
+
+                                <input type="password" class="form-field" placeholder="Password" required asp-for="Password" />
+
+                                <a href="#" id="show-password">
+                                    <i class="fa fa-eye-slash"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        Login
+                    </button>
+
+                </form>
+
+                <a href="#" class="alternative-link">
+                    Forgotten Password?
+                </a>
+            </div>
+
+            <div class="form-body register">
+
+                <h2>
+                    Are you an Obosi indigene but not registered? Complete the following fields to get started or
+                    <a href="#">verify your account</a>.
+                </h2>
+
+                <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
+
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="First name" required asp-for="user.FirstName" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Last Name" required asp-for="user.LastName" />
+
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Other name" asp-for="user.OtherName" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Email" asp-for="user.Email" required />
+
+                        </div>
+                    </div>  <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Password" required asp-for="user.Password" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Phone Number" asp-for="user.PhoneNumber" required />
+
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <select class="form-field" required asp-for="VillageId">
+                                <option selected>Select Village</option>
+                                @foreach (var vil in Model.AllVillages)
+                                {
+                                    <option value="@vil.Id">@vil.Name</option>
+                                }
+                            </select>
+
+                        </div>
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="AkaId">
+                                <option selected>Select Aka</option>
+                                @foreach (var ak in Model.AllAka)
+                                {
+                                    <option value="@ak.Id">@ak.Name</option>
+                                }
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="UmunnaId">
+                                <option selected>Select Umunna</option>
+                                @foreach (var umu in Model.AllUmunna)
+                                {
+                                    <option value="@umu.Id">@umu.Name</option>
+                                }
+                            </select>
+
+                        </div>
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="ImeneId">
+                                <option value="">Select Ime Nne</option>
+                                @foreach (var ime in Model.AllImene)
+                                {
+                                    <option value="@ime.Id">@ime.Name</option>
+                                }
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="field-holder">
+
+                        <div class="options">
+
+                            <label> Are you a </label>
+
+                            <span>
+                                <input type="radio" id="male" name="user.GenderId" asp-for="user.GenderId" value="1" />
+                                <label for="male">Male</label>
+                            </span>
+
+                            <span>
+                                <input type="radio" id="female" name="user.GenderId" asp-for="user.GenderId" value="2" />
+                                <label for="female">Female</label>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="submit-button">
+                        Continue
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+        <div class="bottom-nav alt">
+            <a href="~/home/signin">
+                Log into Account
+            </a>
+            <a href="#">
+                Recover Lost Password
+            </a>
+            <a href="~/home/signup">
+                Start Registration
+            </a>
+            <a href="#">
+                Verify Registration
+            </a>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row container" style="margin-left: auto; margin-right: auto;">
+    <div class="col-sm-12 ">
+        <p style="font-size: 4vmin; font-weight: 700;">CALENDER</p>
+    </div>
+</div>
+<div class="container" style="background-color: #D4D8E2;border-bottom:1px solid #ffff">
+
+<div class="d-lg-flex" style="  ">
+   
+        <!-- First Box -->
+        <div class=" col-md-6 col-sm-12 col-12 mb-4 " style=" padding: 5px; margin-right: 15px;">
+            <div class="col-md-12 " style="display: flex; background-color: #F7F7F7; padding: 10px;">
+                <div class="col-md-3" style="line-height: normal; color: #FFFFFF; margin: 0; padding: 10px; background-color: #CFB174;">
+                    @{
+                        var mon = Model.Calender_AssetsItem.StartDate.ToString("MMM");
+                    }
+
+                    <h6 style="font-weight: 700; font-size: 40px; margin: 0;"> @mon</h6>
+                <h6 style="font-weight: 700; font-size: 65px; margin: 0;"> @Model.Calender_AssetsItem.StartDate.Day</h6>
+                <h6 style="font-weight: 500; font-size: 28px; margin: 0;">  @Model.Calender_AssetsItem.StartDate.Year</h6>
+                </div>
+                <div class="col-md-9 " style="padding: 10px;">
+                <h6 style="font-weight: 600; font-size: 30px; margin: 0;color:  #4e4e4e;"> @Model.Calender_AssetsItem.Title</h6>
+                    <div class="py-5">
+                    @Html.Raw(@Model.Calender_AssetsItem.Description)
+                    </div>
+                    <div class="">
+                        <div style="border-bottom: 3px solid #CFB174; padding: 5px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    
+</div>
+</div>

@@ -60,11 +60,13 @@ namespace Obosi.ng.Presentation.Controllers
             return View(model);
         }
         [HttpPost]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Edit(BlogViewModel model)
         {
-            if (ModelState.IsValid)
+            if (model.Blog!= null)
             {
-                await blog.UpdateBlog(model.Blogs_Update);
+                model.Blog.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+                await blog.UpdateBlog(model.Blog);
                 return RedirectToAction("Index");
             }
             return View(model);

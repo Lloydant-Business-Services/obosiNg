@@ -8,33 +8,40 @@ namespace Obosi.ng.Presentation.Controllers
     public class BoulevardController : Controller
     {
         private readonly IBoulevard _boulevard;
-        public BoulevardController(IBoulevard boulevard)
+        private readonly IUnit _unit;
+        public BoulevardController(IBoulevard boulevard, IUnit unit)
         {
             _boulevard = boulevard;
+            _unit = unit;
         }
         [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page)
         {
-            BoulevardViewModel model = new(_boulevard);
-            await model.InitializeAsync();
+            BoulevardViewModel model = new(_boulevard, _unit);
+            if(page == null)
+            {
+                page = 1;              
+            }
+            model.pageNo = page;
+            await model.InitializeAsync(page);
             return View(model);
         }
         public async Task<IActionResult> BoulevardList()
         {
-            BoulevardViewModel model = new(_boulevard);
+            BoulevardViewModel model = new(_boulevard, _unit);
             await model.InitializeAsync();
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
         {
-            BoulevardViewModel model = new(_boulevard);
+            BoulevardViewModel model = new(_boulevard, _unit);
             await model.InitializeAsync();
             model.builders_Boulevard = await _boulevard.GetBoulevardById(id);
             return View(model);
         }  
         public async Task<IActionResult> Create()
         {
-            BoulevardViewModel model = new(_boulevard);
+            BoulevardViewModel model = new(_boulevard, _unit);
             await model.InitializeAsync();
             return View(model);
         }
@@ -51,12 +58,13 @@ namespace Obosi.ng.Presentation.Controllers
         }   
         public async Task<IActionResult> Edit(int id)
         {
-            BoulevardViewModel model = new(_boulevard);
+            BoulevardViewModel model = new(_boulevard, _unit);
             await model.InitializeAsync();
             model.builders_Boulevard = await _boulevard.GetBoulevardById(id);
             return View(model);
         }
         [HttpPost]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Edit(BoulevardViewModel model)
         {
             if (ModelState.IsValid)

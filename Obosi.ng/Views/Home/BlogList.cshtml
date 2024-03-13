@@ -84,7 +84,7 @@
     <div class="posts">
 
 
-        @if (Model.Blogs != null)
+        @if (Model.Blogs?.Count()>0)
         {
             foreach (var item in Model.Blogs)
             {
@@ -102,7 +102,20 @@
                     </div>
                 </div>
             }
-            
+
+        }
+
+        else
+        {
+            <div style="background-color: #fff;" class="p-3">
+                <div style="text-align: center;">
+                    <img src="~/notFound.gif" alt="Empty Page Image" class="w-10 h-10mb-3" style="width: 100px; height: 100px;">
+                    <h3>Ooops! This page seems to be empty.</h3>
+                    <p>Return to the homepage to discover more content.</p>
+                    <a href="/" class="btn btn-danger">Return to Homepage</a>
+                </div>
+
+            </div>
         }
         <!-- Post 1 end-->
         <!-- Post 3 end-->
@@ -180,19 +193,19 @@
 
         </div>
         <div class="bottom-nav">
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Personalities).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Personalities).ToString())">
                 Obosi's Personalities
             </a>
             <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
                 Igwe Obosi's Cabinet
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
                 Obosi Development Union
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
                 Obosi Umunna/Kindreds
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
                 Obosi Age Grade Societies
             </a>
         </div>
@@ -250,19 +263,19 @@
         </div>
 
         <div class="bottom-nav">
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Village).ToString())">
                 Villages & Suburbs
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Schools).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Schools).ToString())">
                 Schools
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Hotels).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Hotels).ToString())">
                 Hotels
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Churches).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Churches).ToString())">
                 Churches
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 More...
             </a>
 
@@ -313,19 +326,19 @@
         </div>
 
         <div class="bottom-nav">
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Ito_Ogbo).ToString())">
-                Ito-Ogbo Featival
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Ito_Ogbo).ToString())">
+                Ito-Ogbo Festival
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.New_Yam_Festival).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.New_Yam_Festival).ToString())">
                 New Yam Festival
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Festivals).ToString())">
                 Festivals
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Masquerade).ToString())">
                 Masquerades
             </a>
-            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())">
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Dance_Group).ToString())">
                 Dance Groups
             </a>
 
@@ -336,16 +349,16 @@
             Media Center
         </h1>
         <div class="top-nav">
-            <a href="javascript:void(0)">
+            <a href="#">
                 Opinion' Blogs
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 News Articles
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 Photo Gallery
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 Events Calendar
             </a>
 
@@ -356,70 +369,70 @@
             <div class="media-sections">
 
                 <section class="media-menu">
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Education
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Security
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Health & Fitness
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Life, Religion & Family
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Science & Technology
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Movies, Music, & Arts
                     </a>
                 </section>
                 <section class="media-menu">
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Education
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Security
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Health & Fitness
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Life, Religion & Family
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Science & Technology
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         Movies, Music, & Arts
                     </a>
                 </section>
                 <section class="media-menu">
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
                         Igwe's Palace
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
                         Obosi Development Union
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
                         Umunnas/Kindreds
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
                         Age Grade Societies
                     </a>
                 </section>
                 <section class="media-menu">
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Igwes_Cabinent).ToString())">
                         Igwe's Palace
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Obosi_development_union_ODU).ToString())">
                         Obosi Development Union
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Umunna).ToString())">
                         Umunnas/Kindreds
                     </a>
-                    <a href="javascript:void(0)">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@UnitTypes.Age_Grade).ToString())">
                         Age Grade Societies
                     </a>
                 </section>
@@ -454,7 +467,7 @@
 
                                 <input type="password" class="form-field" placeholder="Password" required asp-for="Password" />
 
-                                <a href="javascript:void(0)" id="show-password">
+                                <a href="#" id="show-password">
                                     <i class="fa fa-eye-slash"></i>
                                 </a>
                             </div>
@@ -468,7 +481,7 @@
 
                 </form>
 
-                <a href="javascript:void(0)" class="alternative-link">
+                <a href="#" class="alternative-link">
                     Forgotten Password?
                 </a>
             </div>
@@ -477,7 +490,7 @@
 
                 <h2>
                     Are you an Obosi indigene but not registered? Complete the following fields to get started or
-                    <a href="javascript:void(0)">verify your account</a>.
+                    <a href="#">verify your account</a>.
                 </h2>
 
                 <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
@@ -601,19 +614,18 @@
 
         </div>
         <div class="bottom-nav alt">
-            <a href="javascript:void(0)">
+            <a href="~/home/signin">
                 Log into Account
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 Recover Lost Password
             </a>
-            <a href="javascript:void(0)">
+            <a href="~/home/signup">
                 Start Registration
             </a>
-            <a href="javascript:void(0)">
+            <a href="#">
                 Verify Registration
             </a>
-
 
         </div>
 

@@ -115,6 +115,7 @@ namespace Obosi.ng.Controllers
         public async Task<IActionResult> Confirmation()
         {
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
+            await model.InitializeNewsAsync();
             return View(model);
         }
         public async Task<IActionResult> SignOut()
@@ -122,7 +123,7 @@ namespace Obosi.ng.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index");
         }
-        public async Task<IActionResult> AboutUs()
+        public async Task<IActionResult> About()
         {
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
             return View(model);
@@ -158,6 +159,20 @@ namespace Obosi.ng.Controllers
             await model.GetUnits(unitId);
             return View(model);
         }
+        public async Task<IActionResult> Events(string id)
+        {
+            int unitId = Convert.ToInt16(StringEncryption.Decrypt(id));
+            var model = new HomePageViewModel(_unit, _calender, _media, _executive);
+            await model.GetEvent(unitId);
+            return View(model);
+        }
+        public async Task<IActionResult> EventList()
+        {
+            
+            var model = new HomePageViewModel(_news, _blog, _calender, _unit);
+            await model.GetEvents();
+            return View(model);
+        }
         public async Task<IActionResult> Blog(string id)
         {
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
@@ -181,6 +196,18 @@ namespace Obosi.ng.Controllers
             return View(model);
         }
         public async Task<IActionResult> NewsList()
+        {
+            var model = new HomePageViewModel(_news, _blog, _calender, _unit);
+            await model.NewsInitializeValue();
+            return View(model);
+        }
+        public async Task<IActionResult> EventsList()
+        {
+            var model = new HomePageViewModel(_news, _blog, _calender, _unit);
+            await model.NewsInitializeValue();
+            return View(model);
+        }
+        public async Task<IActionResult> AboutUs()
         {
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
             await model.NewsInitializeValue();
