@@ -20,10 +20,10 @@ namespace Obosi.ng.Presentation.ViewModels
         {
             this.Calender_Assets = await calender.GetAssets();
         }
-        public async Task InitializeNewsAsyncUnits()
+        public async Task InitializeNewsAsyncUnits(string email)
         {
             this.Calender_Assets = await calender.GetAssets();
-            this.Units = await unit.GetAllUnits();
+            this.Units = await unit.GetAllUnits(email);
         }
         public CalenderViewModel()
         {

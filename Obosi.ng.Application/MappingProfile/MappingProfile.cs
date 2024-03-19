@@ -18,6 +18,11 @@ namespace Obosi.ng.Application.MappingProfile
             CreateMap<Blogs, BlogDTO>().ReverseMap();
             CreateMap<News, NewsDTO>().ReverseMap();
             CreateMap<Executive, ExecutiveDTO>().ReverseMap();
+            CreateMap<Menu, MenuDTO>().ReverseMap();
+            CreateMap<MenuInRole, MenuInRoleDTO>().ReverseMap();
+            CreateMap<MenuGroup, MenuGroupDTO>().ReverseMap();
+            CreateMap<About, AboutDTO>().ReverseMap();
+
         }
     }
 }

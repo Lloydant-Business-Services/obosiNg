@@ -18,8 +18,9 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Title = "Pictures";
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
             MediaViewModel model = new(media, unit);
-            await model.InitializePicturesAsync();
+            await model.InitializePicturesAsync(userEmail);
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
@@ -34,8 +35,9 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Create()
         {
             ViewBag.Title = "Pictures";
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
             MediaViewModel model = new(media,unit);
-            await model.InitializePicturesAsync();
+            await model.InitializePicturesAsync(userEmail);
             return View(model);
         }
         [HttpPost]

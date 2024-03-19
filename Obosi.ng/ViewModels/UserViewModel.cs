@@ -20,15 +20,21 @@ namespace Obosi.ng.Presentation.ViewModels
         {
             this.Users = await user.GetAllUsers();
             this.Members = await unit.ViewUnApprovedMembers();
+            this.Roles = await user.GetAllRoles();
+
         }
         public async Task InitializeNewsAsync(string email)
         {
             this.User = await user.GetUsersByEmail(email);
+            
+           
         }
+        
 
         public List<Users> Users { get; set; }
         public Users User { get; set; }
         public List<Member_Unit> Members { get; set; }
         public IFormFile Image { get; set; }
+        public List<Role> Roles { get; set; }
     }
 }

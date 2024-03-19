@@ -1,0 +1,35 @@
+﻿@model Obosi.ng.Presentation.ViewModels.AboutViewModel
+
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create About</h1>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="About.Body">Body:</label>
+        <textarea name="About.Body" style="width: 300px; height: 100px;" required
+                  id="PassageQuestion2" class="ckeditor" asp-for="About.Body"></textarea>
+    </div>
+
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" asp-for="About.IsActive">
+            <label class="form-check-label" asp-for="About.IsActive">Is Active</label>
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Create</button>
+
+
+</form>
+
+<script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace('#PassageQuestion2');
+    });
+</script>

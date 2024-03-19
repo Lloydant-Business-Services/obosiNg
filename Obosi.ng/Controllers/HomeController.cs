@@ -22,9 +22,12 @@ namespace Obosi.ng.Controllers
         private readonly IUser _user;
         private readonly IMedia _media;
         private readonly IExecutive _executive;
+        private readonly IAboutService _about;
+        
+       
 
         public HomeController(ILogger<HomeController> logger, INews news, IBlog blog, ICalender calender, IUnit unit, 
-            IUser user, IMedia media, IExecutive executive)
+        IUser user, IMedia media, IExecutive executive, IAboutService about)
         {
             _logger = logger;
             _news = news;
@@ -34,6 +37,8 @@ namespace Obosi.ng.Controllers
             _user = user;
             _media = media;
             _executive = executive;
+            _about = about;
+
         }
 
         public async Task<IActionResult> Index()
@@ -126,6 +131,7 @@ namespace Obosi.ng.Controllers
         public async Task<IActionResult> About()
         {
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
+            await model.InitializeNewsAsync();
             return View(model);
         }
        
@@ -209,8 +215,9 @@ namespace Obosi.ng.Controllers
         }
         public async Task<IActionResult> AboutUs()
         {
-            var model = new HomePageViewModel(_news, _blog, _calender, _unit);
+            var model = new HomePageViewModel(_news, _about, _blog, _calender, _unit);
             await model.NewsInitializeValue();
+            await model.GetAbout();
             return View(model);
         }
     }

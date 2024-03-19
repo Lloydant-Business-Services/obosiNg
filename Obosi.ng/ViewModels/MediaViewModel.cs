@@ -22,10 +22,10 @@ namespace Obosi.ng.Presentation.ViewModels
             this.Video_Assets = await media.GetVideoByUnit();
             this.Units = await unit.GetAllUnits();
         }
-        public async Task InitializePicturesAsync()
+        public async Task InitializePicturesAsync(string email)
         {
           this.Picture_Assets = await media.GetPicturesByUnit();
-            this.Units = await unit.GetAllUnits();
+          this.Units = await unit.GetAllUnits(email);
         }
         public async Task InitializVideoAsync(int id)
         {
