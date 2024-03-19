@@ -21,6 +21,8 @@ namespace Obosi.ng.Application.Services
         {
             if(builders_Boulevard != null)
             {
+                builders_Boulevard.Description = "N/A";
+                builders_Boulevard.Title = "N/A";
                var createdItems= await _dataContext.Builders_Boulevard.AddAsync(builders_Boulevard);
                 await _dataContext.SaveChangesAsync();
                 return createdItems.Entity;
@@ -67,8 +69,20 @@ namespace Obosi.ng.Application.Services
         {
             if(builders_Boulevard != null)
             {
-                _dataContext.Builders_Boulevard.Update(builders_Boulevard);
-                await _dataContext.SaveChangesAsync();
+                var builder = await _dataContext.Builders_Boulevard.Where(x=>x.Id == builders_Boulevard.Id).FirstOrDefaultAsync();
+                if (builder != null)
+                {
+                    if (!string.IsNullOrWhiteSpace(builders_Boulevard.FullName))
+                    {
+                        builder.FullName = builders_Boulevard.FullName;
+                    }
+                    if (builders_Boulevard.Amount > 0)
+                    {
+                        builder.Amount = builders_Boulevard.Amount;
+                    }
+                    _dataContext.Builders_Boulevard.Update(builder);
+                    await _dataContext.SaveChangesAsync();
+                }
             }
             return builders_Boulevard;
         }

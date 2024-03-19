@@ -136,7 +136,10 @@ namespace Obosi.ng.Data
                  new Menu() { Id = 9, Controller = "VideoAssets", ActionName = "index", DisplayName = "Video Assets", MenuGroupId = 1, Active = true },
                  new Menu() { Id = 10, Controller = "Executive", ActionName = "index", DisplayName = "Executives", MenuGroupId = 1, Active = true },
 
-                 new Menu() { Id = 11, Controller = "About", ActionName = "Index", DisplayName = "About", MenuGroupId = 1, Active = true }
+                 new Menu() { Id = 11, Controller = "About", ActionName = "Index", DisplayName = "About", MenuGroupId = 1, Active = true },
+                  new Menu() { Id = 12, Controller = "", ActionName = "Index", DisplayName = "", MenuGroupId = 1, Active = true },
+                   new Menu() { Id = 13, Controller = "", ActionName = "Index", DisplayName = "", MenuGroupId = 1, Active = true },
+
              );
             modelBuilder.Entity<MenuInRole>().HasData(
                     new MenuInRole() {Id =1, MenuId = 1, RoleId = 1 },
