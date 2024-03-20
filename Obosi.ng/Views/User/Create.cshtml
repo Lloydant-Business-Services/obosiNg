@@ -6,34 +6,35 @@
 
 
 <form asp-action="Create" method="post" enctype="multipart/form-data">
-    
-    <div class = "row">
+  
+
+    <div class="row">
         <div class="col-md-6">
-            <label for="Email">
-                Email
-                <input asp-for="@Model.User.Email" class="form-control" />
-            </label>
+            <div class="form-group">
+                <label for="CategoryId">Email:</label>
+                <input asp-for="User.Email" class="form-control" />
+            </div>
         </div>
         <div class="col-md-6">
-            <label for="Password">
-                Password:
-                <input asp-for="@Model.User.Password" class="form-control" />
-            </label>
+            <div class="form-group">
+                <label for="BackgroundImageUrl">Password:</label>
+                <input asp-for="User.Password" class="form-control" />
+            </div>
         </div>
-        <div class="col-md-6">
-            <label for="Role">Role:</label>
-            <select asp-for="User.RoleId" class="form-select">
+         <div class="col-md-6">
+            <div class="form-group">
+                <label for="BackgroundImageUrl">Role:</label>
+               <select asp-for="User.RoleId" class="form-select">
                 <option value="">Select</option>
                 @foreach (var role in Model.Roles)
                 {
                     <option value="@role.Id">@role.Name</option>
                 }
             </select>
+            </div>
         </div>
+    </div
 
-       
-
-    </div>
 
     <button type="submit" class="btn btn-primary">Create</button>
 

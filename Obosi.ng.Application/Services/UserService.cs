@@ -123,7 +123,7 @@ namespace Obosi.ng.Application.Services
             if (user != null)
             {
                 user.DateCreated = DateTime.UtcNow;
-                user.IsActive = false;
+                user.IsActive = true;
                 user.LastName = "";
                 user.PhoneNumber = "";
                 user.OtherName = "";

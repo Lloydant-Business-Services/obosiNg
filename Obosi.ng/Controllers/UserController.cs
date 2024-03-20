@@ -83,7 +83,7 @@ namespace Obosi.ng.Presentation.Controllers
         // GET: /Users/Create
         public async Task<IActionResult> Create()
         {
-            ViewBag.Title = "Approve Users";
+            ViewBag.Title = "Create Users";
             UserViewModel model = new(_user, unit);
             await model.InitializeNewsAsync();
             return View(model);

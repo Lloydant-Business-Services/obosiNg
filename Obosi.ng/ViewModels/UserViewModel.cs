@@ -21,6 +21,7 @@ namespace Obosi.ng.Presentation.ViewModels
             this.Users = await user.GetAllUsers();
             this.Members = await unit.ViewUnApprovedMembers();
             this.Roles = await user.GetAllRoles();
+            this.User = new Users();
 
         }
         public async Task InitializeNewsAsync(string email)
