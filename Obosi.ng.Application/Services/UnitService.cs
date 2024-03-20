@@ -80,6 +80,19 @@ namespace Obosi.ng.Application.Services
             return await _dataContext.Unit.Include(x => x.UnitType).OrderBy(p => p.Name).ToListAsync();
         }
 
+        public async Task<List<Unit>> GetAllUnits(string email)
+        {
+            var userRole = await _dataContext.Users.Where(r => r.Email == email).FirstOrDefaultAsync();
+            if(userRole.RoleId == (int)Enums.Role.Admin)
+            {
+                return await _dataContext.Unit.Include(x => x.UnitType).OrderBy(p => p.Name).ToListAsync();
+            }
+            return await _dataContext.Member_Unit.Where(x => x.Users.Email == email)
+                                                 .Include(x => x.Unit.UnitType)
+                                                 .Select(x => x.Unit)
+                                                 .ToListAsync();               
+        }
+
         public async Task<List<Unit>> GetAllUnitsByUnitType(int unitTypeId)
         {
             return await _dataContext.Unit.Where(x => x.UnitTypeId == unitTypeId).Include(x => x.UnitType).OrderBy(p => p.Name).ToListAsync();

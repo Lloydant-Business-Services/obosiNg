@@ -18,15 +18,17 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Title = "Pictures";
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
             MediaViewModel model = new(media, unit);
-            await model.InitializePicturesAsync();
+            await model.InitializePicturesAsync(userEmail);
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
         {
             ViewBag.Title = "Pictures";
             MediaViewModel model = new(media, unit);
-            await model.InitializePicturesAsync(id);
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializePicturesAsync(id,userEmail);
      
             return View(model);
         }
@@ -34,8 +36,9 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Create()
         {
             ViewBag.Title = "Pictures";
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
             MediaViewModel model = new(media,unit);
-            await model.InitializePicturesAsync();
+            await model.InitializePicturesAsync(userEmail);
             return View(model);
         }
         [HttpPost]
@@ -56,7 +59,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Pictures";
             MediaViewModel model = new(media, unit);
-            await model.InitializePicturesAsync(id);
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializePicturesAsync(id, userEmail);
            
             return View(model);
         }
@@ -75,8 +79,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Pictures";
             MediaViewModel model = new(media, unit);
-           await media.DeletePicture(id);   
-            return View(model);
+           await media.DeletePicture(id);
+            return RedirectToAction("Index");
         }
     }
 }

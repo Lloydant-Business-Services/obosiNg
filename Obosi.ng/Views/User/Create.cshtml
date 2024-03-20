@@ -1,0 +1,41 @@
+﻿@model Obosi.ng.Presentation.ViewModels.UserViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h1>Create User</h1>
+
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    
+    <div class = "row">
+        <div class="col-md-6">
+            <label for="Email">
+                Email
+                <input asp-for="@Model.User.Email" class="form-control" />
+            </label>
+        </div>
+        <div class="col-md-6">
+            <label for="Password">
+                Password:
+                <input asp-for="@Model.User.Password" class="form-control" />
+            </label>
+        </div>
+        <div class="col-md-6">
+            <label for="Role">Role:</label>
+            <select asp-for="User.RoleId" class="form-select">
+                <option value="">Select</option>
+                @foreach (var role in Model.Roles)
+                {
+                    <option value="@role.Id">@role.Name</option>
+                }
+            </select>
+        </div>
+
+       
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+
+
+</form>

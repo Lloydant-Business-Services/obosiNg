@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Application.Services;
+using Obosi.ng.Domain.Entity;
+using Obosi.ng.Infrastructure.Migrations;
 using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
 using System.Security.Claims;
@@ -8,15 +11,15 @@ using System.Security.Principal;
 namespace Obosi.ng.Presentation.Controllers
 {
     public class UserController : Controller
-    {   private readonly IUser user;
+    {   private readonly IUser _user;
         private readonly IUnit unit;
         private readonly IHostEnvironment _hostingEnvironment;
         public IConfiguration _Configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public UserController(IUser _user, IUnit _unit, IConfiguration Configuration, IHttpContextAccessor httpContextAccessor,
+        public UserController(IUser user, IUnit _unit, IConfiguration Configuration, IHttpContextAccessor httpContextAccessor,
             IHostEnvironment hostingEnvironment)
         {
-            user = _user;
+            _user = user;
             unit = _unit;
             _Configuration = Configuration;
             _httpContextAccessor = httpContextAccessor;
@@ -25,35 +28,36 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Title = "Users";
-            UserViewModel model = new(user, unit);
+            UserViewModel model = new(_user, unit);
             await model.InitializeNewsAsync();
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
         {
             ViewBag.Title = "Users";
-            UserViewModel model = new(user, unit);
-            model.User = await  user.GetUsersById(id);
+            UserViewModel model = new(_user, unit);
+            model.User = await  _user.GetUsersById(id);
             return View(model);
         }
 
         public async Task<IActionResult> UnApproveUsers()
         {
             ViewBag.Title = "Approve Users";
-            UserViewModel model = new(user, unit);
+            UserViewModel model = new(_user, unit);
             await model.InitializeNewsAsync();
             return View(model);
         }
         public async Task<IActionResult> ApproveUsers(string username,int unitId)
         {
-            await user.ActivateUser(username, unitId);
+            await _user.ActivateUser(username, unitId);
             return RedirectToAction("UnApproveUsers");
         }
+
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
             ViewBag.Title = "View Profile";
-            UserViewModel model = new(user, unit);
+            UserViewModel model = new(_user, unit);
             var claimsPrincipal = _httpContextAccessor.HttpContext.User;
             string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
             await model.InitializeNewsAsync(userEmail);
@@ -66,15 +70,45 @@ namespace Obosi.ng.Presentation.Controllers
             model.User.PassportUrl =  await SaveImages.SaveImage(model.Image, _hostingEnvironment);
             if (model != null)
             {
-                await user.UpdateUser(model.User);
+                await _user.UpdateUser(model.User);
             }
             var claimsPrincipal =  _httpContextAccessor.HttpContext.User;
             string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
-            model = new(user, unit);
+            model = new(_user, unit);
             await model.InitializeNewsAsync(userEmail);
   
             return View(model);
         }
 
+        // GET: /Users/Create
+        public async Task<IActionResult> Create()
+        {
+            ViewBag.Title = "Approve Users";
+            UserViewModel model = new(_user, unit);
+            await model.InitializeNewsAsync();
+            return View(model);
+        }
+
+        // POST: /Users/Create
+        [HttpPost]
+        public async Task<IActionResult> Create(UserViewModel userViewModel)
+        {
+            if (userViewModel != null )
+            {
+                try
+                {
+                    var createdUser = await _user.CreateUser_Admin(userViewModel.User);
+                       
+
+                    return RedirectToAction("index");
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+            return View(userViewModel);
+        }
     }
 }

@@ -18,10 +18,10 @@ namespace Obosi.ng.Presentation.ViewModels
         {
                 
         }
-        public async Task InitializeExecutiveAsync()
+        public async Task InitializeExecutiveAsync(string email)
         {
             this.Executives = await executive.GetAllExecutives();
-            this.Unit = await unit.GetAllUnits();
+            this.Unit = await unit.GetAllUnits(email);
             this.Users = await user.GetAllUsers();
         }
         public async Task InitializeEditAsync(int id)

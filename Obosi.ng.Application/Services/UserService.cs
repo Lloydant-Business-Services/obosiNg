@@ -118,6 +118,31 @@ namespace Obosi.ng.Application.Services
             }
             throw new Exception("User Object is Null");
         }
+        public async Task<Users> CreateUser_Admin(Users user)
+        {
+            if (user != null)
+            {
+                user.DateCreated = DateTime.UtcNow;
+                user.IsActive = false;
+                user.LastName = "";
+                user.PhoneNumber = "";
+                user.OtherName = "";
+                user.FirstName = "";
+                
+
+               
+                var userDetails = await _dataContext.Users.Where(x => x.Email == user.Email).FirstOrDefaultAsync();
+                if (userDetails == null)
+                {
+                    throw new Exception("User Already Exists");
+                }
+                var createdUser = await _dataContext.Users.AddAsync(user);
+                await _dataContext.SaveChangesAsync();
+
+                return createdUser.Entity;
+            }
+            throw new Exception("User Object is Null");
+        }
 
         public async Task DeleteUser(string username)
         {
@@ -129,6 +154,8 @@ namespace Obosi.ng.Application.Services
                 await _dataContext.SaveChangesAsync();
             }
         }
+
+     
 
         public async  Task<List<Users>> GetAllUsers()
         {
@@ -219,6 +246,11 @@ namespace Obosi.ng.Application.Services
                 return userDetails;
             }
             return null;
+        }
+
+        public async Task<List<Role>> GetAllRoles()
+        {
+            return await _dataContext.Role.ToListAsync();
         }
     }
 }

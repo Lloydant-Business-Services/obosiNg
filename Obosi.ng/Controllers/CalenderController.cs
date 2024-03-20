@@ -19,23 +19,27 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Calender";
             CalenderViewModel model = new(calender);
-            await model.InitializeNewsAsync();
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializeNewsAsync(userEmail);
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
         {
             ViewBag.Title = "Calender";
             CalenderViewModel model = new(calender);
-            await model.InitializeNewsAsync();
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializeNewsAsync(userEmail);
             model.Calender_Asset = await calender.GetAssets(id);
             return View(model);
         }
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            
             ViewBag.Title = "Calender";
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
             CalenderViewModel model = new(calender,unit);
-            await model.InitializeNewsAsyncUnits();
+            await model.InitializeNewsAsyncUnits(userEmail);
             return View(model);
         }
         [HttpPost]
@@ -52,8 +56,9 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             ViewBag.Title = "Calender";
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
             CalenderViewModel model = new(calender,unit);
-            await model.InitializeNewsAsyncUnits();
+            await model.InitializeNewsAsyncUnits(userEmail);
             model.Calender_Asset = await calender.GetAssets(id);
             return View(model);
         }
@@ -72,7 +77,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Calender";
             CalenderViewModel model = new(calender);
-            await model.InitializeNewsAsync();
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializeNewsAsync(userEmail);
             return View(model);
         }
     }

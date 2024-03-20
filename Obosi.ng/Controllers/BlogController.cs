@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿ using Microsoft.AspNetCore.Mvc;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;

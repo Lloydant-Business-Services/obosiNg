@@ -21,14 +21,16 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Video";
             MediaViewModel model = new(media,unit);
-            await  model.InitializVideoAsync();
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await  model.InitializVideoAsync(userEmail);
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
         {
             ViewBag.Title = "Video";
             MediaViewModel model = new(media, unit);
-            await model.InitializVideoAsync(id);
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializVideoAsync(id, userEmail);
             return View(model);
         }
         [HttpGet]
@@ -36,7 +38,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Video";
             MediaViewModel model = new(media, unit);
-            await  model.InitializVideoAsync();
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await  model.InitializVideoAsync(userEmail);
             return View(model);
         }
         [HttpPost]
@@ -56,7 +59,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Video";
             MediaViewModel model = new(media, unit);
-            await model.InitializVideoAsync(id);
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializVideoAsync(id, userEmail);
             return View(model);
         }
         [HttpPost]
@@ -75,7 +79,7 @@ namespace Obosi.ng.Presentation.Controllers
             ViewBag.Title = "Video";
             MediaViewModel model = new(media, unit);
             await media.DeleteVideo(id);
-            return View(model);
+            return RedirectToAction("Index");
         }
     }
 }

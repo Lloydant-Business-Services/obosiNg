@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Domain.Entity;
+using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
 
 namespace Obosi.ng.Presentation.Controllers
@@ -19,24 +20,27 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Title = "Executives";
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
             ExecutuveViewModel model = new ExecutuveViewModel(executive,unit,user);
-            await model.InitializeExecutiveAsync();
+            await model.InitializeExecutiveAsync(userEmail);
             return View(model);
         }
         
         public async Task<IActionResult> Details(int id)
         {
             ViewBag.Title = "Executives";
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
             ExecutuveViewModel model = new ExecutuveViewModel(executive, unit, user);
-            await model.InitializeExecutiveAsync();
+            await model.InitializeExecutiveAsync(userEmail);
             return View(model);
         }
         [HttpGet]
         public async Task<IActionResult> Create()
         {
             ViewBag.Title = "Executives";
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
             ExecutuveViewModel model = new ExecutuveViewModel(executive, unit, user);
-            await model.InitializeExecutiveAsync();
+            await model.InitializeExecutiveAsync(userEmail);
             return View(model);
         }
         [HttpPost]

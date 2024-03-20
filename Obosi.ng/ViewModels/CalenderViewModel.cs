@@ -16,14 +16,14 @@ namespace Obosi.ng.Presentation.ViewModels
             calender = _calender;
             unit = _unit;
         }
-        public async Task InitializeNewsAsync()
+        public async Task InitializeNewsAsync(string email)
         {
-            this.Calender_Assets = await calender.GetAssets();
+            this.Calender_Assets = await calender.GetAssets(email);
         }
-        public async Task InitializeNewsAsyncUnits()
+        public async Task InitializeNewsAsyncUnits(string email)
         {
-            this.Calender_Assets = await calender.GetAssets();
-            this.Units = await unit.GetAllUnits();
+            this.Calender_Assets = await calender.GetAssets(email);
+            this.Units = await unit.GetAllUnits(email);
         }
         public CalenderViewModel()
         {

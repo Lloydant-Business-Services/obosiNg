@@ -12,8 +12,8 @@ using Obosi.ng.Data;
 namespace Obosi.ng.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240122062819_Initial")]
-    partial class Initial
+    [Migration("20240314103539_MenuUpdate")]
+    partial class MenuUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,7 +47,10 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.Property<DateTime?>("DateApproved")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DatePublished")
+                    b.Property<DateTime?>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DatePublished")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -60,7 +63,6 @@ namespace Obosi.ng.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Summary")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -149,6 +151,37 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.ToTable("Blogs_Update");
                 });
 
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Builders_Boulevard", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Builders_Boulevard");
+                });
+
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Calender_Assets", b =>
                 {
                     b.Property<long>("Id")
@@ -206,6 +239,116 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsActive = true,
+                            Name = "Culture and Traditions"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsActive = true,
+                            Name = "Community Events and News"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsActive = true,
+                            Name = "Historical Insights"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsActive = true,
+                            Name = "Local Business Spotlights"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsActive = true,
+                            Name = "Tourism"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            IsActive = true,
+                            Name = "Health and Wellness"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            IsActive = true,
+                            Name = "Education"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            IsActive = true,
+                            Name = "Art and Creativity"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            IsActive = true,
+                            Name = "Food and nutrition"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            IsActive = true,
+                            Name = "Community Initiatives"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            IsActive = true,
+                            Name = "Religion"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            IsActive = true,
+                            Name = "Politics"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            IsActive = true,
+                            Name = "Government Initiatives"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            IsActive = true,
+                            Name = "Science and Technology"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            IsActive = true,
+                            Name = "Education"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            IsActive = true,
+                            Name = "Jobs"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            IsActive = true,
+                            Name = "Love, life, and family"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            IsActive = true,
+                            Name = "Sports and youth development"
+                        });
                 });
 
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Executive", b =>
@@ -278,26 +421,6 @@ namespace Obosi.ng.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Obosi.ng.Domain.Entity.ImeNne", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ImeNne");
-                });
-
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Member_Unit", b =>
                 {
                     b.Property<long>("Id")
@@ -333,6 +456,82 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.ToTable("Member_Unit");
                 });
 
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Menu", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ActionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Controller")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MenuGroupId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuGroupId");
+
+                    b.ToTable("Menu");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.MenuGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MenuGroup");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.MenuInRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("MenuId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("MenuInRole");
+                });
+
             modelBuilder.Entity("Obosi.ng.Domain.Entity.News", b =>
                 {
                     b.Property<int>("Id")
@@ -355,7 +554,10 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.Property<DateTime?>("DateApproved")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DatePublished")
+                    b.Property<DateTime?>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DatePublished")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -368,7 +570,6 @@ namespace Obosi.ng.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Summary")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -455,6 +656,36 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("News_Update");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Personality", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Bio")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PortFolio")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Personality");
                 });
 
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Picture_Assets", b =>
@@ -574,6 +805,9 @@ namespace Obosi.ng.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("CanHaveMembers")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
@@ -595,6 +829,327 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.HasIndex("UnitTypeId");
 
                     b.ToTable("Unit");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8786),
+                            Name = "Umuota",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8819),
+                            Name = "Mmakwum",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8833),
+                            Name = "Uruowulu",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8851),
+                            Name = "Ugamuma",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8869),
+                            Name = "Ire",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8881),
+                            Name = "Lagos",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 7,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8898),
+                            Name = "Abuja",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 8,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8910),
+                            Name = "Port Harcourt",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 9,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8928),
+                            Name = "Aba",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 10,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8941),
+                            Name = "Abakaliki",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 11,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8959),
+                            Name = "Awka",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 12,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8971),
+                            Name = "Benin City",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 13,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(8991),
+                            Name = "Enugu",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 14,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9003),
+                            Name = "Jos",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 15,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9021),
+                            Name = "Kaduna",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 16,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9033),
+                            Name = "Makurdi",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 17,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9050),
+                            Name = "Nnewi",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 18,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9061),
+                            Name = "Suleja",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 19,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9079),
+                            Name = "Warri",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 20,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9090),
+                            Name = "Umuota",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 21,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9108),
+                            Name = "Mmakwum",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 22,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9119),
+                            Name = "Uruowulu",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 23,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9136),
+                            Name = "Ugamuma",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 24,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9148),
+                            Name = "Ire",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 25,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9165),
+                            Name = "OWA UK",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 26,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9177),
+                            Name = "ODA USA",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 27,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9194),
+                            Name = "ODU South Africa",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 28,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9205),
+                            Name = "ODU Brazil",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        },
+                        new
+                        {
+                            Id = 29,
+                            About = "",
+                            BackGroundImageUrl = "",
+                            CanHaveMembers = false,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(9276),
+                            Name = "ODU Kuwait",
+                            NeedsConfirmation = false,
+                            UnitTypeId = 5
+                        });
                 });
 
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Unit_Type", b =>
@@ -620,74 +1175,146 @@ namespace Obosi.ng.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "Village"
                         },
                         new
                         {
                             Id = 2,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "Suburb"
                         },
                         new
                         {
                             Id = 3,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "Palace"
                         },
                         new
                         {
                             Id = 4,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "Obosi development union (ODU)"
                         },
                         new
                         {
                             Id = 5,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "ODU chapter"
                         },
                         new
                         {
                             Id = 6,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "ODU committee"
                         },
                         new
                         {
                             Id = 7,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "Umunna"
                         },
                         new
                         {
                             Id = 8,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "Age Grade"
                         },
                         new
                         {
                             Id = 9,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "Masquerade"
                         },
                         new
                         {
                             Id = 10,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "Monument"
                         },
                         new
                         {
                             Id = 11,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "Dance Group"
                         },
                         new
                         {
                             Id = 12,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "Resource"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            IsActive = true,
+                            Name = "Ime Nne"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            IsActive = true,
+                            Name = "Aka"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            IsActive = true,
+                            Name = "Personalities"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            IsActive = true,
+                            Name = "Igwes Cabinent"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            IsActive = true,
+                            Name = "Schools"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            IsActive = true,
+                            Name = "Hotels"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            IsActive = true,
+                            Name = "Churches"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            IsActive = true,
+                            Name = "Ito-Ogbo"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            IsActive = true,
+                            Name = "New Yam Festival"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            IsActive = true,
+                            Name = "Festivals"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            IsActive = true,
+                            Name = "Landmarks"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            IsActive = true,
+                            Name = "Services And Resources"
                         });
                 });
 
@@ -713,9 +1340,6 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.Property<int>("GenderId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ImeNneId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -727,6 +1351,9 @@ namespace Obosi.ng.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OtherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PassportUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
@@ -744,11 +1371,25 @@ namespace Obosi.ng.Infrastructure.Migrations
 
                     b.HasIndex("GenderId");
 
-                    b.HasIndex("ImeNneId");
-
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            DateCreated = new DateTime(2024, 3, 14, 11, 35, 36, 566, DateTimeKind.Local).AddTicks(7600),
+                            Email = "Admin@obosi.ng",
+                            FirstName = "",
+                            GenderId = 1,
+                            IsActive = true,
+                            IsSuspended = false,
+                            LastName = "",
+                            Password = "1234567",
+                            PhoneNumber = "070",
+                            RoleId = 1
+                        });
                 });
 
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Video_Assets", b =>
@@ -893,6 +1534,36 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.Navigation("Users");
                 });
 
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Menu", b =>
+                {
+                    b.HasOne("Obosi.ng.Domain.Entity.MenuGroup", "MenuGroup")
+                        .WithMany()
+                        .HasForeignKey("MenuGroupId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("MenuGroup");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.MenuInRole", b =>
+                {
+                    b.HasOne("Obosi.ng.Domain.Entity.Menu", "Menu")
+                        .WithMany()
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Obosi.ng.Domain.Entity.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Menu");
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("Obosi.ng.Domain.Entity.News", b =>
                 {
                     b.HasOne("Obosi.ng.Domain.Entity.Category", "Category")
@@ -950,6 +1621,17 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Personality", b =>
+                {
+                    b.HasOne("Obosi.ng.Domain.Entity.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Picture_Assets", b =>
                 {
                     b.HasOne("Obosi.ng.Domain.Entity.Unit", "Unit")
@@ -991,11 +1673,6 @@ namespace Obosi.ng.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Obosi.ng.Domain.Entity.ImeNne", "ImeNne")
-                        .WithMany()
-                        .HasForeignKey("ImeNneId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("Obosi.ng.Domain.Entity.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
@@ -1003,8 +1680,6 @@ namespace Obosi.ng.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Gender");
-
-                    b.Navigation("ImeNne");
 
                     b.Navigation("Role");
                 });

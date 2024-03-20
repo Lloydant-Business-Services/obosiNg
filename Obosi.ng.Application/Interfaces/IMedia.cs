@@ -11,8 +11,8 @@ namespace Obosi.ng.Application.Interfaces
     {
         Task<List<Picture_Assets>> GetPicturesByUnit(int unitId);
         Task<List<Video_Assets>> GetVideoByUnit(int unitId);
-        Task<List<Picture_Assets>> GetPicturesByUnit();
-        Task<List<Video_Assets>> GetVideoByUnit();
+        Task<List<Picture_Assets>> GetPicturesByUnit(string email);
+        Task<List<Video_Assets>> GetVideoByUnit(string email);
         Task<Picture_Assets> GetPicture(int id);
         Task<Video_Assets> GetVideo(int id);
         Task CreatePicture(Picture_Assets picture);

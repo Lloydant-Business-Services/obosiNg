@@ -1,6 +1,7 @@
 ﻿
 using Obosi.ng.Application.Enums;
 using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Application.Services;
 using Obosi.ng.Domain.Entity;
 
 namespace Obosi.ng.Presentation.ViewModels
@@ -13,12 +14,15 @@ namespace Obosi.ng.Presentation.ViewModels
         private readonly IUnit unit;
         private readonly IMedia media;
         private readonly IExecutive executive;
+        private readonly IAboutService about;
         
         public HomePageViewModel(INews _news, IBlog _blog, ICalender _calender)
         {
             news = _news;
             blog = _blog;  
             calender = _calender;
+            
+    
         }
         public HomePageViewModel(INews _news, IBlog _blog, ICalender _calender, IUnit _unit)
         {
@@ -27,16 +31,28 @@ namespace Obosi.ng.Presentation.ViewModels
             calender = _calender;
             unit = _unit;
         }
+        public HomePageViewModel(INews _news, IAboutService _about, IBlog _blog, ICalender _calender, IUnit _unit)
+        {
+            news = _news;
+            blog = _blog;
+            calender = _calender;
+            unit = _unit;
+            about = _about;
+        }
         public HomePageViewModel(IUnit _unit)
         {
             unit = _unit;
+        }
+        public HomePageViewModel(IAboutService _about)
+        {
+            about = _about;
         }
         public HomePageViewModel(IUnit _unit, ICalender _calender, IMedia _media, IExecutive _executive)
         {
             unit = _unit;
             calender = _calender;
             media = _media;
-            executive = _executive;
+            executive = _executive; 
         }
         public HomePageViewModel()
         {
@@ -141,7 +157,7 @@ namespace Obosi.ng.Presentation.ViewModels
         public async Task GetEvents()
         {
            
-            this.CalenderAssets = await calender.GetAssets();
+            this.CalenderAssets = await calender.GetAllAssets();
             this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
             this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
             this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne);
@@ -149,6 +165,11 @@ namespace Obosi.ng.Presentation.ViewModels
            
 
         }
+        public async Task GetAbout()
+        {
+            this.AboutContent = await about.GetAbouts();       
+        }
+        public List<About> AboutContent { get; set; }
         public List<Unit> AllUnits { get; set; }
         public List<News> News { get; set; } = new List<News>();
         public List<Blogs> Blogs { get; set; } = new List<Blogs>();

@@ -1,9 +1,4 @@
 ﻿using Obosi.ng.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Obosi.ng.Application.Interfaces
 {
@@ -13,6 +8,7 @@ namespace Obosi.ng.Application.Interfaces
         Task<Users> GetUsersByEmail(string email);
         Task<Users> GetUsersById(int id);
         Task<Users> CreateUser(Users user,int akaId,int umunnaId,int villageId,int imenneId);
+        Task<Users> CreateUser_Admin(Users user);
         Task<Users> UpdateUser(Users user);
         Task DeleteUser(string username);
         Task<Users> ActivateUser(string username,int unitId);
@@ -21,5 +17,6 @@ namespace Obosi.ng.Application.Interfaces
         Task<Users> AssignUserToRole(string username, Role role);
        
         Task<Users> AuthenticateUser(string email,string password);
+        Task<List<Role> > GetAllRoles();
     }
 }
