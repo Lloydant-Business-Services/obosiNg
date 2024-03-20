@@ -48,9 +48,29 @@ namespace Obosi.ng.Application.Services
            
         }
 
-        public async Task<List<Calender_Assets>> GetAssets()
+        public async  Task<List<Calender_Assets>> GetAllAssets()
         {
             return await _dataContext.Calender_Assets.OrderBy(x => x.DateAdded).ToListAsync();
+        }
+
+        public async Task<List<Calender_Assets>> GetAssets(string email)
+        {
+            var userRole = await _dataContext.Users.Where(r => r.Email == email).FirstOrDefaultAsync();
+            if (userRole.RoleId == (int)Enums.Role.Admin)
+            {
+                return await _dataContext.Calender_Assets.OrderBy(x => x.DateAdded).Include(x => x.Unit).ToListAsync();
+            }
+            else
+            {
+                List<Calender_Assets> allAssets = new List<Calender_Assets>();
+                var roles = await _dataContext.Member_Unit.Where(x => x.Users.Email == email).ToListAsync();    
+                foreach (var role in roles)
+                {
+                    var assets = await _dataContext.Calender_Assets.Where(x => x.UnitId == role.UnitId).Include(x=>x.Unit).ToListAsync();
+                    allAssets.AddRange(assets);
+                }
+                return allAssets;
+            }
         }
 
         public async Task<Calender_Assets> GetAssets(int id)

@@ -27,7 +27,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Pictures";
             MediaViewModel model = new(media, unit);
-            await model.InitializePicturesAsync(id);
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializePicturesAsync(id,userEmail);
      
             return View(model);
         }
@@ -58,7 +59,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Pictures";
             MediaViewModel model = new(media, unit);
-            await model.InitializePicturesAsync(id);
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializePicturesAsync(id, userEmail);
            
             return View(model);
         }
@@ -77,8 +79,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Pictures";
             MediaViewModel model = new(media, unit);
-           await media.DeletePicture(id);   
-            return View(model);
+           await media.DeletePicture(id);
+            return RedirectToAction("Index");
         }
     }
 }

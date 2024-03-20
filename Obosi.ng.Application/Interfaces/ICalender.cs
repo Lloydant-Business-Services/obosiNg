@@ -9,7 +9,8 @@ namespace Obosi.ng.Application.Interfaces
 {
     public interface ICalender
     {
-        Task<List<Calender_Assets>> GetAssets();
+        Task<List<Calender_Assets>> GetAssets(string email);
+        Task<List<Calender_Assets>> GetAllAssets();
         Task<Calender_Assets> GetAssets(int id);
         Task<List<Calender_Assets>> GetHomePageAssets();
         Task<List<Calender_Assets>> GetAssetsByUnitId(int unitId);

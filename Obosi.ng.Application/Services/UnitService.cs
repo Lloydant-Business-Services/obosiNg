@@ -88,7 +88,7 @@ namespace Obosi.ng.Application.Services
                 return await _dataContext.Unit.Include(x => x.UnitType).OrderBy(p => p.Name).ToListAsync();
             }
             return await _dataContext.Member_Unit.Where(x => x.Users.Email == email)
-                                                 .Include(x => x.Unit)
+                                                 .Include(x => x.Unit.UnitType)
                                                  .Select(x => x.Unit)
                                                  .ToListAsync();               
         }

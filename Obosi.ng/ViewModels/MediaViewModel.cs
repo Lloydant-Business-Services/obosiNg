@@ -17,25 +17,25 @@ namespace Obosi.ng.Presentation.ViewModels
            media = _media;
             unit = _unit;
         }
-        public async Task InitializVideoAsync()
+        public async Task InitializVideoAsync(string email)
         {
-            this.Video_Assets = await media.GetVideoByUnit();
+            this.Video_Assets = await media.GetVideoByUnit(email);
             this.Units = await unit.GetAllUnits();
         }
         public async Task InitializePicturesAsync(string email)
         {
-          this.Picture_Assets = await media.GetPicturesByUnit();
+          this.Picture_Assets = await media.GetPicturesByUnit(email);
           this.Units = await unit.GetAllUnits(email);
         }
-        public async Task InitializVideoAsync(int id)
+        public async Task InitializVideoAsync(int id, string email)
         {
-            this.Video_Assets = await media.GetVideoByUnit();
+            this.Video_Assets = await media.GetVideoByUnit(email);
             this.Units = await unit.GetAllUnits();
             this.Video_Asset = await media.GetVideo(id);
         }
-        public async Task InitializePicturesAsync(int id)
+        public async Task InitializePicturesAsync(int id, string email)
         {
-            this.Picture_Assets = await media.GetPicturesByUnit();
+            this.Picture_Assets = await media.GetPicturesByUnit(email);
             this.Units = await unit.GetAllUnits();
             this.Picture_Asset = await media.GetPicture(id);
         }

@@ -137,8 +137,9 @@ namespace Obosi.ng.Data
                  new Menu() { Id = 10, Controller = "Executive", ActionName = "index", DisplayName = "Executives", MenuGroupId = 1, Active = true },
 
                  new Menu() { Id = 11, Controller = "About", ActionName = "Index", DisplayName = "About", MenuGroupId = 1, Active = true },
-                  new Menu() { Id = 12, Controller = "", ActionName = "Index", DisplayName = "", MenuGroupId = 1, Active = true },
-                   new Menu() { Id = 13, Controller = "", ActionName = "Index", DisplayName = "", MenuGroupId = 1, Active = true },
+                  new Menu() { Id = 12, Controller = "Menu", ActionName = "Index", DisplayName = "Setup Menu", MenuGroupId = 1, Active = true }
+             
+
 
              );
             modelBuilder.Entity<MenuInRole>().HasData(
@@ -152,7 +153,8 @@ namespace Obosi.ng.Data
                     new MenuInRole() {Id = 8, MenuId = 8, RoleId = 1 },
                     new MenuInRole() {Id = 9, MenuId = 9, RoleId = 1 },
                     new MenuInRole() {Id = 10, MenuId = 10, RoleId = 1 },
-                    new MenuInRole() { Id = 11, MenuId = 11, RoleId = 1 }
+                    new MenuInRole() { Id = 11, MenuId = 11, RoleId = 1 },
+                     new MenuInRole() { Id = 12, MenuId = 12, RoleId = 1 }
                 );
 
 

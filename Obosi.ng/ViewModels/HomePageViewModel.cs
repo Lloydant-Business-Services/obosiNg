@@ -157,7 +157,7 @@ namespace Obosi.ng.Presentation.ViewModels
         public async Task GetEvents()
         {
            
-            this.CalenderAssets = await calender.GetAssets();
+            this.CalenderAssets = await calender.GetAllAssets();
             this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
             this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
             this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne);

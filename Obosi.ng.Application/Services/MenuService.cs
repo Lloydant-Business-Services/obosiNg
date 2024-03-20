@@ -58,16 +58,7 @@ namespace Obosi.ng.Application.Services
             }
             return false;
         }
-        /*public async Task<User> GetUser(string email)
-        {
-            try
-            {
-                return await _context.Users.Where(u => u.Email == email)
-                    .Include(x => x.Role)
-                    .FirstOrDefaultAsync(); 
-            }
-            catch (Exception ex) { throw ex; }
-        }*/
+       
 
         public async Task<MenuDisplayGroup> GetMenu(string email)
         {
@@ -96,6 +87,45 @@ namespace Obosi.ng.Application.Services
                 return group;
             }
             catch (Exception ex) { throw ex; }
+        }
+
+        public async Task<List<Menu>> GetAllMenuList()
+        {
+            return await _context.Menu.Include(x=>x.MenuGroup).ToListAsync();
+        }
+
+        public async Task<List<MenuInRole>> GetAllMenuInRoles()
+        {
+            return await _context.MenuInRole.Include(x=>x.Role).Include(x=>x.Menu.MenuGroup).ToListAsync();  
+        }
+
+        public async Task<bool> DeleteMenuInRole(int MenuInRoleId)
+        {
+            var existingMenu = await _context.MenuInRole.Where(x=>x.Id == MenuInRoleId).FirstOrDefaultAsync();  
+            if(existingMenu != null) 
+            {
+                _context.MenuInRole.Remove(existingMenu);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<MenuInRole> CreateMenuInRole(MenuInRole role)
+        {
+            var existingCreate = await _context.MenuInRole.Where(x=>x.RoleId == role.Id && x.MenuId == role.MenuId).FirstOrDefaultAsync();
+            if(existingCreate == null) 
+            { 
+                var created = await _context.MenuInRole.AddAsync(role);
+                await _context.SaveChangesAsync();
+                return created.Entity;
+            }
+            return existingCreate;
+        }
+
+        public async Task<List<Role>> GetAllRoleList()
+        {
+          return  await _context.Role.ToListAsync();
         }
     }
 }

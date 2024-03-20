@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Differencing;
 using Obosi.ng.Application.DTO;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Domain.Entity;
+using Obosi.ng.Presentation.utility;
+using Obosi.ng.Presentation.ViewModels;
 
 namespace Obosi.ng.Presentation.Controllers
 {
@@ -15,58 +18,38 @@ namespace Obosi.ng.Presentation.Controllers
             _menuService = menuService;
         }
 
-        
-        public async Task<IActionResult> GetAllMenus()
+        public async Task<IActionResult> Index()
         {
-            try
-            {
-                var menus = await _menuService.GetAllMenu();
-                return View("GetAllMenus", menus); 
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            MenuViewModel model = new MenuViewModel(_menuService);
+            await model.InitializeAsync();
+            return View(model);
         }
-
-      
-        public async Task<IActionResult> GetUserMenus(string email)
-        {
-            if (string.IsNullOrEmpty(email))
-            {
-                return BadRequest("Email is required");
-            }
-
-            try
-            {
-                var menus = await _menuService.GetMenu(email);
-                return View("GetUserMenus", menus);
-            }  
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-
        
-        public async Task<IActionResult> ModifyMenu( ModifyMenuDTO modifyMenuDTO)
+        [HttpGet]
+        public async Task<IActionResult> Create()
         {
-            
-
-            try
-            {
-                var result = await _menuService.ModifyMenu(modifyMenuDTO);
-                if (result)
-                {
-                    return Ok();
-                }
-                return NotFound("Menu not found");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            MenuViewModel model = new MenuViewModel(_menuService);
+            await model.InitializeAsync();
+            return View(model);
         }
+        [HttpPost]
+        public async Task<IActionResult> Create(MenuViewModel model)
+        {
+            if(model.MenuInRole != null)
+            {
+              await _menuService.CreateMenuInRole(model.MenuInRole);
+                return RedirectToAction("Index");
+            }
+            await model.InitializeAsync();
+            return View(model);
+        }
+       
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _menuService.DeleteMenuInRole(id);
+            return RedirectToAction("Index");
+        }
+
     }
 
 }

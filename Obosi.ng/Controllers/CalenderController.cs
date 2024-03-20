@@ -19,14 +19,16 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Calender";
             CalenderViewModel model = new(calender);
-            await model.InitializeNewsAsync();
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializeNewsAsync(userEmail);
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
         {
             ViewBag.Title = "Calender";
             CalenderViewModel model = new(calender);
-            await model.InitializeNewsAsync();
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializeNewsAsync(userEmail);
             model.Calender_Asset = await calender.GetAssets(id);
             return View(model);
         }
@@ -75,7 +77,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Calender";
             CalenderViewModel model = new(calender);
-            await model.InitializeNewsAsync();
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializeNewsAsync(userEmail);
             return View(model);
         }
     }

@@ -17,5 +17,10 @@ namespace Obosi.ng.Application.Interfaces
        // Task<User> GetUser(string email);//read
         Task<MenuDisplayGroup> GetMenu(string email);
         // add delete menu 
+        Task<List<Menu>> GetAllMenuList();
+        Task<List<MenuInRole>> GetAllMenuInRoles(); 
+        Task<bool> DeleteMenuInRole(int MenuInRoleId);    
+        Task<MenuInRole> CreateMenuInRole(MenuInRole role);
+        Task<List<Role>> GetAllRoleList();
     }
 }

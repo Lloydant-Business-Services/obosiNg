@@ -1,0 +1,51 @@
+﻿@model Obosi.ng.Presentation.ViewModels.MenuViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create Menu For Role</h1>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Roles:</label>
+                @* <input asp-for="Calender_Asset.UnitId" class="form-control" /> *@
+                <select asp-for="MenuInRole.RoleId" class="form-select">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.Roles)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Menu:</label>
+                @* <input asp-for="Calender_Asset.UnitId" class="form-control" /> *@
+                <select asp-for="MenuInRole.MenuId" class="form-select">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.Menus)
+                    {
+                        <option value="@item.Id">@item.DisplayName</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+   
+   
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace('#PassageQuestion');
+    });
+
+</script>
