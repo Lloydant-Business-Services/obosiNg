@@ -20,7 +20,7 @@ namespace Obosi.ng.Presentation.Controllers
         // GET : About
         public async Task<IActionResult> Index()
         {
-            var abouts = await _aboutService.GetAbouts();
+            var abouts = await _aboutService.GetAllAbouts();
             var viewModel = new AboutViewModel
             {
                 Abouts = abouts

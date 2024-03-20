@@ -165,9 +165,10 @@ namespace Obosi.ng.Presentation.ViewModels
            
 
         }
-        public async Task GetAbout()
+        public async Task GetAbout(int pageId)
         {
-            this.AboutContent = await about.GetAbouts();       
+            this.AboutContent = await about.GetAbouts(pageId);
+            this.HasNextPage = await about.HasNextPage(pageId);
         }
         public List<About> AboutContent { get; set; }
         public List<Unit> AllUnits { get; set; }
@@ -202,5 +203,7 @@ namespace Obosi.ng.Presentation.ViewModels
         public int VillageId { get; set; }
 
         public string ErrorMessage { get; set; }
+        public int PageId { get; set; }
+        public bool HasNextPage { get; set; }
     }
 }

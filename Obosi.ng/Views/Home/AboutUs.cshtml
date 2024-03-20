@@ -88,7 +88,7 @@
 
         <!-- Content Area -->
 
-        <div>
+        <div style="text-align:justify">
             @foreach (var aboutItem in Model.AboutContent)
             {
                 <div>
@@ -99,17 +99,27 @@
 
            @*@Html.Raw(Model.AboutContent)*@
          </div>
+        @if (Model.PageId > 0)
+        {
+            int nextPage = Model.PageId + 1;
+            int previousPage = Model.PageId - 1;
             <div class="d-flex p-2 gap-1">
-                <div class="">
-                    <button class="btn btn-light border border-grey" style="color: rgba(107, 114, 128, 1);">Previous</button>
+                @if (Model.PageId > 1)
+                {
+                    <div class="">
+                        <a class="btn btn-light border border-grey" style="color: rgba(107, 114, 128, 1);" href="~/Home/AboutUs?pageId=@previousPage">Previous</a>
+                    </div>
+                }
+                @if (Model.HasNextPage)
+                {
+                    <div class="">
+                        <a class="btn " style="background-color: rgba(252, 56, 108, 1); color: #fff;" href="~/Home/AboutUs?pageId=@nextPage">Next</a>
                 </div>
-                <div class="">
-                    <button class="btn " style="background-color: rgba(252, 56, 108, 1); color: #fff;">Next</button>
-                </div>
+                }
 
             </div>
-          
-      
+        }
+
     </div>
 
 </main>

@@ -22,7 +22,7 @@ namespace Obosi.ng.Presentation.ViewModels
         public async Task InitializeAboutSectionsAsync()
         {
             // Assuming there's a method in IAboutService interface to retrieve about sections
-            this.Abouts = await aboutService.GetAbouts();
+            this.Abouts = await aboutService.GetAllAbouts();
         }
 
         // Method to update about section

@@ -13,10 +13,12 @@ namespace Obosi.ng.Application.Interfaces
     public interface IAboutService
     {
        //Create about, deleteWbout, updateAbout , Get
-       Task<List<About>> GetAbouts();
+       Task<List<About>> GetAbouts(int currentPage);
+        Task<List<About>> GetAllAbouts();
         Task<List<About>> CreateAbout(About about);
         Task<List<About>> DeleteAbout(int Id);
         Task<List<About>> UpdateAbout(About about);
         Task<About> GetAboutById(int id);
+        Task<bool> HasNextPage(int currentPage);
     }
 }

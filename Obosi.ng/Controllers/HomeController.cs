@@ -213,11 +213,12 @@ namespace Obosi.ng.Controllers
             await model.NewsInitializeValue();
             return View(model);
         }
-        public async Task<IActionResult> AboutUs()
+        public async Task<IActionResult> AboutUs(int pageId)
         {
             var model = new HomePageViewModel(_news, _about, _blog, _calender, _unit);
             await model.NewsInitializeValue();
-            await model.GetAbout();
+            await model.GetAbout(pageId);
+            model.PageId = pageId;
             return View(model);
         }
     }

@@ -30,13 +30,21 @@ namespace Obosi.ng.Application.Services
             return about;
         }
 
-        public async Task<List<About>> GetAbouts()
+        public async Task<List<About>> GetAbouts(int currentPage )
         {
-            var abouts = await _context.About
-                                .Where(a => a.IsActive)
-                                .OrderByDescending(a => a.CreatedDate)
-                                .ToListAsync();
-            return abouts;
+            
+                    // Get total count of active About entries (efficient for pagination)
+                    var totalAboutsCount = await _context.About.Where(a => a.IsActive)
+                .OrderByDescending(a => a.CreatedDate)
+                .ToListAsync();
+            if (totalAboutsCount.Count > 0)
+            {
+                int page = currentPage - 1;
+                var listObject = new List<About>() { totalAboutsCount[page] };
+
+                return listObject;
+            }
+            return null;
 
         }
         public async Task<List<About>> CreateAbout(About about)
@@ -97,6 +105,26 @@ namespace Obosi.ng.Application.Services
 
             return new List<About> { existingAbout };
 
+        }
+
+        public async Task<List<About>> GetAllAbouts()
+        {
+            return await _context.About
+                                .Where(a => a.IsActive)
+                                .OrderByDescending(a => a.CreatedDate)
+                                .ToListAsync();
+        }
+
+        public async Task<bool> HasNextPage(int currentPage)
+        {
+            var totalAboutsCount = await _context.About.Where(a => a.IsActive)
+                .OrderByDescending(a => a.CreatedDate)
+                .ToListAsync();
+            if (totalAboutsCount.Count >= currentPage)
+            {             
+                return true;
+            }
+            return false;
         }
     }
 }
