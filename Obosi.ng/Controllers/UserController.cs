@@ -77,7 +77,7 @@ namespace Obosi.ng.Presentation.Controllers
             model = new(_user, unit);
             await model.InitializeNewsAsync(userEmail);
   
-            return View(model);
+            return RedirectToAction("Profile");
         }
 
         // GET: /Users/Create

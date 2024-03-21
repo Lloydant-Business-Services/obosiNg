@@ -120,7 +120,7 @@ namespace Obosi.ng.Application.Services
             var totalAboutsCount = await _context.About.Where(a => a.IsActive)
                 .OrderByDescending(a => a.CreatedDate)
                 .ToListAsync();
-            if (totalAboutsCount.Count >= currentPage && totalAboutsCount.Count>1)
+            if (totalAboutsCount.Count > currentPage && totalAboutsCount.Count>1)
             {             
                 return true;
             }
