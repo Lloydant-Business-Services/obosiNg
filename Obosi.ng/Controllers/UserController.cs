@@ -104,8 +104,13 @@ namespace Obosi.ng.Presentation.Controllers
                 }
                 catch (Exception ex)
                 {
+                    UserViewModel model = new(_user, unit);
+                     
+                    await model.InitializeNewsAsync();
+                    userViewModel = model;
+                    userViewModel.Error = ex.Message;
+                    return View(userViewModel);
 
-                    throw ex;
                 }
             }
             return View(userViewModel);

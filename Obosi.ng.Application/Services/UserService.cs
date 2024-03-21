@@ -120,28 +120,36 @@ namespace Obosi.ng.Application.Services
         }
         public async Task<Users> CreateUser_Admin(Users user)
         {
-            if (user != null)
+            try
             {
-                user.DateCreated = DateTime.UtcNow;
-                user.IsActive = true;
-                user.LastName = "";
-                user.PhoneNumber = "";
-                user.OtherName = "";
-                user.FirstName = "";
-                
-
-               
-                var userDetails = await _dataContext.Users.Where(x => x.Email == user.Email).FirstOrDefaultAsync();
-                if (userDetails == null)
+                if (user != null)
                 {
-                    throw new Exception("User Already Exists");
-                }
-                var createdUser = await _dataContext.Users.AddAsync(user);
-                await _dataContext.SaveChangesAsync();
+                    user.DateCreated = DateTime.UtcNow;
+                    user.IsActive = true;
+                    user.LastName = "";
+                    user.PhoneNumber = "";
+                    user.OtherName = "";
+                    user.FirstName = "";
+                    user.GenderId = 1;
 
-                return createdUser.Entity;
+
+
+                    var userDetails = await _dataContext.Users.Where(x => x.Email == user.Email).FirstOrDefaultAsync();
+                    if (userDetails != null)
+                    {
+                        throw new Exception("User Already Exists");
+                    }
+                    var createdUser = await _dataContext.Users.AddAsync(user);
+                    await _dataContext.SaveChangesAsync();
+
+                    return createdUser.Entity;
+                }
             }
-            throw new Exception("User Object is Null");
+            catch(Exception ex)
+            {
+                throw;
+            }
+            return user;
         }
 
         public async Task DeleteUser(string username)

@@ -37,5 +37,6 @@ namespace Obosi.ng.Presentation.ViewModels
         public List<Member_Unit> Members { get; set; }
         public IFormFile Image { get; set; }
         public List<Role> Roles { get; set; }
+        public string Error { get; set; }
     }
 }
