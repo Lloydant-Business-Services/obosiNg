@@ -9,7 +9,11 @@
 
 <form asp-action="Edit" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="About.Id" />
-
+    <div class="form-group">
+        <label asp-for="About.Title">Title:</label>
+        <textarea name="About.Title" style="width: 300px; height: 100px;" required
+                  id="PassageQuestion1" class="ckeditor" asp-for="About.Title"></textarea>
+    </div>
     <div class="form-group">
         <label asp-for="About.Body">Body:</label>
         <textarea name="About.Body" style="width: 300px; height: 100px;" required

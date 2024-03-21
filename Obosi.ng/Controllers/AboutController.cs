@@ -54,7 +54,6 @@ namespace Obosi.ng.Presentation.Controllers
 
         // POST: About/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(AboutViewModel aboutDTO)
         {
             
@@ -64,20 +63,11 @@ namespace Obosi.ng.Presentation.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            //var viewModel = new AboutViewModel
-            //{
-            //    About = new About
-            //    {
-                   
-            //        Body = aboutDTO.Body,
-            //        IsActive = aboutDTO.IsActive,
-            //        // Map other properties as needed
-            //    }
-            //};
-
+           
             return NotFound();
         }
         // GET: About/Edit/5
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var about = await _aboutService.GetAboutById(id);
