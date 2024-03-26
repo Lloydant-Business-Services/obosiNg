@@ -85,6 +85,25 @@ namespace Obosi.ng.Presentation.utility
             }
             return videoId;
         }
+        public static string ToSentenceCase(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+
+            // Convert the first character to uppercase
+            string sentenceCase = input.Substring(0, 1).ToUpper();
+
+            if (input.Length > 1)
+            {
+                // Convert the rest of the string to lowercase
+                sentenceCase += input.Substring(1).ToLower();
+            }
+
+            return sentenceCase;
+        }
+
     }
 
 }

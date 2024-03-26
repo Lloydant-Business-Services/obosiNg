@@ -20,7 +20,11 @@ namespace Obosi.ng.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Role>().HasData(
                 new Role() { IsActive = true, Id = 1, Name = "Administrator" },
-                new Role() { IsActive = true, Id = 2, Name = "User" });
+                new Role() { IsActive = true, Id = 2, Name = "User" },
+                 new Role() { IsActive = true, Id = 3, Name = "Writer" },
+                  new Role() { IsActive = true, Id = 4, Name = "Unit Admin" }
+                );
+            
             modelBuilder.Entity<Users>().HasData(
                 new Users() { IsActive = true, Id = 1, Email = "Admin@obosi.ng", DateCreated = DateTime.Now, GenderId = 1,
                     FirstName = "", IsSuspended = false, LastName = "", Password = "1234567", PhoneNumber = "070", RoleId = 1
@@ -187,5 +191,6 @@ namespace Obosi.ng.Data
         public DbSet<MenuGroup> MenuGroup { get; set; }
         public DbSet<MenuInRole> MenuInRole { get; set; }
         public DbSet<About> About { get; set; }
+        public DbSet<UnitAdmin> UnitAdmin { get; set; } 
     }
 }

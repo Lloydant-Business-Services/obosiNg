@@ -1,0 +1,45 @@
+﻿@model Obosi.ng.Presentation.ViewModels.UserViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h1>Edit User</h1>
+
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+       <input type="hidden" asp-for="User.Id"/>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Email:</label>
+                <input asp-for="User.Email" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="BackgroundImageUrl">Password:</label>
+                <input asp-for="User.Password" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="BackgroundImageUrl">Role:</label>
+                <select asp-for="User.RoleId" class="form-select">
+                    <option value="">Select</option>
+                    @foreach (var role in Model.Roles)
+                    {
+                        <option value="@role.Id">@role.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    @if (!string.IsNullOrWhiteSpace(Model.Error))
+    {
+        <p class="bg-red">@Model.Error</p>
+    }
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+
+
+</form>

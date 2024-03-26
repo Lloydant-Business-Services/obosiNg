@@ -38,7 +38,22 @@ namespace Obosi.ng.Application.Services
             return null;
         }
 
-        public async Task<Unit> CreateUnit(Unit unit)
+		public async Task<UnitAdmin> CreateAdmin(UnitAdmin admin)
+		{
+			var existingUnitAdmin = await _dataContext.UnitAdmin.Where(x=>x.UsersId == admin.UsersId &&
+            x.UnitId == admin.UnitId).Include(x=>x.Unit).Include(x=>x.Users).FirstOrDefaultAsync();
+            if(existingUnitAdmin == null)
+            {
+                admin.DateAdded = DateTime.UtcNow;
+                admin.Active = true;
+               var res = await _dataContext.UnitAdmin.AddAsync(admin);
+                await _dataContext.SaveChangesAsync();
+                return res.Entity;
+            }
+            return existingUnitAdmin;
+		}
+
+		public async Task<Unit> CreateUnit(Unit unit)
         {
             if(unit != null)
             {
@@ -61,9 +76,22 @@ namespace Obosi.ng.Application.Services
             throw new Exception("Unit type is empty");
         }
 
-       
+		public async Task DeleteAdmin(long id)
+		{
+			var existingUnit = await _dataContext.UnitAdmin.Where(x=>x.Id == id).FirstOrDefaultAsync();
+            if(existingUnit != null)
+            {
+                 _dataContext.UnitAdmin.Remove(existingUnit);
+                await _dataContext.SaveChangesAsync();
+            }
+		}
 
-        public async Task<List<Member_Unit>> GetAllMembersByUnitId(int unitId)
+		public async Task<List<UnitAdmin>> GetAdmins()
+		{
+            return await _dataContext.UnitAdmin.Include(x=>x.Users).Include(x=>x.Unit).ToListAsync();
+		}
+
+		public async Task<List<Member_Unit>> GetAllMembersByUnitId(int unitId)
         {
             return await _dataContext.Member_Unit.Where(x=>x.UnitId == unitId).Include
                 (x=>x.Users).Include(x=>x.Unit).OrderBy(p => p.Users.LastName).ToListAsync();
@@ -87,7 +115,7 @@ namespace Obosi.ng.Application.Services
             {
                 return await _dataContext.Unit.Include(x => x.UnitType).OrderBy(p => p.Name).ToListAsync();
             }
-            return await _dataContext.Member_Unit.Where(x => x.Users.Email == email)
+            return await _dataContext.UnitAdmin.Where(x => x.Users.Email == email)
                                                  .Include(x => x.Unit.UnitType)
                                                  .Select(x => x.Unit)
                                                  .ToListAsync();               

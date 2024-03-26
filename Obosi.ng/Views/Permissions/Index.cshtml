@@ -1,4 +1,4 @@
-﻿@model Obosi.ng.Presentation.ViewModels.UserViewModel
+﻿@model Obosi.ng.Presentation.ViewModels.PermissionViewModel
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -14,35 +14,47 @@
                 <div class="card-header pb-0">
                     <h6></h6>
                 </div>
+                <div class="text-start m-3">
+                    <a class="btn btn-outline-primary btn-sm mb-0" href="~/Permissions/Create">Create</a>
+                </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
-                        <table id="example" class="table table-striped p-3 m-3" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011-04-25</td>
-                                    <td>$320,800</td>
-                                </tr>
+                        <div class="table-responsive p-0">
+                            <table id="example" class="table table-striped p-3 m-3" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>S/n</th>
+                                        <th>Username</th>
+                                        <th>Unit</th>
+                                        <th>Actions</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.Unit != null)
+                                    {
+                                        int k = 1;
+                                        @foreach (var item in Model.Unit)
+                                        {
+                                            <tr>
+                                                <td>@k</td>
+                                                <td>@item.Users.Email</td>
+                                                <td>@item.Unit.Name</td>
+                                                <td>
+                                                    <a class="btn btn-outline-primary btn-sm mb-0" href="~/Permissions/Delete?id=@item.Id">Delete</a>
+                                                </td>
+                                            </tr>
+                                            k++;
+                                        }
+
+                                    }
 
 
 
-                            </tbody>
+                                </tbody>
 
-                        </table>
-                    </div>
+                            </table>
+                        </div>
                 </div>
             </div>
         </div>

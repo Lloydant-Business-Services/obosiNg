@@ -1,49 +1,51 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Presentation.ViewModels;
 
 namespace Obosi.ng.Presentation.Controllers
 {
     public class PermissionsController : Controller
     {
-        public IActionResult Index()
+        private readonly IUnit _unit;
+        private readonly IUser _user;
+        public PermissionsController(IUnit unit, IUser user)
         {
-            ViewBag.Title = "Permissions";
-            return View();
+                _unit = unit;
+            _user = user;
         }
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Index()
         {
-            ViewBag.Title = "Permissions";
-            return View();
+            ViewBag.Title = "Unit Admins";
+			PermissionViewModel model = new PermissionViewModel(_user,_unit);  
+            await model.InitializeUnitAdmins();
+			return View(model);
         }
+       
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewBag.Title = "Permissions";
-            return View();
+            ViewBag.Title = "Create Unit Admin";
+            PermissionViewModel model = new PermissionViewModel(_user, _unit);
+            await model.InitializeAsync();
+            return View(model);
         }
         [HttpPost]
-        public IActionResult Create(PermissionViewModel model)
+        public async Task<IActionResult> Create(PermissionViewModel model)
         {
-            if (ModelState.IsValid)
+            if (model != null)
             {
+               await _unit.CreateAdmin(model.UnitObject);
                 return RedirectToAction("Index");
             }
             return View(model);
         }
-        public IActionResult Edit(int id)
+        public async  Task<IActionResult> Delete(int id)
         {
             ViewBag.Title = "Permissions";
-            return View();
+            await  _unit.DeleteAdmin(id);
+            return RedirectToAction("Index");
         }
-        [HttpPost]
-        public IActionResult Edit(PermissionViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Index");
-            }
-            return View(model);
-        }
+       
        
 
     }

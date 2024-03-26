@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Obosi.ng.Data;
 
@@ -11,9 +12,11 @@ using Obosi.ng.Data;
 namespace Obosi.ng.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240326082644_Ynit Admins..")]
+    partial class YnitAdmins
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1004,18 +1007,6 @@ namespace Obosi.ng.Infrastructure.Migrations
                             Id = 2,
                             IsActive = true,
                             Name = "User"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            IsActive = true,
-                            Name = "Writer"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            IsActive = true,
-                            Name = "Unit Admin"
                         });
                 });
 
@@ -1067,7 +1058,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8808),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5401),
                             Name = "Umuota",
                             NeedsConfirmation = false,
                             UnitTypeId = 1
@@ -1078,7 +1069,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8811),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5405),
                             Name = "Mmakwum",
                             NeedsConfirmation = false,
                             UnitTypeId = 1
@@ -1089,7 +1080,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8813),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5407),
                             Name = "Uruowulu",
                             NeedsConfirmation = false,
                             UnitTypeId = 1
@@ -1100,7 +1091,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8815),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5427),
                             Name = "Ugamuma",
                             NeedsConfirmation = false,
                             UnitTypeId = 1
@@ -1111,7 +1102,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8817),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5429),
                             Name = "Ire",
                             NeedsConfirmation = false,
                             UnitTypeId = 1
@@ -1122,7 +1113,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8818),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5431),
                             Name = "Lagos",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1133,7 +1124,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8820),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5433),
                             Name = "Abuja",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1144,7 +1135,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8822),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5435),
                             Name = "Port Harcourt",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1155,7 +1146,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8824),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5437),
                             Name = "Aba",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1166,7 +1157,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8825),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5439),
                             Name = "Abakaliki",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1177,7 +1168,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8828),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5441),
                             Name = "Awka",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1188,7 +1179,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8830),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5443),
                             Name = "Benin City",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1199,7 +1190,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8832),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5447),
                             Name = "Enugu",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1210,7 +1201,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8833),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5449),
                             Name = "Jos",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1221,7 +1212,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8835),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5451),
                             Name = "Kaduna",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1232,7 +1223,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8837),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5453),
                             Name = "Makurdi",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1243,7 +1234,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8839),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5455),
                             Name = "Nnewi",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1254,7 +1245,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8840),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5456),
                             Name = "Suleja",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1265,7 +1256,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8842),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5458),
                             Name = "Warri",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1276,7 +1267,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8844),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5460),
                             Name = "Umuota",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1287,7 +1278,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8845),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5462),
                             Name = "Mmakwum",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1298,7 +1289,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8847),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5464),
                             Name = "Uruowulu",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1309,7 +1300,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8848),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5466),
                             Name = "Ugamuma",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1320,7 +1311,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8850),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5468),
                             Name = "Ire",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1331,7 +1322,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8852),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5469),
                             Name = "OWA UK",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1342,7 +1333,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8853),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5473),
                             Name = "ODA USA",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1353,7 +1344,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8856),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5474),
                             Name = "ODU South Africa",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1364,7 +1355,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8858),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5476),
                             Name = "ODU Brazil",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1375,7 +1366,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8860),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5478),
                             Name = "ODU Kuwait",
                             NeedsConfirmation = false,
                             UnitTypeId = 5
@@ -1396,15 +1387,21 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UnitId")
+                    b.Property<long>("UnitId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("UnitId1")
                         .HasColumnType("int");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.Property<long>("UsersId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UnitId");
+                    b.HasIndex("UnitId1");
 
                     b.HasIndex("UsersId");
 
@@ -1638,7 +1635,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                         new
                         {
                             Id = 1L,
-                            DateCreated = new DateTime(2024, 3, 26, 12, 56, 0, 844, DateTimeKind.Local).AddTicks(8668),
+                            DateCreated = new DateTime(2024, 3, 26, 9, 26, 43, 665, DateTimeKind.Local).AddTicks(5260),
                             Email = "Admin@obosi.ng",
                             FirstName = "",
                             GenderId = 1,
@@ -1928,7 +1925,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                 {
                     b.HasOne("Obosi.ng.Domain.Entity.Unit", "Unit")
                         .WithMany()
-                        .HasForeignKey("UnitId")
+                        .HasForeignKey("UnitId1")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

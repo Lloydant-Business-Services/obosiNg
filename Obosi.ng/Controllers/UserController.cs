@@ -115,5 +115,41 @@ namespace Obosi.ng.Presentation.Controllers
             }
             return View(userViewModel);
         }
+
+        // GET: /Users/Create
+        public async Task<IActionResult> Edit(int Id)
+        {
+            ViewBag.Title = "Edit Users";
+            UserViewModel model = new(_user, unit);
+            await model.InitializeNewsAsync(Id);
+            return View(model);
+        }
+
+        // POST: /Users/Create
+        [HttpPost]
+        public async Task<IActionResult> Edit(UserViewModel userViewModel)
+        {
+            if (userViewModel != null)
+            {
+                try
+                {
+                    var createdUser = await _user.UpdateUser(userViewModel.User);
+
+
+                    return RedirectToAction("index");
+                }
+                catch (Exception ex)
+                {
+                    UserViewModel model = new(_user, unit);
+
+                    await model.InitializeNewsAsync();
+                    userViewModel = model;
+                    userViewModel.Error = ex.Message;
+                    return View(userViewModel);
+
+                }
+            }
+            return View(userViewModel);
+        }
     }
 }

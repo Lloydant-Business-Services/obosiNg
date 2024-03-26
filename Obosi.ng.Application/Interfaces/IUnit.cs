@@ -27,5 +27,9 @@ namespace Obosi.ng.Application.Interfaces
         Task<Unit_Type> UpdateUnitType(Unit_Type unittype);
         Task<List<Member_Unit>> ViewApprovedMembers();
         Task<List<Member_Unit>> ViewUnApprovedMembers();
+
+        Task<List<UnitAdmin>> GetAdmins();
+        Task<UnitAdmin> CreateAdmin(UnitAdmin admin);
+        Task DeleteAdmin(long id);
     }
 }

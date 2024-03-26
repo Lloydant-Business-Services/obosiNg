@@ -236,10 +236,10 @@ namespace Obosi.ng.Application.Services
                 {
                     userDetails.LastName = user.LastName;
                 }
-                if (!string.IsNullOrWhiteSpace(user.Email))
-                {
-                    userDetails.Email = user.Email;
-                }
+                //if (!string.IsNullOrWhiteSpace(user.Email))
+                //{
+                //    userDetails.Email = user.Email;
+                //}
                 if (!string.IsNullOrWhiteSpace(user.PassportUrl))
                 {
                     userDetails.PassportUrl = user.PassportUrl;
@@ -247,6 +247,11 @@ namespace Obosi.ng.Application.Services
                 if (!string.IsNullOrWhiteSpace(user.Password))
                 {
                     userDetails.Password = user.Password;
+                }
+
+                if(user.RoleId > 0)
+                {
+                    userDetails.RoleId = user.RoleId;
                 }
 
                 _dataContext.Users.Update(userDetails);

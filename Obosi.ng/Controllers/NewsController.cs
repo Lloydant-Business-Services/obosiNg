@@ -42,11 +42,16 @@ namespace Obosi.ng.Presentation.Controllers
             if (model?.NewsObject!= null)
             {
                 var userRole = IdentityExtensions.GetId(User.Identity);
-                model.NewsObject.UserId = Convert.ToInt32(userRole);
-                model.NewsObject.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
-                await news.CreateNews(model.NewsObject);
-                return RedirectToAction("Index");
+                var role = IdentityExtensions.GetRole(User.Identity);
+                if (role == 3)
+                {
+                    model.NewsObject.UserId = Convert.ToInt32(userRole);
+                    model.NewsObject.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+                    await news.CreateNews(model.NewsObject);
+                    return RedirectToAction("Index");
+                }
             }
+            await model.InitializeNewsAsync();
             return View(model);
         }
         public async Task<IActionResult> Edit(int id)

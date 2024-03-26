@@ -1,0 +1,51 @@
+﻿@model Obosi.ng.Presentation.ViewModels.PermissionViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create Unit Admin</h1>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Unit:</label>
+                @* <input asp-for="Calender_Asset.UnitId" class="form-control" /> *@
+                <select asp-for="UnitObject.UnitId" class="form-select">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.AllUnits)
+                    {
+                        <option value="@item.Id">@item.Name (@item.UnitType.Name)</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryUserId">User:</label>
+                @* <input asp-for="Calender_Asset.UnitId" class="form-control" /> *@
+                <select asp-for="UnitObject.UsersId" class="form-select">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.Users)
+                    {
+                        <option value="@item.Id">@item.Email</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace('#PassageQuestion');
+    });
+
+</script>

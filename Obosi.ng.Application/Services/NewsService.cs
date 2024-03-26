@@ -48,6 +48,8 @@ namespace Obosi.ng.Application.Services
             {
                 news.DateCreated = DateTime.Now;
                 news.IsActive = true;
+                news.IsApproved = true;
+                news.DateApproved = DateTime.Now;
                 var newsEntity =await  _dataContext.News.AddAsync(news);
                await _dataContext.SaveChangesAsync();
                 return newsEntity.Entity;
