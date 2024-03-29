@@ -20,7 +20,7 @@ namespace Obosi.ng.Presentation.ViewModels
         public async Task InitializVideoAsync(string email)
         {
             this.Video_Assets = await media.GetVideoByUnit(email);
-            this.Units = await unit.GetAllUnits();
+            this.Units = await unit.GetAllUnits(email);
         }
         public async Task InitializePicturesAsync(string email)
         {
@@ -30,13 +30,13 @@ namespace Obosi.ng.Presentation.ViewModels
         public async Task InitializVideoAsync(int id, string email)
         {
             this.Video_Assets = await media.GetVideoByUnit(email);
-            this.Units = await unit.GetAllUnits();
+            this.Units = await unit.GetAllUnits(email);
             this.Video_Asset = await media.GetVideo(id);
         }
         public async Task InitializePicturesAsync(int id, string email)
         {
             this.Picture_Assets = await media.GetPicturesByUnit(email);
-            this.Units = await unit.GetAllUnits();
+            this.Units = await unit.GetAllUnits(email);
             this.Picture_Asset = await media.GetPicture(id);
         }
         public MediaViewModel()
