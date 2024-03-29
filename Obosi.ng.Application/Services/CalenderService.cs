@@ -63,7 +63,7 @@ namespace Obosi.ng.Application.Services
             else
             {
                 List<Calender_Assets> allAssets = new List<Calender_Assets>();
-                var roles = await _dataContext.Member_Unit.Where(x => x.Users.Email == email).ToListAsync();    
+                var roles = await _dataContext.UnitAdmin.Where(x => x.Users.Email == email).ToListAsync();    
                 foreach (var role in roles)
                 {
                     var assets = await _dataContext.Calender_Assets.Where(x => x.UnitId == role.UnitId).Include(x=>x.Unit).ToListAsync();

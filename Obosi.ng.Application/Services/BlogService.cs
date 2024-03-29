@@ -48,6 +48,8 @@ namespace Obosi.ng.Application.Services
             blog.DateCreated = DateTime.Now;
             blog.IsApproved = true;
             blog.DateApproved = DateTime.Now;
+            blog.IsPublished = true;
+            blog.DatePublished = DateTime.Now;
             var createdBlog=  await _dataContext.Blogs.AddAsync(blog);
             await _dataContext.SaveChangesAsync();
             return createdBlog.Entity;
