@@ -418,7 +418,7 @@
                         <div class="field-holder">
 
                             <select class="form-field" required asp-for="VillageId" required>
-                                <option selected>Select Village</option>
+                                <option value="">Select Village</option>
                                 @foreach (var vil in Model.AllVillages)
                                 {
                                     <option value="@vil.Id">@vil.Name</option>
@@ -429,7 +429,7 @@
                         <div class="field-holder">
 
                             <select class="form-field" asp-for="AkaId" required>
-                                <option selected>Select Aka</option>
+                                <option value="">Select Aka</option>
                                 @foreach (var ak in Model.AllAka)
                                 {
                                     <option value="@ak.Id">@ak.Name</option>
@@ -445,7 +445,7 @@
                         <div class="field-holder">
 
                             <select class="form-field" asp-for="UmunnaId" required>
-                                <option selected>Select Umunna</option>
+                                <option value="">Select Umunna</option>
                                 @foreach (var umu in Model.AllUmunna)
                                 {
                                     <option value="@umu.Id">@umu.Name</option>

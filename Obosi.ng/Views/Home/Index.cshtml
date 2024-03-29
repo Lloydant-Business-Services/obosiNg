@@ -413,8 +413,8 @@
                 <div class="field-group">
                     <div class="field-holder">
 
-                        <select class="form-field" required asp-for="VillageId">
-                            <option selected>Select Village</option>
+                            <select class="form-field" asp-for="VillageId" required>
+                                <option value="">Select Village</option>
                             @foreach (var vil in Model.AllVillages)
                             {
                                 <option value="@vil.Id">@vil.Name</option>
@@ -425,7 +425,7 @@
                         <div class="field-holder">
 
                             <select class="form-field" asp-for="AkaId" required>
-                                <option selected>Select Aka</option>
+                                <option value="">Select Aka</option>
                                 @foreach (var ak in Model.AllAka)
                                 {
                                     <option value="@ak.Id">@ak.Name</option>
@@ -441,7 +441,7 @@
                         <div class="field-holder">
 
                             <select class="form-field" asp-for="UmunnaId" required>
-                                <option selected>Select Umunna</option>
+                                <option value="">Select Umunna</option>
                                 @foreach (var umu in Model.AllUmunna)
                                 {
                                     <option value="@umu.Id">@umu.Name</option>
@@ -817,7 +817,10 @@
                             <img src="~/@news.BackgroundImageUrl" class="img-fluid " style="height: 100px; width: 200px;" />
                         </div>
                         <p>
-                            @news.DateApproved.Value.ToLongDateString()
+                            @if (news.DateApproved != null)
+                            {
+                                news.DateApproved.Value.ToLongDateString();
+                            }
                         </p>
                         <a href="~/Home/News?id=@StringEncryption.Encrypt(@news.Id.ToString())">
                             @news.Title
@@ -857,7 +860,10 @@
                             <img src="~/@blogs.BackgroundImageUrl" class="img-fluid " style="height: 100px; width: 200px;" />
                         </div>
                         <p>
-                            @blogs.DateApproved.Value.ToLongDateString()
+                            @if (blogs.DateApproved != null)
+                            {
+                                blogs.DateApproved.Value.ToLongDateString();
+                            }
                         </p>
                         <a href="~/Home/Blog?id=@StringEncryption.Encrypt(@blogs.Id.ToString())">
                             @blogs.Title

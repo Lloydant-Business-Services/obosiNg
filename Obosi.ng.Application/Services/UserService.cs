@@ -265,5 +265,10 @@ namespace Obosi.ng.Application.Services
         {
             return await _dataContext.Role.ToListAsync();
         }
+
+        public async Task<List<Users>> GetUnitAdmins()
+        {
+            return await _dataContext.Users.Where(x => x.IsActive == true && x.RoleId == 4).ToListAsync();
+        }
     }
 }

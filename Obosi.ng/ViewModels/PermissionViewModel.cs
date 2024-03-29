@@ -20,7 +20,7 @@ namespace Obosi.ng.Presentation.ViewModels
         }
         public async Task InitializeAsync()
         {
-            this.Users = await user.GetAllUsers();
+            this.Users = await user.GetUnitAdmins();
             this.AllUnits = await unit.GetAllUnits();
         }
         public async  Task InitializeUnitAdmins()

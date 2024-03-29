@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Obosi.ng.Application.DTO;
 using Obosi.ng.Application.Enums;
 using Obosi.ng.Application.Interfaces;
@@ -100,30 +101,116 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Unit>> GetAllUmunna()
         {
-            return await _dataContext.Unit.Where(x => x.UnitTypeId == (int)UnitTypes.Umunna).Include(x => x.UnitType).OrderBy(p => p.Name).ToListAsync();
+            return await _dataContext.Unit.Where(x => x.UnitTypeId == (int)UnitTypes.Umunna).Include(x => x.UnitType).OrderBy(p => p.Name)
+                .Select(ua => new Unit
+                {
+                    Name = SentenceCase(ua.Name),
+                    About = ua.About,
+                    BackGroundImageUrl = ua.BackGroundImageUrl,
+                    CanHaveMembers = ua.CanHaveMembers,
+                    DateCreated = ua.DateCreated,
+                    Description = ua.Description,
+                    Id = ua.Id,
+                    NeedsConfirmation = ua.NeedsConfirmation,
+                    UnitTypeId = ua.UnitTypeId,
+                    UnitType
+                = ua.UnitType
+                })
+                .ToListAsync();
         }
 
         public async Task<List<Unit>> GetAllUnits()
         {
-            return await _dataContext.Unit.Include(x => x.UnitType).OrderBy(p => p.Name).ToListAsync();
+            return await _dataContext.Unit.Include(x => x.UnitType).OrderBy(p => p.Name)
+                .Select(ua => new Unit { Name = SentenceCase(ua.Name),About = ua.About,BackGroundImageUrl =ua.BackGroundImageUrl,
+                CanHaveMembers = ua.CanHaveMembers,DateCreated = ua.DateCreated,Description= ua.Description,
+                Id= ua.Id,NeedsConfirmation= ua.NeedsConfirmation,UnitTypeId = ua.UnitTypeId,UnitType
+                = ua.UnitType})
+                .ToListAsync();
+          
+        }
+        private static string SentenceCase(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+
+            // Convert the first character to uppercase
+            string sentenceCase = input.Substring(0, 1).ToUpper();
+
+            if (input.Length > 1)
+            {
+                // Convert the rest of the string to lowercase
+                sentenceCase += input.Substring(1).ToLower();
+            }
+
+            return sentenceCase;
         }
 
-        public async Task<List<Unit>> GetAllUnits(string email)
+    
+
+    public async Task<List<Unit>> GetAllUnits(string email)
         {
             var userRole = await _dataContext.Users.Where(r => r.Email == email).FirstOrDefaultAsync();
             if(userRole.RoleId == (int)Enums.Role.Admin)
             {
-                return await _dataContext.Unit.Include(x => x.UnitType).OrderBy(p => p.Name).ToListAsync();
+                return await _dataContext.Unit.Include(x => x.UnitType).OrderBy(p => p.Name)
+                    .Select(ua => new Unit
+                    {
+                        Name = SentenceCase(ua.Name),
+                        About = ua.About,
+                        BackGroundImageUrl = ua.BackGroundImageUrl,
+                        CanHaveMembers = ua.CanHaveMembers,
+                        DateCreated = ua.DateCreated,
+                        Description = ua.Description,
+                        Id = ua.Id,
+                        NeedsConfirmation = ua.NeedsConfirmation,
+                        UnitTypeId = ua.UnitTypeId,
+                        UnitType
+                = ua.UnitType
+                    })
+                    .ToListAsync();
             }
             return await _dataContext.UnitAdmin.Where(x => x.Users.Email == email)
                                                  .Include(x => x.Unit.UnitType)
-                                                 .Select(x => x.Unit)
-                                                 .ToListAsync();               
+                                                
+                                                 .Select(ua => new Unit
+                                                 {
+                                                     Name = SentenceCase(ua.Unit.Name),
+                                                     About = ua.Unit.About,
+                                                     BackGroundImageUrl = ua.Unit.BackGroundImageUrl,
+                                                     CanHaveMembers = ua.Unit.CanHaveMembers,
+                                                     DateCreated = ua.Unit.DateCreated,
+                                                     Description = ua.Unit.Description,
+                                                     Id = ua.Unit.Id,
+                                                     NeedsConfirmation = ua.Unit.NeedsConfirmation,
+                                                     UnitTypeId = ua.Unit.UnitTypeId,
+                                                     UnitType
+                = ua.Unit.UnitType
+                                                 })
+                                                 .ToListAsync();
+          
         }
 
         public async Task<List<Unit>> GetAllUnitsByUnitType(int unitTypeId)
         {
-            return await _dataContext.Unit.Where(x => x.UnitTypeId == unitTypeId).Include(x => x.UnitType).OrderBy(p => p.Name).ToListAsync();
+            return await _dataContext.Unit.Where(x => x.UnitTypeId == unitTypeId).Include(x => x.UnitType).OrderBy(p => p.Name)
+                .Select(ua => new Unit
+                {
+                    Name = SentenceCase(ua.Name),
+                    About = ua.About,
+                    BackGroundImageUrl = ua.BackGroundImageUrl,
+                    CanHaveMembers = ua.CanHaveMembers,
+                    DateCreated = ua.DateCreated,
+                    Description = ua.Description,
+                    Id = ua.Id,
+                    NeedsConfirmation = ua.NeedsConfirmation,
+                    UnitTypeId = ua.UnitTypeId,
+                    UnitType
+                = ua.UnitType
+                })
+                .ToListAsync();
         }
 
         public async Task<List<Unit_Type>> GetAllUnitTypes()
@@ -135,7 +222,20 @@ namespace Obosi.ng.Application.Services
         {
             DashBoardDTO model = new();
             var Users = await _dataContext.Users.ToListAsync();
-            var units = await _dataContext.Unit.ToListAsync();
+            var units = await _dataContext.Unit.Include(x=>x.UnitType).Select(ua => new Unit
+            {
+                Name = SentenceCase(ua.Name),
+                About = ua.About,
+                BackGroundImageUrl = ua.BackGroundImageUrl,
+                CanHaveMembers = ua.CanHaveMembers,
+                DateCreated = ua.DateCreated,
+                Description = ua.Description,
+                Id = ua.Id,
+                NeedsConfirmation = ua.NeedsConfirmation,
+                UnitTypeId = ua.UnitTypeId,
+                UnitType
+                = ua.UnitType
+            }).ToListAsync();
             var Umunna = units.Where(x => x.UnitTypeId == (int)UnitTypes.Umunna).OrderBy(p => p.Name).ToList();
             var Odus = units.Where(x => x.UnitTypeId == (int)UnitTypes.ODU_chapter).OrderBy(p => p.Name).ToList();
             var villages = units.Where(x => x.UnitTypeId == (int)UnitTypes.Village).OrderBy(p => p.Name).ToList();
@@ -151,7 +251,20 @@ namespace Obosi.ng.Application.Services
 
         public async Task<Unit> GetUnit(int unitId)
         {
-            return await _dataContext.Unit.Where(x => x.Id == unitId).FirstOrDefaultAsync();
+            return await _dataContext.Unit.Where(x => x.Id == unitId).Select(ua => new Unit
+            {
+                Name = SentenceCase(ua.Name),
+                About = ua.About,
+                BackGroundImageUrl = ua.BackGroundImageUrl,
+                CanHaveMembers = ua.CanHaveMembers,
+                DateCreated = ua.DateCreated,
+                Description = ua.Description,
+                Id = ua.Id,
+                NeedsConfirmation = ua.NeedsConfirmation,
+                UnitTypeId = ua.UnitTypeId,
+                UnitType
+                = ua.UnitType
+            }).FirstOrDefaultAsync();
         }
 
         public async Task<Unit_Type> GetUnitType(int unittypeId)

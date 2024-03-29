@@ -18,5 +18,6 @@ namespace Obosi.ng.Application.Interfaces
        
         Task<Users> AuthenticateUser(string email,string password);
         Task<List<Role> > GetAllRoles();
+        Task<List<Users>> GetUnitAdmins();
     }
 }
