@@ -5,6 +5,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.IdentityModel.Tokens;
 using Obosi.ng.Application.Enums;
 using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Domain.Entity;
 using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
 using System.Diagnostics;
@@ -100,7 +101,7 @@ namespace Obosi.ng.Controllers
         {
             try
             {
-                model.user.RoleId = (int)Role.User;
+                model.user.RoleId = (int)Application.Enums.Role.User;
                 var user = await _user.CreateUser(model.user, model.AkaId, model.UmunnaId, model.VillageId, model.ImeneId);
                 if (user?.IsActive != true)
                 {
@@ -220,6 +221,22 @@ namespace Obosi.ng.Controllers
             await model.GetAbout(pageId);
             model.PageId = pageId;
             return View(model);
+        }
+        public async Task<List<Village>> GetVillages()
+        {
+            return await _unit.GetVillages();
+        }
+        public async Task<List<Aka>> GetAkas(int villageId)
+        {
+            return await _unit.Akas(villageId);
+        }
+        public async Task<List<Umunna>> GetUmunna(int akaId)
+        {
+            return await _unit.GetUmunnas(akaId);
+        }
+        public async Task<List<Imenne>> GetImenes(int umunnaId)
+        {
+            return await _unit.GetImennes(umunnaId);
         }
     }
    

@@ -85,7 +85,7 @@
                                                asp-for="user.Email">
                                     </div>
                                     <div class="mb-3">
-                                        <select class="form-control" required asp-for="VillageId">
+                                        <select class="form-control" required asp-for="VillageId" id="villageId">
                                             <option selected>Select Village</option>
                                             @foreach (var vil in Model.AllVillages)
                                             {
@@ -94,33 +94,33 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <select class="form-control" asp-for="AkaId">
-                                            <option selected>Select Aka</option>
+                                        <select class="form-control" asp-for="AkaId" required id="akaId">
+                                           @*  <option selected>Select Aka</option>
                                             @foreach (var ak in Model.AllAka)
                                             {
                                                 <option value="@ak.Id">@ak.Name</option>
-                                            }
+                                            } *@
 
                                         </select>
                                       </div>
                                       <div class="mb-3">
 
-                                        <select class="form-control" asp-for="UmunnaId">
-                                            <option selected>Select Umunna</option>
+                                        <select class="form-control" asp-for="UmunnaId" required id="umunnaId">
+                                           @*  <option selected>Select Umunna</option>
                                             @foreach (var umu in Model.AllUmunna)
                                             {
                                                 <option value="@umu.Id">@umu.Name</option>
-                                            }
+                                            } *@
                                         </select>
                                       </div>
                                       <div class="mb-3">
 
-                                        <select class="form-control" asp-for="ImeneId">
-                                            <option value="">Select Ime Nne</option>
+                                        <select class="form-control" asp-for="ImeneId" required id="imeneId">
+                                           @*  <option value="">Select Ime Nne</option>
                                             @foreach (var ime in Model.AllImene)
                                             {
                                                 <option value="@ime.Id">@ime.Name</option>
-                                            }
+                                            } *@
                                         </select>
                                       </div>
                                     <div class="mb-3">
@@ -209,6 +209,124 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="~/Admin/assets/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @* <script src="~/js/src/layout.js" asp-append-version="true"></script> *@
+    <script src="~/land/layout.js" asp-append-version="true"></script>
+
+
+    <!-- Carousel Script -->
+
+    <script>
+       
+        $('#villageId').on('change', function (e) {
+            loadAka($('#villageId').val())
+        });
+        $('#akaId').on('change', function (e) {
+            loadUmunna($('#akaId').val())
+        });
+        $('#umunnaId').on('change', function (e) {
+            loadImenne($('#umunnaId').val())
+        });
+
+        function loadAka(villageId) {
+
+            if (villageId > 0) {
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetAkas", "Home")', // we are calling json method
+                    dataType: 'json',
+                    data: { villageId: villageId },
+                    success: function (result) {
+                        console.log(result, "result  akaaaaaa");
+
+                        $("#akaId").empty();
+                        //populate ExamBatch
+                        $("#akaId").append('<option value = "" > -- Select Aka -- </option>');
+                        // $.each(result.specification, function (i, specification) {
+                        //     $("#akaId").append('<option value = "' + specification.id + '" >' + specification.name + '</option>');
+                        // });
+                        for (let i = 0; i < result.length; i++) {
+                            const item = result[i];
+                            // Access each item properties here
+                            console.log(item.id, item.unit.name);
+                            $("#akaId").append('<option value = "' + item.id + '" >' + item.unit.name + '</option>');
+                        }
+
+
+
+
+                    },
+                    error: function (ex) {
+                        alert('error' + ex);
+                    }
+
+                });
+            }
+        }
+
+        function loadUmunna(akaId) {
+
+            if (akaId > 0) {
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetUmunna", "Home")', // we are calling json method
+                    dataType: 'json',
+                    data: { akaId: akaId },
+                    success: function (result) {
+
+                        $("#umunnaId").empty();
+                        //populate ExamBatch
+                        $("#umunnaId").append('<option value = "" > -- Select Umunna -- </option>');
+
+                        for (let i = 0; i < result.length; i++) {
+                            const item = result[i];
+                            // Access each item properties here
+                            console.log(item.id, item.unit.name);
+                            $("#umunnaId").append('<option value = "' + item.id + '" >' + item.unit.name + '</option>');
+                        }
+
+
+                    },
+                    error: function (ex) {
+                        alert('error' + ex);
+                    }
+
+                });
+            }
+        }
+
+        function loadImenne(umunnaId) {
+
+            if (umunnaId > 0) {
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetImenes", "Home")', // we are calling json method
+                    dataType: 'json',
+                    data: { umunnaId: umunnaId },
+                    success: function (result) {
+
+
+                        $("#imeneId").empty();
+                        //populate ExamBatch
+                        $("#imeneId").append('<option value = "" > -- Select Imenne -- </option>');
+                        for (let i = 0; i < result.length; i++) {
+                            const item = result[i];
+                            // Access each item properties here
+                            console.log(item.id, item.unit.name);
+                            $("#imeneId").append('<option value = "' + item.id + '" >' + item.unit.name + '</option>');
+                        }
+
+
+
+                    },
+                    error: function (ex) {
+                        alert('error' + ex);
+                    }
+
+                });
+            }
+        }
+    </script>
 </body>
 
 </html>

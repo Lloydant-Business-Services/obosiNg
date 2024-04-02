@@ -6,6 +6,7 @@ using Obosi.ng.Application.Enums;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
+using Obosi.ng.Infrastructure.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -344,6 +345,99 @@ namespace Obosi.ng.Application.Services
         public async Task<List<Member_Unit>> ViewUnApprovedMembers()
         {
             return await _dataContext.Member_Unit.Where(x => x.IsActive == false && x.Unit.UnitTypeId == (int)UnitTypes.Umunna).Include(x => x.Unit.UnitType).Include(x => x.Users).ToListAsync();
+        }
+
+        public async Task<List<Village>> GetVillages()
+        {
+           return await _dataContext.Village.Include(x => x.Unit).OrderBy(p => p.Unit.Name)
+                .Select(ua => new Village
+                {
+                    Id = ua.Id,
+                    UnitId = ua.UnitId,
+                    Unit = new Unit
+                    {
+                        Name = SentenceCase(ua.Unit.Name),
+                        About = ua.Unit.About,
+                        BackGroundImageUrl = ua.Unit.BackGroundImageUrl,
+                        CanHaveMembers = ua.Unit.CanHaveMembers,
+                        DateCreated = ua.Unit.DateCreated,
+                        Description = ua.Unit.Description,
+                        Id = ua.Id,
+                        NeedsConfirmation = ua.Unit.NeedsConfirmation,
+                        UnitTypeId = ua.Unit.UnitTypeId,
+                        UnitType = ua.Unit.UnitType
+                    }
+                })
+                .ToListAsync(); 
+        }
+
+        public async Task<List<Aka>> Akas(int villageId)
+        {
+            return await _dataContext.Aka.Where(x=>x.VillageId == villageId && x.Active == true).Include(x => x.Unit).OrderBy(p => p.Unit.Name)
+                .Select(ua => new Aka
+                {  VillageId = ua.VillageId,
+                Id = ua.Id,
+                Unit = new Unit
+                {
+                    Name = SentenceCase(ua.Unit.Name),
+                    About = ua.Unit.About,
+                    BackGroundImageUrl = ua.Unit.BackGroundImageUrl,
+                    CanHaveMembers = ua.Unit.CanHaveMembers,
+                    DateCreated = ua.Unit.DateCreated,
+                    Description = ua.Unit.Description,
+                    Id = ua.Id,
+                    NeedsConfirmation = ua.Unit.NeedsConfirmation,
+                    UnitTypeId = ua.Unit.UnitTypeId,
+                    UnitType = ua.Unit.UnitType
+                }
+                })
+                .ToListAsync();
+        }
+
+        public async Task<List<Umunna>> GetUmunnas(int akaId)
+        {
+            return await _dataContext.Umunna.Where(x => x.AkaId == akaId && x.Active == true).Include(x => x.Unit).OrderBy(p => p.Unit.Name)
+                  .Select(ua => new Umunna
+                  { AkaId = ua.AkaId,
+                  Id = ua.Id,
+                  Unit = new Unit
+                  {
+                      Name = SentenceCase(ua.Unit.Name),
+                      About = ua.Unit.About,
+                      BackGroundImageUrl = ua.Unit.BackGroundImageUrl,
+                      CanHaveMembers = ua.Unit.CanHaveMembers,
+                      DateCreated = ua.Unit.DateCreated,
+                      Description = ua.Unit.Description,
+                      Id = ua.Id,
+                      NeedsConfirmation = ua.Unit.NeedsConfirmation,
+                      UnitTypeId = ua.Unit.UnitTypeId,
+                      UnitType = ua.Unit.UnitType
+                  }
+                  })
+                  .ToListAsync();
+        }
+
+        public async Task<List<Imenne>> GetImennes(int umunnaId)
+        {
+            return await _dataContext.Imenne.Where(x => x.UmunnaId == umunnaId && x.Active == true).Include(x => x.Unit).OrderBy(p => p.Unit.Name)
+                 .Select(ua => new Imenne
+                 { UmunnaId = ua.UmunnaId,  
+                 Id = ua.Id,
+                 Unit = new Unit
+                 {
+                     Name = SentenceCase(ua.Unit.Name),
+                     About = ua.Unit.About,
+                     BackGroundImageUrl = ua.Unit.BackGroundImageUrl,
+                     CanHaveMembers = ua.Unit.CanHaveMembers,
+                     DateCreated = ua.Unit.DateCreated,
+                     Description = ua.Unit.Description,
+                     Id = ua.Id,
+                     NeedsConfirmation = ua.Unit.NeedsConfirmation,
+                     UnitTypeId = ua.Unit.UnitTypeId,
+                     UnitType = ua.Unit.UnitType
+                 }
+                 })
+                 .ToListAsync();
         }
     }
 }

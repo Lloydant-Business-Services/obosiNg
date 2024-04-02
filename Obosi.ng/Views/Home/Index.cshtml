@@ -413,7 +413,7 @@
                 <div class="field-group">
                     <div class="field-holder">
 
-                            <select class="form-field" asp-for="VillageId" required>
+                            <select class="form-field" asp-for="VillageId" required id="villageId">
                                 <option value="">Select Village</option>
                             @foreach (var vil in Model.AllVillages)
                             {
@@ -424,12 +424,12 @@
                     </div>
                         <div class="field-holder">
 
-                            <select class="form-field" asp-for="AkaId" required>
-                                <option value="">Select Aka</option>
+                            <select class="form-field" asp-for="AkaId" required id="akaId">
+                               @*  <option value="">Select Aka</option>
                                 @foreach (var ak in Model.AllAka)
                                 {
                                     <option value="@ak.Id">@ak.Name</option>
-                                }
+                                } *@
 
                             </select>
 
@@ -440,23 +440,23 @@
                 <div class="field-group">
                         <div class="field-holder">
 
-                            <select class="form-field" asp-for="UmunnaId" required>
-                                <option value="">Select Umunna</option>
+                            <select class="form-field" asp-for="UmunnaId" required id="umunnaId">
+                               @*  <option value="">Select Umunna</option>
                                 @foreach (var umu in Model.AllUmunna)
                                 {
                                     <option value="@umu.Id">@umu.Name</option>
-                                }
+                                } *@
                             </select>
 
                         </div>
                     <div class="field-holder">
 
-                            <select class="form-field" asp-for="ImeneId" required>
-                            <option value="">Select Ime Nne</option>
+                            <select class="form-field" asp-for="ImeneId" required id="imeneId">
+                           @*  <option value="">Select Ime Nne</option>
                             @foreach (var ime in Model.AllImene)
                             {
                                 <option value="@ime.Id">@ime.Name</option>
-                            }
+                            } *@
                         </select>
 
                     </div>
@@ -921,3 +921,106 @@
 
         </main>
 
+
+               @*      <script>
+    $('#villageId').on('change', function (e) {
+        loadAka($('#villageId').val())
+    });
+    $('#akaId').on('change', function (e) {
+        loadUmunna($('#akaId').val())
+    });
+    $('#umunnaId').on('change', function (e) {
+        loadImenne($('#umunnaId').val())
+    });
+
+    function loadAka(villageId) {
+
+        if (villageId > 0) {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetAkas", "Home")', // we are calling json method
+                dataType: 'json',
+                data: { villageId: villageId },
+                success: function (result) {
+                    console.log(result,"result  akaaaaaa");
+
+                        $("#spec").empty();
+                        //populate ExamBatch
+                        $("#spec").append('<option value = "" > -- Select Aka -- </option>');
+                        $.each(result.specification, function (i, specification) {
+                            $("#spec").append('<option value = "' + specification.id + '" >' + specification.name + '</option>');
+                        });
+
+
+                    
+
+                },
+                error: function (ex) {
+                    alert('error' + ex);
+                }
+
+            });
+        }
+    }
+
+    function loadUmunna(akaId) {
+
+        if (objectiveid > 0) {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetSpecificationByObjective", "Question")', // we are calling json method
+                dataType: 'json',
+                data: { objectiveId: objectiveid },
+                success: function (result) {
+                    if (!result.isError && result.specification != undefined) {
+
+                        $("#spec").empty();
+                        //populate ExamBatch
+                        $("#spec").append('<option value = "" > -- Select Specification -- </option>');
+                        $.each(result.specification, function (i, specification) {
+                            $("#spec").append('<option value = "' + specification.id + '" >' + specification.name + '</option>');
+                        });
+
+
+                    }
+
+                },
+                error: function (ex) {
+                    alert('error' + ex);
+                }
+
+            });
+        }
+    }
+
+    function loadImenne(umunnaId) {
+
+        if (objectiveid > 0) {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetSpecificationByObjective", "Question")', // we are calling json method
+                dataType: 'json',
+                data: { objectiveId: objectiveid },
+                success: function (result) {
+                    if (!result.isError && result.specification != undefined) {
+
+                        $("#spec").empty();
+                        //populate ExamBatch
+                        $("#spec").append('<option value = "" > -- Select Specification -- </option>');
+                        $.each(result.specification, function (i, specification) {
+                            $("#spec").append('<option value = "' + specification.id + '" >' + specification.name + '</option>');
+                        });
+
+
+                    }
+
+                },
+                error: function (ex) {
+                    alert('error' + ex);
+                }
+
+            });
+        }
+    }
+
+</script> *@

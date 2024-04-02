@@ -31,5 +31,10 @@ namespace Obosi.ng.Application.Interfaces
         Task<List<UnitAdmin>> GetAdmins();
         Task<UnitAdmin> CreateAdmin(UnitAdmin admin);
         Task DeleteAdmin(long id);
+
+        Task<List<Village>> GetVillages();
+        Task<List<Aka>> Akas(int villageId);
+        Task<List<Umunna>> GetUmunnas(int akaId);
+        Task<List<Imenne>> GetImennes(int umunnaId);
     }
 }

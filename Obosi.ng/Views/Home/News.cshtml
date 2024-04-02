@@ -583,7 +583,7 @@
                     <div class="field-group">
                         <div class="field-holder">
 
-                            <select class="form-field" required asp-for="VillageId">
+                            <select class="form-field" asp-for="VillageId" required id="villageId">
                                 <option value="">Select Village</option>
                                 @foreach (var vil in Model.AllVillages)
                                 {
@@ -594,12 +594,12 @@
                         </div>
                         <div class="field-holder">
 
-                            <select class="form-field" asp-for="AkaId" required>
-                                <option value="">Select Aka</option>
+                            <select class="form-field" asp-for="AkaId" required id="akaId">
+                                @*  <option value="">Select Aka</option>
                                 @foreach (var ak in Model.AllAka)
                                 {
-                                    <option value="@ak.Id">@ak.Name</option>
-                                }
+                                <option value="@ak.Id">@ak.Name</option>
+                                } *@
 
                             </select>
 
@@ -610,23 +610,23 @@
                     <div class="field-group">
                         <div class="field-holder">
 
-                            <select class="form-field" asp-for="UmunnaId" required>
-                                <option value="">Select Umunna</option>
+                            <select class="form-field" asp-for="UmunnaId" required id="umunnaId">
+                                @*  <option value="">Select Umunna</option>
                                 @foreach (var umu in Model.AllUmunna)
                                 {
-                                    <option value="@umu.Id">@umu.Name</option>
-                                }
+                                <option value="@umu.Id">@umu.Name</option>
+                                } *@
                             </select>
 
                         </div>
                         <div class="field-holder">
 
-                            <select class="form-field" asp-for="ImeneId" required>
-                                <option value="">Select Ime Nne</option>
+                            <select class="form-field" asp-for="ImeneId" required id="imeneId">
+                                @*  <option value="">Select Ime Nne</option>
                                 @foreach (var ime in Model.AllImene)
                                 {
-                                    <option value="@ime.Id">@ime.Name</option>
-                                }
+                                <option value="@ime.Id">@ime.Name</option>
+                                } *@
                             </select>
 
                         </div>

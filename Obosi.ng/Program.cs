@@ -81,7 +81,7 @@ app.UseStaticFiles(new StaticFileOptions
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-app.PrepareDatabase().GetAwaiter().GetResult();
+//app.PrepareDatabase().GetAwaiter().GetResult();
 
 
 app.MapControllerRoute(

@@ -357,6 +357,116 @@
             return window.screen.width;
 
         }
+    
+        $('#villageId').on('change', function (e) {
+            loadAka($('#villageId').val())
+        });
+        $('#akaId').on('change', function (e) {
+            loadUmunna($('#akaId').val())
+        });
+        $('#umunnaId').on('change', function (e) {
+            loadImenne($('#umunnaId').val())
+        });
+
+        function loadAka(villageId) {
+
+            if (villageId > 0) {
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetAkas", "Home")', // we are calling json method
+                    dataType: 'json',
+                    data: { villageId: villageId },
+                    success: function (result) {
+                        console.log(result, "result  akaaaaaa");
+
+                        $("#akaId").empty();
+                        //populate ExamBatch
+                        $("#akaId").append('<option value = "" > -- Select Aka -- </option>');
+                        // $.each(result.specification, function (i, specification) {
+                        //     $("#akaId").append('<option value = "' + specification.id + '" >' + specification.name + '</option>');
+                        // });
+                        for (let i = 0; i < result.length; i++) {
+                            const item = result[i];
+                            // Access each item properties here
+                            console.log(item.id, item.unit.name);
+                            $("#akaId").append('<option value = "' + item.id + '" >' + item.unit.name + '</option>');
+                        }
+
+
+
+
+                    },
+                    error: function (ex) {
+                        alert('error' + ex);
+                    }
+
+                });
+            }
+        }
+
+        function loadUmunna(akaId) {
+
+            if (akaId > 0) {
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetUmunna", "Home")', // we are calling json method
+                    dataType: 'json',
+                    data: { akaId: akaId },
+                    success: function (result) {
+
+                        $("#umunnaId").empty();
+                            //populate ExamBatch
+                        $("#umunnaId").append('<option value = "" > -- Select Umunna -- </option>');
+
+                        for (let i = 0; i < result.length; i++) {
+                            const item = result[i];
+                                // Access each item properties here
+                                console.log(item.id, item.unit.name);
+                            $("#umunnaId").append('<option value = "' + item.id + '" >' + item.unit.name + '</option>');
+                            }
+                        
+
+                    },
+                    error: function (ex) {
+                        alert('error' + ex);
+                    }
+
+                });
+            }
+        }
+
+        function loadImenne(umunnaId) {
+
+            if (umunnaId > 0) {
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetImenes", "Home")', // we are calling json method
+                    dataType: 'json',
+                    data: { umunnaId: umunnaId },
+                    success: function (result) {
+
+
+                        $("#imeneId").empty();
+                            //populate ExamBatch
+                        $("#imeneId").append('<option value = "" > -- Select Imenne -- </option>');
+                        for (let i = 0; i < result.length; i++) {
+                            const item = result[i];
+                                // Access each item properties here
+                                console.log(item.id, item.unit.name);
+                            $("#imeneId").append('<option value = "' + item.id + '" >' + item.unit.name + '</option>');
+                            }
+
+                        
+
+                    },
+                    error: function (ex) {
+                        alert('error' + ex);
+                    }
+
+                });
+            }
+        }
+
     </script>
 
 

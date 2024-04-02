@@ -192,5 +192,9 @@ namespace Obosi.ng.Data
         public DbSet<MenuInRole> MenuInRole { get; set; }
         public DbSet<About> About { get; set; }
         public DbSet<UnitAdmin> UnitAdmin { get; set; } 
+        public DbSet<Village> Village { get; set; }
+        public DbSet<Aka> Aka { get; set; }
+        public DbSet<Umunna> Umunna { get; set; }
+        public DbSet<Imenne> Imenne { get; set; }
     }
 }

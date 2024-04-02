@@ -76,39 +76,54 @@ namespace Obosi.ng.Application.Services
                 {
                     var createdUser = await _dataContext.Users.AddAsync(user);
                     await _dataContext.SaveChangesAsync();
-
-                    Member_Unit Aka = new()
+                    var AkaItem = await _dataContext.Aka.Where(x => x.Id == akaId).FirstOrDefaultAsync();
+                    if (AkaItem != null)
                     {
-                        UsersId = createdUser.Entity.Id,
-                        UnitId = akaId,
-                        IsActive = true,
-                        DateJoined = DateTime.Now
-                    };
-                    await _dataContext.Member_Unit.AddAsync(Aka);
-                    Member_Unit Umunna = new()
+                        Member_Unit Aka = new()
+                        {
+                            UsersId = createdUser.Entity.Id,
+                            UnitId = AkaItem.UnitId,
+                            IsActive = true,
+                            DateJoined = DateTime.Now
+                        };
+                        await _dataContext.Member_Unit.AddAsync(Aka);
+                    }
+                    var UmunnaItem = await _dataContext.Umunna.Where(x => x.Id == umunnaId).FirstOrDefaultAsync();
+                    if (UmunnaItem != null)
                     {
-                        UsersId = createdUser.Entity.Id,
-                        UnitId = umunnaId,
-                        IsActive = false,
-                        DateJoined = DateTime.Now
-                    };
-                    await _dataContext.Member_Unit.AddAsync(Umunna);
-                    Member_Unit Imenne = new()
+                        Member_Unit Umunna = new()
+                        {
+                            UsersId = createdUser.Entity.Id,
+                            UnitId = UmunnaItem.UnitId,
+                            IsActive = false,
+                            DateJoined = DateTime.Now
+                        };
+                        await _dataContext.Member_Unit.AddAsync(Umunna);
+                    }
+                    var ImenneItem = await _dataContext.Imenne.Where(x => x.Id == imenneId).FirstOrDefaultAsync();
+                    if (ImenneItem != null)
                     {
-                        UsersId = createdUser.Entity.Id,
-                        UnitId = imenneId,
-                        IsActive = true,
-                        DateJoined = DateTime.Now
-                    };
-                    await _dataContext.Member_Unit.AddAsync(Imenne);
-                    Member_Unit Village = new()
+                        Member_Unit Imenne = new()
+                        {
+                            UsersId = createdUser.Entity.Id,
+                            UnitId = ImenneItem.UnitId,
+                            IsActive = true,
+                            DateJoined = DateTime.Now
+                        };
+                        await _dataContext.Member_Unit.AddAsync(Imenne);
+                    }
+                    var VillageItem = await _dataContext.Village.Where(x => x.Id == villageId).FirstOrDefaultAsync();
+                    if (VillageItem != null)
                     {
-                        UsersId = createdUser.Entity.Id,
-                        UnitId = villageId,
-                        IsActive = true,
-                        DateJoined = DateTime.Now
-                    };
-                    await _dataContext.Member_Unit.AddAsync(Village);
+                        Member_Unit Village = new()
+                        {
+                            UsersId = createdUser.Entity.Id,
+                            UnitId = VillageItem.UnitId,
+                            IsActive = true,
+                            DateJoined = DateTime.Now
+                        };
+                        await _dataContext.Member_Unit.AddAsync(Village);
+                    }
 
              
                     await _dataContext.SaveChangesAsync();
