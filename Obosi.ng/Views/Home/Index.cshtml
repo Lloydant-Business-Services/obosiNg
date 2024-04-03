@@ -372,122 +372,122 @@
                 <a href="#">verify your account</a>.
             </h2>
 
-            <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
+                <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
 
-                <div class="field-group">
-                    <div class="field-holder">
+                    <div class="field-group">
+                        <div class="field-holder">
 
-                        <input class="form-field" placeholder="First name" required asp-for="user.FirstName" />
+                            <input class="form-field" placeholder="First name" required asp-for="user.FirstName" />
 
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Last Name" required asp-for="user.LastName" />
+
+                        </div>
                     </div>
-                    <div class="field-holder">
+                    <div class="field-group">
+                        <div class="field-holder">
 
-                        <input class="form-field" placeholder="Last Name" required asp-for="user.LastName" />
+                            <input class="form-field" placeholder="Other name" asp-for="user.OtherName" />
 
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Email" asp-for="user.Email" required type="email" />
+
+                        </div>
+                    </div>  <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Password" required asp-for="user.Password" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Phone Number" asp-for="user.PhoneNumber" required />
+
+                        </div>
                     </div>
-                </div>
-                <div class="field-group">
-                    <div class="field-holder">
 
-                        <input class="form-field" placeholder="Other name" asp-for="user.OtherName" />
-
-                    </div>
-                    <div class="field-holder">
-
-                        <input class="form-field" placeholder="Email" asp-for="user.Email" required />
-
-                    </div>
-                </div>  <div class="field-group">
-                    <div class="field-holder">
-
-                        <input class="form-field" placeholder="Password" required asp-for="user.Password" />
-
-                    </div>
-                    <div class="field-holder">
-
-                        <input class="form-field" placeholder="Phone Number" asp-for="user.PhoneNumber" required />
-
-                    </div>
-                </div>
-
-                <div class="field-group">
-                    <div class="field-holder">
+                    <div class="field-group">
+                        <div class="field-holder">
 
                             <select class="form-field" asp-for="VillageId" required id="villageId">
                                 <option value="">Select Village</option>
-                            @foreach (var vil in Model.AllVillages)
-                            {
-                                <option value="@vil.Id">@vil.Name</option>
-                            }
-                        </select>
+                                @foreach (var vil in Model.AllVillages)
+                                {
+                                    <option value="@vil.Id">@vil.Name</option>
+                                }
+                            </select>
 
-                    </div>
+                        </div>
                         <div class="field-holder">
 
                             <select class="form-field" asp-for="AkaId" required id="akaId">
-                               @*  <option value="">Select Aka</option>
-                                @foreach (var ak in Model.AllAka)
+                                <option value="">Select Aka</option>
+                                @*   @foreach (var ak in Model.AllAka)
                                 {
-                                    <option value="@ak.Id">@ak.Name</option>
+                                <option value="@ak.Id">@ak.Name</option>
                                 } *@
 
                             </select>
 
                         </div>
-                  
-                </div>
 
-                <div class="field-group">
+                    </div>
+
+                    <div class="field-group">
                         <div class="field-holder">
 
                             <select class="form-field" asp-for="UmunnaId" required id="umunnaId">
-                               @*  <option value="">Select Umunna</option>
-                                @foreach (var umu in Model.AllUmunna)
+                                <option value="">Select Umunna</option>
+                                @*    @foreach (var umu in Model.AllUmunna)
                                 {
-                                    <option value="@umu.Id">@umu.Name</option>
+                                <option value="@umu.Id">@umu.Name</option>
                                 } *@
                             </select>
 
                         </div>
-                    <div class="field-holder">
+                        <div class="field-holder">
 
                             <select class="form-field" asp-for="ImeneId" required id="imeneId">
-                           @*  <option value="">Select Ime Nne</option>
-                            @foreach (var ime in Model.AllImene)
-                            {
+                                <option value="">Select Ime Nne</option>
+                                @*  @foreach (var ime in Model.AllImene)
+                                {
                                 <option value="@ime.Id">@ime.Name</option>
-                            } *@
-                        </select>
+                                } *@
+                            </select>
+
+                        </div>
 
                     </div>
-                   
-                </div>
 
-                <div class="field-holder">
+                    <div class="field-holder">
 
-                    <div class="options">
+                        <div class="options">
 
-                        <label> Are you a </label>
+                            <label> Are you a </label>
 
-                        <span>
+                            <span>
                                 <input type="radio" id="male" name="user.GenderId" asp-for="user.GenderId" value="1" />
-                            <label for="male">Male</label>
-                        </span>
+                                <label for="male">Male</label>
+                            </span>
 
-                        <span>
+                            <span>
                                 <input type="radio" id="female" name="user.GenderId" asp-for="user.GenderId" value="2" />
-                            <label for="female">Female</label>
-                        </span>
+                                <label for="female">Female</label>
+                            </span>
+                        </div>
+
                     </div>
 
-                </div>
 
+                    <button type="submit" class="submit-button">
+                        Continue
+                    </button>
 
-                <button type="submit" class="submit-button">
-                    Continue
-                </button>
-
-            </form>
+                </form>
 
         </div>
 
