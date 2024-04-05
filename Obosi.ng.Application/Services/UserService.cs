@@ -69,6 +69,7 @@ namespace Obosi.ng.Application.Services
         {
           if(user != null)
             {
+                var transaction = await _dataContext.Database.BeginTransactionAsync();
                 user.DateCreated = DateTime.Now;
                 user.IsActive = false;
                 var userDetails = await _dataContext.Users.Where(x => x.Email == user.Email).FirstOrDefaultAsync();
@@ -127,8 +128,10 @@ namespace Obosi.ng.Application.Services
 
              
                     await _dataContext.SaveChangesAsync();
+                    await transaction.CommitAsync();
                     return createdUser.Entity;
                 }
+                await transaction.RollbackAsync();
                 throw new Exception("User Already Exists");
             }
             throw new Exception("User Object is Null");

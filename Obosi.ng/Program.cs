@@ -29,6 +29,11 @@ builder.Services.AddTransient<IBoulevard,BoulevardService>();
 builder.Services.AddTransient<IMenuService, MenuService>();
 builder.Services.AddTransient<IMenuInRoleService, MenuInRoleService>();
 builder.Services.AddTransient<IAboutService, AboutService>();
+builder.Services.AddTransient<IAka, AkaService>();
+builder.Services.AddTransient<IImenne, ImenneService>();
+builder.Services.AddTransient<IUmunna, UmunnaService>();
+builder.Services.AddTransient<IVillage, VillageService>();
+
 
 
 builder.Services.Configure<CookiePolicyOptions>(options =>
