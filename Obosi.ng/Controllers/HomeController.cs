@@ -1,14 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.IdentityModel.Tokens;
-using Obosi.ng.Application.Enums;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Domain.Entity;
 using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
-using System.Diagnostics;
+using Serilog;
 using System.Security.Claims;
 
 namespace Obosi.ng.Controllers
@@ -24,10 +21,10 @@ namespace Obosi.ng.Controllers
         private readonly IMedia _media;
         private readonly IExecutive _executive;
         private readonly IAboutService _about;
-        
-       
 
-        public HomeController(ILogger<HomeController> logger, INews news, IBlog blog, ICalender calender, IUnit unit, 
+
+
+        public HomeController(ILogger<HomeController> logger, INews news, IBlog blog, ICalender calender, IUnit unit,
         IUser user, IMedia media, IExecutive executive, IAboutService about)
         {
             _logger = logger;
@@ -44,7 +41,7 @@ namespace Obosi.ng.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var model = new HomePageViewModel(_news, _blog,_calender,_unit);
+            var model = new HomePageViewModel(_news, _blog, _calender, _unit);
             await model.InitializeNewsAsync();
             return View(model);
         }
@@ -62,6 +59,7 @@ namespace Obosi.ng.Controllers
         [HttpPost]
         public async Task<IActionResult> SignIn(HomePageViewModel model)
         {
+
             try
             {
                 var user = await _user.AuthenticateUser(model.Username, model.Password);
@@ -88,12 +86,13 @@ namespace Obosi.ng.Controllers
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 model.ErrorMessage = ex.Message;
+                Log.Error($"SignIn Method-{ex.Message}", ex);
             }
 
-            return View(model); 
+            return View(model);
         }
         [HttpGet]
         public async Task<IActionResult> SignUp()
@@ -111,15 +110,16 @@ namespace Obosi.ng.Controllers
                 var user = await _user.CreateUser(model.user, model.AkaId, model.UmunnaId, model.VillageId, model.ImeneId);
                 if (user?.IsActive != true)
                 {
-                  
-                     return RedirectToAction("Confirmation", "Home");
+
+                    return RedirectToAction("Confirmation", "Home");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 model = new HomePageViewModel(_unit);
                 model.ErrorMessage = ex.Message;
                 await model.GetAllUmunna();
+                Log.Error($"SignUp Method-{ex.Message}", ex);
                 return View(model);
             }
             return RedirectToAction("Index", "Home");
@@ -141,7 +141,7 @@ namespace Obosi.ng.Controllers
             await model.InitializeNewsAsync();
             return View(model);
         }
-       
+
         public async Task<IActionResult> Executive()
         {
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
@@ -157,11 +157,11 @@ namespace Obosi.ng.Controllers
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
             return View(model);
         }
-       
+
         public async Task<IActionResult> Unit(string id)
         {
             int unitId = Convert.ToInt16(StringEncryption.Decrypt(id));
-            var model = new HomePageViewModel(_unit,_calender,_media,_executive);
+            var model = new HomePageViewModel(_unit, _calender, _media, _executive);
             await model.GetUnit(unitId);
             return View(model);
         }
@@ -181,7 +181,7 @@ namespace Obosi.ng.Controllers
         }
         public async Task<IActionResult> EventList()
         {
-            
+
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
             await model.GetEvents();
             return View(model);
@@ -245,5 +245,5 @@ namespace Obosi.ng.Controllers
             return await _unit.GetImennes(umunnaId);
         }
     }
-   
+
 }
