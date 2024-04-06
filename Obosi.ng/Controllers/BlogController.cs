@@ -1,8 +1,8 @@
-﻿ using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
-using System.Security.Claims;
+using Serilog;
 
 namespace Obosi.ng.Presentation.Controllers
 {
@@ -41,21 +41,30 @@ namespace Obosi.ng.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(BlogViewModel model)
         {
-            if (model?.Blog != null)
+            try
             {
-                var userRole = IdentityExtensions.GetId(User.Identity);
-                var role = IdentityExtensions.GetRole(User.Identity);
-                if (role == 3)
+                if (model?.Blog != null)
                 {
-                    model.Blog.UserId = Convert.ToInt32(userRole);
-                    model.Blog.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
-                    await blog.CreateBlog(model.Blog);
-                    return RedirectToAction("Index");
+                    var userRole = IdentityExtensions.GetId(User.Identity);
+                    var role = IdentityExtensions.GetRole(User.Identity);
+                    if (role == 3)
+                    {
+                        model.Blog.UserId = Convert.ToInt32(userRole);
+                        model.Blog.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+                        await blog.CreateBlog(model.Blog);
+                        return RedirectToAction("Index");
+                    }
                 }
+                await model.InitializeNewsAsync();
             }
-            await model.InitializeNewsAsync();
+            catch (Exception ex)
+            {
+
+                Log.Error($"Create blog Method-{ex.Message}", ex);
+            }
+
             return View(model);
-        }   
+        }
         public async Task<IActionResult> Edit(int id)
         {
             BlogViewModel model = new(blog);
@@ -68,17 +77,26 @@ namespace Obosi.ng.Presentation.Controllers
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Edit(BlogViewModel model)
         {
-            if (model.Blog!= null)
+            try
             {
-                model.Blog.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
-                await blog.UpdateBlog(model.Blog);
-                return RedirectToAction("Index");
+                if (model.Blog != null)
+                {
+                    model.Blog.BackgroundImageUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+                    await blog.UpdateBlog(model.Blog);
+                    return RedirectToAction("Index");
+                }
             }
+            catch (Exception ex)
+            {
+
+                Log.Error($"Edit blog Method-{ex.Message}", ex);
+            }
+
             return View(model);
         }
         public async Task<IActionResult> Delete(int id)
         {
-           await blog.DeleteBlog(id);
+            await blog.DeleteBlog(id);
             return RedirectToAction("index");
         }
         public async Task<IActionResult> Approve(int id)
