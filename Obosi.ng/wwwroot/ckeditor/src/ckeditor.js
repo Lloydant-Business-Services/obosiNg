@@ -2,30 +2,12 @@
  * @license Copyright (c) 2014-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    }
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
 import { Bold, Italic } from '@ckeditor/ckeditor5-basic-styles';
 import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
 import { CKBox } from '@ckeditor/ckeditor5-ckbox';
 import { CloudServices } from '@ckeditor/ckeditor5-cloud-services';
-{
-    EditorConfig;
-}
-from;
-'@ckeditor/ckeditor5-core';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { Heading } from '@ckeditor/ckeditor5-heading';
 import { Image, ImageCaption, ImageStyle, ImageToolbar, ImageUpload, PictureEditing } from '@ckeditor/ckeditor5-image';
@@ -40,11 +22,10 @@ import { TextTransformation } from '@ckeditor/ckeditor5-typing';
 import { Undo } from '@ckeditor/ckeditor5-undo';
 // You can read more about extending the build with additional plugins in the "Installing plugins" guide.
 // See https://ckeditor.com/docs/ckeditor5/latest/installation/plugins/installing-plugins.html for details.
-var Editor = /** @class */ (function (_super) {
-    __extends(Editor, _super);
-    function Editor() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.builtinPlugins = [
+class Editor extends ClassicEditor {
+    constructor() {
+        super(...arguments);
+        this.builtinPlugins = [
             Autoformat,
             BlockQuote,
             Bold,
@@ -70,7 +51,7 @@ var Editor = /** @class */ (function (_super) {
             TextTransformation,
             Undo
         ];
-        _this.defaultConfig = {
+        this.defaultConfig = {
             toolbar: {
                 items: [
                     '|',
@@ -98,9 +79,7 @@ var Editor = /** @class */ (function (_super) {
                 ]
             }
         };
-        return _this;
     }
-    return Editor;
-}(ClassicEditor));
+}
 export default Editor;
 //# sourceMappingURL=ckeditor.js.map

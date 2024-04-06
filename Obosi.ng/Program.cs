@@ -4,7 +4,9 @@ using Microsoft.Extensions.FileProviders;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Application.Services;
 using Obosi.ng.Data;
-using Obosi.ng.Presentation.utility;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.MSSqlServer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,11 +23,11 @@ builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<IBlog, BlogService>();
 builder.Services.AddTransient<ICalender, CalenderService>();
 builder.Services.AddTransient<INews, NewsService>();
-builder.Services.AddTransient<IExecutive,ExecutiveService>();
-builder.Services.AddTransient<IMedia,MediaService>();
+builder.Services.AddTransient<IExecutive, ExecutiveService>();
+builder.Services.AddTransient<IMedia, MediaService>();
 builder.Services.AddTransient<IUnit, UnitService>();
-builder.Services.AddTransient<IUser,UserService>();
-builder.Services.AddTransient<IBoulevard,BoulevardService>();
+builder.Services.AddTransient<IUser, UserService>();
+builder.Services.AddTransient<IBoulevard, BoulevardService>();
 builder.Services.AddTransient<IMenuService, MenuService>();
 builder.Services.AddTransient<IMenuInRoleService, MenuInRoleService>();
 builder.Services.AddTransient<IAboutService, AboutService>();
@@ -42,13 +44,38 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
     options.CheckConsentNeeded = context => false;
     options.MinimumSameSitePolicy = SameSiteMode.None;
 });
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+{
     options.AccessDeniedPath = "/Account/Enter"; //Replace with Error page for Access Denied
     options.LoginPath = "/Account/Enter"; //Replace with Error Page for Not Logged in
     options.LogoutPath = "/Account/Logout";
 });
 
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .MinimumLevel.Override("System", LogEventLevel.Warning)
+    .WriteTo.Console()
+    .WriteTo.MSSqlServer(
+        connectionString: builder.Configuration.GetConnectionString
+    ("DataContext_log"),
+        sinkOptions: new MSSqlServerSinkOptions
+        {
+            TableName = "Logs",
+            AutoCreateSqlDatabase = true,
+            AutoCreateSqlTable = true,
+        },
+        columnOptions: new Serilog.Sinks.MSSqlServer.ColumnOptions
+        {
 
+            //AdditionalColumns = new Collection<SqlColumn>
+            //{
+            //    new SqlColumn { ColumnName = "MyCustomColumn", DataType = SqlDbType.NVarChar, DataLength = 1000 }
+            //}
+        })
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 
