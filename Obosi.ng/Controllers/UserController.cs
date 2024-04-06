@@ -2,7 +2,6 @@
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Application.Services;
 using Obosi.ng.Domain.Entity;
-using Obosi.ng.Infrastructure.Migrations;
 using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
 using System.Security.Claims;

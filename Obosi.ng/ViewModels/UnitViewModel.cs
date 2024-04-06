@@ -16,20 +16,20 @@ namespace Obosi.ng.Presentation.ViewModels
         }
         public async Task InitializeNewsAsync()
         {
-            this.UnitTypeList = await unit.GetAllUnitTypes();
+            this.Unit_TypeList = await unit.GetAllUnit_Types();
         }
-        public async Task GetUnitTypeList(int unitTypeId)
+        public async Task GetUnit_TypeList(int Unit_TypeId)
         {
-            this.Units = await unit.GetAllUnitsByUnitType(unitTypeId);
-            this.UnitTypeId = UnitTypeId;
-            this.Unit_Type = await unit.GetUnitType(unitTypeId);    
+            this.Units = await unit.GetAllUnitsByUnit_Type(Unit_TypeId);
+            this.Unit_TypeId = Unit_TypeId;
+            this.Unit_Type = await unit.GetUnit_Type(Unit_TypeId);    
         }
 
-        public List<Unit_Type> UnitTypeList { get; set; }
+        public List<Unit_Type> Unit_TypeList { get; set; }
         public List<Unit> Units { get; set; }
         public Unit Unit { get; set; }
         public Unit_Type Unit_Type { get; set; }
         public IFormFile Image { get; set; }
-        public int UnitTypeId { get; set; }
+        public int Unit_TypeId { get; set; }
     }
 }

@@ -62,30 +62,36 @@ namespace Obosi.ng.Controllers
         [HttpPost]
         public async Task<IActionResult> SignIn(HomePageViewModel model)
         {
-           var user = await _user.AuthenticateUser(model.Username, model.Password);
-            if (user?.Id > 0)
+            try
             {
-                var identity = new ClaimsIdentity(new[] {
+                var user = await _user.AuthenticateUser(model.Username, model.Password);
+                if (user?.Id > 0)
+                {
+                    var identity = new ClaimsIdentity(new[] {
                          new Claim(ClaimTypes.Email, user.Email),
                          new Claim(ClaimTypes.Role, user.Role.Name),
                          new Claim(ClaimTypes.GroupSid, user.RoleId.ToString()),
                          new Claim(ClaimTypes.Sid, user.Id.ToString())
                         }, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                var principal = new ClaimsPrincipal(identity);
-                if (!model.RememberPassword)
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                else
-                    await HttpContext.SignInAsync(
-                                            CookieAuthenticationDefaults.AuthenticationScheme, principal,
-                                                new AuthenticationProperties
-                                                {
-                                                    IsPersistent = true
-                                                });
-                return RedirectToAction("Index", "DashBoard");
+                    var principal = new ClaimsPrincipal(identity);
+                    if (!model.RememberPassword)
+                        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                    else
+                        await HttpContext.SignInAsync(
+                                                CookieAuthenticationDefaults.AuthenticationScheme, principal,
+                                                    new AuthenticationProperties
+                                                    {
+                                                        IsPersistent = true
+                                                    });
+                    return RedirectToAction("Index", "DashBoard");
 
+                }
             }
-            model.ErrorMessage ="User Not Found";
+            catch(Exception ex)
+            {
+                model.ErrorMessage = ex.Message;
+            }
 
             return View(model); 
         }

@@ -6,7 +6,6 @@ using Obosi.ng.Application.Enums;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
-using Obosi.ng.Infrastructure.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,11 +66,11 @@ namespace Obosi.ng.Application.Services
             throw new Exception("Unit is empty");
         }
 
-        public async Task<Unit_Type> CreateUnitType(Unit_Type unittype)
+        public async Task<Unit_Type> CreateUnit_Type(Unit_Type Unit_Type)
         {
-            if(unittype != null)
+            if(Unit_Type != null)
             {
-                var created = await _dataContext.Unit_Type.AddAsync(unittype);
+                var created = await _dataContext.Unit_Type.AddAsync(Unit_Type);
                 await _dataContext.SaveChangesAsync();
                 return created.Entity;  
             }
@@ -102,7 +101,7 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Unit>> GetAllUmunna()
         {
-            return await _dataContext.Unit.Where(x => x.UnitTypeId == (int)UnitTypes.Umunna).Include(x => x.UnitType).OrderBy(p => p.Name)
+            return await _dataContext.Unit.Where(x => x.Unit_TypeId == (int)Unit_Types.Umunna).Include(x => x.Unit_Type).OrderBy(p => p.Name)
                 .Select(ua => new Unit
                 {
                     Name = SentenceCase(ua.Name),
@@ -113,20 +112,20 @@ namespace Obosi.ng.Application.Services
                     Description = ua.Description,
                     Id = ua.Id,
                     NeedsConfirmation = ua.NeedsConfirmation,
-                    UnitTypeId = ua.UnitTypeId,
-                    UnitType
-                = ua.UnitType
+                    Unit_TypeId = ua.Unit_TypeId,
+                    Unit_Type
+                = ua.Unit_Type
                 })
                 .ToListAsync();
         }
 
         public async Task<List<Unit>> GetAllUnits()
         {
-            return await _dataContext.Unit.Include(x => x.UnitType).OrderBy(p => p.Name)
+            return await _dataContext.Unit.Include(x => x.Unit_Type).OrderBy(p => p.Name)
                 .Select(ua => new Unit { Name = SentenceCase(ua.Name),About = ua.About,BackGroundImageUrl =ua.BackGroundImageUrl,
                 CanHaveMembers = ua.CanHaveMembers,DateCreated = ua.DateCreated,Description= ua.Description,
-                Id= ua.Id,NeedsConfirmation= ua.NeedsConfirmation,UnitTypeId = ua.UnitTypeId,UnitType
-                = ua.UnitType})
+                Id= ua.Id,NeedsConfirmation= ua.NeedsConfirmation,Unit_TypeId = ua.Unit_TypeId,Unit_Type
+                = ua.Unit_Type})
                 .ToListAsync();
           
         }
@@ -156,7 +155,7 @@ namespace Obosi.ng.Application.Services
             var userRole = await _dataContext.Users.Where(r => r.Email == email).FirstOrDefaultAsync();
             if(userRole.RoleId == (int)Enums.Role.Admin)
             {
-                return await _dataContext.Unit.Include(x => x.UnitType).OrderBy(p => p.Name)
+                return await _dataContext.Unit.Include(x => x.Unit_Type).OrderBy(p => p.Name)
                     .Select(ua => new Unit
                     {
                         Name = SentenceCase(ua.Name),
@@ -167,14 +166,14 @@ namespace Obosi.ng.Application.Services
                         Description = ua.Description,
                         Id = ua.Id,
                         NeedsConfirmation = ua.NeedsConfirmation,
-                        UnitTypeId = ua.UnitTypeId,
-                        UnitType
-                = ua.UnitType
+                        Unit_TypeId = ua.Unit_TypeId,
+                        Unit_Type
+                = ua.Unit_Type
                     })
                     .ToListAsync();
             }
             return await _dataContext.UnitAdmin.Where(x => x.Users.Email == email)
-                                                 .Include(x => x.Unit.UnitType)
+                                                 .Include(x => x.Unit.Unit_Type)
                                                 
                                                  .Select(ua => new Unit
                                                  {
@@ -186,17 +185,17 @@ namespace Obosi.ng.Application.Services
                                                      Description = ua.Unit.Description,
                                                      Id = ua.Unit.Id,
                                                      NeedsConfirmation = ua.Unit.NeedsConfirmation,
-                                                     UnitTypeId = ua.Unit.UnitTypeId,
-                                                     UnitType
-                = ua.Unit.UnitType
+                                                     Unit_TypeId = ua.Unit.Unit_TypeId,
+                                                     Unit_Type
+                = ua.Unit.Unit_Type
                                                  })
                                                  .ToListAsync();
           
         }
 
-        public async Task<List<Unit>> GetAllUnitsByUnitType(int unitTypeId)
+        public async Task<List<Unit>> GetAllUnitsByUnit_Type(int Unit_TypeId)
         {
-            return await _dataContext.Unit.Where(x => x.UnitTypeId == unitTypeId).Include(x => x.UnitType).OrderBy(p => p.Name)
+            return await _dataContext.Unit.Where(x => x.Unit_TypeId == Unit_TypeId).Include(x => x.Unit_Type).OrderBy(p => p.Name)
                 .Select(ua => new Unit
                 {
                     Name = SentenceCase(ua.Name),
@@ -207,14 +206,14 @@ namespace Obosi.ng.Application.Services
                     Description = ua.Description,
                     Id = ua.Id,
                     NeedsConfirmation = ua.NeedsConfirmation,
-                    UnitTypeId = ua.UnitTypeId,
-                    UnitType
-                = ua.UnitType
+                    Unit_TypeId = ua.Unit_TypeId,
+                    Unit_Type
+                = ua.Unit_Type
                 })
                 .ToListAsync();
         }
 
-        public async Task<List<Unit_Type>> GetAllUnitTypes()
+        public async Task<List<Unit_Type>> GetAllUnit_Types()
         {
             return await _dataContext.Unit_Type.OrderBy(p => p.Name).ToListAsync();
         }
@@ -223,7 +222,7 @@ namespace Obosi.ng.Application.Services
         {
             DashBoardDTO model = new();
             var Users = await _dataContext.Users.ToListAsync();
-            var units = await _dataContext.Unit.Include(x=>x.UnitType).Select(ua => new Unit
+            var units = await _dataContext.Unit.Include(x=>x.Unit_Type).Select(ua => new Unit
             {
                 Name = SentenceCase(ua.Name),
                 About = ua.About,
@@ -233,13 +232,13 @@ namespace Obosi.ng.Application.Services
                 Description = ua.Description,
                 Id = ua.Id,
                 NeedsConfirmation = ua.NeedsConfirmation,
-                UnitTypeId = ua.UnitTypeId,
-                UnitType
-                = ua.UnitType
+                Unit_TypeId = ua.Unit_TypeId,
+                Unit_Type
+                = ua.Unit_Type
             }).ToListAsync();
-            var Umunna = units.Where(x => x.UnitTypeId == (int)UnitTypes.Umunna).OrderBy(p => p.Name).ToList();
-            var Odus = units.Where(x => x.UnitTypeId == (int)UnitTypes.ODU_chapter).OrderBy(p => p.Name).ToList();
-            var villages = units.Where(x => x.UnitTypeId == (int)UnitTypes.Village).OrderBy(p => p.Name).ToList();
+            var Umunna = units.Where(x => x.Unit_TypeId == (int)Unit_Types.Umunna).OrderBy(p => p.Name).ToList();
+            var Odus = units.Where(x => x.Unit_TypeId == (int)Unit_Types.ODU_chapter).OrderBy(p => p.Name).ToList();
+            var villages = units.Where(x => x.Unit_TypeId == (int)Unit_Types.Village).OrderBy(p => p.Name).ToList();
             model.TotalMembers = Users.Where(x => x.IsActive == true).Count();
             model.NewMembers = Users.Where(x => x.IsActive == false).Count();
             model.TotalOdu = Odus.Count();
@@ -262,15 +261,15 @@ namespace Obosi.ng.Application.Services
                 Description = ua.Description,
                 Id = ua.Id,
                 NeedsConfirmation = ua.NeedsConfirmation,
-                UnitTypeId = ua.UnitTypeId,
-                UnitType
-                = ua.UnitType
+                Unit_TypeId = ua.Unit_TypeId,
+                Unit_Type
+                = ua.Unit_Type
             }).FirstOrDefaultAsync();
         }
 
-        public async Task<Unit_Type> GetUnitType(int unittypeId)
+        public async Task<Unit_Type> GetUnit_Type(int Unit_TypeId)
         {
-            return await _dataContext.Unit_Type.Where(x=>x.Id == unittypeId).FirstOrDefaultAsync();
+            return await _dataContext.Unit_Type.Where(x=>x.Id == Unit_TypeId).FirstOrDefaultAsync();
         }
 
         public async Task<Unit?> JoinUnit(int unitId, long UserId)
@@ -323,28 +322,28 @@ namespace Obosi.ng.Application.Services
             return null;
         }
 
-        public async Task<Unit_Type> UpdateUnitType(Unit_Type unittype)
+        public async Task<Unit_Type> UpdateUnit_Type(Unit_Type Unit_Type)
         {
-            if(unittype != null)
+            if(Unit_Type != null)
             {
-                if (!string.IsNullOrWhiteSpace(unittype.Name))
+                if (!string.IsNullOrWhiteSpace(Unit_Type.Name))
                 {
-                    _dataContext.Unit_Type.Update(unittype);
+                    _dataContext.Unit_Type.Update(Unit_Type);
                     await _dataContext.SaveChangesAsync();
                 }
-                return unittype;
+                return Unit_Type;
             }
             return null;
         }
 
         public async Task<List<Member_Unit>> ViewApprovedMembers()
         {
-            return await _dataContext.Member_Unit.Where(x => x.IsActive == true && x.Unit.UnitTypeId == (int)UnitTypes.Umunna).Include(x=>x.Unit.UnitType).Include(x=>x.Users).ToListAsync();
+            return await _dataContext.Member_Unit.Where(x => x.IsActive == true && x.Unit.Unit_TypeId == (int)Unit_Types.Umunna).Include(x=>x.Unit.Unit_Type).Include(x=>x.Users).ToListAsync();
         }
 
         public async Task<List<Member_Unit>> ViewUnApprovedMembers()
         {
-            return await _dataContext.Member_Unit.Where(x => x.IsActive == false && x.Unit.UnitTypeId == (int)UnitTypes.Umunna).Include(x => x.Unit.UnitType).Include(x => x.Users).ToListAsync();
+            return await _dataContext.Member_Unit.Where(x => x.IsActive == false && x.Unit.Unit_TypeId == (int)Unit_Types.Umunna).Include(x => x.Unit.Unit_Type).Include(x => x.Users).ToListAsync();
         }
 
         public async Task<List<Village>> GetVillages()
@@ -364,8 +363,8 @@ namespace Obosi.ng.Application.Services
                         Description = ua.Unit.Description,
                         Id = ua.Id,
                         NeedsConfirmation = ua.Unit.NeedsConfirmation,
-                        UnitTypeId = ua.Unit.UnitTypeId,
-                        UnitType = ua.Unit.UnitType
+                        Unit_TypeId = ua.Unit.Unit_TypeId,
+                        Unit_Type = ua.Unit.Unit_Type
                     }
                 })
                 .ToListAsync(); 
@@ -387,8 +386,8 @@ namespace Obosi.ng.Application.Services
                     Description = ua.Unit.Description,
                     Id = ua.Id,
                     NeedsConfirmation = ua.Unit.NeedsConfirmation,
-                    UnitTypeId = ua.Unit.UnitTypeId,
-                    UnitType = ua.Unit.UnitType
+                    Unit_TypeId = ua.Unit.Unit_TypeId,
+                    Unit_Type = ua.Unit.Unit_Type
                 }
                 })
                 .ToListAsync();
@@ -410,8 +409,8 @@ namespace Obosi.ng.Application.Services
                       Description = ua.Unit.Description,
                       Id = ua.Id,
                       NeedsConfirmation = ua.Unit.NeedsConfirmation,
-                      UnitTypeId = ua.Unit.UnitTypeId,
-                      UnitType = ua.Unit.UnitType
+                      Unit_TypeId = ua.Unit.Unit_TypeId,
+                      Unit_Type = ua.Unit.Unit_Type
                   }
                   })
                   .ToListAsync();
@@ -433,8 +432,8 @@ namespace Obosi.ng.Application.Services
                      Description = ua.Unit.Description,
                      Id = ua.Id,
                      NeedsConfirmation = ua.Unit.NeedsConfirmation,
-                     UnitTypeId = ua.Unit.UnitTypeId,
-                     UnitType = ua.Unit.UnitType
+                     Unit_TypeId = ua.Unit.Unit_TypeId,
+                     Unit_Type = ua.Unit.Unit_Type
                  }
                  })
                  .ToListAsync();

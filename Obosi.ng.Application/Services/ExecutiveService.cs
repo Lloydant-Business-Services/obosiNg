@@ -65,7 +65,7 @@ namespace Obosi.ng.Application.Services
 
         public async Task<Executive> GetExecutivesById(int id)
         {
-            return await _dataContext.Executive.Where(x => x.Id == id).Include(x => x.User).Include(x => x.Unit.UnitType).FirstOrDefaultAsync();
+            return await _dataContext.Executive.Where(x => x.Id == id).Include(x => x.User).Include(x => x.Unit.Unit_Type).FirstOrDefaultAsync();
         }
 
         public async Task<List<Executive>> GetExecutivesByUnit(int unitId)

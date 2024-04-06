@@ -3,7 +3,6 @@ using Obosi.ng.Application.DTO;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
-using Obosi.ng.Infrastructure.Migrations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;

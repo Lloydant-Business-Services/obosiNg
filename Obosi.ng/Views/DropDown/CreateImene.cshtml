@@ -1,0 +1,50 @@
+﻿@model Obosi.ng.Presentation.ViewModels.DropDownViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create Imenne</h1>
+
+<form asp-action="CreateImene" method="post" >
+
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Unit:</label>
+
+                <select asp-for="Imenne.UnitId" class="form-select" id="unitId" required>
+                    <option value="">Select</option>
+                    @foreach (var item in Model.Units)
+                    {
+                        <option value="@item.Id">@item.Name (@item.Unit_Type.Name)</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CategoryId">Umunna:</label>
+
+                <select asp-for="Imenne.UmunnaId" class="form-select" id="unitId" required>
+                    <option value="">Select</option>
+                    @foreach (var item in Model.Umunnas)
+                    {
+                        <option value="@item.Id">@item.Unit.Name </option>
+                    }
+                </select>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<script src="~/js/jquery.min.js"></script>
+
+

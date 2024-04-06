@@ -90,7 +90,7 @@ namespace Obosi.ng.Application.Services
                 foreach (var role in roles)
                 {
                     var assets = await _dataContext.Picture_Assets.Where(x => x.UnitId == role.UnitId)
-                        .Include(x => x.Unit.UnitType).ToListAsync();
+                        .Include(x => x.Unit.Unit_Type).ToListAsync();
                     allAssets.AddRange(assets);
                 }
                 return allAssets;

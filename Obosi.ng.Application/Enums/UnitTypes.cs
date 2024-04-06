@@ -1,6 +1,6 @@
 ﻿namespace Obosi.ng.Application.Enums
 {
-    public enum UnitTypes
+    public enum Unit_Types
     {
 	Village = 1,
 	Suburb = 2,
