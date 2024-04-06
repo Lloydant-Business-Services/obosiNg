@@ -59,35 +59,35 @@ namespace Obosi.ng.Data
                                                 new Unit_Type() { Id = 24, Name = "Services And Resources", IsActive = true }
                 );
             modelBuilder.Entity<Unit>().HasData(
-               new Unit() { Id = 1, Name = "Umuota", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 1, BackGroundImageUrl = "" },
-               new Unit() { Id = 2, Name = "Mmakwum", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 1, BackGroundImageUrl = "" },
-               new Unit() { Id = 3, Name = "Uruowulu", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 1, BackGroundImageUrl = "" },
-               new Unit() { Id = 4, Name = "Ugamuma", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 1, BackGroundImageUrl = "" },
-               new Unit() { Id = 5, Name = "Ire", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 1, BackGroundImageUrl = "" },
-               new Unit() { Id = 6, Name = "Lagos", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 7, Name = "Abuja", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 8, Name = "Port Harcourt", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 9, Name = "Aba", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 10, Name = "Abakaliki", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 11, Name = "Awka", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 12, Name = "Benin City", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 13, Name = "Enugu", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 14, Name = "Jos", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 15, Name = "Kaduna", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 16, Name = "Makurdi", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 17, Name = "Nnewi", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 18, Name = "Suleja", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 19, Name = "Warri", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 20, Name = "Umuota", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 21, Name = "Mmakwum", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 22, Name = "Uruowulu", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 23, Name = "Ugamuma", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 24, Name = "Ire", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 25, Name = "OWA UK", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 26, Name = "ODA USA", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 27, Name = "ODU South Africa", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 28, Name = "ODU Brazil", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" },
-               new Unit() { Id = 29, Name = "ODU Kuwait", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, UnitTypeId = 5, BackGroundImageUrl = "" }
+               new Unit() { Id = 1, Name = "Umuota", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 1, BackGroundImageUrl = "" },
+               new Unit() { Id = 2, Name = "Mmakwum", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 1, BackGroundImageUrl = "" },
+               new Unit() { Id = 3, Name = "Uruowulu", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 1, BackGroundImageUrl = "" },
+               new Unit() { Id = 4, Name = "Ugamuma", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 1, BackGroundImageUrl = "" },
+               new Unit() { Id = 5, Name = "Ire", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 1, BackGroundImageUrl = "" },
+               new Unit() { Id = 6, Name = "Lagos", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 7, Name = "Abuja", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 8, Name = "Port Harcourt", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 9, Name = "Aba", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 10, Name = "Abakaliki", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 11, Name = "Awka", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 12, Name = "Benin City", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 13, Name = "Enugu", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 14, Name = "Jos", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 15, Name = "Kaduna", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 16, Name = "Makurdi", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 17, Name = "Nnewi", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 18, Name = "Suleja", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 19, Name = "Warri", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 20, Name = "Umuota", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 21, Name = "Mmakwum", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 22, Name = "Uruowulu", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 23, Name = "Ugamuma", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 24, Name = "Ire", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 25, Name = "OWA UK", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 26, Name = "ODA USA", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 27, Name = "ODU South Africa", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 28, Name = "ODU Brazil", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" },
+               new Unit() { Id = 29, Name = "ODU Kuwait", About = "", DateCreated = DateTime.Now, NeedsConfirmation = false, Unit_TypeId = 5, BackGroundImageUrl = "" }
 
 
                );
@@ -142,7 +142,7 @@ namespace Obosi.ng.Data
 
                  new Menu() { Id = 11, Controller = "About", ActionName = "Index", DisplayName = "About", MenuGroupId = 1, Active = true },
                   new Menu() { Id = 12, Controller = "Menu", ActionName = "Index", DisplayName = "Setup Menu", MenuGroupId = 1, Active = true },
-                 // new Menu() { Id = 13, Controller = "Permissions", ActionName = "Index", DisplayName = "Unit Admin", MenuGroupId = 1, Active = true },
+                  new Menu() { Id = 13, Controller = "Permissions", ActionName = "Index", DisplayName = "Unit Admin", MenuGroupId = 1, Active = true },
                    new Menu() { Id = 14, Controller = "DropDown", ActionName = "Index", DisplayName = "Setup Drop Down", MenuGroupId = 1, Active = true }
 
 

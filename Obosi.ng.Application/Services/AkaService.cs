@@ -48,13 +48,13 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Aka>> GetAka()
         {
-            return await _dataContext.Aka.Include(x => x.Unit.UnitType).Include(x => x.Village.Unit.UnitType).ToListAsync();
+            return await _dataContext.Aka.Include(x => x.Unit.Unit_Type).Include(x => x.Village.Unit.Unit_Type).ToListAsync();
             ;
         }
 
         public async Task<List<Aka>> GetAkaByVillage(int VillageId)
         {
-           return await _dataContext.Aka.Where(x=>x.VillageId == VillageId).Include(x => x.Unit.UnitType).Include(x => x.Village.Unit.UnitType).ToListAsync();
+           return await _dataContext.Aka.Where(x=>x.VillageId == VillageId).Include(x => x.Unit.Unit_Type).Include(x => x.Village.Unit.Unit_Type).ToListAsync();
         }
 
         public async Task<Aka> UpdateAka(Aka aka)

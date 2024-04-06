@@ -13,18 +13,18 @@ namespace Obosi.ng.Application.Interfaces
         Task<Unit?> JoinUnit(int unitId, long userId);
         Task<Unit> ConfirmUnit(int unitId, long userId);
         Task<List<Member_Unit>> GetAllMembersByUnitId(int unitId);
-        Task<List<Unit_Type>> GetAllUnitTypes();
-        Task<List<Unit>> GetAllUnitsByUnitType(int unitTypeId);
+        Task<List<Unit_Type>> GetAllUnit_Types();
+        Task<List<Unit>> GetAllUnitsByUnit_Type(int Unit_TypeId);
         Task<List<Unit>> GetAllUmunna();
         Task<List<Unit>> GetAllUnits();
         Task<List<Unit>> GetAllUnits(string email);
         Task<DashBoardDTO> GetDashBoardDTO();
         Task<Unit> GetUnit(int unitId);
         Task<Unit> CreateUnit(Unit unit);
-        Task<Unit_Type> CreateUnitType(Unit_Type unittype);
-        Task<Unit_Type> GetUnitType(int unittypeId);
+        Task<Unit_Type> CreateUnit_Type(Unit_Type Unit_Type);
+        Task<Unit_Type> GetUnit_Type(int Unit_TypeId);
         Task<Unit> UpdateUnit(Unit unit);   
-        Task<Unit_Type> UpdateUnitType(Unit_Type unittype);
+        Task<Unit_Type> UpdateUnit_Type(Unit_Type Unit_Type);
         Task<List<Member_Unit>> ViewApprovedMembers();
         Task<List<Member_Unit>> ViewUnApprovedMembers();
 

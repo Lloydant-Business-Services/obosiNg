@@ -24,19 +24,19 @@ namespace Obosi.ng.Presentation.ViewModels
             builders_Boulevards = await _boulevard.GetBoulevard();
 
            
-            this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
-            this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
-            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne);
-            this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+            this.AllUmunna = await unit.GetAllUnitsByUnit_Type((int)Unit_Types.Umunna);
+            this.AllVillages = await unit.GetAllUnitsByUnit_Type((int)Unit_Types.Village);
+            this.AllImene = await unit.GetAllUnitsByUnit_Type((int)Unit_Types.Ime_Nne);
+            this.AllAka = await unit.GetAllUnitsByUnit_Type((int)Unit_Types.Aka);
         }
         public async Task InitializeAsync(int page)
         {
             builders_Boulevards = await _boulevard.GetBoulevard(page);
 
-            this.AllUmunna = await unit.GetAllUnitsByUnitType((int)UnitTypes.Umunna);
-            this.AllVillages = await unit.GetAllUnitsByUnitType((int)UnitTypes.Village);
-            this.AllImene = await unit.GetAllUnitsByUnitType((int)UnitTypes.Ime_Nne);
-            this.AllAka = await unit.GetAllUnitsByUnitType((int)UnitTypes.Aka);
+            this.AllUmunna = await unit.GetAllUnitsByUnit_Type((int)Unit_Types.Umunna);
+            this.AllVillages = await unit.GetAllUnitsByUnit_Type((int)Unit_Types.Village);
+            this.AllImene = await unit.GetAllUnitsByUnit_Type((int)Unit_Types.Ime_Nne);
+            this.AllAka = await unit.GetAllUnitsByUnit_Type((int)Unit_Types.Aka);
         }
         public List<Builders_Boulevard> builders_Boulevards { get; set; }
         public Builders_Boulevard builders_Boulevard { get; set; }

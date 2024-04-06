@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Domain.Entity;
-using Obosi.ng.Infrastructure.Migrations;
 using Obosi.ng.Presentation.ViewModels;
 using IImenne = Obosi.ng.Application.Interfaces.IImenne;
 

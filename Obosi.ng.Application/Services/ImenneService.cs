@@ -47,13 +47,13 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Imenne>> GetImenne()
         {
-            return await _dataContext.Imenne.Include(x => x.Unit).Include(x => x.Umunna.Unit.UnitType).ToListAsync();
+            return await _dataContext.Imenne.Include(x => x.Unit).Include(x => x.Umunna.Unit.Unit_Type).ToListAsync();
 
         }
 
         public async Task<List<Imenne>> GetImenneByUmunna(int UmunnaId)
         {
-            return await _dataContext.Imenne.Where(x=>x.UmunnaId == UmunnaId && x.Active == true).Include(x=>x.Unit).Include(x=>x.Umunna.Unit.UnitType).ToListAsync();
+            return await _dataContext.Imenne.Where(x=>x.UmunnaId == UmunnaId && x.Active == true).Include(x=>x.Unit).Include(x=>x.Umunna.Unit.Unit_Type).ToListAsync();
         }
 
       
