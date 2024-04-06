@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Obosi.ng.Application.Enums;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
@@ -38,17 +39,21 @@ namespace Obosi.ng.Application.Services
                 _dataContext.Imenne.Update(existingImenne);
                 await _dataContext.SaveChangesAsync();
             }
-            throw new Exception("Imenne Item is Null");
+            else
+            {
+                throw new Exception("Imenne Item is Null");
+            }
         }
 
         public async Task<List<Imenne>> GetImenne()
         {
-            return await _dataContext.Imenne.Where(x=>x.Active == true).Include(x => x.Unit).Include(x => x.Umunna.Aka.Village).ToListAsync();
+            return await _dataContext.Imenne.Include(x => x.Unit).Include(x => x.Umunna.Unit.UnitType).ToListAsync();
+
         }
 
         public async Task<List<Imenne>> GetImenneByUmunna(int UmunnaId)
         {
-            return await _dataContext.Imenne.Where(x=>x.UnitId == UmunnaId && x.Active == true).Include(x=>x.Unit).Include(x=>x.Umunna.Aka.Village).ToListAsync();
+            return await _dataContext.Imenne.Where(x=>x.UmunnaId == UmunnaId && x.Active == true).Include(x=>x.Unit).Include(x=>x.Umunna.Unit.UnitType).ToListAsync();
         }
 
       

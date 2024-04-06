@@ -1,8 +1,10 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using Obosi.ng.Application.Enums;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
+using Obosi.ng.Infrastructure.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,17 +41,22 @@ namespace Obosi.ng.Application.Services
                 _dataContext.Umunna.Update(existingUmunna);
                 await _dataContext.SaveChangesAsync();
             }
-            throw new Exception("Umunna Item is Null");
+            else
+            {
+                throw new Exception("Umunna Item is Null");
+            }
         }
 
         public async Task<List<Umunna>> GetUmunna()
         {
-            return await _dataContext.Umunna.ToListAsync();
+            return await _dataContext.Umunna.Include(x => x.Aka.Unit.UnitType).Include
+               (x => x.Unit).ToListAsync();
         }
 
         public async Task<List<Umunna>> GetUmunnaByAka(int AkaId)
         {
-            return await _dataContext.Umunna.Where(x=>x.AkaId == AkaId).ToListAsync();
+            return await _dataContext.Umunna.Where(x=>x.AkaId == AkaId).Include(x=>x.Aka.Unit.UnitType).Include
+                (x=>x.Unit).ToListAsync();
         }
 
         public async Task<Umunna> UpdateUmunna(Umunna umunna)

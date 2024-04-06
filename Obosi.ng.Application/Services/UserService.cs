@@ -54,11 +54,18 @@ namespace Obosi.ng.Application.Services
 
         public async  Task<Users> AuthenticateUser(string email, string password)
         {
-            var user = await _dataContext.Users.Where(x => x.Email == email && x.Password == password && 
-            x.IsActive== true).Include(x=>x.Role).FirstOrDefaultAsync();
+           
+            var user = await _dataContext.Users.Where(x => x.Email == email).Include(x=>x.Role).FirstOrDefaultAsync();
             if (user != null)
-            {
-                return user;
+            {var passwordCheck = VerifyPassword(password,user.Password);
+                if (passwordCheck && user.IsActive)
+                {
+                    return user;
+                }
+                else
+                {
+                    throw new Exception("User has not been Approved");
+                }
             }
             return null;
         }
@@ -72,6 +79,8 @@ namespace Obosi.ng.Application.Services
                 var transaction = await _dataContext.Database.BeginTransactionAsync();
                 user.DateCreated = DateTime.Now;
                 user.IsActive = false;
+                string hashedPassword = HashPassword(user.Password);
+                user.Password = hashedPassword;
                 var userDetails = await _dataContext.Users.Where(x => x.Email == user.Email).FirstOrDefaultAsync();
                 if (userDetails == null)
                 {
@@ -264,7 +273,7 @@ namespace Obosi.ng.Application.Services
                 }
                 if (!string.IsNullOrWhiteSpace(user.Password))
                 {
-                    userDetails.Password = user.Password;
+                    userDetails.Password = HashPassword(user.Password);
                 }
 
                 if(user.RoleId > 0)
@@ -287,6 +296,22 @@ namespace Obosi.ng.Application.Services
         public async Task<List<Users>> GetUnitAdmins()
         {
             return await _dataContext.Users.Where(x => x.IsActive == true && x.RoleId == 4).ToListAsync();
+        }
+        public string HashPassword(string password)
+        {
+            // Generate a salt
+            string salt = BCrypt.Net.BCrypt.GenerateSalt();
+
+            // Hash the password using the salt
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, salt);
+
+            return hashedPassword;
+        }
+
+        public bool VerifyPassword(string password, string hashedPassword)
+        {
+            // Verify the password against the hashed password
+            return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
         }
     }
 }

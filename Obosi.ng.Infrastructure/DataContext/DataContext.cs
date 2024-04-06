@@ -141,8 +141,10 @@ namespace Obosi.ng.Data
                  new Menu() { Id = 10, Controller = "Executive", ActionName = "index", DisplayName = "Executives", MenuGroupId = 1, Active = true },
 
                  new Menu() { Id = 11, Controller = "About", ActionName = "Index", DisplayName = "About", MenuGroupId = 1, Active = true },
-                  new Menu() { Id = 12, Controller = "Menu", ActionName = "Index", DisplayName = "Setup Menu", MenuGroupId = 1, Active = true }
-             
+                  new Menu() { Id = 12, Controller = "Menu", ActionName = "Index", DisplayName = "Setup Menu", MenuGroupId = 1, Active = true },
+                 // new Menu() { Id = 13, Controller = "Permissions", ActionName = "Index", DisplayName = "Unit Admin", MenuGroupId = 1, Active = true },
+                   new Menu() { Id = 14, Controller = "DropDown", ActionName = "Index", DisplayName = "Setup Drop Down", MenuGroupId = 1, Active = true }
+
 
 
              );

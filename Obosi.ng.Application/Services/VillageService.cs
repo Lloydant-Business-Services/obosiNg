@@ -31,7 +31,7 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Village>> GetVillages()
         {
-            return await _dataContext.Village.Where(x => x.Active == true).ToListAsync();
+            return await _dataContext.Village.Where(x => x.Active == true).Include(x=>x.Unit).ToListAsync();
         }
 
        

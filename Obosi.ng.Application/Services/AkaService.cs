@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Obosi.ng.Application.Enums;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
@@ -32,23 +33,28 @@ namespace Obosi.ng.Application.Services
         public async Task DeleteAka(int id)
         {
            var existingAka = await _dataContext.Aka.Where(x=>x.Id == id).FirstOrDefaultAsync();
-            if(existingAka != null)
+            if (existingAka != null)
             {
                 existingAka.Active = false;
                 _dataContext.Aka.Update(existingAka);
                 await _dataContext.SaveChangesAsync();
             }
-            throw new Exception("Aka Item is Null");
+
+            else
+            {
+                throw new Exception("Aka Item is Null");
+            }
         }
 
         public async Task<List<Aka>> GetAka()
         {
-           return await _dataContext.Aka.ToListAsync(); 
+            return await _dataContext.Aka.Include(x => x.Unit.UnitType).Include(x => x.Village.Unit.UnitType).ToListAsync();
+            ;
         }
 
         public async Task<List<Aka>> GetAkaByVillage(int VillageId)
         {
-           return await _dataContext.Aka.Where(x=>x.VillageId == VillageId).ToListAsync();
+           return await _dataContext.Aka.Where(x=>x.VillageId == VillageId).Include(x => x.Unit.UnitType).Include(x => x.Village.Unit.UnitType).ToListAsync();
         }
 
         public async Task<Aka> UpdateAka(Aka aka)
