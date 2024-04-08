@@ -66,7 +66,7 @@ namespace Obosi.ng.Application.Services
             throw new Exception("Unit is empty");
         }
 
-        public async Task<Unit_Type> CreateUnit_Type(Unit_Type Unit_Type)
+        public async Task<Unit_Type> CreateUnitType(Unit_Type Unit_Type)
         {
             if(Unit_Type != null)
             {
@@ -193,7 +193,7 @@ namespace Obosi.ng.Application.Services
           
         }
 
-        public async Task<List<Unit>> GetAllUnitsByUnit_Type(int Unit_TypeId)
+        public async Task<List<Unit>> GetAllUnitsByUnitType(int Unit_TypeId)
         {
             return await _dataContext.Unit.Where(x => x.Unit_TypeId == Unit_TypeId).Include(x => x.Unit_Type).OrderBy(p => p.Name)
                 .Select(ua => new Unit
@@ -213,7 +213,7 @@ namespace Obosi.ng.Application.Services
                 .ToListAsync();
         }
 
-        public async Task<List<Unit_Type>> GetAllUnit_Types()
+        public async Task<List<Unit_Type>> GetAllUnitTypes()
         {
             return await _dataContext.Unit_Type.OrderBy(p => p.Name).ToListAsync();
         }
@@ -267,7 +267,7 @@ namespace Obosi.ng.Application.Services
             }).FirstOrDefaultAsync();
         }
 
-        public async Task<Unit_Type> GetUnit_Type(int Unit_TypeId)
+        public async Task<Unit_Type> GetUnitType(int Unit_TypeId)
         {
             return await _dataContext.Unit_Type.Where(x=>x.Id == Unit_TypeId).FirstOrDefaultAsync();
         }
@@ -322,7 +322,7 @@ namespace Obosi.ng.Application.Services
             return null;
         }
 
-        public async Task<Unit_Type> UpdateUnit_Type(Unit_Type Unit_Type)
+        public async Task<Unit_Type> UpdateUnitType(Unit_Type Unit_Type)
         {
             if(Unit_Type != null)
             {

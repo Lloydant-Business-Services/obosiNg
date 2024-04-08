@@ -65,7 +65,7 @@ namespace Obosi.ng.Presentation.Controllers
             return RedirectToAction("Units", new { Unit_Type = StringEncryption.Encrypt(model.Unit.Unit_TypeId.ToString())});
         }
         [HttpGet]
-        public async Task<IActionResult> CreateUnit_Type()
+        public async Task<IActionResult> CreateUnitType()
         {
             ViewBag.Title = "Create Unit Type";
             UnitViewModel model = new(unit);
@@ -74,24 +74,24 @@ namespace Obosi.ng.Presentation.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> CreateUnit_Type(UnitViewModel model)
+        public async Task<IActionResult> CreateUnitType(UnitViewModel model)
         {
-           await unit.CreateUnit_Type(model.Unit_Type);
+           await unit.CreateUnitType(model.Unit_Type);
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public async Task<IActionResult> EditUnit_Type(int id)
+        public async Task<IActionResult> EditUnitType(int id)
         {
             ViewBag.Title = "Edit Unit Type";
             UnitViewModel model = new(unit);
-            model.Unit_Type = await unit.GetUnit_Type(id);
+            model.Unit_Type = await unit.GetUnitType(id);
             return View(model);
         }
         [HttpPost]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-        public async Task<IActionResult> EditUnit_Type(UnitViewModel model)
+        public async Task<IActionResult> EditUnitType(UnitViewModel model)
         {
-            await unit.UpdateUnit_Type(model.Unit_Type);
+            await unit.UpdateUnitType(model.Unit_Type);
             return RedirectToAction("Index");
         }
         [HttpGet]

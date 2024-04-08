@@ -26,7 +26,7 @@ namespace Obosi.ng.Presentation.ViewModels
         public async Task GetVillages()
         { 
             this.Villages = await village.GetVillages();
-            this.Units = await unit.GetAllUnitsByUnit_Type((int)Unit_Types.Village);
+            this.Units = await unit.GetAllUnitsByUnitType((int)Unit_Types.Village);
         }
         public async Task GetAkas(int villageId)
         {   if (villageId == 0) 
@@ -37,7 +37,7 @@ namespace Obosi.ng.Presentation.ViewModels
             {
                 this.Akas = await aka.GetAkaByVillage(villageId);
             }
-            this.Units = await unit.GetAllUnitsByUnit_Type((int)Unit_Types.Aka);
+            this.Units = await unit.GetAllUnitsByUnitType((int)Unit_Types.Aka);
             this.Villages = await village.GetVillages();
         }
 
@@ -50,7 +50,7 @@ namespace Obosi.ng.Presentation.ViewModels
             {
                 this.Umunnas = await umunna.GetUmunnaByAka(akaId);
             }
-            this.Units = await unit.GetAllUnitsByUnit_Type((int)Unit_Types.Umunna);
+            this.Units = await unit.GetAllUnitsByUnitType((int)Unit_Types.Umunna);
             this.Akas = await aka.GetAka();
         }
         public async Task GetImennes(int umunnaId)
@@ -60,7 +60,7 @@ namespace Obosi.ng.Presentation.ViewModels
             {
                 this.Imennes = await imenne.GetImenneByUmunna(umunnaId);
             }
-            this.Units = await unit.GetAllUnitsByUnit_Type((int)Unit_Types.Ime_Nne);
+            this.Units = await unit.GetAllUnitsByUnitType((int)Unit_Types.Ime_Nne);
             this.Umunnas = await umunna.GetUmunna();
         }
 
