@@ -82,7 +82,7 @@ namespace Obosi.ng.Presentation.Controllers
         }
         public async Task<IActionResult> RemoveUmunna(int umunnaId,int akaId) 
         { 
-            await imenne.DeleteImenne(umunnaId);
+            await umunna.DeleteUmunna(umunnaId);
             return RedirectToAction("ViewUmunna", new { akaId = akaId });
         }
         public async Task<IActionResult> ViewImenne(int umunnaId)

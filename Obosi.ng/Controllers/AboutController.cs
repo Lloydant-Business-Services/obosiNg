@@ -3,6 +3,7 @@ using Obosi.ng.Application.DTO;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Domain.Entity;
 using Obosi.ng.Presentation.ViewModels;
+using Serilog;
 
 namespace Obosi.ng.Presentation.Controllers
 {
@@ -42,29 +43,44 @@ namespace Obosi.ng.Presentation.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(AboutViewModel aboutViewModel)
         {
-            if (aboutViewModel.About != null)
+            try
             {
-                var createdAbout = await _aboutService.CreateAbout(aboutViewModel.About);
-                return RedirectToAction(nameof(Index));
-            }
+                if (aboutViewModel.About != null)
+                {
+                    var createdAbout = await _aboutService.CreateAbout(aboutViewModel.About);
+                    return RedirectToAction(nameof(Index));
+                }
 
+             
+            }
+            catch (Exception ex)
+            {
+
+                Log.Error($"Create About Method-{ex.Message}", ex);
+            }
             return View(aboutViewModel);
         }
 
 
-        // POST: About/Edit/5
+// POST: About/Edit/5
         [HttpPost]
         public async Task<IActionResult> Edit(AboutViewModel aboutDTO)
         {
-            
-            if (aboutDTO != null)
+            try
             {
-                var updatedAbout = await _aboutService.UpdateAbout(aboutDTO.About);
-                return RedirectToAction(nameof(Index));
+                if (aboutDTO != null)
+                {
+                    var updatedAbout = await _aboutService.UpdateAbout(aboutDTO.About);
+                    return RedirectToAction(nameof(Index));
+                }
             }
 
-           
-            return NotFound();
+            catch (Exception ex)
+            {
+
+                Log.Error($"Create About Method-{ex.Message}", ex);
+            }
+            return View(aboutDTO);
         }
         // GET: About/Edit/5
         [HttpGet]
