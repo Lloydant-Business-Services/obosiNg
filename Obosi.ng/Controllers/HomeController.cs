@@ -244,6 +244,12 @@ namespace Obosi.ng.Controllers
         {
             return await _unit.GetImennes(umunnaId);
         }
+        public async Task<IActionResult> Policy()
+        {
+            var model = new HomePageViewModel(_news, _about, _blog, _calender, _unit);
+            await model.NewsInitializeValue();
+            return View(model);
+        }
     }
 
 }
