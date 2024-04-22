@@ -1,0 +1,906 @@
+﻿@using Obosi.ng.Presentation.utility;
+@model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
+@{
+    Layout = "~/Views/Shared/_GeneralLayout2.cshtml";
+    //Layout = null;
+}
+
+<style>
+
+    .container-blog__page {
+        display: flex;
+        width: 100vw;
+        padding: 96px 64px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        /* Image */
+        background: linear-gradient( 0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100% ), url(/Blog\ Hero.png), lightgray 50% / cover no-repeat;
+        /* background-position: center; */
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .image {
+        height: 353.713px;
+        align-self: stretch;
+        background: url(/), lightgray 0px -123.664px / 100% 144.75% no-repeat;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .avatarr {
+        width: 48px;
+        height: 48px;
+        background: url(/), lightgray 50% / cover no-repeat;
+        background-size: cover;
+        border-radius: 100%;
+    }
+
+</style>
+
+
+
+
+<!-- Header -->
+<div class="container-blog__page pt-3" style="background-image: url('/images/privacypolicy.jpg');">
+    <div class="blog-header-container">
+        <h2 class="blog-header-text">OBOSI.NG Privacy Policy</h2>
+        <div class="avatar-content">
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<main class="container-blog">
+    <div class="containerr">
+        <div class="blog-links">
+
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Privacy</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        OBOSI.NG Privacy Policy
+                    </li>
+                </ol>
+            </nav>
+
+            <div class="breadcrumb-links">
+                <!-- icons go here -->
+
+                <div>
+                    <img src="" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+
+        <div class="introduction-container">
+            <h2>  </h2>
+
+
+        </div>
+
+        <!-- Content Area -->
+
+        <div style="text-align:justify">
+           
+                <div>
+                <section class="d-flex flex-column align-items-start p-3">
+                    <h1 class="fw-bolder fs-2">1. Introduction</h1>
+                    <p class="fw-medium fs-6">
+                        The Media & Re-Orientation Committee of the Obosi Development Union
+                        (MRC/ODU) and managers of the website and mobile application Obosi.Ng
+                        value your privacy and the importance of safeguarding your data. This
+                        Privacy Policy describes our privacy practices for the activities set
+                        out below. As per your rights, we inform you how we collect, store,
+                        access, and otherwise process information relating to individuals. In
+                        this Policy, "Personal Data" refers to any information that on its own,
+                        or in combination with other available information, can distinguish an
+                        individual. We are committed to protecting your privacy in accordance
+                        with the highest level of privacy regulation. As such, we follow the
+                        obligations under
+                    </p>
+
+                    <ul class="fw-medium fs-6">
+                        <li>
+                            Canada's Personal Information Protection and Electronic Documents Act
+                            (PIPEDA) and the applicable provincial legislations
+                        </li>
+                        <li>The EU's General Protection Data Regulation (GDPR)</li>
+                        <li>Brazil’s Data Protection Legislation (LGPD)</li>
+                        <li>
+                            California's Consumer Protection Act (CCPA) and California Online
+                            Privacy Protection Act (CalOPPA)
+                        </li>
+                    </ul>
+
+                    <h2 class="fw-bolder fs-6">Scope</h2>
+                    <p class="fw-medium fs-6">
+                        This policy applies to the Obosi.Ng websites and domains. This Policy
+                        does not apply to third-party applications, websites, products, services
+                        or platforms that may be accessed through links that appear on the
+                        website. These sites are owned and operated independently from us, and
+                        they have their own separate privacy and data collection practices. Any
+                        personal data that you provide to these websites will be governed by the
+                        third-party’s own privacy policy. We cannot accept liability for the
+                        actions or policies of these independent sites, and we are not
+                        responsible for the content or privacy practices of such sites.
+                    </p>
+
+                    <h2 class="fw-bolder fs-6">Processing Activities</h2>
+
+                    <p class="fw-medium fs-6">
+                        This Privacy Policy applies when you interact with us by doing any of
+                        the following:
+                    </p>
+
+                    <ul class="fw-medium fs-6">
+                        <li>Make use of our application and services as an authorized user</li>
+                        <li>Visit any of our websites that link to this Privacy Statement</li>
+                        <li>
+                            Receive any communication from us including newsletters, emails,
+                            calls, or texts
+                        </li>
+                    </ul>
+
+                    <h1 class="fw-bolder fs-2">2. Personal Data We Collect</h1>
+                    <p class="fw-medium fs-6">
+                        Data You Provide When you register on the website, we collect personal
+                        data as part of your information.
+                    </p>
+                    <p class="fw-medium fs-6">This data includes:</p>
+
+                    <ul class="fw-medium fs-6">
+                        <li>
+                            Account information such as your name, email address, and password
+                        </li>
+                        <li>Location details such as your village, kindred, etc.</li>
+                    </ul>
+
+                    <p class="fw-medium fs-6">
+                        If you provide us, or our service providers, with any Personal Data
+                        relating to other individuals, you represent that you have the authority
+                        to do so and acknowledge that it will be used in accordance with this
+                        Privacy Statement. If you believe that your Personal Data has been
+                        provided to us improperly, or to otherwise exercise your rights relating
+                        to your Personal Data, please contact us by using the information set
+                        out in the Contact Us section below.
+                    </p>
+
+                    <p class="fw-medium fs-6">Device and Usage Data</p>
+                    <p class="fw-medium fs-6">
+                        When you visit obosi.ng website, we automatically collect and store
+                        information about your visit using browser cookies (files which are sent
+                        by us to your computer), or similar technology. You can instruct your
+                        browser to refuse all cookies or to indicate when a cookie is being
+                        sent. The Help Feature on most browsers will provide information on how
+                        to accept cookies, disable cookies or to notify you when receiving a new
+                        cookie. If you do not accept cookies, you may not be able to use some
+                        features of our Service and we recommend that you leave them turned on.
+                    </p>
+
+                    <p class="fw-medium fs-6">
+                        We also process information when you use our services and products. This
+                        information may include:
+                    </p>
+
+                    <ul class="fw-medium fs-6">
+                        <li>Login Information</li>
+                        <li>Device IDs</li>
+                        <li>Ili Address</li>
+                        <li>Time stamps</li>
+                        <li>Authentication records</li>
+                        <li>Web terms or searches that led you to the site</li>
+                        <li>Time zone</li>
+                        <li>Other operational data</li>
+                    </ul>
+
+                    <p class="fw-medium fs-6">Data we collect from third parties</p>
+
+                    <p class="fw-medium fs-6">
+                        We may receive your personal data from third parties such as companies
+                        subscribing to obosi.Ng services, partners and other sources. This
+                        information is not collected by us but by a third party and is subject
+                        to the relevant third party’s own separate privacy and data collection
+                        policies. We do not have any control or input on how your personal data
+                        is handled by third parties. As always, you have the right to review and
+                        rectify this information. If you have any questions you should first
+                        contact the relevant third party for further information about your
+                        personal data. Where that third party is unresponsive to your rights,
+                        you may contact the administrative staff at obosi.Ng. (contact details
+                        below) and we can assist you. <br />
+                        Our websites and services may contain links to other websites,
+                        applications and services maintained by third parties. The information
+                        practices of such other services, or of social media networks that host
+                        our branded social media pages, are governed by third parties’ privacy
+                        statements, which you should review to better understand those third
+                        parties’ privacy practices. <br />
+                        Purpose and Legal Basis for the Processing of Personal Data We collect
+                        and use personal data about you with your consent to provide, maintain,
+                        and develop our services and understand how to improve them.
+                    </p>
+
+                    <p class="fw-medium fs-6">These purposes include:</p>
+
+                    <ul class="fw-medium fs-6">
+                        <li>Fostering togetherness amongst Ndi Obosi</li>
+                        <li>Helping Ndi Obosi obtain gainful employment</li>
+                        <li>Helping secure Obosi and its environs</li>
+                        <li>Helping keep Obosi and its environs clean</li>
+                    </ul>
+
+                    <p class="fw-medium fs-6">
+                        Where we process your personal data to provide a service, we do so
+                        because it is necessary to perform contractual obligations. All of the
+                        above processing is necessary in our legitimate interests to provide
+                        services and to maintain our relationship with. Consent will be required
+                        to initiate services with you. New consent will be required If any
+                        changes are made to the type of data collected. Within our contract, if
+                        you fail to provide consent, some services may not be available to you.
+                        <br />
+                        Sharing and Disclosure
+                    </p>
+
+                    <ul class="fw-medium fs-6">
+                        <li>We would never share nor disclose your data to any third party</li>
+                    </ul>
+
+                    <p class="fw-medium fs-6">Legal Requirement</p>
+
+                    <p class="fw-medium fs-6">
+                        We may use or disclose your personal data in order to comply with a
+                        legal obligation, in connection with a request from a public or
+                        government authority, or in connection with court or tribunal
+                        proceedings, to prevent loss of life or injury, or to protect our rights
+                        or property. Where possible and practical to do so, we will tell you in
+                        advance of such disclosure.
+                    </p>
+
+                    <h1 class="fw-bolder fs-2">3. Cookie Policy</h1>
+
+                    <p class="fw-medium fs-6">
+                        A cookie is a small file with information that your browser stores on
+                        your device. Information in this file is typically shared with the owner
+                        of the site in addition to potential partners and third parties to that
+                        business. The collection of this information may be used in the function
+                        of the site and/or to improve your experience.
+                    </p>
+
+                    <p class="fw-medium fs-6">
+                        How we use cookies <br />
+                        To give you the best experience possible, we use the following types of
+                        cookies:
+                    </p>
+
+                    <ul class="fw-medium fs-6">
+                        <li>
+                            Strictly Necessary. As a web application, we require certain necessary
+                            cookies to run our service.
+                        </li>
+                        <li>Preference.</li>
+                        <li>
+                            We use preference cookies to help us remember the way you like to use
+                            our service.
+                        </li>
+                        <li>
+                            Some cookies are used to personalize content and present you with a
+                            tailored experience. For example, location could be used to give you
+                            services and offers in your area.
+                        </li>
+
+                        <li>Analytics</li>
+
+                        <li>
+                            We collect analytics about the types of people who visit our site to
+                            improve our service and product.
+                        </li>
+                    </ul>
+
+                    <h1 class="fw-bolder fs-2">4. Retention & Deletion</h1>
+                    <p>
+                        We will only retain your personal data for as long as necessary for the
+                        purpose for which that data was collected and to the extent required by
+                        applicable law. When we no longer need personal data, we will remove it
+                        from our systems and / or take steps to anonymize it.
+                    </p>
+
+                    <h1 class="fw-bolder fs-2">5. Children's Privacy</h1>
+                    <p>
+                        The website is open to all obosi indigenes regardless of age and we
+                        would maintain the same level of protection of children data as we do
+                        with adults.
+                    </p>
+
+                    <h1 class="fw-bolder fs-2">6. Your Rights to Your Personal Data</h1>
+                    <ul class="fw-medium fs-6">
+                        <li>
+                            You have the right to request a copy of the personal data we are
+                            processing about you.
+                        </li>
+                        <li>
+                            You have the right to have incomplete or inaccurate personal data that
+                            we process about you rectified.
+                        </li>
+                        <li>
+                            You have the right to request that we delete personal data that we
+                            process about you, except we are not obliged to do so if we need to
+                            retain such data in order to comply with a legal obligation or to
+                            establish, exercise or defend legal claims.
+                        </li>
+                        <li>
+                            You have the right to restrict our processing of your personal data
+                            where you believe such data to be inaccurate; our processing is
+                            unlawful; or if we no longer need to process such data for a
+                            particular purpose unless we are not able to delete the data due to a
+                            legal or other obligation or because you do not wish us to delete it.
+                        </li>
+                    </ul>
+
+                    <h2 class="fw-bolder fs-6">Withdrawing Consent</h2>
+                    <p class="fw-medium fs-6">
+                        If you have consented to our processing of your personal data, you have
+                        the right to withdraw your consent at any time, free of charge, such as
+                        where you wish to unsubscribe from marketing messages that you receive
+                        from us. If you wish to withdraw your consent, please contact us using
+                        the information found at the bottom of this page. <br />
+                        How to Exercise Your Rights <br />
+                        You can make a request to exercise any of these rights in relation to
+                        your personal data by sending the request to our privacy team by using
+                        the form below. <br />
+                        For your own privacy and security, at our discretion, we may require you
+                        to prove your identity before providing the requested information.
+                    </p>
+
+                    <h1 class="fw-bolder fs-2">7. Changes</h1>
+                    <p class="fw-medium fs-6">
+                        We may modify this Policy at any time. If we make changes to this
+                        Policy, then we will post an updated version of this Policy on this
+                        website. When using our services, you will be asked to review and accept
+                        our Privacy Policy. In this manner, we may record your acceptance and
+                        notify you of any future changes to this Policy.
+                    </p>
+
+                    <h1 class="fw-bolder fs-2">8. Complaints</h1>
+                    <p class="fw-medium fs-6">
+                        If you have a complaint about this Policy or any element of your
+                        personal information that we hold then please contact us below. If you
+                        are not satisfied, then you have the right to lodge a complaint with the
+                        any relevant authority.
+                    </p>
+
+                    <h1 class="fw-bolder fs-2">9. Contact Us</h1>
+
+                    <p class="fw-medium fs-6">
+                        To request a copy for your information, unsubscribe from our email list,
+                        request for your data to be deleted, or ask a question about your data
+                        privacy, we've made the process simple:
+                    </p>
+
+                    <p class="fw-medium fs-6">
+                        Media & Re-Orientation Committee, Obosi Development Union (MRC/ODU)
+                        Obosi Town Hall, Obosi, Idemili LGA, Anambra State, Nigeria.
+                    </p>
+
+                    <p class="fw-medium fs-6">Obosi Town Hall,</p>
+                    <p class="fw-medium fs-6">Obosi, Idemili LGA, Anambra State, Nigeria.</p>
+                </section>
+                </div>
+            
+
+        </div>
+       
+
+    </div>
+
+</main>
+
+<div class="top-dropdown">
+
+    <div class="dropdown-button-holder">
+
+        <button class="dropdown-button" id="btn">
+
+            <div class="bars">
+                <div class="bar top"></div>
+                <div class="bar bottom"></div>
+            </div>
+
+        </button>
+
+    </div>
+
+
+
+    <div id="people-dropdown" class="top-dropdown-contents">
+
+        <div class="visible-large">
+            <h1 class="top-header">
+                Our People: Our Pride
+            </h1>
+            <div class="top-sections">
+                <section class="top-text">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </section>
+                <div class="section-images">
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/Ikeazor.jpeg" />
+                            <figcaption>
+                                Chief Philip Ikeazor (Izoma-Obosi),  <br />
+                                Deputy CBN Governor
+
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/Ajegbo.jpeg" />
+                            <figcaption>
+                                Chief Mike Ajegbo (Ede Obosi), <br />
+                                7 Senator, Federal Republic of Nigeria
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/anyaoku-people.jpg" />
+                            <figcaption>
+                                Chief Emeka Anyaoku <br />
+                                Third Commonwealth Secretary General
+                            </figcaption>
+                        </figure>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-nav">
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.Personalities).ToString())">
+                Obosi's Personalities
+            </a>
+            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Igwes_Cabinent).ToString())">
+                Igwe Obosi's Cabinet
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.Obosi_development_union_ODU).ToString())">
+                Obosi Development Union
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.Umunna).ToString())">
+                Obosi Umunna/Kindreds
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.Age_Grade).ToString())">
+                Obosi Age Grade Societies
+            </a>
+        </div>
+
+    </div>
+    <div id="places-dropdown" class="top-dropdown-contents">
+        <div class="visible-large">
+            <h1 class="top-header">
+                Our Places: Our Heritage
+            </h1>
+            <div class="top-sections">
+                <section class="top-text">
+                    <p>
+                        Obosi Ukwala is situated in a hilly area, bordered by Onitsha to the North-west, Nkpor to the North-east and Oba to the south-east
+                    </p>
+                    <p>
+                        Obosi has five villages namely: Umuota, Ire, Ugamuma, Urowulu, & Mmakwum.
+                    </p>
+                    <p>
+                        Additionally it has suburbs namely: Awada, Enekwasumpu, Ugwuaba, & Odume.
+                    </p>
+                    <p>
+                        Obosi's proximity to Onitsha, a commercial city, has made it a
+                        desired home to several buinesses.
+                    </p>
+                </section>
+                <div class="section-images">
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/land1.jpg" />
+                            <figcaption>
+                                Aerial View of Idemili River into River Niger
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/land2.jpg" />
+                            <figcaption>
+                                View of Awada Obosi, one of the most densely populated lands in Nigeria
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/land3.jpg" />
+                            <figcaption>
+                                Road linking the newly constructed 2nd Niger Bridge
+                            </figcaption>
+                        </figure>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bottom-nav">
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.Village).ToString())">
+                Villages & Suburbs
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.Schools).ToString())">
+                Schools
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.Hotels).ToString())">
+                Hotels
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.Churches).ToString())">
+                Churches
+            </a>
+            <a href="#">
+                More...
+            </a>
+
+        </div>
+    </div>
+    <div id="culture-dropdown" class="top-dropdown-contents">
+        <div class="visible-large">
+            <h1 class="top-header">
+                Our Culture: Our Life
+            </h1>
+            <div class="top-sections">
+                <section class="top-text">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </section>
+                <div class="section-images">
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/masquerade1.jpg" />
+                            <figcaption>
+                                The beautiful & graceful Agbonma Masquerade
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/masquerade2.jpg" />
+                            <figcaption>
+                                The ferocious & revered Isi Odogwu Masquerade
+                            </figcaption>
+                        </figure>
+                    </section>
+                    <section class="top-image">
+                        <figure>
+                            <img src="~/land/masquerade3.jpg" />
+                            <figcaption>
+                                The ever-playful and agile Ajikwu Masquerade
+                            </figcaption>
+                        </figure>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bottom-nav">
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.Ito_Ogbo).ToString())">
+                Ito-Ogbo Festival
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.New_Yam_Festival).ToString())">
+                New Yam Festival
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.Festivals).ToString())">
+                Festivals
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.Masquerade).ToString())">
+                Masquerades
+            </a>
+            <a href="~/Home/UnitList?id =@StringEncryption.Encrypt(((int)@Unit_Types.Dance_Group).ToString())">
+                Dance Groups
+            </a>
+
+        </div>
+    </div>
+    <div id="media-dropdown" class="top-dropdown-contents">
+        <h1 class="top-header alt">
+            Media Center
+        </h1>
+        <div class="top-nav">
+            <a href="#">
+                Opinion' Blogs
+            </a>
+            <a href="#">
+                News Articles
+            </a>
+            <a href="#">
+                Photo Gallery
+            </a>
+            <a href="#">
+                Events Calendar
+            </a>
+
+        </div>
+
+        <div class="visible-large">
+
+            <div class="media-sections">
+
+                <section class="media-menu">
+                    <a href="#">
+                        Education
+                    </a>
+                    <a href="#">
+                        Security
+                    </a>
+                    <a href="#">
+                        Health & Fitness
+                    </a>
+                    <a href="#">
+                        Life, Religion & Family
+                    </a>
+                    <a href="#">
+                        Science & Technology
+                    </a>
+                    <a href="#">
+                        Movies, Music, & Arts
+                    </a>
+                </section>
+                <section class="media-menu">
+                    <a href="#">
+                        Education
+                    </a>
+                    <a href="#">
+                        Security
+                    </a>
+                    <a href="#">
+                        Health & Fitness
+                    </a>
+                    <a href="#">
+                        Life, Religion & Family
+                    </a>
+                    <a href="#">
+                        Science & Technology
+                    </a>
+                    <a href="#">
+                        Movies, Music, & Arts
+                    </a>
+                </section>
+                <section class="media-menu">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Igwes_Cabinent).ToString())">
+                        Igwe's Palace
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Obosi_development_union_ODU).ToString())">
+                        Obosi Development Union
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Umunna).ToString())">
+                        Umunnas/Kindreds
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Age_Grade).ToString())">
+                        Age Grade Societies
+                    </a>
+                </section>
+                <section class="media-menu">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Igwes_Cabinent).ToString())">
+                        Igwe's Palace
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Obosi_development_union_ODU).ToString())">
+                        Obosi Development Union
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Umunna).ToString())">
+                        Umunnas/Kindreds
+                    </a>
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Age_Grade).ToString())">
+                        Age Grade Societies
+                    </a>
+                </section>
+            </div>
+
+        </div>
+    </div>
+    <div id="account-dropdown" class="top-dropdown-contents">
+        <h1 class="top-header alt">
+            Account Manager
+        </h1>
+        <div class="forms-container">
+
+            <div class="form-body login">
+
+                <h2>
+                    Enter your email address or phone number to access your dashboard
+                </h2>
+
+                <form class="form-inline" asp-action="SignIn" asp-controller="Home" method="POST">
+
+                    <div class="field-group-alt">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Email address" required asp-for="Username" />
+
+                        </div>
+
+                        <div class="field-holder">
+
+                            <div class="password-box">
+
+                                <input type="password" class="form-field" placeholder="Password" required asp-for="Password" />
+
+                                <a href="#" id="show-password">
+                                    <i class="fa fa-eye-slash"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        Login
+                    </button>
+
+                </form>
+
+                <a href="#" class="alternative-link">
+                    Forgotten Password?
+                </a>
+            </div>
+
+            <div class="form-body register">
+
+                <h2>
+                    Are you an Obosi indigene but not registered? Complete the following fields to get started or
+                    <a href="#">verify your account</a>.
+                </h2>
+
+                <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
+
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="First name" required asp-for="user.FirstName" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Last Name" required asp-for="user.LastName" />
+
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Other name" asp-for="user.OtherName" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Email" asp-for="user.Email" required type="email" />
+
+                        </div>
+                    </div>  <div class="field-group">
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Password" required asp-for="user.Password" />
+
+                        </div>
+                        <div class="field-holder">
+
+                            <input class="form-field" placeholder="Phone Number" asp-for="user.PhoneNumber" required />
+
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="VillageId" required id="villageId">
+                                <option value="">Select Village</option>
+                                @foreach (var vil in Model.AllVillages)
+                                {
+                                    <option value="@vil.Id">@vil.Name</option>
+                                }
+                            </select>
+
+                        </div>
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="AkaId" required id="akaId">
+                                <option value="">Select Aka</option>
+                                @*   @foreach (var ak in Model.AllAka)
+                                {
+                                <option value="@ak.Id">@ak.Name</option>
+                                } *@
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="field-group">
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="UmunnaId" required id="umunnaId">
+                                <option value="">Select Umunna</option>
+                                @*    @foreach (var umu in Model.AllUmunna)
+                                {
+                                <option value="@umu.Id">@umu.Name</option>
+                                } *@
+                            </select>
+
+                        </div>
+                        <div class="field-holder">
+
+                            <select class="form-field" asp-for="ImeneId" required id="imeneId">
+                                <option value="">Select Ime Nne</option>
+                                @*  @foreach (var ime in Model.AllImene)
+                                {
+                                <option value="@ime.Id">@ime.Name</option>
+                                } *@
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="field-holder">
+
+                        <div class="options">
+
+                            <label> Are you a </label>
+
+                            <span>
+                                <input type="radio" id="male" name="user.GenderId" asp-for="user.GenderId" value="1" />
+                                <label for="male">Male</label>
+                            </span>
+
+                            <span>
+                                <input type="radio" id="female" name="user.GenderId" asp-for="user.GenderId" value="2" />
+                                <label for="female">Female</label>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="submit-button">
+                        Continue
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+        <div class="bottom-nav alt">
+            <a href="~/home/signin">
+                Log into Account
+            </a>
+            <a href="#">
+                Recover Lost Password
+            </a>
+            <a href="~/home/signup">
+                Start Registration
+            </a>
+            <a href="#">
+                Verify Registration
+            </a>
+
+          
+        </div>
+
+    </div>
+</div>

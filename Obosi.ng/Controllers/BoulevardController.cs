@@ -18,9 +18,9 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Index(int page)
         {
             BoulevardViewModel model = new(_boulevard, _unit);
-            if(page == null)
+            if (page == null)
             {
-                page = 1;              
+                page = 1;
             }
             model.pageNo = page;
             await model.InitializeAsync(page);
@@ -38,7 +38,7 @@ namespace Obosi.ng.Presentation.Controllers
             await model.InitializeAsync();
             model.builders_Boulevard = await _boulevard.GetBoulevardById(id);
             return View(model);
-        }  
+        }
         public async Task<IActionResult> Create()
         {
             BoulevardViewModel model = new(_boulevard, _unit);
@@ -49,13 +49,13 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Create(BoulevardViewModel model)
         {
             if (model.builders_Boulevard != null)
-            {   
-                model.builders_Boulevard.DateAdded = DateTime.Now; 
+            {
+                //model.builders_Boulevard.DateAdded = DateTime.Now; 
                 await _boulevard.CreateBoulevard(model.builders_Boulevard);
                 return RedirectToAction("BoulevardList");
             }
             return View(model);
-        }   
+        }
         public async Task<IActionResult> Edit(int id)
         {
             BoulevardViewModel model = new(_boulevard, _unit);
