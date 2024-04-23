@@ -37,7 +37,12 @@
                                     foreach (var item in Model.Members)
                                     {
                                         <tr>
-                                            <td>@item.Users.LastName @item.Users.FirstName @item.Users.OtherName</td>
+                                            <td>@item.Users.LastName @item.Users.FirstName @item.Users.OtherName 
+                                                @if (!string.IsNullOrEmpty(item.Users.MaidenName))
+                                                {
+                                                    <span> <b>Maiden Name: </b>@item.Users.MaidenName</span>
+                                                }
+                                            </td>
                                             <td>@item.Users.Email</td>
                                             <td>@item.Users.PhoneNumber</td>
                                             <td>@item?.Unit?.Name</td>
