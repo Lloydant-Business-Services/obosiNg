@@ -12,6 +12,7 @@
 
         <div class="col-md-6">
             <div class="form-group">
+                <input  asp-for="Imenne.UmunnaId" type="hidden"/>
                 <label for="CategoryId">Unit:</label>
 
                 <select asp-for="Imenne.UnitId" class="form-select" id="unitId" required>
@@ -27,14 +28,14 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="CategoryId">Umunna:</label>
-
-                <select asp-for="Imenne.UmunnaId" class="form-select" id="unitId" required>
+                <input  value="@Model.Umunna.Unit.Name" class="form-control" readonly/>
+               @*  <select asp-for="Imenne.UmunnaId" class="form-select" id="unitId" required>
                     <option value="">Select</option>
                     @foreach (var item in Model.Umunnas)
                     {
                         <option value="@item.Id">@item.Unit.Name </option>
                     }
-                </select>
+                </select> *@
             </div>
         </div>
 

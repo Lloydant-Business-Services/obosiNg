@@ -13,24 +13,25 @@ namespace Obosi.ng.Presentation.ViewModels
         private readonly IUnit unit;
         public DropDownViewModel()
         {
-            
+
         }
         public DropDownViewModel(IVillage _village, IAka _aka, IUmunna _umunna, IImenne _imenne, IUnit _unit)
         {
-            village = _village; 
+            village = _village;
             aka = _aka;
             imenne = _imenne;
             umunna = _umunna;
-            unit = _unit;   
+            unit = _unit;
         }
         public async Task GetVillages()
-        { 
+        {
             this.Villages = await village.GetVillages();
             this.Units = await unit.GetAllUnitsByUnitType((int)Unit_Types.Village);
         }
         public async Task GetAkas(int villageId)
-        {   if (villageId == 0) 
-            { 
+        {
+            if (villageId == 0)
+            {
                 this.Akas = await aka.GetAka();
             }
             else
@@ -43,7 +44,8 @@ namespace Obosi.ng.Presentation.ViewModels
 
         public async Task GetUmunnas(int akaId)
         {
-            if (akaId == 0) {
+            if (akaId == 0)
+            {
                 this.Umunnas = await umunna.GetUmunna();
             }
             else
@@ -68,10 +70,13 @@ namespace Obosi.ng.Presentation.ViewModels
         public Village Village { get; set; }
         public List<Aka> Akas { get; set; }
         public Aka Aka { get; set; }
-        public List<Umunna> Umunnas { get; set; }    
-        public Umunna Umunna { get; set; }  
+        public List<Umunna> Umunnas { get; set; }
+        public Umunna Umunna { get; set; }
         public List<Imenne> Imennes { get; set; }
-        public Imenne Imenne { get; set; }    
+        public Imenne Imenne { get; set; }
         public List<Unit> Units { get; set; }
+        public int UmmunnaId { get; set; }
+        public int AkaId { get; set; }
+        public int VillageId { get; set; }
     }
 }

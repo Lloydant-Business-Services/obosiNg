@@ -11,6 +11,7 @@
     <div class="row">
 
         <div class="col-md-6">
+            <input asp-for="Aka.VillageId" type="hidden" />
             <div class="form-group">
                 <label for="CategoryId">Unit:</label>
 
@@ -27,14 +28,14 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="CategoryId">Village:</label>
-
-                <select asp-for="Aka.VillageId" class="form-select" id="unitId" required>
+                <input value="@Model.Village.Unit.Name" class="form-control" readonly />
+               @*  <select asp-for="Aka.VillageId" class="form-select" id="unitId" required>
                     <option value="">Select</option>
                     @foreach (var item in Model.Villages)
                     {
                         <option value="@item.Id">@item.Unit.Name </option>
                     }
-                </select>
+                </select> *@
             </div>
         </div>
 

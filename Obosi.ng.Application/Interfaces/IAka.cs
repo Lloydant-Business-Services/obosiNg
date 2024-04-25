@@ -1,9 +1,4 @@
 ﻿using Obosi.ng.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Obosi.ng.Application.Interfaces
 {
@@ -14,5 +9,6 @@ namespace Obosi.ng.Application.Interfaces
         Task DeleteAka(int id);
         Task<List<Aka>> GetAka();
         Task<List<Aka>> GetAkaByVillage(int VillageId);
+        Task<Aka> GetAkaById(int Id);
     }
 }

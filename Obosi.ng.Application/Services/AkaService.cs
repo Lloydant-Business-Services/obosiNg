@@ -1,13 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Obosi.ng.Application.Enums;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Obosi.ng.Application.Services
 {
@@ -20,19 +14,32 @@ namespace Obosi.ng.Application.Services
         }
         public async Task<Aka> CreateAka(Aka aka)
         {
-            if(aka != null)
+
+            if (aka != null)
             {
-                aka.Active = true;
-                var createdAka = await _dataContext.Aka.AddAsync(aka);  
-                await _dataContext.SaveChangesAsync();
-                return createdAka.Entity;
+                var existingAka = await _dataContext.Aka.Where(f => f.UnitId == aka.UnitId && f.VillageId == aka.VillageId).FirstOrDefaultAsync();
+                if (existingAka == null)
+                {
+                    aka.Active = true;
+                    var createdAka = await _dataContext.Aka.AddAsync(aka);
+                    await _dataContext.SaveChangesAsync();
+                    return createdAka.Entity;
+                }
+                else
+                {
+                    existingAka.Active = true;
+                    _dataContext.Aka.Update(existingAka);
+                    await _dataContext.SaveChangesAsync();
+                    return existingAka;
+                }
+
             }
             throw new Exception("Aka Item is Null");
         }
 
         public async Task DeleteAka(int id)
         {
-           var existingAka = await _dataContext.Aka.Where(x=>x.Id == id).FirstOrDefaultAsync();
+            var existingAka = await _dataContext.Aka.Where(x => x.Id == id).FirstOrDefaultAsync();
             if (existingAka != null)
             {
                 existingAka.Active = false;
@@ -48,15 +55,18 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Aka>> GetAka()
         {
-            return await _dataContext.Aka.Where(x=>x.Active==true).Include(x => x.Unit.Unit_Type).Include(x => x.Village.Unit.Unit_Type).ToListAsync();
+            return await _dataContext.Aka.Where(x => x.Active == true).Include(x => x.Unit.Unit_Type).Include(x => x.Village.Unit.Unit_Type).ToListAsync();
             ;
         }
 
         public async Task<List<Aka>> GetAkaByVillage(int VillageId)
         {
-           return await _dataContext.Aka.Where(x=>x.VillageId == VillageId && x.Active==true).Include(x => x.Unit.Unit_Type).Include(x => x.Village.Unit.Unit_Type).ToListAsync();
+            return await _dataContext.Aka.Where(x => x.VillageId == VillageId && x.Active == true).Include(x => x.Unit.Unit_Type).Include(x => x.Village.Unit.Unit_Type).ToListAsync();
         }
-
+        public async Task<Aka> GetAkaById(int Id)
+        {
+            return await _dataContext.Aka.Where(x => x.Id == Id).Include(x => x.Unit).Include(x => x.Unit.Unit_Type).Include(x => x.Village.Unit.Unit_Type).FirstOrDefaultAsync();
+        }
         public async Task<Aka> UpdateAka(Aka aka)
         {
             var existingAka = await _dataContext.Aka.Where(x => x.Id == aka.Id).FirstOrDefaultAsync();

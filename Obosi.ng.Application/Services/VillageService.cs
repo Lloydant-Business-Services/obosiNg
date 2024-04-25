@@ -1,13 +1,7 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Obosi.ng.Application.Interfaces;
 using Obosi.ng.Data;
 using Obosi.ng.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Obosi.ng.Application.Services
 {
@@ -19,7 +13,8 @@ namespace Obosi.ng.Application.Services
             _dataContext = dataContext;
         }
         public async Task<Village> CreateVillage(Village village)
-        {   if(village != null)
+        {
+            if (village != null)
             {
                 village.Active = true;
                 var createdVillage = await _dataContext.Village.AddAsync(village);
@@ -31,9 +26,13 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Village>> GetVillages()
         {
-            return await _dataContext.Village.Where(x => x.Active == true).Include(x=>x.Unit).ToListAsync();
+            return await _dataContext.Village.Where(x => x.Active == true).Include(x => x.Unit).ToListAsync();
+        }
+        public async Task<Village> GetVillageById(int villageId)
+        {
+            return await _dataContext.Village.Where(x => x.Id == villageId).Include(x => x.Unit).FirstOrDefaultAsync();
         }
 
-       
+
     }
 }
