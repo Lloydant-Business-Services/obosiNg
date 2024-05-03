@@ -198,5 +198,10 @@ namespace Obosi.ng.Data
         public DbSet<Aka> Aka { get; set; }
         public DbSet<Umunna> Umunna { get; set; }
         public DbSet<Imenne> Imenne { get; set; }
+        public DbSet<Followers> Followers { get; set; }
+        public DbSet<Forum> Forum { get; set; }
+        public DbSet<ForumFollowers> ForumFollowers { get; set;}
+        public DbSet<ForumMessage> ForumMessage { get; set; }
+        public DbSet<ForumTopic> ForumTopic { get; set; }
     }
 }

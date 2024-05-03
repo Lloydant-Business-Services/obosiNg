@@ -21,5 +21,8 @@ namespace Obosi.ng.Domain.Entity
         public int RoleId { get; set; }
         public virtual Role Role { get; set; }
         public string? MaidenName { get; set; }
+        public string? BackGroundImageUrl { get; set; }
+        public string? Title { get; set; }
+        public string? AboutMe { get; set; }
     }
 }
