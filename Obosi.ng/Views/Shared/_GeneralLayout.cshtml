@@ -360,6 +360,41 @@
             return window.screen.width;
 
         }
+
+        function loadVillage() {
+
+           
+                $.ajax({
+                    type: 'GET',
+                url: '@Url.Action("GetVillages", "Home")', // we are calling json method
+                    dataType: 'json',
+                    success: function (result) {
+                        console.log(result, "result  akaaaaaa");
+
+                    $("#villageId").empty();
+                        //populate ExamBatch
+                    $("#villageId").append('<option value = "" > -- Select Village -- </option>');
+                        // $.each(result.specification, function (i, specification) {
+                        //     $("#akaId").append('<option value = "' + specification.id + '" >' + specification.name + '</option>');
+                        // });
+                        for (let i = 0; i < result.length; i++) {
+                            const item = result[i];
+                            // Access each item properties here
+                            console.log(item.id, item.unit.name);
+                        $("#villageId").append('<option value = "' + item.id + '" >' + item.unit.name + '</option>');
+                        }
+
+
+
+
+                    },
+                    error: function (ex) {
+                        alert('error' + ex);
+                    }
+
+                });
+            
+        }
     
         $('#villageId').on('change', function (e) {
             loadAka($('#villageId').val())

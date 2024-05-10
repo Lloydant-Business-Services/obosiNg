@@ -50,6 +50,7 @@ namespace Obosi.ng.Presentation.Controllers
                     await news.CreateNews(model.NewsObject);
                     return RedirectToAction("Index");
                 }
+                return RedirectToAction("Index");
             }
             await model.InitializeNewsAsync();
             return View(model);

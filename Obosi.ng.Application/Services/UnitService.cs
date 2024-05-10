@@ -438,5 +438,10 @@ namespace Obosi.ng.Application.Services
                  })
                  .ToListAsync();
         }
+
+        public async Task<List<Unit>> ViewMembership(string email)
+        {
+            return await _dataContext.Member_Unit.Where(x => x.Users.Email == email).Include(x => x.Unit).Select(x => x.Unit).ToListAsync();
+        }
     }
 }

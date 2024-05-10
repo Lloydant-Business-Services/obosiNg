@@ -26,6 +26,15 @@ namespace Obosi.ng.Application.Services
             {
                 user.IsActive = true;
                 _dataContext.Users.Update(user);
+                Notification notification = new()
+                {
+                    Message = "User Account Activation Successful",
+                    DateCreated = DateTime.UtcNow,
+                    UserId = user.Id,
+                    Type = "User Account Activation",
+                    IsRead = false
+                };
+                await _dataContext.Notification.AddAsync(notification);
                 await _dataContext.SaveChangesAsync();
                
             }
@@ -60,6 +69,16 @@ namespace Obosi.ng.Application.Services
             {var passwordCheck = VerifyPassword(password,user.Password);
                 if (passwordCheck && user.IsActive)
                 {
+                    Notification notification = new()
+                    {
+                        Message = "User Login Successful",
+                        DateCreated = DateTime.UtcNow,
+                        UserId = user.Id,
+                        Type = "User Login",
+                        IsRead = false
+                    };
+                    await _dataContext.Notification.AddAsync(notification);
+                    await _dataContext.SaveChangesAsync();
                     return user;
                 }
                 else
@@ -134,8 +153,16 @@ namespace Obosi.ng.Application.Services
                         };
                         await _dataContext.Member_Unit.AddAsync(Village);
                     }
+                    Notification notification = new()
+                    {
+                        Message = "User Account Created",
+                        DateCreated = DateTime.UtcNow,
+                        UserId = createdUser.Entity.Id,
+                        Type = "User creation", 
+                        IsRead = false
+                    };
+                    await _dataContext.Notification.AddAsync(notification);
 
-             
                     await _dataContext.SaveChangesAsync();
                     await transaction.CommitAsync();
                     return createdUser.Entity;
@@ -250,6 +277,7 @@ namespace Obosi.ng.Application.Services
                 if (!string.IsNullOrWhiteSpace(user.OtherName))
                 {
                     userDetails.OtherName = user.OtherName;
+                    await NotificationCreation(user.Id, "Users Name Updated");
                 }
                 if (!string.IsNullOrWhiteSpace(user.PhoneNumber))
                 {
@@ -270,15 +298,32 @@ namespace Obosi.ng.Application.Services
                 if (!string.IsNullOrWhiteSpace(user.PassportUrl))
                 {
                     userDetails.PassportUrl = user.PassportUrl;
+                    await NotificationCreation(user.Id, "Users Passport Updated");
                 }
                 if (!string.IsNullOrWhiteSpace(user.Password))
                 {
                     userDetails.Password = HashPassword(user.Password);
+                    await NotificationCreation(user.Id, "Users Password Updated");
                 }
 
                 if(user.RoleId > 0)
                 {
                     userDetails.RoleId = user.RoleId;
+                }
+                if (!string.IsNullOrEmpty(user.BackGroundImageUrl))
+                {
+                    userDetails.BackGroundImageUrl = user.BackGroundImageUrl;
+                    await NotificationCreation(user.Id, "Users Background Image Updated");
+                }
+                if (!string.IsNullOrEmpty(user.Title))
+                {
+                    userDetails.Title = user.Title;
+                    await NotificationCreation(user.Id, "Users Salutation Updated");
+                }
+                if (!string.IsNullOrEmpty(user.AboutMe))
+                {
+                    userDetails.AboutMe = user.AboutMe;
+                    await NotificationCreation(user.Id, "Users Bio Updated");
                 }
 
                 _dataContext.Users.Update(userDetails);
@@ -286,6 +331,20 @@ namespace Obosi.ng.Application.Services
                 return userDetails;
             }
             return null;
+        }
+
+        public async Task NotificationCreation(long userId, string type)
+        {
+            Notification notification = new()
+            {
+                Message = type+" Successful",
+                DateCreated = DateTime.UtcNow,
+                UserId = userId,
+                Type = type+" Login",
+                IsRead = false
+            };
+            await _dataContext.Notification.AddAsync(notification);
+            await _dataContext.SaveChangesAsync();
         }
 
         public async Task<List<Role>> GetAllRoles()

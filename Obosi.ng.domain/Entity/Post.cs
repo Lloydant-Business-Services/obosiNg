@@ -14,8 +14,8 @@ namespace Obosi.ng.Domain.Entity
         public long Id { get; set; } 
         public long UserId { get; set; }    
         public virtual Users User { get; set; }
-        public List<string> Photos { get; set; }
-        public List<string> Videos { get; set; }
+        public List<string>? Photos { get; set; }
+        public List<string>? Videos { get; set; }
         public string PostContent { get; set; } 
         public DateTime DateAdded { get; set; }
         public bool IsActive { get; set; }

@@ -12,6 +12,7 @@ namespace Obosi.ng.Domain.Entity
         [Key]
         public long Id { get; set; }
         public long UserId { get; set; }
+        public virtual Users User { get; set; }
         public string Message { get; set; }
         public string Type { get; set; }
         public string? Url { get; set; }

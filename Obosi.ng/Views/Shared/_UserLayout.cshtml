@@ -1,0 +1,75 @@
+﻿@using System.Security.Claims;
+@using Obosi.ng.Application.Interfaces;
+@inject IUser userservice;
+@inject IUnit unitservice;
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Obosi Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/uc/style.css" />
+</head>
+<body>
+    <!-- Profile Section -->
+
+    <section class="profileGlobalContainer">
+        <!-- Left Container -->
+        <div></div>
+         @if(@User.FindFirst(ClaimTypes.Email).Value != null)
+        {
+            string email = @User.FindFirst(ClaimTypes.Email).Value;
+            var membership = await unitservice.ViewMembership(email);
+            string Village = membership?.Where(x => x.Unit_TypeId == (int)Unit_Types.Village)?.FirstOrDefault()?.Name;
+            string Umunna = membership?.Where(x => x.Unit_TypeId == (int)Unit_Types.Umunna)?.FirstOrDefault()?.Name;
+            string Aka = membership?.Where(x => x.Unit_TypeId == (int)Unit_Types.Aka)?.FirstOrDefault()?.Name;
+            string Imenne = membership?.Where(x => x.Unit_TypeId == (int)Unit_Types.Ime_Nne)?.FirstOrDefault()?.Name;
+            var user = await userservice.GetUsersByEmail(email);
+            <div class="profileLeftWrapper col-sm-12">
+                <div class="profileImageContainer">
+                    @if (string.IsNullOrWhiteSpace(user.PassportUrl))
+                    {
+                        <img src="/images.jpg" alt="" />
+                    }
+                    else
+                    {
+                        <img src="/@user.PassportUrl" alt="" />
+                    }
+            </div>
+
+            <div class="profileDescription">
+                <h2 class="mainHeroText">@user.FirstName @user.OtherName @user.LastName</h2>
+                <div class="heroItems">
+                    <span>@Village</span> <span class="heroItemDivide"></span>
+                    <span>@Aka</span> <span class="heroItemDivide"></span>
+                    <span>@Umunna</span> <span class="heroItemDivide"></span>
+                    <span>@Imenne</span>
+                </div>
+                <p class="userTitle">@user.Title</p>
+            </div>
+
+            <div class="profileButtons">
+                <button class="outlineButton">Profile</button>
+                <button class="outlineButton">Notifications</button>
+            </div>
+            <div class="profileButtons">
+                <button class="outlineButton">Posts</button>
+                <button class="outlineButton">Forums</button>
+            </div>
+        </div>
+        }
+
+        <!-- Right Container -->
+            @RenderBody()
+        
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+</body>
+</html>
