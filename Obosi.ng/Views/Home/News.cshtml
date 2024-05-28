@@ -129,7 +129,59 @@
         <p>
             @Html.Raw( @Model.newsItem.Body)
         </p>
+        <div class="commentSection">
+            <div class="commentInputcontainer">
+                <input type="text"
+                       class="commentInput"
+                       placeholder="Enter Comment" />
+            </div>
+            <div class="commentButtonContainer">
+                <button class="sendButton">Emoji</button>
+                <button class="sendButton">Send</button>
+            </div>
+        </div>
 
+        <div class="embeddedUserCommentGlobalContainer">
+            <h2>Comments</h2>
+
+            <section class="embeddedUserCommentInnerContainer">
+                <div class="userCommentImageContainer">
+                    <img src="~/UserDash/images/userProfileImage.jpeg"
+                         alt="User Profile Image"
+                         class="userProfileImage" />
+                </div>
+
+                <div class="userCommentText">
+                    <p class="firstChild">
+                        Once upon a time, in a lush and verdant forest nestled between
+                        rolling hills, there lived a skilled hunter named Adewale Once
+                        upon a time, in a lush and verdant forest nestled between
+                        rolling hills, there lived a skilled hunter named Adewale
+                    </p>
+                    <p class="secondChild">
+                        Theresa Okonkwo, <span>2 days ago</span>
+                    </p>
+                </div>
+            </section>
+            <section class="embeddedUserCommentInnerContainer">
+                <div class="userCommentImageContainer">
+                    <img src="~/UserDash/images/userProfileImage.jpeg"
+                         alt="User Profile Image"
+                         class="userProfileImage" />
+                </div>
+
+                <div class="userCommentText">
+                    <p class="firstChild">
+                        Once upon a time, in a lush and verdant forest nestled between
+                        rolling hd between rolling hills, there lived a skilled hunter
+                        named Adewale
+                    </p>
+                    <p class="secondChild">
+                        Favour Amakwe, <span>24 hours ago</span>
+                    </p>
+                </div>
+            </section>
+        </div>
         <!-- Content Area End -->
         <!-- Related post -->
 
@@ -621,7 +673,7 @@
                         </div>
                         <div class="field-holder">
 
-                            <select class="form-field" asp-for="ImeneId"  id="imeneId">
+                            <select class="form-field" asp-for="ImeneId" required id="imeneId">
                                 <option value="">Select Ime Nne</option>
                                 @*  @foreach (var ime in Model.AllImene)
                                 {
