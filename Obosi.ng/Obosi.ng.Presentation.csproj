@@ -64,6 +64,21 @@
     <None Include="wwwroot\images\.DS_Store" />
     <None Include="wwwroot\img\.DS_Store" />
     <None Include="wwwroot\land\Blog Post\Icon\Link.svg" />
+    <None Include="wwwroot\usersocials\fonts\Feather144f.svg" />
+    <None Include="wwwroot\usersocials\fonts\themify9f24.svg" />
+    <None Include="wwwroot\usersocials\images\challenge-medal.svg" />
+    <None Include="wwwroot\usersocials\images\fast-graduate.svg" />
+    <None Include="wwwroot\usersocials\images\onfire.svg" />
+    <None Include="wwwroot\usersocials\images\top-student.svg" />
+    <None Include="wwwroot\usersocials\js\apexcharts.min.js" />
+    <None Include="wwwroot\usersocials\js\chart.js" />
+    <None Include="wwwroot\usersocials\js\countdown.js" />
+    <None Include="wwwroot\usersocials\js\jquery.easypiechart.min.js" />
+    <None Include="wwwroot\usersocials\js\lightbox.js" />
+    <None Include="wwwroot\usersocials\js\plugin.js" />
+    <None Include="wwwroot\usersocials\js\scripts-rtl.js" />
+    <None Include="wwwroot\usersocials\js\scripts.js" />
+    <None Include="wwwroot\usersocials\js\video-player.js" />
   </ItemGroup>
 
   <ItemGroup>
