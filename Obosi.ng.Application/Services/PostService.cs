@@ -33,7 +33,8 @@ namespace Obosi.ng.Application.Services
                     Comment = comment,
                     IsActive = true,
                     PostId = postId,
-                    UserId = userId
+                    UserId = userId,
+                    Response = null
                 });
                 await _context.SaveChangesAsync();
                 return true;
@@ -82,6 +83,12 @@ namespace Obosi.ng.Application.Services
                 return true;
             }
             return false;
+        }
+
+        public Task<List<PostComments>> AllComments(long postId)
+        {
+            return _context.PostComments.Where(x => x.PostId == postId)
+                .Include(x=>x.User).Include(x=>x.Post.User).ToListAsync();
         }
 
         public async Task<bool> DeleteCommentAsync(long commentId)
@@ -133,6 +140,11 @@ namespace Obosi.ng.Application.Services
         public Task<bool> EditReplyAsync(long replyId, string reply)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<Post> GetPost(long Id)
+        {
+            return await _context.Post.Where(x => x.Id == Id).Include(x=>x.User).Include(x=>x.Unit).FirstOrDefaultAsync();
         }
 
         public async Task<List<Post>> GetPosts(string email, int pageNumber, int pageSize)

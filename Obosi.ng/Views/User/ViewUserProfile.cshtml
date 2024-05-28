@@ -138,17 +138,23 @@
                 </div>
                 <div class="col-xl-4 col-xxl-3 col-lg-4 pe-0">
                     <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
-                        <div class="card-body d-block p-4">
-                            <h4 class="fw-700 mb-3 font-xsss text-grey-900">About</h4>
-                        <p class="fw-500 text-grey-500 lh-24 font-xssss mb-0">  @Html.Raw( @Model.User.AboutMe)</p>
-                        </div>
+
+                    <div class="card-body  d-flex">
+                        <i class="feather-feather text-grey-500 me-3 font-lg"></i>
+                        <h4 class="fw-700 text-grey-900 font-xssss mt-0">
+                            Title
+                            <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">@Model.User.Title</span>
+                        </h4>
+                    </div>
                         <div class="card-body border-top-xs d-flex">
-                            <i class="feather-lock text-grey-500 me-3 font-lg"></i>
+                            <i class="feather-home text-grey-500 me-3 font-lg"></i>
                             <h4 class="fw-700 text-grey-900 font-xssss mt-0">Village
                             <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">@Model.Village</span>
                         </h4>
                         </div>
 
+                    @if (!string.IsNullOrEmpty(Model.Umunna))
+                    {
                         <div class="card-body d-flex pt-0">
                             <i class="feather-eye text-grey-500 me-3 font-lg"></i>
                             <h4 class="fw-700 text-grey-900 font-xssss mt-0">Umunna 
@@ -157,16 +163,17 @@
                         <div class="card-body d-flex pt-0">
                             <i class="feather-map-pin text-grey-500 me-3 font-lg"></i>
                             <h4 class="fw-700 text-grey-900 font-xssss mt-1">Aka
-                            <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">@Model.Aka</span>
-                        </h4>
+                                <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">@Model.Aka</span>
+                            </h4>
                         </div>
                         <div class="card-body d-flex pt-0">
                             <i class="feather-users text-grey-500 me-3 font-lg"></i>
                             <h4 class="fw-700 text-grey-900 font-xssss mt-1">Imenne
-                            <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">@Model.Imenne</span>
+                                <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">@Model.Imenne</span>
                             </h4>
                         </div>
-                    </div>
+                    }
+                </div>
                    
 
                    
@@ -177,7 +184,7 @@
 
 
                 <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
-                    <div class="card-body d-flex align-items-center  p-4">
+                    @* <div class="card-body d-flex align-items-center  p-4">
                         <h4 class="fw-700 mb-0 font-xssss text-grey-900">Events For You</h4>
                         <a href="#" class="fw-600 ms-auto font-xssss text-primary">See all</a>
                     </div>
@@ -194,6 +201,10 @@
                     <div class="card-body d-flex pt-0 ps-4 pe-4 pb-3 overflow-hidden">
                         <div class="bg-primary me-2 p-3 rounded-xxl"><h4 class="fw-700 font-lg ls-3 lh-1 text-white mb-0"><span class="ls-1 d-block font-xsss text-white fw-600">APR</span>23</h4></div>
                         <h4 class="fw-700 text-grey-900 font-xssss mt-2">Aniversary Event <span class="d-block font-xsssss fw-500 mt-1 lh-4 text-grey-500">41 madison ave, floor 24 new work, NY 10010</span> </h4>
+                    </div> *@
+                    <div class="card-body d-block p-4">
+                        <h4 class="fw-700 mb-3 font-xsss text-grey-900">About</h4>
+                        <p class="fw-500 text-grey-500 lh-24 font-xssss mb-0">  @Html.Raw( @Model.User.AboutMe)</p>
                     </div>
 
                 </div>

@@ -37,5 +37,7 @@ namespace Obosi.ng.Application.Interfaces
         Task<bool> UnhideReplyAsync(long replyId, long userId);
         Task<List<Post>> GetPosts(string email, int pageNumber, int pageSize);
         Task<Users> GetUser(string email);
+        Task<Post> GetPost(long Id);
+        Task<List<PostComments>> AllComments(long postId);
     }
 }

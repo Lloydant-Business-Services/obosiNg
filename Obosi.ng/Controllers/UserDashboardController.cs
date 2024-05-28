@@ -51,7 +51,23 @@ namespace Obosi.ng.Presentation.Controllers
             await _postService.AddPostAsync(userId, model.Comment, Photos, Videos, null, !model.IsPrivate, true, false);
             return RedirectToAction("Posts");
         }
-        public IActionResult Forum()
+        public async Task<IActionResult> Post(long Id)
+        {
+            UserDashboardViewModel model = new UserDashboardViewModel(_postService);
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+            string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
+            await model.InitializePostsAsync(userEmail);
+            model.Post = await _postService.GetPost(Id);
+            return View(model);
+        }
+        public async Task<IActionResult> PostComment(UserDashboardViewModel model)
+        {
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+            long userId = Convert.ToInt64(claimsPrincipal.FindFirst(ClaimTypes.Sid).Value);
+            await _postService.AddCommentAsync(model.Post.Id, userId, model.Comment);
+            return RedirectToAction("Post", new { Id = model.Post.Id });
+        }
+            public IActionResult Forum()
         {
             return View();
         }
