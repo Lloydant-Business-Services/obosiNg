@@ -88,7 +88,7 @@ namespace Obosi.ng.Application.Services
         public Task<List<PostComments>> AllComments(long postId)
         {
             return _context.PostComments.Where(x => x.PostId == postId)
-                .Include(x=>x.User).Include(x=>x.Post.User).ToListAsync();
+                .Include(x=>x.User).Include(x=>x.Post.User.Role).ToListAsync();
         }
 
         public async Task<bool> DeleteCommentAsync(long commentId)
