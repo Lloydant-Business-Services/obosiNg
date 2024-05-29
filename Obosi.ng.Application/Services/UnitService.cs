@@ -343,7 +343,8 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Member_Unit>> ViewUnApprovedMembers()
         {
-            return await _dataContext.Member_Unit.Where(x => x.IsActive == false && x.Unit.Unit_TypeId == (int)Unit_Types.Umunna).Include(x => x.Unit.Unit_Type).Include(x => x.Users).ToListAsync();
+            return await _dataContext.Member_Unit.Where(x => x.IsActive == false && x.Unit.Unit_TypeId == (int)Unit_Types.Umunna)
+                .Include(x => x.Unit.Unit_Type).Include(x => x.Users).ToListAsync();
         }
 
         public async Task<List<Village>> GetVillages()
@@ -437,6 +438,11 @@ namespace Obosi.ng.Application.Services
                  }
                  })
                  .ToListAsync();
+        }
+
+        public async Task<List<Unit>> ViewMembership(string email)
+        {
+            return await _dataContext.Member_Unit.Where(x => x.Users.Email == email).Include(x => x.Unit).Select(x => x.Unit).ToListAsync();
         }
     }
 }

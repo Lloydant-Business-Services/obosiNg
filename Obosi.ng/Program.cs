@@ -35,6 +35,9 @@ builder.Services.AddTransient<IAka, AkaService>();
 builder.Services.AddTransient<IImenne, ImenneService>();
 builder.Services.AddTransient<IUmunna, UmunnaService>();
 builder.Services.AddTransient<IVillage, VillageService>();
+builder.Services.AddTransient<IPostService,PostService>();
+builder.Services.AddTransient<INotification,NotificationService>();
+builder.Services.AddTransient<IForum, ForumService>();
 
 
 
