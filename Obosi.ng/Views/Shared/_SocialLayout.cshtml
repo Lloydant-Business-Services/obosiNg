@@ -48,20 +48,29 @@
         <div class="nav-header bg-white shadow-xs border-0">
             <div class="nav-top">
                 <a href="~/User/ViewUserProfile"><span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">OBOSI </span> </a>
-                <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-message-circle text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
-                <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+              
+                <div class="card bg-transparent-card border-0 d-block mt-3 d-flex flex-column g-3 
+                align-items-start border border-danger ml-4 rounded rounded-lg pl-3 ">
+                    <h4 class="d-inline font-xssss mont-font fw-700  ml-4">Dark Mode</h4>
+
+                    <div class="d-inline float-right mt-1  ml-4">
+                        <label class="toggle toggle-dark"><input type="checkbox"><span class="toggle-icon"></span></label>
+                    </div>
+                </div>
+                <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i class="feather-more-vertical text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+                @* <a href="#" class="me-2 menu-search-icon mob-menu"><i class="feather-search text-grey-900 font-sm btn-round-md bg-greylight"></i></a> *@
                 <button class="nav-menu me-0 ms-2"></button>
             </div>
 
             <form action="#" class="float-left header-search">
                 <div class="form-group mb-0 icon-input">
-                    <i class="feather-search font-sm text-grey-400"></i>
+                  @*   <i class="feather-search font-sm text-grey-400"></i>
                     <input type="text" placeholder="Start typing to search.." class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 theme-dark-bg">
-                </div>
+             *@    </div>
             </form>
             <a href="~/User/ViewUserProfile" class="p-2 text-center ms-3 menu-icon center-menu-icon"><i class="feather-home font-lg bg-greylight btn-round-lg theme-dark-bg text-grey-500 "></i></a>
 
-            <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a>
+          @* @* @* @*   <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown"><span class="dot-count bg-warning"></span><i class="feather-bell font-xl text-current"></i></a>
             <div class="dropdown-menu dropdown-menu-end p-4 rounded-3 border-0 shadow-lg" aria-labelledby="dropdownMenu3">
 
                 <h4 class="fw-700 font-xss mb-4">Notification</h4>
@@ -72,11 +81,11 @@
                   
                     @foreach (var items in notifications)
                     {
-                        <div class="card bg-transparent-card w-100 border-0 ps-5 mb-3">
+                        <div class="card bg-transparent-card w-100 border-0 ps-5 mb-3 mt-3">
 
                             <img src="/@items.User.PassportUrl" alt="user" class="w40 position-absolute left-0">
                           @*   <span class="btn-round-sm bg-primary-gradiant me-3 ls-3 text-white font-xssss fw-700"> *@
-                            <h5 class="text-grey-400 font-xsssss  mb-1 mt-0 fw-700 d-block">@items.User.Email <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> @items.DateCreated.ToShortDateString()</span></h5>
+                            @* <h5 class="text-grey-400 font-xsssss  mb-1 mt-0 fw-700 d-block">@items.User.Email <span class="text-grey-400 font-xsssss fw-600 float-right mt-1"> @items.DateCreated.ToShortDateString()</span></h5>
                             <h6 class="text-grey-500 fw-500 font-xssss lh-4">@items.Message</h6>
                           
                         </div>
@@ -84,17 +93,11 @@
                 }
 
 
-            </div>
-
-            <div class="card bg-transparent-card border-0 d-block mt-3 d-flex flex-column g-3 align-items-start border border-danger ml-4 ">
-                <h4 class="d-inline font-xssss mont-font fw-700">Dark Mode</h4>
-             
-                <div class="d-inline float-right mt-1">
-                    <label class="toggle toggle-dark"><input type="checkbox"><span class="toggle-icon"></span></label>
-                </div>
-            </div>
-            <a href="~/User/ViewUserProfile" class="p-0 ms-3 menu-icon"><img src="~/usersocials/images/profile-4.png" alt="user" class="w40 mt--1"></a>
-
+            </div> *@
+ 
+           
+          @*   <a href="~/User/ViewUserProfile" class="p-0 ms-3 menu-icon"><img src="~/usersocials/images/profile-4.png" alt="user" class="w40 mt--1"></a>
+ *@
         </div>
         <!-- navigation top -->
         <!-- navigation left -->
@@ -112,7 +115,7 @@
                     </div>
 
                     <div class="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2">
-                        <div class="nav-caption fw-600 font-xssss text-grey-500"><span>Events </span></div>
+                        <div class="nav-caption fw-700 font-xssss text-grey-500"><span>Events </span></div>
                         <ul class="mb-3">
 
 
@@ -140,8 +143,8 @@
             @RenderBody()
         </div>
 
-        <div class="right-chat nav-wrap mt-2 right-scroll-bar">
-            <div class="middle-sidebar-right-content bg-white shadow-xss rounded-xxl">
+        <div class="right-chat nav-wrap  right-scroll-bar">
+            <div class="middle-sidebar-right-content bg-white shadow-xss ">
 
                 <!-- loader wrapper -->
                 <div class="preloader-wrap p-3">
@@ -188,8 +191,8 @@
                     </ul>
                 </div> *@
 
-                <div class="section full pe-3 ps-4 pt-4  mt-3 pb-4 position-relative feed-body" style="height: 300px;">
-                    <h4 class="font-xsssss text-grey-500 text-uppercase fw-700 ls-3 forum-list" style="max-height: 100%; overflow-y: auto;">FORUMS</h4>
+                <div class="section full pe-3 ps-4 pt-4   pb-4 position-relative feed-body" style="height: 300px;">
+                    <h4 class="nav-caption fw-600 font-xssss text-grey-500" style="max-height: 100%; overflow-y: auto;">FORUMS</h4>
                     <ul class="list-group list-group-flush">
                         @{
                             var forums = await forum.GetForums();
@@ -201,7 +204,7 @@
                                       NFY
                                     </span>
                                     <h3 class="fw-700 mb-0 mt-0">
-                                        <a class="font-xssss text-grey-600 d-block text-dark " href="#">Not Forums Yet</a>
+                                        <a class="font-xssss text-grey-600 d-block text-dark " href="#">No Forums Available</a>
                                     </h3>
                                     
                                 </li>
@@ -227,7 +230,7 @@
                 </div>
 
                 <div class="section full pe-3 ps-4 pt-4  mt-3 pb-4 position-relative feed-body" style="height: 300px;">
-                    <h4 class="font-xsssss text-grey-500 text-uppercase fw-700 ls-3 forum-list" style="max-height: 100%; overflow-y: auto;">Events</h4>
+                    <h4 class="nav-caption fw-600 font-xssss text-grey-500" style="max-height: 100%; overflow-y: auto;">Events</h4>
                     <ul class="list-group list-group-flush">
                         @{
                             var events = await calender.GetAssets(@User.FindFirst(ClaimTypes.Email).Value);
@@ -264,7 +267,7 @@
                 </div>
 
                 <div class="section full pe-3 ps-4 pt-4  mt-3 pb-4 position-relative feed-body" style="height: 300px;">
-                    <h4 class="font-xsssss text-grey-500 text-uppercase fw-700 ls-3 forum-list" style="max-height: 100%; overflow-y: auto;">NEWS</h4>
+                    <h4 class="nav-caption fw-600 font-xssss text-grey-500" style="max-height: 100%; overflow-y: auto;">NEWS</h4>
                     <ul class="list-group list-group-flush">
                         @{
                             var newsValues = await newss.GetHomePageNews();
@@ -305,7 +308,7 @@
 
 
                 <div class="section full pe-3 ps-4 pt-4 pb-4 mt-3 position-relative feed-body" style="height: 300px;">
-                    <h4 class="font-xsssss text-grey-500 text-uppercase fw-700 ls-3 forum-list" style="max-height: 100%; overflow-y: auto;">BLOGS</h4>
+                    <h4 class="nav-caption fw-600 font-xssss text-grey-50" style="max-height: 100%; overflow-y: auto;">BLOGS</h4>
                     <ul class="list-group list-group-flush">
                         @{
                             var blogsPost = await blogs.GetHomePageBlogs();

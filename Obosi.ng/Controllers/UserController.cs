@@ -62,7 +62,16 @@ namespace Obosi.ng.Presentation.Controllers
             await model.InitializeUserAsync(userEmail);
             return View(model);
         }
-      
+        [HttpGet]
+        public async Task<IActionResult> ViewUsersProfile(int Id)
+        {
+            ViewBag.Title = "View Profile";
+            UserViewModel model = new(_user, unit);
+            var user = await _user.GetUsersById(Id);
+            await model.InitializeUserAsync(user?.Email);
+            return View(model);
+        }
+
 
         [HttpGet]
         public async Task<IActionResult> Profile()

@@ -31,7 +31,7 @@ namespace Obosi.ng.Presentation.ViewModels
         }
         public async Task InitializePostsAsync(string email)
         {
-            this.Posts = await postService.GetPosts(email,1,10);
+            this.Posts = await postService.GetPosts(email,1,40);
             this.Users = await postService.GetUser(email);
         }
        

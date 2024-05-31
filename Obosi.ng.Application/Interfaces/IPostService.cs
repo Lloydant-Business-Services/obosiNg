@@ -39,5 +39,6 @@ namespace Obosi.ng.Application.Interfaces
         Task<Users> GetUser(string email);
         Task<Post> GetPost(long Id);
         Task<List<PostComments>> AllComments(long postId);
+        Task<bool> LikePost(long PostId, long UserId);
     }
 }
