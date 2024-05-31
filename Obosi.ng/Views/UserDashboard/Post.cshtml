@@ -1,0 +1,643 @@
+﻿@using Obosi.ng.Application.Interfaces;
+@model Obosi.ng.Presentation.ViewModels.UserDashboardViewModel
+@{
+    Layout = "~/Views/Shared/_SocialLayout.cshtml";
+}
+@inject IPostService postservice;
+
+<style>
+    .form-check-input {
+        cursor: pointer;
+    }
+
+        .form-check-input:checked {
+            background-color: #198754; /* Bootstrap's .bg-success color */
+            border-color: #198754; /* Bootstrap's .bg-success color */
+        }
+
+        .form-check-input:focus {
+            box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25); /* Light green shadow */
+        }
+
+    .form-check-label {
+        cursor: pointer;
+        user-select: none; /* Prevent text selection */
+    }
+
+    .button-style {
+        background: none; /* Removes the default background */
+        border: none; /* Removes the default border */
+        outline: none; /* Removes the focus outline */
+        color: inherit; /* Inherits text color from parent */
+        text-align: left; /* Aligns text to the left like a typical anchor */
+        cursor: pointer; /* Changes the cursor to indicate it's clickable */
+    }
+
+        .button-style:hover, .button-style:focus {
+            text-decoration: underline; /* Adds underline on hover/focus like a typical anchor */
+            outline: none; /* Ensures no outline appears on focus */
+        }
+
+
+
+    /* Base styles */
+    .card-body {
+        flex-wrap: wrap; /* Allows items to wrap onto the next line as needed */
+        gap: 10px; /* Adds space between flex items */
+    }
+
+    /* Style adjustments for smaller screens */
+    @@media (max-width: 768px) {
+        .card-body {
+            flex-direction: column; /* Stack elements vertically on smaller screens */
+        }
+
+            .card-body .form-check,
+            .card-body label,
+            .card-body button {
+                flex: 0 0 100%; /* Make each child take full width of the container */
+                max-width: 100%; /* Ensures no overflow */
+                justify-content: center; /* Center align the content for better visual balance */
+                text-align: center; /* Center text for labels and buttons */
+            }
+
+                .card-body label i, .card-body .form-check-label i {
+                    margin-right: 10px; /* Adjust spacing around icons */
+                }
+
+            .card-body button {
+                margin-top: 10px; /* Adds a top margin to the button for spacing */
+            }
+    }
+
+    /* Adjusting the look of icons and text size for better mobile experience */
+    @@media (max-width: 480px) {
+        .card-body .font-md {
+            font-size: 14px; /* Smaller icon size */
+        }
+
+        .card-body .font-xssss, .card-body .fw-600 {
+            font-size: 12px; /* Smaller text size for better readability on small devices */
+        }
+    }
+
+
+    .chat-bottom {
+  background-color: #1e1e1e;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 98%;
+  height: 120px;
+  border: 1px solid #dc3545;
+}
+
+.dark-bg {
+  background-color: #1e1e1e;
+}
+
+.theme-dark-bg {
+  background-color: #121212;
+}
+
+.border-danger {
+  border-color: #dc3545 !important;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.g-3 {
+  gap: 10px;
+}
+
+.form-group {
+  flex-grow: 1;
+  margin-right: 0.5rem;
+}
+
+textarea {
+  height: 100px;
+  border: none;
+  width: 100%;
+  border-radius: 1.5rem;
+  padding: 0.5rem 1rem;
+  padding-left: 2.5rem;
+  font-size: 0.75rem;
+  color: #6c757d;
+  font-weight: 500;
+  background-color: #121212;
+  border: 1px solid #adb5bd;
+}
+
+button {
+  display: none;
+  background-color: #007bff;
+  padding: 0.75rem;
+  z-index: 1;
+  border-radius: 0.25rem;
+  color: #fff;
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+@@media (min-width: 992px) {
+  button {
+    display: block;
+  }
+}
+
+.shadow-none {
+  box-shadow: none !important;
+}
+
+.font-xssss {
+  font-size: 0.75rem;
+}
+
+.font-xsssss {
+  font-size: 0.5rem;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.rounded-xxl {
+  border-radius: 1.5rem !important;
+}
+
+.rounded-3 {
+  border-radius: 0.25rem !important;
+}
+
+.text-grey-500 {
+  color: #6c757d !important;
+}
+
+.border-light-md {
+  border: 1px solid #adb5bd;
+}
+
+
+
+
+</style>
+<script>
+    document.getElementById('publicPrivateSwitch').addEventListener('change', function () {
+        var label = this.nextElementSibling.querySelector('span');
+        label.textContent = this.checked ? 'Public' : 'Private';
+    });
+</script>
+
+
+<div class="middle-sidebar-bottom">
+    <div class="middle-sidebar-left">
+        <!-- loader wrapper -->
+        <div class="preloader-wrap p-3">
+            <div class="box shimmer">
+                <div class="lines">
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                </div>
+            </div>
+            <div class="box shimmer mb-3">
+                <div class="lines">
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                </div>
+            </div>
+            <div class="box shimmer">
+                <div class="lines">
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                </div>
+            </div>
+        </div>
+        <!-- loader wrapper -->
+        <div class="row feed-body">
+            <div class="col-xl-12 col-xxl-12 col-lg-12">
+
+
+               
+
+
+               
+
+                    <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3">
+                        <div class="card-body p-0 d-flex">
+                            <figure class="avatar me-3">
+                                @if (string.IsNullOrWhiteSpace(Model.Post.User.PassportUrl))
+                                {
+
+                                    <img src="/images.jpg" alt="image" class="shadow-sm rounded-circle w45">
+                                }
+                                else
+                                {
+                                <img src="/@Model.Post.User.PassportUrl" alt="image" class="shadow-sm rounded-circle w45">
+                                }
+                            </figure>
+                            <h4 class="fw-700 text-grey-900 font-xssss mt-1">
+                            @Model.Post.User.FirstName @Model.Post.User.LastName
+                            <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">@Model.Post.DateAdded.ToShortDateString()</span>
+                            </h4>
+                            @* <a href="#" class="ms-auto" id="dropdownMenu5" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti-more-alt text-grey-900 btn-round-md bg-greylight font-xss"></i></a> *@
+                        </div>
+
+                        <div class="card-body p-0 me-lg-5">
+                        <p class="fw-500 text-grey-500 lh-26 font-xssss w-100 mb-2">@Model.Post.PostContent</p>
+                        </div>
+                    @if (Model.Post.Videos.FirstOrDefault() != "")
+                        {
+                            <div class="card-body p-0 mb-3 rounded-3 overflow-hidden">
+                              
+                                    <video loop class="float-right w-100" controls>
+                                    <source src="/@Model.Post.Videos.FirstOrDefault()" type="video/mp4">
+                                    </video>
+                                
+                            </div>
+                        }
+
+
+
+                    @if (Model.Post.Photos != null)
+                        {
+                            <div class="card-body d-block p-0 mb-3">
+                            @if (Model.Post.Photos.Count == 1)
+                                {
+                                    <div class="col-xs-12 col-sm-12 p-1">
+                                        <a href="#" data-lightbox="roadtri">
+                                        <img src="/@Model.Post.Photos[0]" class="rounded-3 w-100" alt="image">
+                                        </a>
+                                    </div>
+                                }
+                            else if (Model.Post.Photos.Count == 2)
+                            {
+                                @for (int i = 0; i < Model.Post.Photos.Count(); i += 3) // Loop in steps of 3 for row grouping
+                                {
+                                    <div class="row ps-2 pe-2">
+                                        @for (int j = i; j < i + 2 && j < Model.Post.Photos.Count(); j++) // Inner loop for columns
+                                        {
+                                            <div class="col-xs-6 col-sm-6 p-1">
+                                                <a href="#" data-lightbox="roadtri">
+                                                    <img src="/@Model.Post.Photos[j]" class="rounded-3 w-100" alt="image">
+                                                </a>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            }
+                                else
+                                {
+                                @for (int i = 0; i < Model.Post.Photos.Count(); i += 3) // Loop in steps of 3 for row grouping
+                                    {
+                                        <div class="row ps-2 pe-2">
+                                        @for (int j = i; j < i + 3 && j < Model.Post.Photos.Count(); j++) // Inner loop for columns
+                                            {
+                                                <div class="col-xs-4 col-sm-4 p-1">
+                                                    <a href="#" data-lightbox="roadtri">
+                                                    <img src="/@Model.Post.Photos[j]" class="rounded-3 w-100" alt="image">
+                                                    </a>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                }
+                            </div>
+                      
+
+                           
+                     
+                        }
+
+
+                        <div class="card-body d-flex p-0">
+                       @*  <a href="#" class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2" > <i class="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"></i> Like</a>
+                         *@    <div class="emoji-wrap">
+                                @*  <ul class="emojis list-inline mb-0">
+                            <li class="emoji list-inline-item"><i class="em em---1"></i> </li>
+                            <li class="emoji list-inline-item"><i class="em em-angry"></i></li>
+                            <li class="emoji list-inline-item"><i class="em em-anguished"></i> </li>
+                            <li class="emoji list-inline-item"><i class="em em-astonished"></i> </li>
+                            <li class="emoji list-inline-item"><i class="em em-blush"></i></li>
+                            <li class="emoji list-inline-item"><i class="em em-clap"></i></li>
+                            <li class="emoji list-inline-item"><i class="em em-cry"></i></li>
+                            <li class="emoji list-inline-item"><i class="em em-full_moon_with_face"></i></li>
+                            </ul> *@
+                            </div>
+                   @*          <a href="#" class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-message-circle text-dark text-grey-900 btn-round-sm font-lg"></i><span class="d-none-xss">Comment</span></a> *@
+                           @*  <a href="#" class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span class="d-none-xs">Share</span></a>
+                *@         </div>
+
+                    <div class="middle-sidebar-bottom">
+                        <div class="middle-sidebar-left pe-0 ps-lg-3 ms-0 me-0" style="max-width: 100%;">
+                            <div class="row">
+
+
+                                <div class="col-lg-12 position-relative">
+                                    <div class="chat-wrapper pt-0 w-100 position-relative scroll-bar bg-white theme-dark-bg">
+                                        <div class="chat-body p-3 ">
+                                            <div class="messages-content pb-5  bg-white theme-dark-bg" style="height: 700px; overflow-y: auto; 
+padding-bottom: 5rem; background-color: #f8f9fa;">
+                                                @{
+                                                    var comment = await postservice.AllComments(Model.Post.Id);
+
+                                                    @foreach (var item in comment)
+                                                    {
+                                                        if (!string.IsNullOrEmpty(item.Response))
+                                                        {
+                                                            <div class="message-item">
+                                                                <div class="message-user">
+                                                                    <figure class="avatar">
+                                                                        <img src="/@item.Post.User.PassportUrl" alt="image">
+                                                                    </figure>
+                                                                    <div>
+                                                                        <h5>Byrom Guittet</h5>
+                                                                        <div class="time">@item.Date.ToShortDateString()</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="message-wrap">@item.Response</div>
+                                                            </div>
+
+                                                        }
+
+                                                        <div class="message-item outgoing-message">
+                                                            <div class="message-user">
+                                                                <figure class="avatar">
+                                                                    <img src="/@item.User.PassportUrl" alt="image">
+                                                                </figure>
+                                                                <div>
+                                                                    <h5>@item.User.FirstName @item.User.LastName</h5>
+                                                                    <div class="time">@item.Date.ToShortDateString()<i class="ti-double-check text-info"></i></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="message-wrap" style="margin-bottom: 90px;">@item.Comment</div>
+
+                                                        </div>
+                                                    }
+
+                                                }
+                                                <div class="clearfix"></div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                   @*  <div class="chat-bottom dark-bg p-3 shadow-none theme-dark-bg position-relative d-flex align-items-center g-3 border border-danger" style="width: 98%; height: 120px; display: flex; align-items: center; gap: 10px;">
+                                        <form asp-action="PostComment" method="post" enctype="multipart/form-data">
+                                            <input type="hidden" asp-for="Post.Id"/>
+                                            @* <button class="bg-grey float-left"><i class="ti-microphone text-grey-600"></i></button> *@
+                                          @*   <div class="form-group border border-danger ">
+                                                <textarea class="h100 bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-500 fw-500 border-light-md theme-dark-bg"
+                                                       cols="30" rows="10" placeholder="What's on your mind?" name="Comment" asp-for="Comment">
+                                                </textarea>
+                                            </div>
+                                            <button class="d-none d-lg-block bg-primary p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3" type="submit">Post</button>
+                                        </form>
+                                    </div> *@
+
+                                    <div class="chat-bottom  bg-white theme-dark-bg p-3 shadow-none position-relative d-flex align-items-center g-3 
+" style="width: 98%; height: 120px; display: flex; align-items: center; gap: 10px;">
+                                    <form action="PostComment" method="post" enctype="multipart/form-data" class="d-flex align-items-center w-100">
+                                            <input type="hidden" name="Post.Id" asp-for="Post.Id" />
+                                        <div class="form-group flex-grow-1  me-2">
+                                                <textarea class="h100 bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-500 fw-500 border-light-md  bg-white theme-dark-bg"
+                                                          cols="30" rows="10" placeholder="What's on your mind?" name="Comment" asp-for="Comment">
+      </textarea>
+                                        </div>
+                                        <button class="d-none d-lg-block bg-primary p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3" type="submit">Post</button>
+                                    </form>
+                                </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                
+
+
+
+
+
+              
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<div id="feedContainer"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var page = 1; // Start from the first page
+        var pageSize = 10; // Number of items per page
+        var isLoading = false; // Flag to prevent multiple concurrent AJAX calls
+
+        function loadMoreFeeds() {
+            if (isLoading) return;
+            isLoading = true;
+
+            $.ajax({
+                url: '/Feed/GetFeeds',
+                type: 'GET',
+                data: { page: page, pageSize: pageSize },
+                success: function (data) {
+                    if (data.length > 0) {
+                        page++; // Prepare the next page number
+                        // Append new feeds to the existing feed container
+                        data.forEach(function (feed) {
+                            $('#feedContainer').append('<div>' + feed.Content + '</div>'); // Customize this line based on your data structure
+                        });
+                    }
+                    isLoading = false;
+                },
+                error: function () {
+                    console.error('Failed to fetch data.');
+                    isLoading = false;
+                }
+            });
+        }
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+                loadMoreFeeds(); // Load next page of feeds when scrolled near the bottom of the page
+            }
+        });
+
+        loadMoreFeeds(); // Initial load
+    });
+
+    function displayFileInfo() {
+        const fileInput = document.getElementById('fileInput');
+        const fileInfo = document.getElementById('fileInfo');
+
+        if (fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            fileInfo.innerHTML = `<p>File name: ${file.name}</p>
+                                      <p>File type: ${file.type}</p>
+                                      <p>File size: ${file.size} bytes</p>`;
+        }
+    }
+    function displayPreview(file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const fileInfo = document.getElementById('fileInfo');
+            if (file.type.startsWith('image/')) {
+                fileInfo.innerHTML += `<img src="${e.target.result}" alt="File Preview" style="max-width: 200px;">`;
+            } else if (file.type.startsWith('video/')) {
+                fileInfo.innerHTML += `<video src="${e.target.result}" controls style="max-width: 200px;"></video>`;
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+
+
+    function loadFiles(event) {
+        var files = event.target.files; // FileList object containing the list of files
+
+        // Clear existing images
+        var container = document.getElementById('imageContainer');
+        container.innerHTML = '';
+
+        // Loop through the FileList
+        for (var i = 0, file; file = files[i]; i++) {
+            // Only process image files.
+            if (!file.type.match('image.*')) {
+                continue;
+            }
+
+            var reader = new FileReader();
+
+            // Closure to capture the file information.
+            reader.onload = (function (theFile, index) {
+                return function (e) {
+                    var imgWrapper = document.createElement('div');
+                    imgWrapper.classList.add('image-wrapper');
+                    imgWrapper.style.position = 'relative';
+                    imgWrapper.style.display = 'inline-block';
+                    imgWrapper.style.margin = '10px';
+
+                    // Create an img element and set its src attribute to the file's data URL
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.width = "100px"; // Optional: set image size
+                    img.style.height = "100px"; // Optional: set image size
+                    img.style.padding = "5px"; // Optional: add padding
+
+                    // Create a remove button for the image
+                    var removeBtn = document.createElement('button');
+                    removeBtn.textContent = 'X';
+                    removeBtn.style.position = 'absolute';
+                    removeBtn.style.top = '0';
+                    removeBtn.style.right = '0';
+                    removeBtn.onclick = function () {
+                        container.removeChild(imgWrapper);
+                    };
+
+                    // Append the img element and remove button to the wrapper
+                    imgWrapper.appendChild(img);
+                    imgWrapper.appendChild(removeBtn);
+
+                    // Append the wrapper to the container
+                    container.appendChild(imgWrapper);
+                };
+            })(file, i);
+
+            // Read in the image file as a data URL.
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function loadVideos(event) {
+        var files = event.target.files; // FileList object containing the list of video files
+
+        // Clear existing videos
+        var container = document.getElementById('videoContainer');
+        container.innerHTML = '';
+
+        // Loop through the FileList
+        for (var i = 0, file; file = files[i]; i++) {
+            // Only process video files.
+            if (!file.type.match('video.*')) {
+                continue;
+            }
+
+            var reader = new FileReader();
+
+            // Closure to capture the file information.
+            reader.onload = (function (theFile, index) {
+                return function (e) {
+                    var videoWrapper = document.createElement('div');
+                    videoWrapper.classList.add('video-wrapper');
+                    videoWrapper.style.position = 'relative';
+                    videoWrapper.style.display = 'inline-block';
+                    videoWrapper.style.margin = '10px';
+
+                    // Create a video element and set its src attribute to the file's data URL
+                    var video = document.createElement('video');
+                    video.src = e.target.result;
+                    video.style.width = "300px"; // Set video size
+                    video.style.height = "auto"; // Maintain aspect ratio
+                    video.controls = true; // Add controls so the user can play/pause, adjust volume, etc.
+
+                    // Create a remove button for the video
+                    var removeBtn = document.createElement('button');
+                    removeBtn.textContent = 'X';
+                    removeBtn.style.position = 'absolute';
+                    removeBtn.style.top = '0';
+                    removeBtn.style.right = '0';
+                    removeBtn.onclick = function () {
+                        container.removeChild(videoWrapper);
+                    };
+
+                    // Append the video element and remove button to the wrapper
+                    videoWrapper.appendChild(video);
+                    videoWrapper.appendChild(removeBtn);
+
+                    // Append the wrapper to the container
+                    container.appendChild(videoWrapper);
+                };
+            })(file, i);
+
+            // Read in the video file as a data URL.
+            reader.readAsDataURL(file);
+        }
+    }
+
+
+
+</script>

@@ -36,5 +36,7 @@ namespace Obosi.ng.Application.Interfaces
         Task<List<Aka>> Akas(int villageId);
         Task<List<Umunna>> GetUmunnas(int akaId);
         Task<List<Imenne>> GetImennes(int umunnaId);
+        Task<List<Unit>> ViewMembership(string email);
+
     }
 }

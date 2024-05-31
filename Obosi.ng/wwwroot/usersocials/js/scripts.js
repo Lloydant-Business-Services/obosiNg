@@ -289,19 +289,19 @@ $(document).ready(function() {
        
 
         // Toggle dark mode and save preference to localStorage
-        $('#darkmodeswitch').on('change', function () {
-            if (this.checked) {
-                $('body').addClass('theme-dark');
+    $('#darkmodeswitch').on('change', function () {
+        if (this.checked) {
+            $('body').addClass('theme-dark');
                 localStorage.setItem('darkMode', 'enabled');
-            } else {
-                $('body').removeClass('theme-dark');
+        } else {
+            $('body').removeClass('theme-dark');
                 localStorage.setItem('darkMode', 'disabled');
-            }
-        });
-   
+        }
+    });
 
 
     
+
 
     $('.chat-active-btn').on('click', function() {
         $('.right-chat').toggleClass('active-sidebar');

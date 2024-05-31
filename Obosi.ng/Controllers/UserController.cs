@@ -53,6 +53,27 @@ namespace Obosi.ng.Presentation.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> ViewUserProfile()
+        {
+            ViewBag.Title = "View Profile";
+            UserViewModel model = new(_user, unit);
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+            string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
+            await model.InitializeUserAsync(userEmail);
+            return View(model);
+        }
+        [HttpGet]
+        public async Task<IActionResult> ViewUsersProfile(int Id)
+        {
+            ViewBag.Title = "View Profile";
+            UserViewModel model = new(_user, unit);
+            var user = await _user.GetUsersById(Id);
+            await model.InitializeUserAsync(user?.Email);
+            return View(model);
+        }
+
+
+        [HttpGet]
         public async Task<IActionResult> Profile()
         {
             ViewBag.Title = "View Profile";
@@ -66,17 +87,45 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<IActionResult> Profile(UserViewModel model)
         {
             ViewBag.Title = "View Profile";
-            model.User.PassportUrl =  await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+            model.User.PassportUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+            model.User.BackGroundImageUrl = await SaveImages.SaveImage(model.BackgroundImage, _hostingEnvironment);
             if (model != null)
             {
                 await _user.UpdateUser(model.User);
             }
-            var claimsPrincipal =  _httpContextAccessor.HttpContext.User;
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
             string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
             model = new(_user, unit);
             await model.InitializeNewsAsync(userEmail);
-  
+
             return RedirectToAction("Profile");
+        }
+        [HttpGet]
+        public async Task<IActionResult> EditUserProfile()
+        {
+            ViewBag.Title = "Update Profile";
+            UserViewModel model = new(_user, unit);
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+            string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
+            await model.InitializeNewsAsync(userEmail);
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditUserProfile(UserViewModel model)
+        {
+            ViewBag.Title = "Update Profile";
+            model.User.PassportUrl = await SaveImages.SaveImage(model.Image, _hostingEnvironment);
+            model.User.BackGroundImageUrl = await SaveImages.SaveImage(model.BackgroundImage, _hostingEnvironment);
+            if (model != null)
+            {
+                await _user.UpdateUser(model.User);
+            }
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+            string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
+            model = new(_user, unit);
+            await model.InitializeNewsAsync(userEmail);
+
+            return RedirectToAction("ViewUserProfile");
         }
 
         // GET: /Users/Create

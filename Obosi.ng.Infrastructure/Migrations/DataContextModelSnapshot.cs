@@ -439,6 +439,162 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.ToTable("Executive");
                 });
 
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Followers", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("FollowerId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FollowerId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Followers");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Forum", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Forum");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.ForumFollowers", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("ForumId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ForumId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ForumFollowers");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.ForumMessage", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("ForumTopicId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ForumTopicId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ForumMessage");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.ForumTopic", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("ForumId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Topic")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ForumId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ForumTopic");
+                });
+
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Gender", b =>
                 {
                     b.Property<int>("Id")
@@ -946,6 +1102,41 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.ToTable("News_Update");
                 });
 
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Notification", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notification");
+                });
+
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Personality", b =>
                 {
                     b.Property<long>("Id")
@@ -1010,6 +1201,119 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.HasIndex("UnitId");
 
                     b.ToTable("Picture_Assets");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Post", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsHidden")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("OnlyFollowers")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Photos")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostContent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UnitId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Videos")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UnitId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Post");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.PostComments", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<long>("PostId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Response")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PostComments");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.PostLikes", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("PostId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PostLikes");
                 });
 
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Reasons_For_Suspension", b =>
@@ -1163,7 +1467,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6668),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2485),
                             Name = "Umuota",
                             NeedsConfirmation = false,
                             Unit_TypeId = 1
@@ -1174,7 +1478,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6678),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2492),
                             Name = "Mmakwum",
                             NeedsConfirmation = false,
                             Unit_TypeId = 1
@@ -1185,7 +1489,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6680),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2494),
                             Name = "Uruowulu",
                             NeedsConfirmation = false,
                             Unit_TypeId = 1
@@ -1196,7 +1500,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6682),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2496),
                             Name = "Ugamuma",
                             NeedsConfirmation = false,
                             Unit_TypeId = 1
@@ -1207,7 +1511,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6684),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2498),
                             Name = "Ire",
                             NeedsConfirmation = false,
                             Unit_TypeId = 1
@@ -1218,7 +1522,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6686),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2500),
                             Name = "Lagos",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1229,7 +1533,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6688),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2502),
                             Name = "Abuja",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1240,7 +1544,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6690),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2504),
                             Name = "Port Harcourt",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1251,7 +1555,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6692),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2506),
                             Name = "Aba",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1262,7 +1566,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6693),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2508),
                             Name = "Abakaliki",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1273,7 +1577,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6695),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2510),
                             Name = "Awka",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1284,7 +1588,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6697),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2512),
                             Name = "Benin City",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1295,7 +1599,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6699),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2513),
                             Name = "Enugu",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1306,7 +1610,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6701),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2515),
                             Name = "Jos",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1317,7 +1621,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6703),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2517),
                             Name = "Kaduna",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1328,7 +1632,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6704),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2519),
                             Name = "Makurdi",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1339,7 +1643,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6706),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2523),
                             Name = "Nnewi",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1350,7 +1654,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6708),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2525),
                             Name = "Suleja",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1361,7 +1665,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6710),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2527),
                             Name = "Warri",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1372,7 +1676,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6712),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2528),
                             Name = "Umuota",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1383,7 +1687,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6715),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2530),
                             Name = "Mmakwum",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1394,7 +1698,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6717),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2532),
                             Name = "Uruowulu",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1405,7 +1709,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6719),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2534),
                             Name = "Ugamuma",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1416,7 +1720,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6721),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2536),
                             Name = "Ire",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1427,7 +1731,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6722),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2538),
                             Name = "OWA UK",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1438,7 +1742,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6724),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2540),
                             Name = "ODA USA",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1449,7 +1753,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6726),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2542),
                             Name = "ODU South Africa",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1460,7 +1764,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6728),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2543),
                             Name = "ODU Brazil",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1471,7 +1775,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                             About = "",
                             BackGroundImageUrl = "",
                             CanHaveMembers = false,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6730),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2545),
                             Name = "ODU Kuwait",
                             NeedsConfirmation = false,
                             Unit_TypeId = 5
@@ -1681,6 +1985,12 @@ namespace Obosi.ng.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
+                    b.Property<string>("AboutMe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BackGroundImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
@@ -1725,6 +2035,9 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("GenderId");
@@ -1737,7 +2050,7 @@ namespace Obosi.ng.Infrastructure.Migrations
                         new
                         {
                             Id = 1L,
-                            DateCreated = new DateTime(2024, 4, 23, 6, 26, 42, 213, DateTimeKind.Local).AddTicks(6533),
+                            DateCreated = new DateTime(2024, 5, 30, 6, 56, 35, 582, DateTimeKind.Local).AddTicks(2340),
                             Email = "Admin@obosi.ng",
                             FirstName = "",
                             GenderId = 1,
@@ -1913,6 +2226,93 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Followers", b =>
+                {
+                    b.HasOne("Obosi.ng.Domain.Entity.Users", "Follower")
+                        .WithMany()
+                        .HasForeignKey("FollowerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Obosi.ng.Domain.Entity.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Follower");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Forum", b =>
+                {
+                    b.HasOne("Obosi.ng.Domain.Entity.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.ForumFollowers", b =>
+                {
+                    b.HasOne("Obosi.ng.Domain.Entity.Forum", "Forum")
+                        .WithMany()
+                        .HasForeignKey("ForumId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Obosi.ng.Domain.Entity.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Forum");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.ForumMessage", b =>
+                {
+                    b.HasOne("Obosi.ng.Domain.Entity.ForumTopic", "ForumTopic")
+                        .WithMany()
+                        .HasForeignKey("ForumTopicId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Obosi.ng.Domain.Entity.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ForumTopic");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.ForumTopic", b =>
+                {
+                    b.HasOne("Obosi.ng.Domain.Entity.Forum", "Forum")
+                        .WithMany()
+                        .HasForeignKey("ForumId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Obosi.ng.Domain.Entity.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Forum");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Imenne", b =>
                 {
                     b.HasOne("Obosi.ng.Domain.Entity.Umunna", "Umunna")
@@ -2038,6 +2438,17 @@ namespace Obosi.ng.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Notification", b =>
+                {
+                    b.HasOne("Obosi.ng.Domain.Entity.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Personality", b =>
                 {
                     b.HasOne("Obosi.ng.Domain.Entity.Users", "User")
@@ -2058,6 +2469,62 @@ namespace Obosi.ng.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Unit");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.Post", b =>
+                {
+                    b.HasOne("Obosi.ng.Domain.Entity.Unit", "Unit")
+                        .WithMany()
+                        .HasForeignKey("UnitId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Obosi.ng.Domain.Entity.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Unit");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.PostComments", b =>
+                {
+                    b.HasOne("Obosi.ng.Domain.Entity.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Obosi.ng.Domain.Entity.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Obosi.ng.Domain.Entity.PostLikes", b =>
+                {
+                    b.HasOne("Obosi.ng.Domain.Entity.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Obosi.ng.Domain.Entity.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Obosi.ng.Domain.Entity.Reasons_For_Suspension", b =>
