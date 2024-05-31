@@ -79,7 +79,7 @@
                     string givenFileName = Guid.NewGuid().ToString();
                     //Define allowed property of the uploaded file
 
-                    var validFileSize = 5 * (20 * (1024 * 1024));//1mb
+                    var validFileSize = 5 * (1024 * 1024);//5mb
                     List<string> validFileExtension = new List<string>();
 
                     validFileExtension.Add(".jpg");
@@ -146,7 +146,7 @@
             string givenFileName = Guid.NewGuid().ToString();
             //Define allowed property of the uploaded file
 
-            var validFileSize = 5 * (20 * (1024 * 1024));//1mb
+            var validFileSize = 5*10 * (1024 * 1024);//50mb
             List<string> validFileExtension = new List<string>();
 
             validFileExtension.Add(".mp4");

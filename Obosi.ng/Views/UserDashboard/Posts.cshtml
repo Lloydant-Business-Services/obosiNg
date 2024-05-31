@@ -79,6 +79,15 @@
     }
 }
 
+    <style >
+    .span-bg-default {
+        background-color: initial;
+    }
+
+    .span-bg-changed {
+        background-color: red;
+    }
+</style>
 </style>
 <script>
     document.getElementById('publicPrivateSwitch').addEventListener('change', function () {
@@ -119,7 +128,7 @@
                     </div>
                     <!-- loader wrapper -->
                     <div class="row feed-body">
-                        <div class="col-xl-9 col-xxl-9 col-lg-9">
+                        <div class="col-xl-12 col-xxl-12 col-lg-12">
 
 
                 <form asp-action="Posts" method="post" enctype="multipart/form-data" >
@@ -133,13 +142,17 @@
                         <figure class="avatar position-absolute ms-2 mt-1 top-5">
                              @if (string.IsNullOrWhiteSpace(Model.Users.PassportUrl))
     {
-                                    <img src="/images.jpg" alt="image" class="shadow-sm rounded-circle w30">
+                                    <img src="/images.jpg" alt="image" class="shadow-sm "
+                                         style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
     }else{
-                            <img src="/@Model.Users.PassportUrl" alt="image" class="shadow-sm rounded-circle w30">}</figure>
+                            <img src="/@Model.Users.PassportUrl" alt="image" class="shadow-sm"
+                                         style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                                }
+                            </figure>
                             <textarea name="Comment" class="h100 bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-500 fw-500 border-light-md theme-dark-bg"
-                                      cols="30" rows="10" placeholder="What's on your mind?" asp-for="Comment"></textarea>
+                                      cols="30" rows="10" placeholder="What's on your mind?" asp-for="Comment" required></textarea>
                                 </div>
-                                <div class="card-body d-flex p-0 mt-0">
+                                <div class="card-body  d-flex flex-column flex-md-row p-0 mt-0">
                                 
                         <label class="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" style="cursor: pointer;">
                             <i class="font-md text-success feather-image me-2"></i><span>Photo</span>
@@ -154,13 +167,18 @@
                                 <input type="file" accept="video/*" style="display: none;" asp-for="Videos"  name="Videos"
                                        onchange="loadVideos(event)">
                         </label>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input mt-2" type="checkbox" id="publicPrivateSwitch" asp-for="IsPrivate">
-                                <label class="form-check-label d-flex align-items-center" for="publicPrivateSwitch">
+                          @*   <div class="form-check form-switch d-flex align-items-center font-xssss fw-600 ls-1 
+                         text-grey-700 text-dark pe-4"> *@
+                               
+                                <label class="form-check-label d-flex align-items-center
+font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" for="publicPrivateSwitch">
                                     <i class="font-md text-warning feather-eye me-2"></i>
-                                    <span>Private</span>
+                                    <span>Private </span>
+                                    <input class="form-check-input" type="checkbox" id="publicPrivateSwitch" asp-for="IsPrivate">
+                                 
+                                   
                                 </label>
-                            </div>
+                          @*   </div> *@
 
                         
                         <button type="submit" class="font-xssss fw-600 text-grey-500  p-0 d-flex align-items-center button-style ms-auto" 
@@ -190,33 +208,35 @@
                                 @if (string.IsNullOrWhiteSpace(item.User.PassportUrl))
                                 {
                                   
-                                    <img src="/images.jpg" alt="image" class="shadow-sm rounded-circle w45"
+                                    <img src="/images.jpg" alt="image" class="shadow-sm "
+                                         style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover;"
                                              onclick="window.location.href='/user/ViewUsersProfile?Id=@item.UserId';">
                                 }
                                 else
                                 {
-                            <img src="/@item.User.PassportUrl" alt="image" class="shadow-sm rounded-circle w45"
+                            <img src="/@item.User.PassportUrl" alt="image" class="shadow-sm  "
+                                         style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover;"
                                                  onclick="window.location.href='/user/ViewUsersProfile?Id=@item.UserId';">
                                 }
                             </figure>
                                 <h4 class="fw-700 text-grey-900 font-xssss mt-1" onclick="window.location.href='/user/ViewUsersProfile?Id=@item.UserId';">
                                 @item.User.FirstName @item.User.LastName
-                                <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">@item.DateAdded.ToShortTimeString()</span></h4>
+                                <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">@StringEncryption.GetTimeDifference(@item.DateAdded)</span></h4>
                                     @* <a href="#" class="ms-auto" id="dropdownMenu5" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti-more-alt text-grey-900 btn-round-md bg-greylight font-xss"></i></a> *@
                                
                             </div>
 
                         <div class="card-body p-0 me-lg-5">
-                            <p class="fw-500 text-grey-500 lh-26 font-xssss w-100 mb-2">@item.PostContent</p>
+                            <p class="fw-700 text-grey-500 lh-26 font-xssss w-100 mb-2"><b>@item.PostContent</b></p>
                         </div>
                         @if (item.Videos.FirstOrDefault() != "")
                         {
                             <div class="card-body p-0 mb-3 rounded-3 overflow-hidden">
-                                <a href="default-video.html" class="video-btn">
+                              
                                     <video loop class="float-right w-100" controls>
                                         <source src="/@item.Videos.FirstOrDefault()" type="video/mp4">
                                     </video>
-                                </a>
+                            
                             </div>
                         }
 
@@ -270,21 +290,12 @@
 
                     
                                 <div class="card-body d-flex p-0">
-                                    <a href="#" class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"> <i class="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"></i> Like</a>
-                                    <div class="emoji-wrap">
-                                       @*  <ul class="emojis list-inline mb-0">
-                                            <li class="emoji list-inline-item"><i class="em em---1"></i> </li>
-                                            <li class="emoji list-inline-item"><i class="em em-angry"></i></li>
-                                            <li class="emoji list-inline-item"><i class="em em-anguished"></i> </li>
-                                            <li class="emoji list-inline-item"><i class="em em-astonished"></i> </li>
-                                            <li class="emoji list-inline-item"><i class="em em-blush"></i></li>
-                                            <li class="emoji list-inline-item"><i class="em em-clap"></i></li>
-                                            <li class="emoji list-inline-item"><i class="em em-cry"></i></li>
-                                            <li class="emoji list-inline-item"><i class="em em-full_moon_with_face"></i></li>
-                                        </ul> *@
-                                    </div>
+
+                            <a href="#" onclick="likePost(@item.Id)" id="emoji-btn" class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2">
+                                        <i id="@item.Id" class="feather-heart text-white bg-transparent me-2 btn-round-xs font-xss"></i> Like</a>
+                                   
                                 <a href="~/UserDashBoard/Post?Id=@item.Id" class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-message-circle text-dark text-grey-900 btn-round-sm font-lg"></i><span class="d-none-xss">Comment</span></a>
-                                    <a href="#" class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span class="d-none-xs">Share</span></a>
+                            <a href="#" class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss" onclick="sharePost(event,`@item.PostContent`,`@item.Id.ToString()`)"><i class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span class="d-none-xs">Share</span></a>
                                 </div>
                             </div>
 
@@ -497,4 +508,55 @@
 
 
 
+</script>
+<script>
+    function sharePost(event,post,id) {
+        event.preventDefault(); // Prevent the default link behavior
+        const postUrl = 'https://www.obosi.ng/UserDashboard/Post?Id=' + id;
+        if (navigator.share) {
+            // Use the Web Share API if supported
+            navigator.share({
+                title: 'post on obosi.ng',
+                text: post,
+                url: postUrl
+            }).then(() => {
+                console.log('Thanks for sharing!');
+            }).catch((error) => {
+                console.error('Error sharing:', error);
+            });
+        } else {
+            // Fallback for browsers that do not support the Web Share API
+            // For example, you can copy the URL to the clipboard
+            const postUrl = window.location.href;
+            navigator.clipboard.writeText(postUrl).then(() => {
+                alert('Post URL copied to clipboard!');
+            }).catch((error) => {
+                console.error('Error copying URL:', error);
+            });
+        }
+    }
+    document.getElementById('emoji-btn').addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default link behavior
+        var spanElement = document.getElementById('emoji-span');
+        // Toggle the background color class
+        if (spanElement.classList.contains('span-bg-default')) {
+            spanElement.classList.remove('span-bg-default');
+            spanElement.classList.add('span-bg-changed');
+        } else {
+            spanElement.classList.remove('span-bg-changed');
+            spanElement.classList.add('span-bg-default');
+        }
+    });
+
+    function likePost( id) {
+        event.preventDefault();
+        var currentState = document.getElementById(id);
+        const idVal = "#" + id;
+        if (currentState.classList.contains('bg-transparent')) {
+            $(idVal).removeClass('bg-transparent').addClass('bg-red');
+        }
+        else{
+            $(idVal).removeClass('bg-red').addClass('bg-transparent');
+        }
+    }
 </script>

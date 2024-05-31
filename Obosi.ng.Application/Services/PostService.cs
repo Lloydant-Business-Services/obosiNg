@@ -159,7 +159,7 @@ namespace Obosi.ng.Application.Services
             // Pagination logic remains the same
             int skip = (pageNumber - 1) * pageSize;
             var publicPosts = await query
-                                    .OrderBy(x => x.DateAdded)
+                                    .OrderByDescending(x => x.DateAdded)
                                     .Skip(skip)
                                     .Take(pageSize)
                                     .ToListAsync();
@@ -175,14 +175,15 @@ namespace Obosi.ng.Application.Services
                 // Pagination logic remains the same
                 int skipmember = (pageNumber - 1) * pageSize;
                 var nonpublicPosts = await query
-                                        .OrderBy(x => x.DateAdded)
+                                        .OrderByDescending(x => x.DateAdded)
                                         .Skip(skipmember)
                                         .Take(pageSize)
                                         .ToListAsync();
                 GrandPosts.AddRange(publicPosts);
             }
             return GrandPosts.GroupBy(post => post.Id)  // Group by Id property
-    .Select(group => group.First())  // Select the first item from each group
+    .Select(group => group.First())
+     .OrderByDescending(x => x.DateAdded)
     .ToList();  // Convert the result to a List
 
         }
@@ -212,6 +213,29 @@ namespace Obosi.ng.Application.Services
         public Task<bool> LikeCommentAsync(long commentId, long userId)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<bool> LikePost(long PostId, long UserId)
+        {
+            var like= await _context.PostLikes.Where(x => x.PostId == PostId &&
+            x.UserId == UserId).FirstOrDefaultAsync();
+            if(like != null)
+            {
+                bool stat = like.Active;
+                like.Active = !stat;
+                 _context.PostLikes.Update(like);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            await _context.PostLikes.AddAsync(new PostLikes()
+            {
+                PostId = PostId,
+                Date = DateTime.UtcNow,
+                Active = true,
+                UserId = UserId
+            });
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public Task<bool> LikePostAsync(long postId, long userId)

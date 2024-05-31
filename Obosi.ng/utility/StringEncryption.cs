@@ -103,6 +103,31 @@ namespace Obosi.ng.Presentation.utility
 
             return sentenceCase;
         }
+        public static string GetTimeDifference(DateTime pastDate)
+        {
+            DateTime currentDate = DateTime.Now;
+            TimeSpan timeDifference = currentDate - pastDate;
+
+            if (timeDifference.TotalDays >= 1)
+            {
+                return $"{(int)timeDifference.TotalDays} days ago";
+            }
+            else if (timeDifference.TotalHours >= 1)
+            {
+                return $"{(int)timeDifference.TotalHours} hours ago";
+            }
+            else
+            {
+                if ((int)timeDifference.TotalMinutes == 0)
+                {
+                    return "Just Now.";
+                }
+                else
+                {
+                    return $"{(int)timeDifference.TotalMinutes} minutes ago";
+                }
+            }
+        }
 
     }
 
