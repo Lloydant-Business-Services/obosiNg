@@ -341,10 +341,26 @@ namespace Obosi.ng.Application.Services
             return await _dataContext.Member_Unit.Where(x => x.IsActive == true && x.Unit.Unit_TypeId == (int)Unit_Types.Umunna).Include(x=>x.Unit.Unit_Type).Include(x=>x.Users).ToListAsync();
         }
 
-        public async Task<List<Member_Unit>> ViewUnApprovedMembers()
+        public async Task<List<Member_Unit>> ViewUnApprovedMembers(string email)
         {
-            return await _dataContext.Member_Unit.Where(x => x.IsActive == false && x.Unit.Unit_TypeId == (int)Unit_Types.Umunna)
+            var userRole = await _dataContext.Users.Where(r => r.Email == email).FirstOrDefaultAsync();
+            if (userRole.RoleId == (int)Enums.Role.Admin)
+            {
+                return await _dataContext.Member_Unit.Where(x => x.IsActive == false && x.Unit.Unit_TypeId == (int)Unit_Types.Umunna)
                 .Include(x => x.Unit.Unit_Type).Include(x => x.Users).ToListAsync();
+            }
+            else
+            {
+                var membership = await _dataContext.Member_Unit.Where(x => x.Users.Email == email
+                && x.Unit.Unit_TypeId == (int)Unit_Types.Umunna).FirstOrDefaultAsync(); 
+                if(membership != null)
+                {
+                    return await _dataContext.Member_Unit.Where(x => x.IsActive == false && x.Unit.Id == 
+                  membership.UnitId)
+                .Include(x => x.Unit.Unit_Type).Include(x => x.Users).ToListAsync();
+                }
+                return null;
+            }
         }
 
         public async Task<List<Village>> GetVillages()

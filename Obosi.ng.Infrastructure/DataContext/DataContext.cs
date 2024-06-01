@@ -226,6 +226,6 @@ namespace Obosi.ng.Data
         public DbSet<Post> Post { get; set; }
         public DbSet<PostComments> PostComments { get; set; }
         public DbSet<Notification> Notification { get; set; }
-        public DbSet<PostLikes> PostLikes { get; set; } 
+        public DbSet<PostLikes> PostLikes { get; set; }
     }
 }

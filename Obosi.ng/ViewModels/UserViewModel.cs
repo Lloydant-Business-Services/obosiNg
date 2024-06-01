@@ -17,28 +17,24 @@ namespace Obosi.ng.Presentation.ViewModels
         {
             
         }
-        public async Task InitializeNewsAsync()
+        public async Task InitializeNewsAsync(string email)
         {
             this.Users = await user.GetAllUsers();
-            this.Members = await unit.ViewUnApprovedMembers();
+            this.Members = await unit.ViewUnApprovedMembers(email);
             this.Roles = await user.GetAllRoles();
             this.User = new Users();
+            this.User = await user.GetUsersByEmail(email);
 
         }
-        public async Task InitializeNewsAsync(int Id)
+        public async Task InitializeNewsAsync(int Id, string email)
         {
             this.Users = await user.GetAllUsers();
-            this.Members = await unit.ViewUnApprovedMembers();
+            this.Members = await unit.ViewUnApprovedMembers(email);
             this.Roles = await user.GetAllRoles();
             this.User = await user.GetUsersById(Id);
 
         }
-        public async Task InitializeNewsAsync(string email)
-        {
-            this.User = await user.GetUsersByEmail(email);
-            
-           
-        }
+       
         public async Task InitializeUserAsync(string email)
         {
             this.User = await user.GetUsersByEmail(email);

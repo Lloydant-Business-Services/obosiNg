@@ -70,7 +70,7 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<Forum>> GetForums()
         {
-            return await _context.Forum.ToListAsync();
+            return await _context.Forum.Include(x=>x.User).ToListAsync();
         }
 
         public async Task<List<ForumTopic>> GetForumTopics(long forumId)

@@ -1,0 +1,77 @@
+﻿@using Obosi.ng.Application.Interfaces;
+@using Obosi.ng.Domain.Entity;
+@inject IForum forum;
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<head>
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.css" rel="stylesheet">
+
+</head>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+
+                <div class="card-header pb-0">
+                    <h6></h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="text-start m-3">
+                        <a class="btn btn-outline-primary btn-sm mb-0" href="~/Executive/Create">Create</a>
+                    </div>
+                    <div class="table-responsive p-0">
+                         @{
+                        var forums = await forum.GetForums();
+                        <table id="example" class="table table-striped p-3 m-3" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Sn</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Username</th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (forums != null)
+                                {
+                                    int k = 1;
+                                    foreach (var item in forums)
+                                    {
+                                        <tr>
+                                            <td>@k</td>
+                                            <td>@item.Title</td>
+                                            <td>@item.Description </td>
+                                            <td>@item.User.Email</td>
+                                            <td>
+                                               
+                                            </td>
+                                        </tr>
+                                        k++;
+                                    }
+                                }
+
+                            </tbody>
+
+                        </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script> 
