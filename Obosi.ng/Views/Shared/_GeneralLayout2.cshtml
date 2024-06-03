@@ -1,6 +1,6 @@
 ﻿@using Obosi.ng.Application.Enums;
 @using Obosi.ng.Presentation.utility;
-
+@model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
 
 
 
@@ -40,9 +40,9 @@
 <body>
 
     <div id="event-register">
-     
 
-      @*   <div class="top-dropdown">
+
+        <div class="top-dropdown">
 
             <div class="dropdown-button-holder">
 
@@ -56,6 +56,8 @@
                 </button>
 
             </div>
+
+
 
             <div id="people-dropdown" class="top-dropdown-contents">
 
@@ -75,28 +77,29 @@
                         <div class="section-images">
                             <section class="top-image">
                                 <figure>
-                                    <img src="anyaoku-people.jpg" />
+                                    <img src="~/land/Ikeazor.jpeg" />
+                                    <figcaption>
+                                        Chief Philip Ikeazor (Izoma-Obosi),  <br />
+                                        Deputy CBN Governor
+
+                                    </figcaption>
+                                </figure>
+                            </section>
+                            <section class="top-image">
+                                <figure>
+                                    <img src="~/land/Ajegbo.jpeg" />
+                                    <figcaption>
+                                        Chief Mike Ajegbo (Ede Obosi), <br />
+                                        7 Senator, Federal Republic of Nigeria
+                                    </figcaption>
+                                </figure>
+                            </section>
+                            <section class="top-image">
+                                <figure>
+                                    <img src="~/land/anyaoku-people.jpg" />
                                     <figcaption>
                                         Chief Emeka Anyaoku <br />
                                         Third Commonwealth Secretary General
-                                    </figcaption>
-                                </figure>
-                            </section>
-                            <section class="top-image">
-                                <figure>
-                                    <img src="chidoka-people.jpg" />
-                                    <figcaption>
-                                        Chief Osita Benjamin Chidoka <br />
-                                        Former Miniser of Aviation
-                                    </figcaption>
-                                </figure>
-                            </section>
-                            <section class="top-image">
-                                <figure>
-                                    <img src="kodilinye-people.jpg" />
-                                    <figcaption>
-                                        Herbert C. Kodilinye <br />
-                                        Fourth Vice Chancellor of the University of Nigeria
                                     </figcaption>
                                 </figure>
                             </section>
@@ -105,19 +108,19 @@
 
                 </div>
                 <div class="bottom-nav">
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Personalities).ToString())">
                         Obosi's Personalities
                     </a>
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Igwes_Cabinent).ToString())">
                         Igwe Obosi's Cabinet
                     </a>
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Obosi_development_union_ODU).ToString())">
                         Obosi Development Union
                     </a>
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Umunna).ToString())">
                         Obosi Umunna/Kindreds
                     </a>
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Age_Grade).ToString())">
                         Obosi Age Grade Societies
                     </a>
                 </div>
@@ -147,7 +150,7 @@
                         <div class="section-images">
                             <section class="top-image">
                                 <figure>
-                                    <img src="land1.jpg" />
+                                    <img src="~/land/land1.jpg" />
                                     <figcaption>
                                         Aerial View of Idemili River into River Niger
                                     </figcaption>
@@ -155,7 +158,7 @@
                             </section>
                             <section class="top-image">
                                 <figure>
-                                    <img src="land2.jpg" />
+                                    <img src="~/land/land2.jpg" />
                                     <figcaption>
                                         View of Awada Obosi, one of the most densely populated lands in Nigeria
                                     </figcaption>
@@ -163,7 +166,7 @@
                             </section>
                             <section class="top-image">
                                 <figure>
-                                    <img src="land3.jpg" />
+                                    <img src="~/land/land3.jpg" />
                                     <figcaption>
                                         Road linking the newly constructed 2nd Niger Bridge
                                     </figcaption>
@@ -175,16 +178,16 @@
                 </div>
 
                 <div class="bottom-nav">
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Village).ToString())">
                         Villages & Suburbs
                     </a>
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Schools).ToString())">
                         Schools
                     </a>
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Hotels).ToString())">
                         Hotels
                     </a>
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Churches).ToString())">
                         Churches
                     </a>
                     <a href="#">
@@ -210,7 +213,7 @@
                         <div class="section-images">
                             <section class="top-image">
                                 <figure>
-                                    <img src="masquerade1.jpg" />
+                                    <img src="~/land/masquerade1.jpg" />
                                     <figcaption>
                                         The beautiful & graceful Agbonma Masquerade
                                     </figcaption>
@@ -218,7 +221,7 @@
                             </section>
                             <section class="top-image">
                                 <figure>
-                                    <img src="masquerade2.jpg" />
+                                    <img src="~/land/masquerade2.jpg" />
                                     <figcaption>
                                         The ferocious & revered Isi Odogwu Masquerade
                                     </figcaption>
@@ -226,7 +229,7 @@
                             </section>
                             <section class="top-image">
                                 <figure>
-                                    <img src="masquerade3.jpg" />
+                                    <img src="~/land/masquerade3.jpg" />
                                     <figcaption>
                                         The ever-playful and agile Ajikwu Masquerade
                                     </figcaption>
@@ -238,19 +241,19 @@
                 </div>
 
                 <div class="bottom-nav">
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Ito_Ogbo).ToString())">
                         Ito-Ogbo Festival
                     </a>
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.New_Yam_Festival).ToString())">
                         New Yam Festival
                     </a>
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Festivals).ToString())">
                         Festivals
                     </a>
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Masquerade).ToString())">
                         Masquerades
                     </a>
-                    <a href="#">
+                    <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Dance_Group).ToString())">
                         Dance Groups
                     </a>
 
@@ -321,30 +324,30 @@
                             </a>
                         </section>
                         <section class="media-menu">
-                            <a href="#">
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Igwes_Cabinent).ToString())">
                                 Igwe's Palace
                             </a>
-                            <a href="#">
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Obosi_development_union_ODU).ToString())">
                                 Obosi Development Union
                             </a>
-                            <a href="#">
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Umunna).ToString())">
                                 Umunnas/Kindreds
                             </a>
-                            <a href="#">
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Age_Grade).ToString())">
                                 Age Grade Societies
                             </a>
                         </section>
                         <section class="media-menu">
-                            <a href="#">
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Igwes_Cabinent).ToString())">
                                 Igwe's Palace
                             </a>
-                            <a href="#">
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Obosi_development_union_ODU).ToString())">
                                 Obosi Development Union
                             </a>
-                            <a href="#">
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Umunna).ToString())">
                                 Umunnas/Kindreds
                             </a>
-                            <a href="#">
+                            <a href="~/Home/UnitList?id=@StringEncryption.Encrypt(((int)@Unit_Types.Age_Grade).ToString())">
                                 Age Grade Societies
                             </a>
                         </section>
@@ -364,12 +367,12 @@
                             Enter your email address or phone number to access your dashboard
                         </h2>
 
-                        <form>
+                        <form class="form-inline" asp-action="SignIn" asp-controller="Home" method="POST">
 
                             <div class="field-group-alt">
                                 <div class="field-holder">
 
-                                    <input class="form-field" placeholder="Email address or phone number" />
+                                    <input class="form-field" placeholder="Email address" required asp-for="Username" />
 
                                 </div>
 
@@ -377,7 +380,7 @@
 
                                     <div class="password-box">
 
-                                        <input type="password" class="form-field" placeholder="Password" />
+                                        <input type="password" class="form-field" placeholder="Password" required asp-for="Password" />
 
                                         <a href="#" id="show-password">
                                             <i class="fa fa-eye-slash"></i>
@@ -405,17 +408,40 @@
                             <a href="#">verify your account</a>.
                         </h2>
 
-                        <form>
+                        <form role="form" class="text-left" asp-action="SignUp" asp-controller="Home">
 
                             <div class="field-group">
                                 <div class="field-holder">
 
-                                    <input class="form-field" placeholder="First name" />
+                                    <input class="form-field" placeholder="First name" required asp-for="user.FirstName" />
 
                                 </div>
                                 <div class="field-holder">
 
-                                    <input class="form-field" placeholder="Last Name" />
+                                    <input class="form-field" placeholder="Last Name" required asp-for="user.LastName" />
+
+                                </div>
+                            </div>
+                            <div class="field-group">
+                                <div class="field-holder">
+
+                                    <input class="form-field" placeholder="Other name" asp-for="user.OtherName" />
+
+                                </div>
+                                <div class="field-holder">
+
+                                    <input class="form-field" placeholder="Email" asp-for="user.Email" required type="email" />
+
+                                </div>
+                            </div>  <div class="field-group">
+                                <div class="field-holder">
+
+                                    <input class="form-field" placeholder="Password" required asp-for="user.Password" />
+
+                                </div>
+                                <div class="field-holder">
+
+                                    <input class="form-field" placeholder="Phone Number" asp-for="user.PhoneNumber" required />
 
                                 </div>
                             </div>
@@ -423,35 +449,54 @@
                             <div class="field-group">
                                 <div class="field-holder">
 
-                                    <select class="form-field">
+                                    <select class="form-field" asp-for="VillageId" required id="villageId">
                                         <option value="">Select Village</option>
+                                        @foreach (var vil in Model.AllVillages)
+                                        {
+                                            <option value="@vil.Id">@vil.Name</option>
+                                        }
                                     </select>
 
                                 </div>
                                 <div class="field-holder">
 
-                                    <select class="form-field">
-                                        <option value="">Select Umunna</option>
+                                    <select class="form-field" asp-for="AkaId" required id="akaId">
+                                        <option value="">Select Aka</option>
+                                        @*   @foreach (var ak in Model.AllAka)
+                                        {
+                                        <option value="@ak.Id">@ak.Name</option>
+                                        } *@
+
                                     </select>
 
                                 </div>
+
                             </div>
 
                             <div class="field-group">
                                 <div class="field-holder">
 
-                                    <select class="form-field">
-                                        <option value="">Select Ime Nne</option>
+                                    <select class="form-field" asp-for="UmunnaId" required id="umunnaId">
+                                        <option value="">Select Umunna</option>
+                                        @*    @foreach (var umu in Model.AllUmunna)
+                                        {
+                                        <option value="@umu.Id">@umu.Name</option>
+                                        } *@
                                     </select>
 
                                 </div>
                                 <div class="field-holder">
 
-                                    <select class="form-field">
-                                        <option value="">Select Age Range</option>
+                                    <select class="form-field" asp-for="ImeneId" required id="imeneId">
+                                        <option value="">Select Ime Nne</option>
+                                        @*  @foreach (var ime in Model.AllImene)
+                                        {
+                                        <option value="@ime.Id">@ime.Name</option>
+                                        } *@
                                     </select>
 
                                 </div>
+
                             </div>
 
                             <div class="field-holder">
@@ -459,12 +504,15 @@
                                 <div class="options">
 
                                     <label> Are you a </label>
+
                                     <span>
-                                        <input type="radio" />  <label> Male</label>
+                                        <input type="radio" id="male" name="user.GenderId" asp-for="user.GenderId" value="1" />
+                                        <label for="male">Male</label>
                                     </span>
 
                                     <span>
-                                        <input type="radio" />  <label> Female</label>
+                                        <input type="radio" id="female" name="user.GenderId" asp-for="user.GenderId" value="2" />
+                                        <label for="female">Female</label>
                                     </span>
                                 </div>
 
@@ -481,13 +529,13 @@
 
                 </div>
                 <div class="bottom-nav alt">
-                    <a href="#">
+                    <a href="~/home/signin">
                         Log into Account
                     </a>
                     <a href="#">
                         Recover Lost Password
                     </a>
-                    <a href="#">
+                    <a href="~/home/signup">
                         Start Registration
                     </a>
                     <a href="#">
@@ -498,8 +546,7 @@
                 </div>
 
             </div>
-
-        </div> *@
+        </div>
 
         <header style="min-height: 0 !important; background-image: none; background-color: #d4d8e2 !important;">
 
@@ -911,6 +958,21 @@
     <!-- Carousel Script -->
 
     <script>
+        $(document).ready(function () {
+            loadVillage();
+            $('#show-password').click(function (e) {
+                e.preventDefault(); // Prevent the default anchor click behavior
+                var passwordInput = $('.password-box input[type="password"]');
+
+                if (passwordInput.attr('type') === 'password') {
+                    passwordInput.attr('type', 'text');
+                    $(this).html('<i class="fa fa-eye"></i>'); // change icon to 'eye'
+                } else {
+                    passwordInput.attr('type', 'password');
+                    $(this).html('<i class="fa fa-eye-slash"></i>'); // change icon back to 'eye-slash'
+                }
+            });
+        })
         let carouselIndex = 0;
         const carousel = document.querySelector('.carousel');
 
