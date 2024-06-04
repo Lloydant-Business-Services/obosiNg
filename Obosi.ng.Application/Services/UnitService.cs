@@ -351,12 +351,11 @@ namespace Obosi.ng.Application.Services
             }
             else
             {
-                var membership = await _dataContext.Member_Unit.Where(x => x.Users.Email == email
-                && x.Unit.Unit_TypeId == (int)Unit_Types.Umunna).FirstOrDefaultAsync(); 
+                var membership = await _dataContext.UnitAdmin.Where(x => x.Users.Email == email && x.Active == true).FirstOrDefaultAsync(); 
                 if(membership != null)
                 {
                     return await _dataContext.Member_Unit.Where(x => x.IsActive == false && x.Unit.Id == 
-                  membership.UnitId)
+                  membership.UnitId && x.Unit.Unit_TypeId == (int)Unit_Types.Umunna)
                 .Include(x => x.Unit.Unit_Type).Include(x => x.Users).ToListAsync();
                 }
                 return null;
