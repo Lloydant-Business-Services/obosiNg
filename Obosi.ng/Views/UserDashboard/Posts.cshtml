@@ -237,13 +237,13 @@ font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" for="publicPrivateSwitch">
                             </div>
 
                         <div class="card-body p-0 me-lg-5">
-                            <p class="fw-700 text-grey-500 lh-26 font-xssss w-100 mb-2"><b>@item.PostContent</b></p>
+                            <p class="fw-700 text-black lh-26 font-xssss w-100 mb-2"><b>@item.PostContent</b></p>
                         </div>
                         @if (item.Videos.FirstOrDefault() != "")
                         {
                             <div class="card-body p-0 mb-3 rounded-3 overflow-hidden">
 
-                                <video loop class="float-right w-100" controls style="height: 300px;">
+                                <video loop class="float-right w-100" controls style="height: 600px;">
                                         <source src="/@item.Videos.FirstOrDefault()" type="video/mp4">
                                     </video>
                             
@@ -259,7 +259,7 @@ font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" for="publicPrivateSwitch">
                                 {
                                     <div class="col-xs-12 col-sm-12 p-1">
                                         <a href="#" data-lightbox="roadtri">
-                                            <img src="/@item.Photos[0]" class="rounded-3 w-100" alt="image">
+                                            <img src="/@item.Photos[0]" class="rounded-3 w-100" alt="image" style="height: 600px;">
                                         </a>
                                     </div>
                                 }
@@ -272,7 +272,7 @@ font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" for="publicPrivateSwitch">
                                             {
                                                 <div class="col-xs-6 col-sm-6 p-1">
                                                     <a href="#" data-lightbox="roadtri">
-                                                        <img src="/@item.Photos[j]" class="rounded-3 w-100" alt="image">
+                                                        <img src="/@item.Photos[j]" class="rounded-3 w-100" alt="image" style="height: 600px;">
                                                     </a>
                                                 </div>
                                             }
