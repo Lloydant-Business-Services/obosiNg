@@ -843,6 +843,7 @@
                     passwordInput.attr('type', 'text');
                     $(this).html('<i class="fa fa-eye"></i>'); // change icon to 'eye'
                 } else {
+                    passwordInput = $('.password-box input[type="text"]');
                     passwordInput.attr('type', 'password');
                     $(this).html('<i class="fa fa-eye-slash"></i>'); // change icon back to 'eye-slash'
                 }

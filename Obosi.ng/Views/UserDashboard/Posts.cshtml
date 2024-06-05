@@ -79,7 +79,6 @@
     }
 }
 
-    <style >
     .span-bg-default {
         background-color: initial;
     }
@@ -87,8 +86,19 @@
     .span-bg-changed {
         background-color: red;
     }
+
+   
+    .liked .fa-heart {
+        color: red; /* Change heart color when liked */
+    }
+
+    .bg-transparent{
+        background-color: grey;
+    }
+
 </style>
-</style>
+
+
 <script>
     document.getElementById('publicPrivateSwitch').addEventListener('change', function () {
         var label = this.nextElementSibling.querySelector('span');
@@ -232,8 +242,8 @@ font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" for="publicPrivateSwitch">
                         @if (item.Videos.FirstOrDefault() != "")
                         {
                             <div class="card-body p-0 mb-3 rounded-3 overflow-hidden">
-                              
-                                    <video loop class="float-right w-100" controls>
+
+                                <video loop class="float-right w-100" controls style="height: 300px;">
                                         <source src="/@item.Videos.FirstOrDefault()" type="video/mp4">
                                     </video>
                             
@@ -293,6 +303,8 @@ font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" for="publicPrivateSwitch">
 
                             <a href="#" onclick="likePost(@item.Id)" id="emoji-btn" class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2">
                                         <i id="@item.Id" class="feather-heart text-white bg-transparent me-2 btn-round-xs font-xss"></i> Like</a>
+
+                          
                                    
                                 <a href="~/UserDashBoard/Post?Id=@item.Id" class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i class="feather-message-circle text-dark text-grey-900 btn-round-sm font-lg"></i><span class="d-none-xss">Comment</span></a>
                             <a href="#" class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss" onclick="sharePost(event,`@item.PostContent`,`@item.Id.ToString()`)"><i class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span class="d-none-xs">Share</span></a>
@@ -548,15 +560,40 @@ font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" for="publicPrivateSwitch">
         }
     });
 
-    function likePost( id) {
-        event.preventDefault();
-        var currentState = document.getElementById(id);
-        const idVal = "#" + id;
-        if (currentState.classList.contains('bg-transparent')) {
-            $(idVal).removeClass('bg-transparent').addClass('bg-red');
+    function likePost(itemId) {
+        event.preventDefault();  // Prevent the default anchor click behavior
+        var idValue = "#" + itemId;
+        // $(idVakue).addClass('span-bg-changed');
+        // $(idVakue).removeClass('bg-transparent');
+
+        if ($(idValue).hasClass('bg-transparent')) {
+            $(idValue).addClass('span-bg-changed');   // Add 'span-bg-changed' if 'bg-transparent' is present
+            $(idValue).removeClass('bg-transparent'); // Remove 'bg-transparent'
+        } else {
+            // Optionally handle the case where 'bg-transparent' is not present
+            $(idValue).removeClass('span-bg-changed');  // You might want to remove 'span-bg-changed' if 'bg-transparent' is not there
+            $(idValue).addClass('bg-transparent');      // Re-add 'bg-transparent' for toggle effect
         }
-        else{
-            $(idVal).removeClass('bg-red').addClass('bg-transparent');
+
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("LikePost", "UserDashboard")",
+            dataType: "json",
+            data: { postId: itemId }, // Pass data as an object
+            success: SuccessFunc,
+            error: ErrorFunc
+        });
+
+        function SuccessFunc() {
+
+           
         }
+
+        function ErrorFunc() {
+            alert("Operation failed!");
+        }
+
     }
+
 </script>
