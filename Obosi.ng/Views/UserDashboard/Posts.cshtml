@@ -1,4 +1,7 @@
-﻿@model Obosi.ng.Presentation.ViewModels.UserDashboardViewModel
+﻿@using Obosi.ng.Application.Interfaces;
+@using System.Security.Claims;
+@model Obosi.ng.Presentation.ViewModels.UserDashboardViewModel
+@inject IPostService postService;
 @{
     Layout = "~/Views/Shared/_SocialLayout.cshtml";
 }
@@ -300,9 +303,22 @@ font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" for="publicPrivateSwitch">
 
                     
                                 <div class="card-body d-flex p-0">
-
+                                    @{
+                                        var likecount = await postService.LikedPostCount(item.Id);
+                                var isLiked = await postService.LikedPost(item.Id, Convert.ToInt64(User.FindFirst(ClaimTypes.Sid).Value));
+                                    }
                             <a href="#" onclick="likePost(@item.Id)" id="emoji-btn" class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2">
-                                        <i id="@item.Id" class="feather-heart text-white bg-transparent me-2 btn-round-xs font-xss"></i> Like</a>
+                                @if (isLiked)
+                                {
+                                    <i id="@item.Id" class="feather-heart text-white span-bg-changed me-2 btn-round-xs font-xss"></i>
+                                }
+                                else
+                                {
+                                    <i id="@item.Id" class="feather-heart text-white bg-transparent me-2 btn-round-xs font-xss"></i> 
+                                }          
+                                @* <i id="@item.Id" class="feather-heart text-white bg-transparent me-2 btn-round-xs font-xss"></i> *@ @likecount Like 
+                                        
+                                    </a>
 
                           
                                    
@@ -379,6 +395,11 @@ font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" for="publicPrivateSwitch">
         });
 
         loadMoreFeeds(); // Initial load
+
+
+
+       
+      
     });
 
     function displayFileInfo() {

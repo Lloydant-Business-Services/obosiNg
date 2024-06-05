@@ -124,5 +124,13 @@ namespace Obosi.ng.Presentation.Controllers
             await  _postService.LikePost(Postid, userId);
             return true;
         }
+        public async Task<bool> GetLikedPost(long Postid)
+        {
+            return await _postService.LikedPost(Postid, Convert.ToInt64(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Sid).Value));    
+        }
+        public async Task<long> GetLikedPostCount(long Postid)
+        {
+            return await _postService.LikedPostCount(Postid);
+        }   
     }
 }

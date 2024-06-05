@@ -215,6 +215,30 @@ namespace Obosi.ng.Application.Services
             throw new NotImplementedException();
         }
 
+        public async Task<bool> LikedPost(long PostId, long UserId)
+        {
+          var like = await _context.PostLikes.Where(x => x.PostId == PostId &&
+                     x.UserId == UserId).FirstOrDefaultAsync();
+            if (like != null)
+            {
+                if (like.Active)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;  
+        }
+
+        public async Task<long> LikedPostCount(long PostId)
+        {
+           var posts =  await _context.PostLikes.Where(x => x.PostId == PostId  && x.Active == true).ToListAsync();
+            return posts.Count();
+        }
+
         public async Task<bool> LikePost(long PostId, long UserId)
         {
             var like= await _context.PostLikes.Where(x => x.PostId == PostId &&
