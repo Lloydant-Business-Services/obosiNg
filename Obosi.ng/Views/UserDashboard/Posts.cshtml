@@ -316,7 +316,8 @@ font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" for="publicPrivateSwitch">
                                 {
                                     <i id="@item.Id" class="feather-heart text-white bg-transparent me-2 btn-round-xs font-xss"></i> 
                                 }          
-                                @* <i id="@item.Id" class="feather-heart text-white bg-transparent me-2 btn-round-xs font-xss"></i> *@ @likecount Like 
+                                @* <i id="@item.Id" class="feather-heart text-white bg-transparent me-2 btn-round-xs font-xss"></i> *@
+                               @likecount Like 
                                         
                                     </a>
 
@@ -584,16 +585,21 @@ font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" for="publicPrivateSwitch">
     function likePost(itemId) {
         event.preventDefault();  // Prevent the default anchor click behavior
         var idValue = "#" + itemId;
+        var likeId =  "#likeCount_" + itemId
         // $(idVakue).addClass('span-bg-changed');
         // $(idVakue).removeClass('bg-transparent');
 
         if ($(idValue).hasClass('bg-transparent')) {
             $(idValue).addClass('span-bg-changed');   // Add 'span-bg-changed' if 'bg-transparent' is present
             $(idValue).removeClass('bg-transparent'); // Remove 'bg-transparent'
+           // $(idValue).text(parseInt($(likeId).text()) + 1 +" Like(s)")
         } else {
             // Optionally handle the case where 'bg-transparent' is not present
             $(idValue).removeClass('span-bg-changed');  // You might want to remove 'span-bg-changed' if 'bg-transparent' is not there
-            $(idValue).addClass('bg-transparent');      // Re-add 'bg-transparent' for toggle effect
+            $(idValue).addClass('bg-transparent');
+            if (parseInt($(likeId).text()) > 0) {
+               // $(idValue).text(parseInt($(likeId).text()) - 1 + " Like(s)")// Re-add 'bg-transparent' for toggle effect
+            }
         }
 
 
@@ -607,7 +613,7 @@ font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4" for="publicPrivateSwitch">
         });
 
         function SuccessFunc() {
-
+            
            
         }
 

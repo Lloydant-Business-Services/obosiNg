@@ -1,0 +1,43 @@
+﻿@model Obosi.ng.Presentation.ViewModels.UserDashboardViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "CreateForum";
+}
+
+
+
+
+
+<h1>Create Forum</h1>
+
+<form asp-action="CreateForum" method="post">
+
+
+    <div class="row">
+
+        <div class="col-md-6">
+          
+            <div class="form-group">
+                <label for="CategoryId">Title:</label>
+
+                <input type="text" class="form-control" asp-for="Forum.Title" required>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="CategoryId">Description:</label>
+                <textarea class="form-control mb-0 p-3 h100 bg-greylight lh-16" rows="5" placeholder="Write the description"
+                          spellcheck="false"
+                          asp-for="Forum.Description" required></textarea>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<script src="~/js/jquery.min.js"></script>

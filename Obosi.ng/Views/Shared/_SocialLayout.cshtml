@@ -24,6 +24,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
     <link rel="stylesheet" href="~/usersocials/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
      <style>
         .feed-body {
             height: 300px; /* Fixed height for the container */
@@ -389,6 +393,7 @@
             } else {
                 $('body').removeClass('theme-dark');
                 $('#darkmodeswitch').prop('checked', false);
+                localStorage.setItem('darkMode', 'disabled');
             }
 
             // Toggle dark mode and save preference to localStorage

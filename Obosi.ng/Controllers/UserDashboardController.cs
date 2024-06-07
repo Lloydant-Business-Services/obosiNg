@@ -109,12 +109,15 @@ namespace Obosi.ng.Presentation.Controllers
 
         public IActionResult Event()
         {
-            return View();
+            var model = new UserDashboardViewModel(_postService);
+            return View(model);
         }
 
         public async Task<IActionResult> ViewForumTopic(long forumTopicId)
-        {
-            return View();
+        { 
+            var model = new UserDashboardViewModel(_postService);
+            model.ForumTopic = await _forum.ViewForumTopic(forumTopicId);
+            return View(model);
         }
 
         public async Task<bool> LikePost(long Postid)
@@ -132,5 +135,17 @@ namespace Obosi.ng.Presentation.Controllers
         {
             return await _postService.LikedPostCount(Postid);
         }   
+        public async Task<bool> FollowForum(long forumId)
+        {
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+            long userId = Convert.ToInt64(claimsPrincipal.FindFirst(ClaimTypes.Sid).Value);
+            await _forum.JoinForum(forumId, userId);
+            return true;
+        }   
+        public async Task<bool> ApproveUsers(long forumId, long userId)
+        {
+            await _forum.ApproveForumContributor(forumId, userId);
+            return true;
+        }
     }
 }

@@ -22,5 +22,6 @@ namespace Obosi.ng.Application.Interfaces
         Task<List<ForumTopic>> GetForumTopics(long forumId);
         Task<ForumTopic> DeleteForumTopic(long forumTopicId);
         Task<ForumTopic> UpdateForumTopic(long forumTopicId,string title);
+        Task<bool> ApproveForumContributor(long forumId,long userId);
     }
 }

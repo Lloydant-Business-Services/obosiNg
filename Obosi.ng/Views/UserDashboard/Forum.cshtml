@@ -18,9 +18,9 @@
                                         <i class="ti-search font-xss"></i>
                                         <input type="text" class="form-control text-grey-500 mb-0 bg-greylight theme-dark-bg border-0" placeholder="Search here.">
                                     </div>
-                                    <a href="#" class="btn-round-md ms-2 bg-greylight theme-dark-bg rounded-3"><i class="feather-filter font-xss text-grey-500"></i></a>
+                                   @*  <a href="#" class="btn-round-md ms-2 bg-greylight theme-dark-bg rounded-3"><i class="feather-filter font-xss text-grey-500"></i></a>
                         <a href="~/userdashboard/createforum" class="btn-round-md ms-2 bg-greylight theme-dark-bg rounded-3"><i class="add font-xss text-grey-500"></i>+</a>
-                                </div>
+                                </div> *@
                             </div>
 
                             <div class="row ps-2 pe-1">
@@ -51,7 +51,7 @@
                                         <p class="fw-500 font-xssss text-grey-500 mt-0 mb-3">@item.Description</p>
 
 
-                                        <a href="#" class="mt-4 p-0 btn p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white">FOLLOW</a>
+                                            <a href="#" class="mt-4 p-0 btn p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white" onclick="Join(@item.Id)">FOLLOW</a>
                                         <a href="~/UserDashboard/ForumTopic?forumId=@item.Id" class="mt-4 p-0 btn p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white">VIEW</a>
                                     </div>
                                 </div>
@@ -81,4 +81,41 @@
    
      
         
+          
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js" ></script>
+    <script>
+           
+        function Join(forumId) {
+            event.preventDefault();  // Prevent the default anchor click behavior
+
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("FollowForum", "UserDashboard")",
+                dataType: "json",
+                data: { forumId: forumId }, // Pass data as an object
+                success: SuccessFunc,
+                error: ErrorFunc
+            });
+
+            function SuccessFunc() {
+
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Your now follow this forum!',
+                    icon: 'success',
+                    confirmButtonText: 'Great'
+                })
+
+
+            }
+
+            function ErrorFunc() {
+                alert("Operation failed!");
+            }
+
+        }
+
+    </script>
+   
     

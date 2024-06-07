@@ -20,6 +20,7 @@ namespace Obosi.ng.Presentation.ViewModels
         public Forum Forum { get; set; }
         public ForumTopic ForumTopic { get; set; }
         public List<ForumTopic> ForumTopics { get; set; }
+        public List<ForumFollowers> ForumFollowers { get; set; }    
 
         public UserDashboardViewModel()
         {

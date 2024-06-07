@@ -45,6 +45,7 @@ namespace Obosi.ng.Presentation.Controllers
             await _forum.CreateForum(model.Forum.Title, model.Forum.Description, userId);
             return RedirectToAction("Forum");
         }
+        
         public async Task<IActionResult> CreateForumTopic(long forumId)
         {
             UserDashboardViewModel model = new UserDashboardViewModel(_postService);
@@ -59,6 +60,14 @@ namespace Obosi.ng.Presentation.Controllers
             long userId = Convert.ToInt64(claimsPrincipal.FindFirst(ClaimTypes.Sid).Value);
             await _forum.CreateForumTopic(model.Forum.Id, model.ForumTopic.Topic, userId);
             return RedirectToAction("ForumTopic", new { forumId = model.Forum.Id });
+        }
+        [HttpGet]
+        public async Task<IActionResult> ViewForumMembers(long forumId)
+        {
+            UserDashboardViewModel model = new UserDashboardViewModel(_postService);
+            model.ForumFollowers = await _forum.GetFollowers(forumId);
+            model.Forum = await _forum.ViewForum(forumId);
+            return View(model);
         }
     }
 }
