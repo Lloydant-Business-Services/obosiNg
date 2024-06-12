@@ -40,7 +40,7 @@ namespace Obosi.ng.Application.Services
             return false;   
         }
 
-        public async Task<Forum> CreateForum(string title, string description, long userId)
+        public async Task<Forum> CreateForum(string title, string description, long userId, int? unitId, bool? isGeneral)
         {
             if(title == null || description == null)
             {
@@ -51,7 +51,10 @@ namespace Obosi.ng.Application.Services
                 Title = title,
                 Description = description,
                 Date = DateTime.UtcNow,
-                UserId = userId,IsActive = true
+                UserId = userId,
+                IsActive = true,
+                UnitId = unitId,
+                IsGeneral = isGeneral
             };
             var create = await _context.Forum.AddAsync(forum);
             await _context.SaveChangesAsync();

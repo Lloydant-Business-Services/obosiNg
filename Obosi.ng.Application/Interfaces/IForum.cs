@@ -9,7 +9,7 @@ namespace Obosi.ng.Application.Interfaces
 {
     public interface IForum
     {
-        Task<Forum> CreateForum(string title,string description,long userId);
+        Task<Forum> CreateForum(string title,string description,long userId,int? unitId,bool? isGeneral);
         Task<Forum> ViewForum(long Id);
         Task<List<Forum>> GetForums();
         Task<List<ForumFollowers>> GetFollowers(long forumId);

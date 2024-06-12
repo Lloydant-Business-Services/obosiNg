@@ -12,5 +12,8 @@ namespace Obosi.ng.Domain.Entity
         public string Description { get; set; }
         public DateTime Date { get; set; }
         public bool IsActive { get; set; }
+        public int? UnitId { get; set; }
+        public virtual Unit Unit { get; set; }
+        public bool? IsGeneral { get; set; }
     }
 }

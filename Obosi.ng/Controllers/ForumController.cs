@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
 using System.Security.Claims;
 
@@ -12,14 +13,16 @@ namespace Obosi.ng.Presentation.Controllers
         public IConfiguration _Configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IForum _forum;
+        private readonly IUnit _unit;
         public ForumController(IPostService postService, IConfiguration Configuration, IHttpContextAccessor httpContextAccessor,
-            IHostEnvironment hostingEnvironment, IForum forum)
+            IHostEnvironment hostingEnvironment, IForum forum, IUnit unit)
         {
             _postService = postService;
             _Configuration = Configuration;
             _httpContextAccessor = httpContextAccessor;
             _hostingEnvironment = hostingEnvironment;
             _forum = forum;
+            _unit = unit;
         }
         public IActionResult Index()
         {
@@ -32,9 +35,11 @@ namespace Obosi.ng.Presentation.Controllers
             model.Forum = await _forum.ViewForum(forumId);
             return View(model);
         }
-        public IActionResult CreateForum()
+        public async Task<IActionResult> CreateForum()
         {
-            UserDashboardViewModel model = new UserDashboardViewModel(_postService);
+            UserDashboardViewModel model = new UserDashboardViewModel(_postService, _unit);
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializeUnitsAsync(userEmail);
             return View(model);
         }
         [HttpPost]
@@ -42,8 +47,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             var claimsPrincipal = _httpContextAccessor.HttpContext.User;
             long userId = Convert.ToInt64(claimsPrincipal.FindFirst(ClaimTypes.Sid).Value);
-            await _forum.CreateForum(model.Forum.Title, model.Forum.Description, userId);
-            return RedirectToAction("Forum");
+            await _forum.CreateForum(model.Forum.Title, model.Forum.Description, userId,model.Forum.UnitId,model.IsPrivate);
+            return RedirectToAction("Index");
         }
         
         public async Task<IActionResult> CreateForumTopic(long forumId)
@@ -67,6 +72,11 @@ namespace Obosi.ng.Presentation.Controllers
             UserDashboardViewModel model = new UserDashboardViewModel(_postService);
             model.ForumFollowers = await _forum.GetFollowers(forumId);
             model.Forum = await _forum.ViewForum(forumId);
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> InviteForumMember(UserDashboardViewModel model)
+        {
             return View(model);
         }
     }

@@ -88,7 +88,7 @@ namespace Obosi.ng.Presentation.Controllers
         {
             var claimsPrincipal = _httpContextAccessor.HttpContext.User;
             long userId = Convert.ToInt64(claimsPrincipal.FindFirst(ClaimTypes.Sid).Value);
-            await _forum.CreateForum(model.Forum.Title, model.Forum.Description, userId);
+            await _forum.CreateForum(model.Forum.Title, model.Forum.Description, userId,model.Forum.UnitId,model.Forum.IsGeneral);
             return RedirectToAction("Forum");
         }
         public async Task<IActionResult> CreateForumTopic(long forumId)
