@@ -14,7 +14,9 @@ namespace Obosi.ng.Application.Interfaces
         Task<Unit> ConfirmUnit(int unitId, long userId);
         Task<List<Member_Unit>> GetAllMembersByUnitId(int unitId);
         Task<List<Unit_Type>> GetAllUnitTypes();
+        Task<List<Unit_Type>> GetAllUnitTypes(string email);
         Task<List<Unit>> GetAllUnitsByUnitType(int Unit_TypeId);
+        Task<List<Unit>> GetAllUnitsByUnitType(int Unit_TypeId, string email);
         Task<List<Unit>> GetAllUmunna();
         Task<List<Unit>> GetAllUnits();
         Task<List<Unit>> GetAllUnits(string email);

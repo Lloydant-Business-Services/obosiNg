@@ -460,5 +460,56 @@ namespace Obosi.ng.Application.Services
         {
             return await _dataContext.Member_Unit.Where(x => x.Users.Email == email).Include(x => x.Unit).Select(x => x.Unit).ToListAsync();
         }
+
+        public async Task<List<Unit_Type>> GetAllUnitTypes(string email)
+        {
+            var userRole = await _dataContext.Users.Where(r => r.Email == email).FirstOrDefaultAsync();
+            if (userRole.RoleId == (int)Enums.Role.Admin)
+            { 
+               return await _dataContext.Unit_Type.OrderBy(p => p.Name).ToListAsync();
+            }
+               return await _dataContext.UnitAdmin.Where(x => x.Users.Email == email).Include(x => x.Unit.Unit_Type).Select(x => x.Unit.Unit_Type).ToListAsync();  
+        }
+
+        public async Task<List<Unit>> GetAllUnitsByUnitType(int Unit_TypeId, string email)
+        {
+            var userRole = await _dataContext.Users.Where(r => r.Email == email).FirstOrDefaultAsync();
+            if (userRole.RoleId == (int)Enums.Role.Admin)
+            { 
+            return await _dataContext.Unit.Where(x => x.Unit_TypeId == Unit_TypeId).Include(x => x.Unit_Type).OrderBy(p => p.Name)
+                .Select(ua => new Unit
+                {
+                    Name = SentenceCase(ua.Name),
+                    About = ua.About,
+                    BackGroundImageUrl = ua.BackGroundImageUrl,
+                    CanHaveMembers = ua.CanHaveMembers,
+                    DateCreated = ua.DateCreated,
+                    Description = ua.Description,
+                    Id = ua.Id,
+                    NeedsConfirmation = ua.NeedsConfirmation,
+                    Unit_TypeId = ua.Unit_TypeId,
+                    Unit_Type
+                = ua.Unit_Type
+                })
+                .ToListAsync(); 
+            }
+               return await _dataContext.UnitAdmin.Where(x => x.Users.Email == email).Include(x => x.Unit.Unit_Type)
+                .Where(x => x.Unit.Unit_TypeId == Unit_TypeId)
+                .Select(ua => new Unit
+                {
+                    Name = SentenceCase(ua.Unit.Name),
+                    About = ua.Unit.About,
+                    BackGroundImageUrl = ua.Unit.BackGroundImageUrl,
+                    CanHaveMembers = ua.Unit.CanHaveMembers,
+                    DateCreated = ua.Unit.DateCreated,
+                    Description = ua.Unit.Description,
+                    Id = ua.Unit.Id,
+                    NeedsConfirmation = ua.Unit.NeedsConfirmation,
+                    Unit_TypeId = ua.Unit.Unit_TypeId,
+                    Unit_Type
+                = ua.Unit.Unit_Type
+                })
+                .ToListAsync(); 
+        }
     }
 }
