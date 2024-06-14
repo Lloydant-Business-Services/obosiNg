@@ -153,6 +153,11 @@
 
 
                             <li><a href="~/Home/EventList" class="nav-content-bttn open-font"><i class="font-xl text-current feather-map-pin me-3"></i><span>Events</span></a></li>
+
+                            @if (@User.FindFirst(ClaimTypes.Role).Value != "User") 
+                            {
+                                <li><a href="~/DashBoard" class="nav-content-bttn open-font"><i class="font-xl text-current feather-layout me-3"></i><span>Go To Admin</span></a></li>
+                            }
                             <li><a href="~/Home/SignOut" class="nav-content-bttn open-font"><i class="font-xl text-current feather-log-out me-3"></i><span>Sign Out</span></a></li>
 
                         </ul>
