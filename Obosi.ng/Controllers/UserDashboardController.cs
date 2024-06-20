@@ -115,7 +115,10 @@ namespace Obosi.ng.Presentation.Controllers
 
         public async Task<IActionResult> ViewForumTopic(long forumTopicId)
         { 
-            var model = new UserDashboardViewModel(_postService);
+            var model = new UserDashboardViewModel(_postService,_forum);
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+            string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
+            await model.InitializeChatsAsync(userEmail, forumTopicId);
             model.ForumTopic = await _forum.ViewForumTopic(forumTopicId);
             return View(model);
         }
@@ -145,6 +148,13 @@ namespace Obosi.ng.Presentation.Controllers
         public async Task<bool> ApproveUsers(long forumId, long userId)
         {
             await _forum.ApproveForumContributor(forumId, userId);
+            return true;
+        }
+        public async Task<bool> AddChat(long forumTopicId, string message)
+        {
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+            long userId = Convert.ToInt64(claimsPrincipal.FindFirst(ClaimTypes.Sid).Value);
+            await _forum.SendForumMessage(forumTopicId, userId, message);
             return true;
         }
     }

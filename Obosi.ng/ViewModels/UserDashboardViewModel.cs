@@ -24,6 +24,8 @@ namespace Obosi.ng.Presentation.ViewModels
         public List<ForumTopic> ForumTopics { get; set; }
         public List<ForumFollowers> ForumFollowers { get; set; }
         public List<Unit> Units { get; set; }
+        public ForumFollowers? ForumFollower { get; set; }
+        public List<ForumMessage>? ForumMessages { get; set; }
 
         public UserDashboardViewModel()
         {
@@ -32,6 +34,11 @@ namespace Obosi.ng.Presentation.ViewModels
         public UserDashboardViewModel(IPostService _postService)
         {
            postService = _postService;
+        }
+        public UserDashboardViewModel(IPostService _postService,IForum _forum)
+        {
+            postService = _postService;
+            forumService = _forum;
         }
         public UserDashboardViewModel(IPostService _postService, IUnit _unitService)
         {
@@ -48,6 +55,14 @@ namespace Obosi.ng.Presentation.ViewModels
             this.Posts = await postService.GetPosts(email, 1, 40);
             this.Users = await postService.GetUser(email);
             this.Units = await unitService.GetAllUnits(email);
+        }
+
+        public async Task InitializeChatsAsync(string email,long forumTopicId)
+        {
+            this.Posts = await postService.GetPosts(email, 1, 40);
+            this.Users = await postService.GetUser(email);
+            this.ForumFollower = await forumService.GetForumStatus(email);    
+            this.ForumMessages = await forumService.GetMessage(forumTopicId);
         }
 
     }

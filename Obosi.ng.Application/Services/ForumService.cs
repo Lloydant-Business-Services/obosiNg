@@ -95,6 +95,11 @@ namespace Obosi.ng.Application.Services
             return await _context.Forum.Include(x=>x.User).Include(x => x.User).ToListAsync();
         }
 
+        public async Task<ForumFollowers> GetForumStatus(string email)
+        {
+           return await _context.ForumFollowers.Where(x => x.User.Email == email).FirstOrDefaultAsync();
+        }
+
         public async Task<List<ForumTopic>> GetForumTopics(long forumId)
         {
             return await _context.ForumTopic.Where(x => x.ForumId == forumId).Include(x=>x.User).Include(x=>x.Forum).ToListAsync();

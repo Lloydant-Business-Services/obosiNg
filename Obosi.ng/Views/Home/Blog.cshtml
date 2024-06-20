@@ -115,7 +115,7 @@
             <div class="image"></div>
             <div class="figure-captioon">
                 <div class="rectangle-bar"></div>
-                <div><h6>Image caption goes here</h6></div>
+               @*  <div><h6>Image caption goes here</h6></div> *@
             </div>
         </div>
         <!-- Image End-->
@@ -128,7 +128,7 @@
 
         <h2 class="Conclusion">Conclusion</h2>
         <p>
-            @Html.Raw( @Model.blogItem.Body)
+           @Model.blogItem.Summary
         </p>
 
         <!-- Content Area End -->
@@ -151,7 +151,7 @@
                     {
 
                         <!-- Post 1 -->
-                        <div class="card">
+                        <div class="card" onclick="window.location.href = '/Home/Blog?id=@StringEncryption.Encrypt(@item.Id.ToString())';">
                             <img src="~/@item.BackgroundImageUrl" alt="Blog Post Image" class="card-img">
                     <div class="card-content">
                         <h2 class="card-title">@item.Title</h2>
