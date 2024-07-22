@@ -1,7 +1,7 @@
-﻿@model Obosi.ng.Presentation.ViewModels.BoulevardViewModel;
+﻿@* @model Obosi.ng.Presentation.ViewModels.BoulevardViewModel; *@
+@model Obosi.ng.Presentation.ViewModels.HomePageViewModel;
 @{
      Layout = "~/Views/Shared/_GeneralLayout2.cshtml";
-    //Layout = null;
 }
 
 <div class="top-dropdown">
@@ -509,24 +509,7 @@
 
     </div>
 </div>
-@* <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontsource-inter@4.2.2/css/font-face.css" integrity="sha384-+dTx0gd5x4TB5pU8VR4MYeBp3x4YPH6EFLQV1H9eVQktIb2QQwK+8hJoI+1jRJMf" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=MedievalSharp&family=Roboto:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <!-- <link 
-    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
-    rel="stylesheet"  type='text/css'> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script> *@
      <style>
 
         .medievalsharp-regular {
@@ -955,22 +938,27 @@
                     <hr style="color: #000000;" />
                 }
             }
-          
-           
+
+        @{
+            var nextPageUrl = Url.Action("Index", "Boulevard", new { page = Model.pageNo + 1 });
+            var prevPageUrl = Url.Action("Index", "Boulevard", new { page = Model.pageNo - 1 });
+        }
             
             <div class="row d-flex justify-content-between ">
                 <div class="col-lg-6 col-6">
 
                     @if(Model.pageNo>1)
                     {
-                 <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;">Previous Page</button>
+                 @* <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;">Previous Page</button> *@
+                    <a class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;" href="@prevPageUrl" >Previous Page</a>
                     }
                 </div>
                 <div class=" col-lg-4 col-6">
                     
                 </div>
                 <div class="col-lg-2 col-6">
-                 <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;"> Next Page</button>
+                 @* <button class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;"> Next Page</button> *@
+                <a class="btn " style="background-color: #0078D4; font-size: 16px; font-weight: 400; color: #FFFFFF;" href="@nextPageUrl">Next Page </a>
                 </div>
 
             </div>
