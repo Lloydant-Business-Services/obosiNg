@@ -38,6 +38,18 @@
         background-size: cover;
         border-radius: 100%;
     }
+
+    @@media (max-width: 768px) {
+        #responsiveHHeader {
+            font-size: 20px;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        #responsiveHHeader {
+            font-size: 20px;
+        }
+    }
 </style>
 
 
@@ -46,7 +58,7 @@
 <!-- Header -->
 <div class="container-blog__page">
     <div class="blog-header-container">
-        <h2 class="blog-header-text">@Model.newsItem.Title</h2>
+        <h2 class="blog-header-text" id="responsiveHHeader">@Model.newsItem.Title</h2>
         <div class="avatar-content">
             <div class="avatarr"></div>
             <div class="avatar-desc">
