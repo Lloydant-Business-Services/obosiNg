@@ -21,7 +21,26 @@ namespace Obosi.ng.Application.Services
             _context = context;
             _mapper = mapper;
         }
-        public async Task<Forum> CreateForum(string title, string description, long userId)
+
+        public async Task<bool> ApproveForumContributor(long forumId, long userId)
+        {
+            if(forumId == null || userId == null)
+            {
+                throw new ArgumentNullException("Forum or User cannot be null");
+            }   
+            var member = await _context.ForumFollowers.Where(x => x.UserId == userId && x.ForumId == forumId).FirstOrDefaultAsync();
+            if(member != null)
+            {
+                bool canContribute = member.CanContribute;  
+                member.CanContribute = !canContribute;
+                _context.ForumFollowers.Update(member);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;   
+        }
+
+        public async Task<Forum> CreateForum(string title, string description, long userId, int? unitId, bool? isGeneral)
         {
             if(title == null || description == null)
             {
@@ -32,7 +51,10 @@ namespace Obosi.ng.Application.Services
                 Title = title,
                 Description = description,
                 Date = DateTime.UtcNow,
-                UserId = userId,IsActive = true
+                UserId = userId,
+                IsActive = true,
+                UnitId = unitId,
+                IsGeneral = isGeneral
             };
             var create = await _context.Forum.AddAsync(forum);
             await _context.SaveChangesAsync();
@@ -65,22 +87,27 @@ namespace Obosi.ng.Application.Services
 
         public async Task<List<ForumFollowers>> GetFollowers(long forumId)
         {
-            return await  _context.ForumFollowers.Where(x => x.ForumId == forumId).ToListAsync();
+            return await  _context.ForumFollowers.Where(x => x.ForumId == forumId).Include(x=>x.User).ToListAsync();
         }
 
         public async Task<List<Forum>> GetForums()
         {
-            return await _context.Forum.ToListAsync();
+            return await _context.Forum.Include(x=>x.User).Include(x => x.User).ToListAsync();
+        }
+
+        public async Task<ForumFollowers> GetForumStatus(string email)
+        {
+           return await _context.ForumFollowers.Where(x => x.User.Email == email).FirstOrDefaultAsync();
         }
 
         public async Task<List<ForumTopic>> GetForumTopics(long forumId)
         {
-            return await _context.ForumTopic.Where(x => x.ForumId == forumId).ToListAsync();
+            return await _context.ForumTopic.Where(x => x.ForumId == forumId).Include(x=>x.User).Include(x=>x.Forum).ToListAsync();
         }
 
         public async  Task<List<ForumMessage>> GetMessage(long forumTopicId)
         {
-            return await _context.ForumMessage.Where(x => x.ForumTopicId == forumTopicId).ToListAsync();
+            return await _context.ForumMessage.Where(x => x.ForumTopicId == forumTopicId).Include(x => x.User).Include(x => x.ForumTopic).ToListAsync();
         }
 
         public async Task<ForumFollowers> JoinForum(long forumId, long userId)
@@ -89,10 +116,16 @@ namespace Obosi.ng.Application.Services
             {
                 throw new ArgumentNullException("User or Forum cannot be null");
             }
-           var forumfollower  = new ForumFollowers { ForumId = forumId, UserId = userId, Date = DateTime.UtcNow,IsActive= true };
-            var create = await _context.ForumFollowers.AddAsync(forumfollower);
-            await _context.SaveChangesAsync();
-            return create.Entity;
+            var existingFollower = await _context.ForumFollowers.Where(x => x.UserId == userId && x.ForumId == forumId).FirstOrDefaultAsync();
+            if (existingFollower == null)
+            {
+                var forumfollower = new ForumFollowers { ForumId = forumId, UserId = userId, Date = DateTime.UtcNow, IsActive = true, CanContribute = false };
+
+                var create = await _context.ForumFollowers.AddAsync(forumfollower);
+                await _context.SaveChangesAsync();
+                return create.Entity;
+            }
+            return null;
         }
 
         public Task<ForumFollowers> LeaveForum(long forumId, long userId)

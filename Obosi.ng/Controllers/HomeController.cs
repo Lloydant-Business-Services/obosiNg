@@ -82,14 +82,14 @@ namespace Obosi.ng.Controllers
                                                     {
                                                         IsPersistent = true
                                                     });
-                    if (user.RoleId == 2)
-                    {
+                    //if (user.RoleId == 2)
+                    //{
                         return RedirectToAction("ViewUserProfile", "User");
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "DashBoard");
-                    }
+                    //}
+                    //else
+                    //{
+                    //    return RedirectToAction("Index", "DashBoard");
+                    //}
 
                 }
             }

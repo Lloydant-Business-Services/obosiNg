@@ -215,27 +215,54 @@ namespace Obosi.ng.Application.Services
             throw new NotImplementedException();
         }
 
+        public async Task<bool> LikedPost(long PostId, long UserId)
+        {
+          var like = await _context.PostLikes.Where(x => x.PostId == PostId &&
+                     x.UserId == UserId).FirstOrDefaultAsync();
+            if (like != null)
+            {
+                if (like.Active)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;  
+        }
+
+        public async Task<long> LikedPostCount(long PostId)
+        {
+           var posts =  await _context.PostLikes.Where(x => x.PostId == PostId  && x.Active == true).ToListAsync();
+            return posts.Count();
+        }
+
         public async Task<bool> LikePost(long PostId, long UserId)
         {
             var like= await _context.PostLikes.Where(x => x.PostId == PostId &&
             x.UserId == UserId).FirstOrDefaultAsync();
-            if(like != null)
+            if (like != null)
             {
                 bool stat = like.Active;
                 like.Active = !stat;
-                 _context.PostLikes.Update(like);
+                _context.PostLikes.Update(like);
                 await _context.SaveChangesAsync();
                 return true;
             }
-            await _context.PostLikes.AddAsync(new PostLikes()
+            else
             {
-                PostId = PostId,
-                Date = DateTime.UtcNow,
-                Active = true,
-                UserId = UserId
-            });
-            await _context.SaveChangesAsync();
-            return true;
+                await _context.PostLikes.AddAsync(new PostLikes()
+                {
+                    PostId = PostId,
+                    Date = DateTime.UtcNow,
+                    Active = true,
+                    UserId = UserId
+                });
+                await _context.SaveChangesAsync();
+                return true;
+            }
         }
 
         public Task<bool> LikePostAsync(long postId, long userId)

@@ -10,6 +10,7 @@ namespace Obosi.ng.Domain.Entity
         public virtual Users User { get; set; }
         public long ForumId { get; set; }
         public virtual Forum Forum { get; set; }
+        public bool CanContribute { get; set; }
         public DateTime Date { get; set; }
         public bool IsActive { get; set; }
     }

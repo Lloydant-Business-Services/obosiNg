@@ -40,5 +40,7 @@ namespace Obosi.ng.Application.Interfaces
         Task<Post> GetPost(long Id);
         Task<List<PostComments>> AllComments(long postId);
         Task<bool> LikePost(long PostId, long UserId);
+        Task<bool> LikedPost(long PostId, long UserId);
+        Task<long> LikedPostCount(long PostId);
     }
 }

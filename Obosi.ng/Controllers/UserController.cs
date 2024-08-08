@@ -28,7 +28,9 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Users";
             UserViewModel model = new(_user, unit);
-            await model.InitializeNewsAsync();
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+            string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
+            await model.InitializeNewsAsync(userEmail);
             return View(model);
         }
         public async Task<IActionResult> Details(int id)
@@ -43,7 +45,9 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Approve Users";
             UserViewModel model = new(_user, unit);
-            await model.InitializeNewsAsync();
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+            string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
+            await model.InitializeNewsAsync(userEmail);
             return View(model);
         }
         public async Task<IActionResult> ApproveUsers(string username,int unitId)
@@ -133,7 +137,9 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Create Users";
             UserViewModel model = new(_user, unit);
-            await model.InitializeNewsAsync();
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+            string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
+            await model.InitializeNewsAsync(userEmail);
             return View(model);
         }
 
@@ -153,8 +159,9 @@ namespace Obosi.ng.Presentation.Controllers
                 catch (Exception ex)
                 {
                     UserViewModel model = new(_user, unit);
-                     
-                    await model.InitializeNewsAsync();
+                    var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+                    string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
+                    await model.InitializeNewsAsync(userEmail);
                     userViewModel = model;
                     userViewModel.Error = ex.Message;
                     return View(userViewModel);
@@ -169,7 +176,9 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Edit Users";
             UserViewModel model = new(_user, unit);
-            await model.InitializeNewsAsync(Id);
+            var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+            string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
+            await model.InitializeNewsAsync(Id,userEmail);
             return View(model);
         }
 
@@ -189,8 +198,9 @@ namespace Obosi.ng.Presentation.Controllers
                 catch (Exception ex)
                 {
                     UserViewModel model = new(_user, unit);
-
-                    await model.InitializeNewsAsync();
+                    var claimsPrincipal = _httpContextAccessor.HttpContext.User;
+                    string userEmail = claimsPrincipal.FindFirst(ClaimTypes.Email).Value;
+                    await model.InitializeNewsAsync(userEmail);
                     userViewModel = model;
                     userViewModel.Error = ex.Message;
                     return View(userViewModel);

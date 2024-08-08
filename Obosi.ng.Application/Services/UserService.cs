@@ -83,10 +83,18 @@ namespace Obosi.ng.Application.Services
                 }
                 else
                 {
-                    throw new Exception("User has not been Approved");
+                    if (!user.IsActive)
+                    {
+                        throw new Exception("User has not been Approved");
+                    }
+
+                    if (!passwordCheck)
+                    {
+                        throw new Exception("The password you entered is incorrect. Please check your credentials and try again");
+                    }
                 }
             }
-            return null;
+            throw new Exception("Oops user not found");
         }
 
      

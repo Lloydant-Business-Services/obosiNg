@@ -14,7 +14,9 @@ namespace Obosi.ng.Application.Interfaces
         Task<Unit> ConfirmUnit(int unitId, long userId);
         Task<List<Member_Unit>> GetAllMembersByUnitId(int unitId);
         Task<List<Unit_Type>> GetAllUnitTypes();
+        Task<List<Unit_Type>> GetAllUnitTypes(string email);
         Task<List<Unit>> GetAllUnitsByUnitType(int Unit_TypeId);
+        Task<List<Unit>> GetAllUnitsByUnitType(int Unit_TypeId, string email);
         Task<List<Unit>> GetAllUmunna();
         Task<List<Unit>> GetAllUnits();
         Task<List<Unit>> GetAllUnits(string email);
@@ -26,7 +28,7 @@ namespace Obosi.ng.Application.Interfaces
         Task<Unit> UpdateUnit(Unit unit);   
         Task<Unit_Type> UpdateUnitType(Unit_Type Unit_Type);
         Task<List<Member_Unit>> ViewApprovedMembers();
-        Task<List<Member_Unit>> ViewUnApprovedMembers();
+        Task<List<Member_Unit>> ViewUnApprovedMembers(string email);
 
         Task<List<UnitAdmin>> GetAdmins();
         Task<UnitAdmin> CreateAdmin(UnitAdmin admin);
