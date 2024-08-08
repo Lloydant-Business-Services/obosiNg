@@ -1,0 +1,105 @@
+﻿@model Obosi.ng.Presentation.ViewModels.UserDashboardViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<head>
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.css" rel="stylesheet">
+
+</head>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+
+                <div class="card-header pb-0">
+                    <h6></h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="text-start m-3">
+                        <a class="btn btn-outline-primary btn-sm mb-0" href="~/Forum/CreateForumTopic?forumId=@Model.Forum.Id">Create</a>
+                    </div>
+                    <div class="table-responsive p-0">
+
+
+                        <table id="example" class="table table-striped p-3 m-3" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Sn</th>
+                                    <th>FullName</th>
+                                  
+                                    <th>Username</th>
+
+                                    <th>Can Contribute</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.ForumFollowers != null)
+                                {
+                                    int k = 1;
+                                    foreach (var item in Model.ForumFollowers)
+                                    {
+                                        <tr>
+                                            <td>@k</td>
+                                            <td>@item.User.FirstName @item.User.LastName</td>
+                                            <td>@item.User.Email </td>
+                                            <td> <input type="checkbox" id="item3" asp-for="@item.CanContribute"
+                                                onclick="ApproveForumContribution(@item.ForumId,@item.UserId);"> </td>
+                                            
+                                        </tr>
+                                        k++;
+                                    }
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+
+    function ApproveForumContribution(forumId,userId) {
+        event.preventDefault();  // Prevent the default anchor click behavior
+        
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("ApproveUsers", "UserDashboard")",
+            dataType: "json",
+            data: { forumId: forumId,  userId:userId }, // Pass data as an object
+            success: SuccessFunc,
+            error: ErrorFunc
+        });
+
+        function SuccessFunc() {
+
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your Have added contributor!',
+                icon: 'success',
+                confirmButtonText: 'Great'
+            })
+
+        }
+
+        function ErrorFunc() {
+            alert("Operation failed!");
+        }
+
+    }
+
+</script> 

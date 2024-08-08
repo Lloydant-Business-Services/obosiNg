@@ -15,6 +15,7 @@ namespace Obosi.ng.Presentation.ViewModels
         private readonly IMedia media;
         private readonly IExecutive executive;
         private readonly IAboutService about;
+        private readonly IBoulevard boulevard;
         
         public HomePageViewModel(INews _news, IBlog _blog, ICalender _calender)
         {
@@ -54,7 +55,15 @@ namespace Obosi.ng.Presentation.ViewModels
             media = _media;
             executive = _executive; 
         }
-        public HomePageViewModel()
+		public HomePageViewModel(IUnit _unit, ICalender _calender, IMedia _media, IExecutive _executive,IBoulevard _boulevard)
+		{
+			unit = _unit;
+			calender = _calender;
+			media = _media;
+			executive = _executive;
+            boulevard = _boulevard;
+		}
+		public HomePageViewModel()
         {
           
         }
@@ -165,7 +174,16 @@ namespace Obosi.ng.Presentation.ViewModels
            
 
         }
-        public async Task GetAbout(int pageId)
+		public async Task InitializeAsync(int page)
+		{
+			builders_Boulevards = await boulevard.GetBoulevard(page);
+
+			this.AllUmunna = await unit.GetAllUnitsByUnitType((int)Unit_Types.Umunna);
+			this.AllVillages = await unit.GetAllUnitsByUnitType((int)Unit_Types.Village);
+			this.AllImene = await unit.GetAllUnitsByUnitType((int)Unit_Types.Ime_Nne);
+			this.AllAka = await unit.GetAllUnitsByUnitType((int)Unit_Types.Aka);
+		}
+		public async Task GetAbout(int pageId)
         {
             this.AboutContent = await about.GetAbouts(pageId);
             this.HasNextPage = await about.HasNextPage(pageId);
@@ -205,5 +223,9 @@ namespace Obosi.ng.Presentation.ViewModels
         public string ErrorMessage { get; set; }
         public int PageId { get; set; }
         public bool HasNextPage { get; set; }
-    }
+
+		public List<Builders_Boulevard> builders_Boulevards { get; set; }
+		public Builders_Boulevard builders_Boulevard { get; set; }
+		public int pageNo { get; set; }
+	}
 }

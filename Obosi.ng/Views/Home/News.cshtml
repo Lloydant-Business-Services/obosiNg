@@ -126,7 +126,7 @@
             <div class="image"></div>
             <div class="figure-captioon">
                 <div class="rectangle-bar"></div>
-                <div><h6>Image caption goes here</h6></div>
+               @*  <div><h6>Image caption goes here</h6></div> *@
             </div>
         </div>
         <!-- Image End-->
@@ -139,9 +139,63 @@
 
         <h2 class="Conclusion">Conclusion</h2>
         <p>
-            @Html.Raw( @Model.newsItem.Body)
+           @Model.newsItem.Summary
         </p>
 
+    @*     <div class="commentSection">
+
+            <div class="commentInputcontainer">
+                <input type="text"
+                       class="commentInput"
+                       placeholder="Enter Comment" />
+            </div>
+            <div class="commentButtonContainer">
+                <button class="sendButton">Emoji</button>
+                <button class="sendButton">Send</button>
+            </div>
+        </div>
+
+        <div class="embeddedUserCommentGlobalContainer">
+            <h2>Comments</h2>
+
+            <section class="embeddedUserCommentInnerContainer">
+                <div class="userCommentImageContainer">
+                    <img src="~/UserDash/images/userProfileImage.jpeg"
+                         alt="User Profile Image"
+                         class="userProfileImage" />
+                </div>
+
+                <div class="userCommentText">
+                    <p class="firstChild">
+                        Once upon a time, in a lush and verdant forest nestled between
+                        rolling hills, there lived a skilled hunter named Adewale Once
+                        upon a time, in a lush and verdant forest nestled between
+                        rolling hills, there lived a skilled hunter named Adewale
+                    </p>
+                    <p class="secondChild">
+                        Theresa Okonkwo, <span>2 days ago</span>
+                    </p>
+                </div>
+            </section>
+            <section class="embeddedUserCommentInnerContainer">
+                <div class="userCommentImageContainer">
+                    <img src="~/UserDash/images/userProfileImage.jpeg"
+                         alt="User Profile Image"
+                         class="userProfileImage" />
+                </div>
+
+                <div class="userCommentText">
+                    <p class="firstChild">
+                        Once upon a time, in a lush and verdant forest nestled between
+                        rolling hd between rolling hills, there lived a skilled hunter
+                        named Adewale
+                    </p>
+                    <p class="secondChild">
+                        Favour Amakwe, <span>24 hours ago</span>
+                    </p>
+                </div>
+            </section>
+        </div> *@
         <!-- Content Area End -->
         <!-- Related post -->
 
@@ -163,7 +217,7 @@
                     {
 
                         <!-- Post 1 -->
-                        <div class="card">
+                        <div class="card" onclick="window.location.href = '/Home/News?id=@StringEncryption.Encrypt(@item.Id.ToString())';">
                             <img src="~/@item.BackgroundImageUrl" alt="News Post Image" class="card-img">
                             <div class="card-content">
                                 <h2 class="card-title">@item.Title</h2>
@@ -188,6 +242,7 @@
     </div>
 
 </main>
+
 <div class="top-dropdown">
 
     <div class="dropdown-button-holder">
@@ -693,3 +748,4 @@
 
     </div>
 </div>
+

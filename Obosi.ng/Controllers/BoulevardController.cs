@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Obosi.ng.Application.Interfaces;
+using Obosi.ng.Domain.Entity;
 using Obosi.ng.Presentation.ViewModels;
+using System.Globalization;
 
 namespace Obosi.ng.Presentation.Controllers
 {
@@ -9,16 +11,27 @@ namespace Obosi.ng.Presentation.Controllers
     {
         private readonly IBoulevard _boulevard;
         private readonly IUnit _unit;
-        public BoulevardController(IBoulevard boulevard, IUnit unit)
+		private readonly INews _news;
+		private readonly IBlog _blog;
+		private readonly ICalender _calender;
+		private readonly IUser _user;
+		private readonly IMedia _media;
+		private readonly IExecutive _executive;
+		private readonly IAboutService _about;
+		public BoulevardController(IBoulevard boulevard, IUnit unit, IBlog blog, ICalender calender, IExecutive executive)
         {
             _boulevard = boulevard;
             _unit = unit;
+            _blog = blog;
+            _calender = calender;
+            _executive = executive;
         }
         [AllowAnonymous]
         public async Task<IActionResult> Index(int page)
         {
-            BoulevardViewModel model = new(_boulevard, _unit);
-            if (page == null)
+            //BoulevardViewModel model = new(_boulevard, _unit);
+			var model = new HomePageViewModel( _unit, _calender, _media, _executive, _boulevard);
+			if (page == null)
             {
                 page = 1;
             }

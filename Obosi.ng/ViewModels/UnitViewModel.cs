@@ -14,13 +14,13 @@ namespace Obosi.ng.Presentation.ViewModels
         {
                 
         }
-        public async Task InitializeNewsAsync()
+        public async Task InitializeNewsAsync(string email)
         {
-            this.Unit_TypeList = await unit.GetAllUnitTypes();
+            this.Unit_TypeList = await unit.GetAllUnitTypes(email);
         }
-        public async Task GetUnit_TypeList(int Unit_TypeId)
+        public async Task GetUnit_TypeList(int Unit_TypeId, string email)
         {
-            this.Units = await unit.GetAllUnitsByUnitType(Unit_TypeId);
+            this.Units = await unit.GetAllUnitsByUnitType(Unit_TypeId, email);
             this.Unit_TypeId = Unit_TypeId;
             this.Unit_Type = await unit.GetUnitType(Unit_TypeId);    
         }

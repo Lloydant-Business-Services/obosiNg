@@ -2,7 +2,10 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Obosi.ng.Domain.Entity;
+using System;
 using System.Text.RegularExpressions;
 
 namespace Obosi.ng.Data
@@ -161,10 +164,27 @@ namespace Obosi.ng.Data
                     new MenuInRole() {Id = 10, MenuId = 10, RoleId = 1 },
                     new MenuInRole() { Id = 11, MenuId = 11, RoleId = 1 },
                      new MenuInRole() { Id = 12, MenuId = 12, RoleId = 1 }
-                );
+            );
 
 
 
+            modelBuilder.Entity<Post>()
+          .Property(e => e.Photos)
+          .HasConversion(
+              v => JsonConvert.SerializeObject(v,
+                  new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }),
+              v => JsonConvert.DeserializeObject<List<string>?>(v,
+                  new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() })
+          );
+
+            modelBuilder.Entity<Post>()
+          .Property(e => e.Videos)
+          .HasConversion(
+              v => JsonConvert.SerializeObject(v,
+                  new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }),
+              v => JsonConvert.DeserializeObject<List<string>?>(v,
+                  new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() })
+          );
 
         }
 
@@ -198,5 +218,14 @@ namespace Obosi.ng.Data
         public DbSet<Aka> Aka { get; set; }
         public DbSet<Umunna> Umunna { get; set; }
         public DbSet<Imenne> Imenne { get; set; }
+        public DbSet<Followers> Followers { get; set; }
+        public DbSet<Forum> Forum { get; set; }
+        public DbSet<ForumFollowers> ForumFollowers { get; set;}
+        public DbSet<ForumMessage> ForumMessage { get; set; }
+        public DbSet<ForumTopic> ForumTopic { get; set; }
+        public DbSet<Post> Post { get; set; }
+        public DbSet<PostComments> PostComments { get; set; }
+        public DbSet<Notification> Notification { get; set; }
+        public DbSet<PostLikes> PostLikes { get; set; }
     }
 }

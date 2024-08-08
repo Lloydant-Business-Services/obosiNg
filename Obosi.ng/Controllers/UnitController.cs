@@ -19,14 +19,16 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Unit Types";
             UnitViewModel model = new(unit);
-            await model.InitializeNewsAsync();
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializeNewsAsync(userEmail);
             return View(model);
         }
         public async Task<IActionResult> Units(string Unit_Type)
         {
             int Unit_TypeId = Convert.ToInt16(StringEncryption.Decrypt(Unit_Type));
             UnitViewModel model = new(unit);
-            await model.GetUnit_TypeList(Unit_TypeId);
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.GetUnit_TypeList(Unit_TypeId,userEmail);
             model.Unit_TypeId = Unit_TypeId;
             ViewBag.Title = model.Unit_Type.Name;
             return View(model);
@@ -52,7 +54,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Create Unit";
             UnitViewModel model = new(unit);
-            await model.InitializeNewsAsync();
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializeNewsAsync(userEmail);
             model.Unit = new();
             model.Unit.Unit_TypeId = Unit_TypeId;
             return View(model);
@@ -69,7 +72,8 @@ namespace Obosi.ng.Presentation.Controllers
         {
             ViewBag.Title = "Create Unit Type";
             UnitViewModel model = new(unit);
-            await model.InitializeNewsAsync();
+            var userEmail = IdentityExtensions.GetEmail(User.Identity);
+            await model.InitializeNewsAsync(userEmail);
             return View(model);
 
         }
