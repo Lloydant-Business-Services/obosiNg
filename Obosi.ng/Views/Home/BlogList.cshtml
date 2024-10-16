@@ -62,9 +62,40 @@
    </div>
 
  *@
+ <style>
+    .iframe-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+    iframe {
+        border: none;
+        width: 100%;
+        height: 800px;
+    }
+</style>
 
 
-<div class="container-blog__page">
+<iframe src="https://blogs.obosi.ng/"
+        frameborder="0"
+        width="100%"
+        height="800"
+        scrolling="yes"
+        allowfullscreen id="myIframe">
+</iframe>
+
+
+@* <div class="container-blog__page">
     <div class="blog-header-container">
         <h2 class="blog-header-text">Blog List</h2>
 
@@ -83,46 +114,33 @@
 
     <div class="posts">
 
+     
+  
 
-        @if (Model.Blogs?.Count()>0)
-        {
-            foreach (var item in Model.Blogs)
-            {
 
-                <!-- Post 1 -->
-                <div class="card" onclick="window.location.href = '/Home/Blog?id=@StringEncryption.Encrypt(@item.Id.ToString())';">
-                    <img src="~/@item.BackgroundImageUrl" alt="Blog Post Image" class="card-img">
-                    <div class="card-content">
-                        <h2 class="card-title">@item.Title</h2>
-                        <p class="card-description">Brief description of the blog post content...</p>
-                        <div class="author-info">
-                            <img src="~/@item.User.PassportUrl" alt="Author Avatar" class="author-avatar">
-                            <p class="author-name">@item.DateApproved.Value.ToShortDateString()</p>
-                        </div>
-                    </div>
-                </div>
-            }
-
-        }
-
-        else
-        {
-            <div style="background-color: #fff;" class="p-3">
-                <div style="text-align: center;">
-                    <img src="~/notFound.gif" alt="Empty Page Image" class="w-10 h-10mb-3" style="width: 100px; height: 100px;">
-                    <h3>Ooops! This page seems to be empty.</h3>
-                    <p>Return to the homepage to discover more content.</p>
-                    <a href="/" class="btn btn-danger">Return to Homepage</a>
-                </div>
-
-            </div>
-        }
-        <!-- Post 1 end-->
-        <!-- Post 3 end-->
 
     </div>
 
 
 
 
-</div>
+</div> *@
+
+@* <script>
+    $('#myIframe').on('load', function () {
+        var iframeDocument = $('#myIframe')[0].contentWindow.document;
+
+        // Remove header inside iframe
+        var header = $(iframeDocument).find('#header');
+        if (header.length) {
+            header.remove();
+        }
+
+        // Remove footer inside iframe
+        var footer = $(iframeDocument).find('#footer');
+        if (footer.length) {
+            footer.remove();
+        }
+    });
+</script>
+ *@

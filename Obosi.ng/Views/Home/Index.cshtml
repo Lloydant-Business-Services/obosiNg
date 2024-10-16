@@ -329,7 +329,7 @@
                 <p class="iconed-holder">
 
                     <a href="~/Home/NewsList" class="iconed red">
-                        <span>More News</span>
+                        <span>Read News</span>
                         <i class="fa fa-arrow-circle-right"></i>
                     </a>
 
@@ -347,7 +347,7 @@
                         </h2>
 
                     </div>
-                     @if (Model.Blogs != null)
+                   @*   @if (Model.Blogs != null)
             {
                 foreach (var blogs in Model.Blogs)
                 {
@@ -365,19 +365,44 @@
                             @blogs.Title
                         </a>
                     </div>
+                } *@
+
+                
+
+            @if (Model.root != null)
+            {
+                for (int i = 0; i <  4; i++)
+                {
+                    var blog = Model.root[i];
+
+                    <div class="single-blog">
+                       
+
+                        <p>
+                            @blog.date.ToLongDateString() 
+                        </p>
+
+                        <a href="@blog.link" target="_blank">
+                            @blog.title?.rendered 
+                        </a>
+                        <p>
+                           @Html.Raw(@blog.excerpt?.rendered)
+                        </p>
+                    </div>
                 }
 
-
-
                 <p class="iconed-holder">
-
-                    <a href="~/Home/BlogList"  class="iconed red">
-                        <span>More Blogs</span>
+                    <a href="~/Home/BlogList" class="iconed red">
+                        <span>Read Blogs</span>
                         <i class="fa fa-arrow-circle-right"></i>
                     </a>
-
                 </p>
             }
+            else
+            {
+                <p>No blogs available.</p>
+            }
+
 
                 </div>
 

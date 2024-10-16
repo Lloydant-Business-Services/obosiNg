@@ -1161,6 +1161,23 @@
                 });
             }
         }
+
+        $('#myIframe').on('load', function () {
+            var iframeDocument = $('#myIframe')[0].contentWindow.document;
+
+            // Remove header inside iframe
+            var header = $(iframeDocument).find('#header');
+            if (header.length) {
+                header.remove();
+            }
+
+            // Remove footer inside iframe
+            var footer = $(iframeDocument).find('#footer');
+            if (footer.length) {
+                footer.remove();
+            }
+        });
+
     </script>
 
 

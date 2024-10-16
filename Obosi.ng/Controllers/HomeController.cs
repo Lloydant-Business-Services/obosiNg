@@ -7,6 +7,8 @@ using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
 using Serilog;
 using System.Security.Claims;
+using System.Text.Json;
+using static Obosi.ng.Presentation.ViewModels.HomePageViewModel;
 
 namespace Obosi.ng.Controllers
 {
@@ -43,6 +45,25 @@ namespace Obosi.ng.Controllers
         {
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
             await model.InitializeNewsAsync();
+            string apiUrl = "https://blogs.obosi.ng/wp-json/wp/v2/posts";
+
+            // Create an instance of HttpClient
+            using var httpClient = new HttpClient();
+
+            // Send a GET request to the API
+            var response = await httpClient.GetAsync(apiUrl);
+
+            // Check the response status code
+            if (response.IsSuccessStatusCode)
+            {
+                // Read the response content as a string
+                var responseContent = await response.Content.ReadAsStringAsync();
+
+                // Deserialize the JSON content to a C# model
+                var myModel = JsonSerializer.Deserialize<List<Root>>(responseContent);
+
+                model.root = myModel;
+            }
             return View(model);
         }
 

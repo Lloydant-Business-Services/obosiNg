@@ -87,4 +87,10 @@
     <ProjectReference Include="..\Obosi.ng.Infrastructure\Obosi.ng.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\ckeditor\tsconfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

@@ -35,4 +35,6 @@ namespace Obosi.ng.Presentation.ViewModels
         public List<Category> Categories { get; set; }    
 
     }
+
+
 }
