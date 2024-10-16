@@ -1,6 +1,13 @@
 $(document).ready(function() {
     "use strict";
 
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        $('body').addClass('theme-dark');
+        $('#darkmodeswitch').prop('checked', true);
+    } else {
+        $('body').removeClass('theme-dark');
+        $('#darkmodeswitch').prop('checked', false);
+    }
     PageScroll();
 
 
@@ -272,16 +279,29 @@ $(document).ready(function() {
         $('.switchcolor-wrap').removeClass('active'); 
     });
 
+    //$('#darkmodeswitch').on('change', function () {
+    //    //if (this.checked) {
+    //    //    $('body').addClass('theme-dark');
+    //    //} else {
+    //    //    $('body').removeClass('theme-dark');
+    //    //}
+    //});
+       
+
+        // Toggle dark mode and save preference to localStorage
     $('#darkmodeswitch').on('change', function () {
         if (this.checked) {
             $('body').addClass('theme-dark');
+                localStorage.setItem('darkMode', 'enabled');
         } else {
             $('body').removeClass('theme-dark');
+                localStorage.setItem('darkMode', 'disabled');
         }
     });
 
 
     
+
 
     $('.chat-active-btn').on('click', function() {
         $('.right-chat').toggleClass('active-sidebar');
@@ -374,8 +394,10 @@ $(document).ready(function() {
     $('.toggle-dark input').on('change', function () {
         if (this.checked) {
             $('body').addClass('theme-dark');
+            localStorage.setItem('darkMode', 'enabled');
         } else {
             $('body').removeClass('theme-dark');
+            localStorage.setItem('darkMode', 'disabled');
         }
     });
 
