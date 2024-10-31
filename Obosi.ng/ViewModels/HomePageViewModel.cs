@@ -228,6 +228,7 @@ namespace Obosi.ng.Presentation.ViewModels
 		public List<Builders_Boulevard> builders_Boulevards { get; set; }
 		public Builders_Boulevard builders_Boulevard { get; set; }
         public List<Root> root { get; set; }
+        public List<BlogTitles> BlogTitlesList { get; set; }
         public int pageNo { get; set; }
         public class About
         {
@@ -364,6 +365,13 @@ namespace Obosi.ng.Presentation.ViewModels
             public string taxonomy { get; set; }
             public bool embeddable { get; set; }
             public string href { get; set; }
+        }
+
+        public class BlogTitles
+        {
+            public string title { get; set; }
+            public string content { get; set; }
+            public string link { get; set; }
         }
     }
 

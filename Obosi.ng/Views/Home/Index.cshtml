@@ -370,24 +370,24 @@
 
                 
 
-            @if (Model.root != null)
+            @if (Model.BlogTitlesList != null)
             {
                 for (int i = 0; i <  4; i++)
                 {
-                    var blog = Model.root[i];
+                    var blog = Model.BlogTitlesList[i];
 
                     <div class="single-blog">
                        
 
-                        <p>
+                       @*  <p>
                             @blog.date.ToLongDateString() 
-                        </p>
+                        </p> *@
 
                         <a href="@blog.link" target="_blank">
-                            @blog.title?.rendered 
+                            @blog.title 
                         </a>
                         <p>
-                           @Html.Raw(@blog.excerpt?.rendered)
+                        @blog.content
                         </p>
                     </div>
                 }

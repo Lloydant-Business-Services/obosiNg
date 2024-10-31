@@ -45,7 +45,7 @@ namespace Obosi.ng.Controllers
         {
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
             await model.InitializeNewsAsync();
-            string apiUrl = "https://blogs.obosi.ng/wp-json/wp/v2/posts";
+            string apiUrl = "https://blogs.obosi.ng/wp-json/obosi/v1/latest-posts";
 
             // Create an instance of HttpClient
             using var httpClient = new HttpClient();
@@ -60,9 +60,9 @@ namespace Obosi.ng.Controllers
                 var responseContent = await response.Content.ReadAsStringAsync();
 
                 // Deserialize the JSON content to a C# model
-                var myModel = JsonSerializer.Deserialize<List<Root>>(responseContent);
+                var myModel = JsonSerializer.Deserialize<List<BlogTitles>>(responseContent);
 
-                model.root = myModel;
+                model.BlogTitlesList = myModel;
             }
             return View(model);
         }
