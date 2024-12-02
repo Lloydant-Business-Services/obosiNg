@@ -301,13 +301,13 @@
                     <div class="section-header">
 
                         <h2>
-                            Latest News
+                    Latest Announcements, birthday and adverts
                         </h2>
 
                     </div>
-                      @if (Model.News != null)
-            {
-                foreach (var news in Model.News)
+           @*            @if (Model.News != null)
+            { *@
+                @* foreach (var news in Model.News)
                 {
                     <div class="single-news">
                         <div class="image-holder">
@@ -324,8 +324,37 @@
                         </a>
                     </div>
                 }
+ *@
 
+            @if (Model.AnnouncementTitlesList != null)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        var blog = Model.AnnouncementTitlesList[i];
+                    <a href="@blog.link">
+                    <div class="single-news">
+                            <div class="image-holder">
+                                @if(!string.IsNullOrWhiteSpace(blog.featured_image))
+                                {
+                                    <img src="@blog.featured_image" class="img-fluid " style="height: 100px; width: 200px;" />
+                                }
+                            </div>
 
+                           @*  <p>
+                                @blog.date.ToLongDateString()
+                            </p> *@
+
+                            <a href="@blog.link" target="_blank">
+                                @blog.title
+                            </a>
+                            <p>
+                                @blog.content
+                            </p>
+
+                        </div>
+                    </a>
+                    }
+                }
 
                 <p class="iconed-holder">
 
@@ -335,7 +364,7 @@
                     </a>
 
                 </p>
-            }
+            
 
                 </div>
 
@@ -344,7 +373,7 @@
                     <div class="section-header">
 
                         <h2>
-                            Latest Blogs
+                            Latest News
                         </h2>
 
                     </div>
@@ -370,15 +399,20 @@
 
                 
 
-            @if (Model.BlogTitlesList != null)
+            @if (Model.categoriesTitlesList != null)
             {
                 for (int i = 0; i <  4; i++)
                 {
-                    var blog = Model.BlogTitlesList[i];
-
+                    var blog = Model.categoriesTitlesList[i];
+                    <a href="@blog.link">
                     <div class="single-blog">
-                       
 
+                            <div class="image-holder">
+                                @if (!string.IsNullOrWhiteSpace(blog.featured_image))
+                                {
+                                    <img src="@blog.featured_image" class="img-fluid " style="height: 100px; width: 200px;" />
+                                }
+                            </div>
                        @*  <p>
                             @blog.date.ToLongDateString() 
                         </p> *@
@@ -390,6 +424,7 @@
                         @blog.content
                         </p>
                     </div>
+                    </a>
                 }
 
                 <p class="iconed-holder">
