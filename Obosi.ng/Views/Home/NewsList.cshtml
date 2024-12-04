@@ -60,9 +60,17 @@
  *@
 
 
+<iframe src="https://blogs.obosi.ng/"
+        frameborder="0"
+        width="100%"
+        height="800"
+        scrolling="yes"
+        allowfullscreen id="myIframe">
+</iframe>
 
 
-<div class="container-blog__page">
+
+@* <div class="container-blog__page">
     <div class="blog-header-container">
         <h2 class="blog-header-text">News List</h2>
 
@@ -126,3 +134,23 @@
 </div>
 
 
+
+ *@
+
+@* <script>
+    $('#myIframe').on('load', function () {
+        var iframeDocument = $('#myIframe')[0].contentWindow.document;
+
+        // Remove header inside iframe
+        var header = $(iframeDocument).find('#header');
+        if (header.length) {
+            header.remove();
+        }
+
+        // Remove footer inside iframe
+        var footer = $(iframeDocument).find('#footer');
+        if (footer.length) {
+            footer.remove();
+        }
+    });
+</script> *@

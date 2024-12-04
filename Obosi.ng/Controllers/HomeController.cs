@@ -7,6 +7,8 @@ using Obosi.ng.Presentation.utility;
 using Obosi.ng.Presentation.ViewModels;
 using Serilog;
 using System.Security.Claims;
+using System.Text.Json;
+using static Obosi.ng.Presentation.ViewModels.HomePageViewModel;
 
 namespace Obosi.ng.Controllers
 {
@@ -43,6 +45,44 @@ namespace Obosi.ng.Controllers
         {
             var model = new HomePageViewModel(_news, _blog, _calender, _unit);
             await model.InitializeNewsAsync();
+            string apiUrl = "https://blogs.obosi.ng/wp-json/obosi/v1/latest-posts";
+
+            // Create an instance of HttpClient
+            using var httpClient = new HttpClient();
+
+            // Send a GET request to the API
+            var response = await httpClient.GetAsync(apiUrl);
+
+            // Check the response status code
+            if (response.IsSuccessStatusCode)
+            {
+                // Read the response content as a string
+                var responseContent = await response.Content.ReadAsStringAsync();
+
+                // Deserialize the JSON content to a C# model
+                var myModel = JsonSerializer.Deserialize<List<BlogTitles>>(responseContent);
+
+                model.AnnouncementTitlesList = myModel;
+            }
+            string apiUrl2 = "https://blogs.obosi.ng/wp-json/obosi/v1/latest-posts-from-categories";
+
+            // Create an instance of HttpClient
+            //using var httpClient = new HttpClient();
+
+            // Send a GET request to the API
+            var response2 = await httpClient.GetAsync(apiUrl2);
+
+            // Check the response status code
+            if (response2.IsSuccessStatusCode)
+            {
+                // Read the response content as a string
+                var responseContent2 = await response2.Content.ReadAsStringAsync();
+
+                // Deserialize the JSON content to a C# model
+                var myModel2 = JsonSerializer.Deserialize<List<BlogTitles>>(responseContent2);
+
+                model.categoriesTitlesList = myModel2;
+            }
             return View(model);
         }
 
