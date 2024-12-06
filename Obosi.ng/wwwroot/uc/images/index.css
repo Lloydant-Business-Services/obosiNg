@@ -3535,10 +3535,16 @@ main #news-blogs .news-section .section-header h2 {
 }
 main #news-blogs .news-section .single-news {
   width: 100%;
+  height: auto;
   margin: auto;
   background-color: #ffffff;
   margin-bottom: 20px;
   padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden; /* Ensures content stays inside the div */
+  text-overflow: ellipsis; /* Adds ellipsis (...) for overflowing text */
+  white-space: normal; /* Allows wrapping of text */
+  word-wrap: break-word; 
 }
 @media only screen and (max-width: 767.98px) {
   main #news-blogs .news-section .single-news {
@@ -3653,6 +3659,11 @@ main #news-blogs .blogs-section .single-blog {
   background-color: #d4d8e2;
   margin-bottom: 20px;
   padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden; /* Ensures content stays inside the div */
+  text-overflow: ellipsis; /* Adds ellipsis (...) for overflowing text */
+  white-space: normal; /* Allows wrapping of text */
+  word-wrap: break-word; 
 }
 @media only screen and (max-width: 767.98px) {
   main #news-blogs .blogs-section .single-blog {
