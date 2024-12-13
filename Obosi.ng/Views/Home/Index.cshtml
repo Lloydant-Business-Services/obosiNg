@@ -332,26 +332,7 @@
                 </h2>
 
             </div>
-            @*            @if (Model.News != null)
-            { *@
-            @* foreach (var news in Model.News)
-                {
-                    <div class="single-news">
-                        <div class="image-holder">
-                            <img src="~/@news.BackgroundImageUrl" class="img-fluid " style="height: 100px; width: 200px;" />
-                        </div>
-                        <p>
-                            @if (news.DateApproved != null)
-                            {
-                                news.DateApproved.Value.ToLongDateString();
-                            }
-                        </p>
-                        <a href="~/Home/News?id=@StringEncryption.Encrypt(@news.Id.ToString())">
-                            @news.Title
-                        </a>
-                    </div>
-                }
- *@
+            
             <div style="display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
                     @if (Model.AnnouncementTitlesList != null)
@@ -359,50 +340,44 @@
                         for (int i = 0; i < 4; i++)
                         {
                             var blog = Model.AnnouncementTitlesList[i];
-                            <a href="@blog.link">
-                                <div class="single-blog mx-auto"
-                                    style="display: flex; flex-direction: row; padding: 20px; border-radius: 10px; background: #ffffff; margin-bottom: 20px; gap: 20px;">
+                           <a href="@blog.link">
+                            <div class="single-blog mx-auto"
+                                style="display: flex; flex-direction: row; padding: 45px;  border-radius: 10px; background: #ffffff; margin-bottom: 20px; gap: 20px;">
 
-
-                                        @if (!string.IsNullOrWhiteSpace(blog.featured_image))
-                                        {
-                                             <div style="flex: 1; display: flex; justify-content: center; align-items: center; background-image: url(@blog.featured_image); background-size: contain; height: 170px; width: 100px; background-repeat: no-repeat;"> 
-                                        
+                                <!-- Left Side: Image -->
+                                @if (!string.IsNullOrWhiteSpace(blog.featured_image))
+                                {
+                                    <div style="flex: 1; display: flex; justify-content: center; align-items: center; background-image: url(@blog.featured_image); background-size: contain; height: 170px; width: 100px; background-repeat: no-repeat; margin-top: 42px;">
                                     </div>
-                                        }
-                                    <!-- Left Side: Image -->
-                                   
+                                }
 
-                                    <!-- Right Side: Content -->
-                                    <div>
-                                        <div style="flex: 2; display: flex; flex-direction: column; padding: 10px;">
-                                            <!-- Title -->
-                                            <a
-                                                style="font-size: 18px; font-weight: bold; color: #242c3f; text-decoration: none; justify-content: center; align-items: center; text-align: center; ">
-                                                @blog.title
-                                            </a>
+                                <!-- Right Side: Content -->
+                                <div style="flex: 2; display: flex; flex-direction: column; padding: 10px;  justify-content: space-between; margin-top: 40px; height: 100%;">
 
-                                            <!-- Truncated Content -->
-                                            <p style="font-size: 14px; color: #555; line-height: 1.6; margin: 10px 0; text-align: left;">
-                                                @(string.IsNullOrWhiteSpace(blog.content)
-                                                    ? "No content available"
-                                                    : (blog.content.Length > 100
-                                                    ? blog.content.Substring(0, 100) + "..."
-                                                    : blog.content))
-                                            </p>
+                                    <!-- Title -->
+                                    <a style="font-size: 18px; font-weight: bold; color: #242c3f; text-decoration: none; text-align: center;">
+                                        @blog.title
+                                    </a>
 
-                                            <!-- Read More Button -->
+                                    <!-- Truncated Content -->
+                                    <p style="font-size: 14px; color: #555; line-height: 1.6; margin: 10px 0; text-align: left; flex-grow: 1;">
+                                        @(string.IsNullOrWhiteSpace(blog.content)
+                                            ? "No content available"
+                                            : (blog.content.Length > 100 ? blog.content.Substring(0, 100) + "..." : blog.content))
+                                    </p>
 
-                                        </div>
-                                        <div style="display: flex; justify-content: flex-end;">
-                                            <a href="@blog.link"
-                                                style="font-size: 14px; font-weight: bold; color: #0078d4; text-decoration: none; padding: 5px 10px; border: 1px solid #0078d4; border-radius: 4px;">
-                                                Read More
-                                            </a>
-                                        </div>
+                                    <!-- Read More Button -->
+                                    <div style="display: flex; justify-content: flex-end;  margin-top: 20px;">
+                                        <a href="@blog.link"
+                                            style="font-size: 14px; font-weight: bold; color: #0078d4; text-decoration: none; padding: 5px 10px; border: 1px solid #0078d4; border-radius: 4px;">
+                                            Read More
+                                        </a>
                                     </div>
+                                    
                                 </div>
-                            </a>
+    </div>
+                           </a>
+
                         }
                     }
                 </div>
@@ -431,84 +406,63 @@
                 </h2>
 
             </div>
-            @*   @if (Model.Blogs != null)
-            {
-                foreach (var blogs in Model.Blogs)
-                {
-                    <div class="single-blog">
-                        <div class="image-holder">
-                            <img src="~/@blogs.BackgroundImageUrl" class="img-fluid " style="height: 100px; width: 200px;" />
-                        </div>
-                        <p>
-                            @if (blogs.DateApproved != null)
-                            {
-                                blogs.DateApproved.Value.ToLongDateString();
-                            }
-                        </p>
-                        <a href="~/Home/Blog?id=@StringEncryption.Encrypt(@blogs.Id.ToString())">
-                            @blogs.Title
-                        </a>
-            </div>
-                } *@
+          
 
 
+            <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
 
-            @if (Model.categoriesTitlesList != null)
+                </div>
+<div>
+                 @if (Model.categoriesTitlesList != null)
             {
                 for (int i = 0; i < 4; i++)
                 {
+                    
                     var blog = Model.categoriesTitlesList[i];
                             <a href="@blog.link">
-                                <div class="single-blog mx-auto"
-                                    style="display: flex; flex-direction: row; padding: 10px; border-radius: 10px; background: #ffffff; margin-bottom: 20px; gap: 20px;">
+                            <div class="single-blog mx-auto"
+                                style="display: flex; flex-direction: row; padding: 20px; border-radius: 10px; background: #ffffff; margin-bottom: 20px; gap: 20px;">
 
-
-                                        @if (!string.IsNullOrWhiteSpace(blog.featured_image))
-                                        {
-                                             <div style="flex: 1; display: flex; justify-content: center; align-items: center; background-image: url(@blog.featured_image); background-size: contain; height: 170px; width: 100px; background-repeat: no-repeat; margin-top: 42px;"> 
-                                        
+                                <!-- Left Side: Image -->
+                                @if (!string.IsNullOrWhiteSpace(blog.featured_image))
+                                {
+                                    <div style="flex: 1; display: flex; justify-content: center; align-items: center; background-image: url(@blog.featured_image); background-size: contain; height: 170px; width: 100px; background-repeat: no-repeat; margin-top: 42px;">
                                     </div>
-                                        }
-                                    <!-- Left Side: Image -->
-                                   
+                                }
 
-                                    <!-- Right Side: Content -->
-                                    <div>
-                                        <div style="flex: 2; display: flex; flex-direction: column; padding: 10px;">
-                                            <!-- Title -->
-                                            <a
-                                                style="font-size: 18px; font-weight: bold; color: #242c3f; text-decoration: none; justify-content: center; align-items: center; text-align: center; ">
-                                                @blog.title
-                                            </a>
+                                <!-- Right Side: Content -->
+                               <div style="flex: 2; display: flex; flex-direction: column; padding: 10px;  justify-content: space-between; margin-top:20px; height: 100%;">
 
-                                            <!-- Truncated Content -->
-                                            <p style="font-size: 14px; color: #555; line-height: 1.6; margin: 10px 0; text-align: left;">
-                                                @(string.IsNullOrWhiteSpace(blog.content)
-                                                    ? "No content available"
-                                                    : (blog.content.Length > 100
-                                                    ? blog.content.Substring(0, 100) + "..."
-                                                    : blog.content))
-                                            </p>
+                                    <!-- Title -->
+                                    <a style="font-size: 18px; font-weight: bold; color: #242c3f; text-decoration: none; text-align: center;">
+                                        @blog.title
+                                    </a>
 
-                                            <!-- Read More Button -->
+                                    <!-- Truncated Content -->
+                                    <p style="font-size: 14px; color: #555; line-height: 1.6; margin: 10px 0; text-align: left; flex-grow: 1;">
+                                        @(string.IsNullOrWhiteSpace(blog.content)
+                                            ? "No content available"
+                                            : (blog.content.Length > 100 ? blog.content.Substring(0, 100) + "..." : blog.content))
+                                    </p>
 
-                                        </div>
-                                        <div style="display: flex; justify-content: flex-end;">
-                                            <a href="@blog.link"
-                                                style="font-size: 14px; font-weight: bold; color: #0078d4; text-decoration: none; padding: 5px 10px; border: 1px solid #0078d4; border-radius: 4px;">
-                                                Read More
-                                            </a>
-                                        </div>
+                                    <!-- Read More Button -->
+                                    <div style="display: flex; justify-content: flex-end; margin-top: auto; margin-bottom: 40px;">
+                                        <a href="@blog.link"
+                                            style="font-size: 14px; font-weight: bold; color: #0078d4; text-decoration: none; padding: 5px 10px; border: 1px solid #0078d4; border-radius: 4px;">
+                                            Read More
+                                        </a>
                                     </div>
+                                    
                                 </div>
-                            </a>
-                }
-
-               
+                        </div>
+                    </a>
+            
+                }               
                 <div style="text-align: center; margin-top: auto;">
                     <a href="~/Home/BlogList" class="iconed red">
                         <span> Read Blogs</span>
-                        @* <i class="fa fa-arrow-circle-right"></i> *@
+                        <i class="fa fa-arrow-circle-right"></i>
                     </a>
 
                 </div>
@@ -519,6 +473,8 @@
             }
 
 
+            </div>
+           
         </div>
 
     </section>
